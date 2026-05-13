@@ -1,0 +1,7 @@
+# Source clones — re-clone bằng `git clone --depth 1 https://github.com/openfootball/*` khi cần
+worldcup.json/
+internationals/
+worldcup.more/
+
+# Intermediate inject file (regenerate bằng node gen_app_data.js)
+app_data_inject.txt

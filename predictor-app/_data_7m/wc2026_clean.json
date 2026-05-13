@@ -1,0 +1,3897 @@
+{
+  "source": "7m.com.cn (https://txt-api.7m.com.cn/specials/worldcup2026)",
+  "fetchedAt": "2026-05-13T16:10:34.167Z",
+  "fetchedAtBeijing": "2026-05-14 00:08:14",
+  "apiVersion": "1.0.2",
+  "stages": {
+    "454644": {
+      "en": "Group Stage",
+      "vi": "Vòng bảng",
+      "zh": "分组赛"
+    },
+    "454645": {
+      "en": "Round of 32",
+      "vi": "Vòng 1/16",
+      "zh": "三十二强"
+    },
+    "454646": {
+      "en": "Round of 16",
+      "vi": "Vòng 1/8",
+      "zh": "十六强"
+    },
+    "454647": {
+      "en": "Quarterfinals",
+      "vi": "Tứ kết",
+      "zh": "半准决赛"
+    },
+    "454648": {
+      "en": "Semifinals",
+      "vi": "Bán kết",
+      "zh": "半决赛"
+    },
+    "454649": {
+      "en": "3rd Place",
+      "vi": "Tranh hạng 3",
+      "zh": "季军赛"
+    },
+    "454650": {
+      "en": "Final",
+      "vi": "Chung kết",
+      "zh": "决赛"
+    }
+  },
+  "teams": [
+    {
+      "id": "1017",
+      "name_en": "Jordan",
+      "name_zh": "约旦",
+      "name_vi": "Jordan",
+      "group": "J"
+    },
+    {
+      "id": "103",
+      "name_en": "Scotland",
+      "name_zh": "苏格兰",
+      "name_vi": "Scotland",
+      "group": "C"
+    },
+    {
+      "id": "1187",
+      "name_en": "Haiti",
+      "name_zh": "海地",
+      "name_vi": "Haiti",
+      "group": "C"
+    },
+    {
+      "id": "1275",
+      "name_en": "Cape Verde",
+      "name_zh": "佛得角",
+      "name_vi": "Cape Verde",
+      "group": "H"
+    },
+    {
+      "id": "13",
+      "name_en": "England",
+      "name_zh": "英格兰",
+      "name_vi": "Anh",
+      "group": "L"
+    },
+    {
+      "id": "152",
+      "name_en": "Saudi Arabia",
+      "name_zh": "沙特阿拉伯",
+      "name_vi": "Saudi Arabia",
+      "group": "H"
+    },
+    {
+      "id": "16",
+      "name_en": "Iran",
+      "name_zh": "伊朗",
+      "name_vi": "Iran",
+      "group": "G"
+    },
+    {
+      "id": "164",
+      "name_en": "Senegal",
+      "name_zh": "塞内加尔",
+      "name_vi": "Senegal",
+      "group": "I"
+    },
+    {
+      "id": "16668",
+      "name_en": "Curacao",
+      "name_zh": "库拉索",
+      "name_vi": "Curacao",
+      "group": "E"
+    },
+    {
+      "id": "171",
+      "name_en": "Switzerland",
+      "name_zh": "瑞士",
+      "name_vi": "Thụy Sĩ",
+      "group": "B"
+    },
+    {
+      "id": "172",
+      "name_en": "Sweden",
+      "name_zh": "瑞典",
+      "name_vi": "Thụy Điển",
+      "group": "F"
+    },
+    {
+      "id": "173",
+      "name_en": "Japan",
+      "name_zh": "日本",
+      "name_vi": "Nhật Bản",
+      "group": "F"
+    },
+    {
+      "id": "186",
+      "name_en": "Portugal",
+      "name_zh": "葡萄牙",
+      "name_vi": "Bồ Đào Nha",
+      "group": "K"
+    },
+    {
+      "id": "196",
+      "name_en": "Norway",
+      "name_zh": "挪威",
+      "name_vi": "Na Uy",
+      "group": "I"
+    },
+    {
+      "id": "208",
+      "name_en": "Korea Republic",
+      "name_zh": "韩国",
+      "name_vi": "Hàn Quốc",
+      "group": "A"
+    },
+    {
+      "id": "209",
+      "name_en": "South Africa",
+      "name_zh": "南非",
+      "name_vi": "Nam Phi",
+      "group": "A"
+    },
+    {
+      "id": "214",
+      "name_en": "Mexico",
+      "name_zh": "墨西哥",
+      "name_vi": "Mexico",
+      "group": "A"
+    },
+    {
+      "id": "232",
+      "name_en": "USA",
+      "name_zh": "美国",
+      "name_vi": "Mỹ",
+      "group": "D"
+    },
+    {
+      "id": "310",
+      "name_en": "Croatia",
+      "name_zh": "克罗地亚",
+      "name_vi": "Croatia",
+      "group": "L"
+    },
+    {
+      "id": "331",
+      "name_en": "Czech Republic",
+      "name_zh": "捷克",
+      "name_vi": "Séc",
+      "group": "A"
+    },
+    {
+      "id": "334",
+      "name_en": "Canada",
+      "name_zh": "加拿大",
+      "name_vi": "Canada",
+      "group": "B"
+    },
+    {
+      "id": "361",
+      "name_en": "Netherlands",
+      "name_zh": "荷兰",
+      "name_vi": "Hà Lan",
+      "group": "F"
+    },
+    {
+      "id": "383",
+      "name_en": "Colombia",
+      "name_zh": "哥伦比亚",
+      "name_vi": "Colombia",
+      "group": "K"
+    },
+    {
+      "id": "410",
+      "name_en": "France",
+      "name_zh": "法国",
+      "name_vi": "Pháp",
+      "group": "I"
+    },
+    {
+      "id": "412",
+      "name_en": "Ecuador",
+      "name_zh": "厄瓜多尔",
+      "name_vi": "Ecuador",
+      "group": "E"
+    },
+    {
+      "id": "431",
+      "name_en": "Germany",
+      "name_zh": "德国",
+      "name_vi": "Đức",
+      "group": "E"
+    },
+    {
+      "id": "465",
+      "name_en": "Bosnia and Herzegovina",
+      "name_zh": "波黑",
+      "name_vi": "Bosna và Hercegovina",
+      "group": "B"
+    },
+    {
+      "id": "481",
+      "name_en": "Belgium",
+      "name_zh": "比利时",
+      "name_vi": "Bỉ",
+      "group": "G"
+    },
+    {
+      "id": "51",
+      "name_en": "Spain",
+      "name_zh": "西班牙",
+      "name_vi": "Tây Ban Nha",
+      "group": "H"
+    },
+    {
+      "id": "510",
+      "name_en": "Brazil",
+      "name_zh": "巴西",
+      "name_vi": "Brazil",
+      "group": "C"
+    },
+    {
+      "id": "519",
+      "name_en": "Paraguay",
+      "name_zh": "巴拉圭",
+      "name_vi": "Paraguay",
+      "group": "D"
+    },
+    {
+      "id": "52",
+      "name_en": "Uruguay",
+      "name_zh": "乌拉圭",
+      "name_vi": "Uruguay",
+      "group": "H"
+    },
+    {
+      "id": "565",
+      "name_en": "Egypt",
+      "name_zh": "埃及",
+      "name_vi": "Ai Cập",
+      "group": "G"
+    },
+    {
+      "id": "580",
+      "name_en": "Argentina",
+      "name_zh": "阿根廷",
+      "name_vi": "Argentina",
+      "group": "J"
+    },
+    {
+      "id": "581",
+      "name_en": "Algeria",
+      "name_zh": "阿尔及利亚",
+      "name_vi": "Algeria",
+      "group": "J"
+    },
+    {
+      "id": "612",
+      "name_en": "New Zealand",
+      "name_zh": "新西兰",
+      "name_vi": "New Zealand",
+      "group": "G"
+    },
+    {
+      "id": "619",
+      "name_en": "Ghana",
+      "name_zh": "加纳",
+      "name_vi": "Ghana",
+      "group": "L"
+    },
+    {
+      "id": "632",
+      "name_en": "Australia",
+      "name_zh": "澳大利亚",
+      "name_vi": "Australia",
+      "group": "D"
+    },
+    {
+      "id": "706",
+      "name_en": "Uzbekistan",
+      "name_zh": "乌兹别克斯坦",
+      "name_vi": "Uzbekistan",
+      "group": "K"
+    },
+    {
+      "id": "708",
+      "name_en": "Austria",
+      "name_zh": "奥地利",
+      "name_vi": "Áo",
+      "group": "J"
+    },
+    {
+      "id": "79",
+      "name_en": "Turkiye",
+      "name_zh": "土耳其",
+      "name_vi": "Thổ Nhĩ Kỳ",
+      "group": "D"
+    },
+    {
+      "id": "830",
+      "name_en": "Cote d'Ivoire",
+      "name_zh": "科特迪瓦",
+      "name_vi": "Bờ Biển Ngà",
+      "group": "E"
+    },
+    {
+      "id": "834",
+      "name_en": "Panama",
+      "name_zh": "巴拿马",
+      "name_vi": "Panama",
+      "group": "L"
+    },
+    {
+      "id": "907",
+      "name_en": "Tunisia",
+      "name_zh": "突尼斯",
+      "name_vi": "Tunisia",
+      "group": "F"
+    },
+    {
+      "id": "908",
+      "name_en": "Democratic Rep Congo",
+      "name_zh": "民主刚果",
+      "name_vi": "CHDC Congo",
+      "group": "K"
+    },
+    {
+      "id": "912",
+      "name_en": "Morocco",
+      "name_zh": "摩洛哥",
+      "name_vi": "Morocco",
+      "group": "C"
+    },
+    {
+      "id": "928",
+      "name_en": "Iraq",
+      "name_zh": "伊拉克",
+      "name_vi": "Iraq",
+      "group": "I"
+    },
+    {
+      "id": "940",
+      "name_en": "Qatar",
+      "name_zh": "卡塔尔",
+      "name_vi": "Qatar",
+      "group": "B"
+    }
+  ],
+  "matches": [
+    {
+      "matchId": "5001993",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "A",
+      "kickoffBeijing": "2026-06-12 03:00:00",
+      "kickoffISO": "2026-06-12T03:00:00+08:00",
+      "kickoffVN": "2026-06-12 02:00",
+      "homeTeamId": "214",
+      "awayTeamId": "209",
+      "home": {
+        "name_en": "Mexico",
+        "name_zh": "墨西哥",
+        "name_vi": "Mexico"
+      },
+      "away": {
+        "name_en": "South Africa",
+        "name_zh": "南非",
+        "name_vi": "Nam Phi"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": false
+    },
+    {
+      "matchId": "5058661",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "A",
+      "kickoffBeijing": "2026-06-12 10:00:00",
+      "kickoffISO": "2026-06-12T10:00:00+08:00",
+      "kickoffVN": "2026-06-12 09:00",
+      "homeTeamId": "208",
+      "awayTeamId": "331",
+      "home": {
+        "name_en": "Korea Republic",
+        "name_zh": "韩国",
+        "name_vi": "Hàn Quốc"
+      },
+      "away": {
+        "name_en": "Czech Republic",
+        "name_zh": "捷克",
+        "name_vi": "Séc"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5058664",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "B",
+      "kickoffBeijing": "2026-06-13 03:00:00",
+      "kickoffISO": "2026-06-13T03:00:00+08:00",
+      "kickoffVN": "2026-06-13 02:00",
+      "homeTeamId": "334",
+      "awayTeamId": "465",
+      "home": {
+        "name_en": "Canada",
+        "name_zh": "加拿大",
+        "name_vi": "Canada"
+      },
+      "away": {
+        "name_en": "Bosnia and Herzegovina",
+        "name_zh": "波黑",
+        "name_vi": "Bosna và Hercegovina"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": false
+    },
+    {
+      "matchId": "5001996",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "D",
+      "kickoffBeijing": "2026-06-13 09:00:00",
+      "kickoffISO": "2026-06-13T09:00:00+08:00",
+      "kickoffVN": "2026-06-13 08:00",
+      "homeTeamId": "232",
+      "awayTeamId": "519",
+      "home": {
+        "name_en": "USA",
+        "name_zh": "美国",
+        "name_vi": "Mỹ"
+      },
+      "away": {
+        "name_en": "Paraguay",
+        "name_zh": "巴拉圭",
+        "name_vi": "Paraguay"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": false
+    },
+    {
+      "matchId": "5002006",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "B",
+      "kickoffBeijing": "2026-06-14 03:00:00",
+      "kickoffISO": "2026-06-14T03:00:00+08:00",
+      "kickoffVN": "2026-06-14 02:00",
+      "homeTeamId": "940",
+      "awayTeamId": "171",
+      "home": {
+        "name_en": "Qatar",
+        "name_zh": "卡塔尔",
+        "name_vi": "Qatar"
+      },
+      "away": {
+        "name_en": "Switzerland",
+        "name_zh": "瑞士",
+        "name_vi": "Thụy Sĩ"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002000",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "C",
+      "kickoffBeijing": "2026-06-14 06:00:00",
+      "kickoffISO": "2026-06-14T06:00:00+08:00",
+      "kickoffVN": "2026-06-14 05:00",
+      "homeTeamId": "510",
+      "awayTeamId": "912",
+      "home": {
+        "name_en": "Brazil",
+        "name_zh": "巴西",
+        "name_vi": "Brazil"
+      },
+      "away": {
+        "name_en": "Morocco",
+        "name_zh": "摩洛哥",
+        "name_vi": "Morocco"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002002",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "C",
+      "kickoffBeijing": "2026-06-14 09:00:00",
+      "kickoffISO": "2026-06-14T09:00:00+08:00",
+      "kickoffVN": "2026-06-14 08:00",
+      "homeTeamId": "1187",
+      "awayTeamId": "103",
+      "home": {
+        "name_en": "Haiti",
+        "name_zh": "海地",
+        "name_vi": "Haiti"
+      },
+      "away": {
+        "name_en": "Scotland",
+        "name_zh": "苏格兰",
+        "name_vi": "Scotland"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5058668",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "D",
+      "kickoffBeijing": "2026-06-14 12:00:00",
+      "kickoffISO": "2026-06-14T12:00:00+08:00",
+      "kickoffVN": "2026-06-14 11:00",
+      "homeTeamId": "632",
+      "awayTeamId": "79",
+      "home": {
+        "name_en": "Australia",
+        "name_zh": "澳大利亚",
+        "name_vi": "Australia"
+      },
+      "away": {
+        "name_en": "Turkiye",
+        "name_zh": "土耳其",
+        "name_vi": "Thổ Nhĩ Kỳ"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002009",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "E",
+      "kickoffBeijing": "2026-06-15 01:00:00",
+      "kickoffISO": "2026-06-15T01:00:00+08:00",
+      "kickoffVN": "2026-06-15 00:00",
+      "homeTeamId": "431",
+      "awayTeamId": "16668",
+      "home": {
+        "name_en": "Germany",
+        "name_zh": "德国",
+        "name_vi": "Đức"
+      },
+      "away": {
+        "name_en": "Curacao",
+        "name_zh": "库拉索",
+        "name_vi": "Curacao"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002017",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "F",
+      "kickoffBeijing": "2026-06-15 04:00:00",
+      "kickoffISO": "2026-06-15T04:00:00+08:00",
+      "kickoffVN": "2026-06-15 03:00",
+      "homeTeamId": "361",
+      "awayTeamId": "173",
+      "home": {
+        "name_en": "Netherlands",
+        "name_zh": "荷兰",
+        "name_vi": "Hà Lan"
+      },
+      "away": {
+        "name_en": "Japan",
+        "name_zh": "日本",
+        "name_vi": "Nhật Bản"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002010",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "E",
+      "kickoffBeijing": "2026-06-15 07:00:00",
+      "kickoffISO": "2026-06-15T07:00:00+08:00",
+      "kickoffVN": "2026-06-15 06:00",
+      "homeTeamId": "830",
+      "awayTeamId": "412",
+      "home": {
+        "name_en": "Cote d'Ivoire",
+        "name_zh": "科特迪瓦",
+        "name_vi": "Bờ Biển Ngà"
+      },
+      "away": {
+        "name_en": "Ecuador",
+        "name_zh": "厄瓜多尔",
+        "name_vi": "Ecuador"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5058671",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "F",
+      "kickoffBeijing": "2026-06-15 10:00:00",
+      "kickoffISO": "2026-06-15T10:00:00+08:00",
+      "kickoffVN": "2026-06-15 09:00",
+      "homeTeamId": "172",
+      "awayTeamId": "907",
+      "home": {
+        "name_en": "Sweden",
+        "name_zh": "瑞典",
+        "name_vi": "Thụy Điển"
+      },
+      "away": {
+        "name_en": "Tunisia",
+        "name_zh": "突尼斯",
+        "name_vi": "Tunisia"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002027",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "H",
+      "kickoffBeijing": "2026-06-15 23:59:00",
+      "kickoffISO": "2026-06-15T23:59:00+08:00",
+      "kickoffVN": "2026-06-15 22:59",
+      "homeTeamId": "51",
+      "awayTeamId": "1275",
+      "home": {
+        "name_en": "Spain",
+        "name_zh": "西班牙",
+        "name_vi": "Tây Ban Nha"
+      },
+      "away": {
+        "name_en": "Cape Verde",
+        "name_zh": "佛得角",
+        "name_vi": "Cape Verde"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002024",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "G",
+      "kickoffBeijing": "2026-06-16 03:00:00",
+      "kickoffISO": "2026-06-16T03:00:00+08:00",
+      "kickoffVN": "2026-06-16 02:00",
+      "homeTeamId": "481",
+      "awayTeamId": "565",
+      "home": {
+        "name_en": "Belgium",
+        "name_zh": "比利时",
+        "name_vi": "Bỉ"
+      },
+      "away": {
+        "name_en": "Egypt",
+        "name_zh": "埃及",
+        "name_vi": "Ai Cập"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002026",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "H",
+      "kickoffBeijing": "2026-06-16 06:00:00",
+      "kickoffISO": "2026-06-16T06:00:00+08:00",
+      "kickoffVN": "2026-06-16 05:00",
+      "homeTeamId": "152",
+      "awayTeamId": "52",
+      "home": {
+        "name_en": "Saudi Arabia",
+        "name_zh": "沙特阿拉伯",
+        "name_vi": "Saudi Arabia"
+      },
+      "away": {
+        "name_en": "Uruguay",
+        "name_zh": "乌拉圭",
+        "name_vi": "Uruguay"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002025",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "G",
+      "kickoffBeijing": "2026-06-16 09:00:00",
+      "kickoffISO": "2026-06-16T09:00:00+08:00",
+      "kickoffVN": "2026-06-16 08:00",
+      "homeTeamId": "16",
+      "awayTeamId": "612",
+      "home": {
+        "name_en": "Iran",
+        "name_zh": "伊朗",
+        "name_vi": "Iran"
+      },
+      "away": {
+        "name_en": "New Zealand",
+        "name_zh": "新西兰",
+        "name_vi": "New Zealand"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002042",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "I",
+      "kickoffBeijing": "2026-06-17 03:00:00",
+      "kickoffISO": "2026-06-17T03:00:00+08:00",
+      "kickoffVN": "2026-06-17 02:00",
+      "homeTeamId": "410",
+      "awayTeamId": "164",
+      "home": {
+        "name_en": "France",
+        "name_zh": "法国",
+        "name_vi": "Pháp"
+      },
+      "away": {
+        "name_en": "Senegal",
+        "name_zh": "塞内加尔",
+        "name_vi": "Senegal"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5058684",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "I",
+      "kickoffBeijing": "2026-06-17 06:00:00",
+      "kickoffISO": "2026-06-17T06:00:00+08:00",
+      "kickoffVN": "2026-06-17 05:00",
+      "homeTeamId": "928",
+      "awayTeamId": "196",
+      "home": {
+        "name_en": "Iraq",
+        "name_zh": "伊拉克",
+        "name_vi": "Iraq"
+      },
+      "away": {
+        "name_en": "Norway",
+        "name_zh": "挪威",
+        "name_vi": "Na Uy"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002036",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "J",
+      "kickoffBeijing": "2026-06-17 09:00:00",
+      "kickoffISO": "2026-06-17T09:00:00+08:00",
+      "kickoffVN": "2026-06-17 08:00",
+      "homeTeamId": "580",
+      "awayTeamId": "581",
+      "home": {
+        "name_en": "Argentina",
+        "name_zh": "阿根廷",
+        "name_vi": "Argentina"
+      },
+      "away": {
+        "name_en": "Algeria",
+        "name_zh": "阿尔及利亚",
+        "name_vi": "Algeria"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002037",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "J",
+      "kickoffBeijing": "2026-06-17 12:00:00",
+      "kickoffISO": "2026-06-17T12:00:00+08:00",
+      "kickoffVN": "2026-06-17 11:00",
+      "homeTeamId": "708",
+      "awayTeamId": "1017",
+      "home": {
+        "name_en": "Austria",
+        "name_zh": "奥地利",
+        "name_vi": "Áo"
+      },
+      "away": {
+        "name_en": "Jordan",
+        "name_zh": "约旦",
+        "name_vi": "Jordan"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5058674",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "K",
+      "kickoffBeijing": "2026-06-18 01:00:00",
+      "kickoffISO": "2026-06-18T01:00:00+08:00",
+      "kickoffVN": "2026-06-18 00:00",
+      "homeTeamId": "186",
+      "awayTeamId": "908",
+      "home": {
+        "name_en": "Portugal",
+        "name_zh": "葡萄牙",
+        "name_vi": "Bồ Đào Nha"
+      },
+      "away": {
+        "name_en": "Democratic Rep Congo",
+        "name_zh": "民主刚果",
+        "name_vi": "CHDC Congo"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002045",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "L",
+      "kickoffBeijing": "2026-06-18 04:00:00",
+      "kickoffISO": "2026-06-18T04:00:00+08:00",
+      "kickoffVN": "2026-06-18 03:00",
+      "homeTeamId": "13",
+      "awayTeamId": "310",
+      "home": {
+        "name_en": "England",
+        "name_zh": "英格兰",
+        "name_vi": "Anh"
+      },
+      "away": {
+        "name_en": "Croatia",
+        "name_zh": "克罗地亚",
+        "name_vi": "Croatia"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002046",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "L",
+      "kickoffBeijing": "2026-06-18 07:00:00",
+      "kickoffISO": "2026-06-18T07:00:00+08:00",
+      "kickoffVN": "2026-06-18 06:00",
+      "homeTeamId": "619",
+      "awayTeamId": "834",
+      "home": {
+        "name_en": "Ghana",
+        "name_zh": "加纳",
+        "name_vi": "Ghana"
+      },
+      "away": {
+        "name_en": "Panama",
+        "name_zh": "巴拿马",
+        "name_vi": "Panama"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002051",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "K",
+      "kickoffBeijing": "2026-06-18 10:00:00",
+      "kickoffISO": "2026-06-18T10:00:00+08:00",
+      "kickoffVN": "2026-06-18 09:00",
+      "homeTeamId": "706",
+      "awayTeamId": "383",
+      "home": {
+        "name_en": "Uzbekistan",
+        "name_zh": "乌兹别克斯坦",
+        "name_vi": "Uzbekistan"
+      },
+      "away": {
+        "name_en": "Colombia",
+        "name_zh": "哥伦比亚",
+        "name_vi": "Colombia"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5058662",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "A",
+      "kickoffBeijing": "2026-06-18 23:59:00",
+      "kickoffISO": "2026-06-18T23:59:00+08:00",
+      "kickoffVN": "2026-06-18 22:59",
+      "homeTeamId": "331",
+      "awayTeamId": "209",
+      "home": {
+        "name_en": "Czech Republic",
+        "name_zh": "捷克",
+        "name_vi": "Séc"
+      },
+      "away": {
+        "name_en": "South Africa",
+        "name_zh": "南非",
+        "name_vi": "Nam Phi"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5058665",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "B",
+      "kickoffBeijing": "2026-06-19 03:00:00",
+      "kickoffISO": "2026-06-19T03:00:00+08:00",
+      "kickoffVN": "2026-06-19 02:00",
+      "homeTeamId": "171",
+      "awayTeamId": "465",
+      "home": {
+        "name_en": "Switzerland",
+        "name_zh": "瑞士",
+        "name_vi": "Thụy Sĩ"
+      },
+      "away": {
+        "name_en": "Bosnia and Herzegovina",
+        "name_zh": "波黑",
+        "name_vi": "Bosna và Hercegovina"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002008",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "B",
+      "kickoffBeijing": "2026-06-19 06:00:00",
+      "kickoffISO": "2026-06-19T06:00:00+08:00",
+      "kickoffVN": "2026-06-19 05:00",
+      "homeTeamId": "334",
+      "awayTeamId": "940",
+      "home": {
+        "name_en": "Canada",
+        "name_zh": "加拿大",
+        "name_vi": "Canada"
+      },
+      "away": {
+        "name_en": "Qatar",
+        "name_zh": "卡塔尔",
+        "name_vi": "Qatar"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": false
+    },
+    {
+      "matchId": "5001994",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "A",
+      "kickoffBeijing": "2026-06-19 09:00:00",
+      "kickoffISO": "2026-06-19T09:00:00+08:00",
+      "kickoffVN": "2026-06-19 08:00",
+      "homeTeamId": "214",
+      "awayTeamId": "208",
+      "home": {
+        "name_en": "Mexico",
+        "name_zh": "墨西哥",
+        "name_vi": "Mexico"
+      },
+      "away": {
+        "name_en": "Korea Republic",
+        "name_zh": "韩国",
+        "name_vi": "Hàn Quốc"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": false
+    },
+    {
+      "matchId": "5001997",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "D",
+      "kickoffBeijing": "2026-06-20 03:00:00",
+      "kickoffISO": "2026-06-20T03:00:00+08:00",
+      "kickoffVN": "2026-06-20 02:00",
+      "homeTeamId": "232",
+      "awayTeamId": "632",
+      "home": {
+        "name_en": "USA",
+        "name_zh": "美国",
+        "name_vi": "Mỹ"
+      },
+      "away": {
+        "name_en": "Australia",
+        "name_zh": "澳大利亚",
+        "name_vi": "Australia"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": false
+    },
+    {
+      "matchId": "5002005",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "C",
+      "kickoffBeijing": "2026-06-20 06:00:00",
+      "kickoffISO": "2026-06-20T06:00:00+08:00",
+      "kickoffVN": "2026-06-20 05:00",
+      "homeTeamId": "103",
+      "awayTeamId": "912",
+      "home": {
+        "name_en": "Scotland",
+        "name_zh": "苏格兰",
+        "name_vi": "Scotland"
+      },
+      "away": {
+        "name_en": "Morocco",
+        "name_zh": "摩洛哥",
+        "name_vi": "Morocco"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002001",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "C",
+      "kickoffBeijing": "2026-06-20 08:30:00",
+      "kickoffISO": "2026-06-20T08:30:00+08:00",
+      "kickoffVN": "2026-06-20 07:30",
+      "homeTeamId": "510",
+      "awayTeamId": "1187",
+      "home": {
+        "name_en": "Brazil",
+        "name_zh": "巴西",
+        "name_vi": "Brazil"
+      },
+      "away": {
+        "name_en": "Haiti",
+        "name_zh": "海地",
+        "name_vi": "Haiti"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5058669",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "D",
+      "kickoffBeijing": "2026-06-20 11:00:00",
+      "kickoffISO": "2026-06-20T11:00:00+08:00",
+      "kickoffVN": "2026-06-20 10:00",
+      "homeTeamId": "79",
+      "awayTeamId": "519",
+      "home": {
+        "name_en": "Turkiye",
+        "name_zh": "土耳其",
+        "name_vi": "Thổ Nhĩ Kỳ"
+      },
+      "away": {
+        "name_en": "Paraguay",
+        "name_zh": "巴拉圭",
+        "name_vi": "Paraguay"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5058672",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "F",
+      "kickoffBeijing": "2026-06-21 01:00:00",
+      "kickoffISO": "2026-06-21T01:00:00+08:00",
+      "kickoffVN": "2026-06-21 00:00",
+      "homeTeamId": "361",
+      "awayTeamId": "172",
+      "home": {
+        "name_en": "Netherlands",
+        "name_zh": "荷兰",
+        "name_vi": "Hà Lan"
+      },
+      "away": {
+        "name_en": "Sweden",
+        "name_zh": "瑞典",
+        "name_vi": "Thụy Điển"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002013",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "E",
+      "kickoffBeijing": "2026-06-21 04:00:00",
+      "kickoffISO": "2026-06-21T04:00:00+08:00",
+      "kickoffVN": "2026-06-21 03:00",
+      "homeTeamId": "431",
+      "awayTeamId": "830",
+      "home": {
+        "name_en": "Germany",
+        "name_zh": "德国",
+        "name_vi": "Đức"
+      },
+      "away": {
+        "name_en": "Cote d'Ivoire",
+        "name_zh": "科特迪瓦",
+        "name_vi": "Bờ Biển Ngà"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002012",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "E",
+      "kickoffBeijing": "2026-06-21 08:00:00",
+      "kickoffISO": "2026-06-21T08:00:00+08:00",
+      "kickoffVN": "2026-06-21 07:00",
+      "homeTeamId": "412",
+      "awayTeamId": "16668",
+      "home": {
+        "name_en": "Ecuador",
+        "name_zh": "厄瓜多尔",
+        "name_vi": "Ecuador"
+      },
+      "away": {
+        "name_en": "Curacao",
+        "name_zh": "库拉索",
+        "name_vi": "Curacao"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002019",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "F",
+      "kickoffBeijing": "2026-06-21 12:00:00",
+      "kickoffISO": "2026-06-21T12:00:00+08:00",
+      "kickoffVN": "2026-06-21 11:00",
+      "homeTeamId": "907",
+      "awayTeamId": "173",
+      "home": {
+        "name_en": "Tunisia",
+        "name_zh": "突尼斯",
+        "name_vi": "Tunisia"
+      },
+      "away": {
+        "name_en": "Japan",
+        "name_zh": "日本",
+        "name_vi": "Nhật Bản"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002028",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "H",
+      "kickoffBeijing": "2026-06-21 23:59:00",
+      "kickoffISO": "2026-06-21T23:59:00+08:00",
+      "kickoffVN": "2026-06-21 22:59",
+      "homeTeamId": "51",
+      "awayTeamId": "152",
+      "home": {
+        "name_en": "Spain",
+        "name_zh": "西班牙",
+        "name_vi": "Tây Ban Nha"
+      },
+      "away": {
+        "name_en": "Saudi Arabia",
+        "name_zh": "沙特阿拉伯",
+        "name_vi": "Saudi Arabia"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002020",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "G",
+      "kickoffBeijing": "2026-06-22 03:00:00",
+      "kickoffISO": "2026-06-22T03:00:00+08:00",
+      "kickoffVN": "2026-06-22 02:00",
+      "homeTeamId": "481",
+      "awayTeamId": "16",
+      "home": {
+        "name_en": "Belgium",
+        "name_zh": "比利时",
+        "name_vi": "Bỉ"
+      },
+      "away": {
+        "name_en": "Iran",
+        "name_zh": "伊朗",
+        "name_vi": "Iran"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002029",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "H",
+      "kickoffBeijing": "2026-06-22 06:00:00",
+      "kickoffISO": "2026-06-22T06:00:00+08:00",
+      "kickoffVN": "2026-06-22 05:00",
+      "homeTeamId": "52",
+      "awayTeamId": "1275",
+      "home": {
+        "name_en": "Uruguay",
+        "name_zh": "乌拉圭",
+        "name_vi": "Uruguay"
+      },
+      "away": {
+        "name_en": "Cape Verde",
+        "name_zh": "佛得角",
+        "name_vi": "Cape Verde"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002021",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "G",
+      "kickoffBeijing": "2026-06-22 09:00:00",
+      "kickoffISO": "2026-06-22T09:00:00+08:00",
+      "kickoffVN": "2026-06-22 08:00",
+      "homeTeamId": "612",
+      "awayTeamId": "565",
+      "home": {
+        "name_en": "New Zealand",
+        "name_zh": "新西兰",
+        "name_vi": "New Zealand"
+      },
+      "away": {
+        "name_en": "Egypt",
+        "name_zh": "埃及",
+        "name_vi": "Ai Cập"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002038",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "J",
+      "kickoffBeijing": "2026-06-23 01:00:00",
+      "kickoffISO": "2026-06-23T01:00:00+08:00",
+      "kickoffVN": "2026-06-23 00:00",
+      "homeTeamId": "580",
+      "awayTeamId": "708",
+      "home": {
+        "name_en": "Argentina",
+        "name_zh": "阿根廷",
+        "name_vi": "Argentina"
+      },
+      "away": {
+        "name_en": "Austria",
+        "name_zh": "奥地利",
+        "name_vi": "Áo"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5058685",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "I",
+      "kickoffBeijing": "2026-06-23 05:00:00",
+      "kickoffISO": "2026-06-23T05:00:00+08:00",
+      "kickoffVN": "2026-06-23 04:00",
+      "homeTeamId": "410",
+      "awayTeamId": "928",
+      "home": {
+        "name_en": "France",
+        "name_zh": "法国",
+        "name_vi": "Pháp"
+      },
+      "away": {
+        "name_en": "Iraq",
+        "name_zh": "伊拉克",
+        "name_vi": "Iraq"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002044",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "I",
+      "kickoffBeijing": "2026-06-23 08:00:00",
+      "kickoffISO": "2026-06-23T08:00:00+08:00",
+      "kickoffVN": "2026-06-23 07:00",
+      "homeTeamId": "196",
+      "awayTeamId": "164",
+      "home": {
+        "name_en": "Norway",
+        "name_zh": "挪威",
+        "name_vi": "Na Uy"
+      },
+      "away": {
+        "name_en": "Senegal",
+        "name_zh": "塞内加尔",
+        "name_vi": "Senegal"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002039",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "J",
+      "kickoffBeijing": "2026-06-23 11:00:00",
+      "kickoffISO": "2026-06-23T11:00:00+08:00",
+      "kickoffVN": "2026-06-23 10:00",
+      "homeTeamId": "1017",
+      "awayTeamId": "581",
+      "home": {
+        "name_en": "Jordan",
+        "name_zh": "约旦",
+        "name_vi": "Jordan"
+      },
+      "away": {
+        "name_en": "Algeria",
+        "name_zh": "阿尔及利亚",
+        "name_vi": "Algeria"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002052",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "K",
+      "kickoffBeijing": "2026-06-24 01:00:00",
+      "kickoffISO": "2026-06-24T01:00:00+08:00",
+      "kickoffVN": "2026-06-24 00:00",
+      "homeTeamId": "186",
+      "awayTeamId": "706",
+      "home": {
+        "name_en": "Portugal",
+        "name_zh": "葡萄牙",
+        "name_vi": "Bồ Đào Nha"
+      },
+      "away": {
+        "name_en": "Uzbekistan",
+        "name_zh": "乌兹别克斯坦",
+        "name_vi": "Uzbekistan"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002047",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "L",
+      "kickoffBeijing": "2026-06-24 04:00:00",
+      "kickoffISO": "2026-06-24T04:00:00+08:00",
+      "kickoffVN": "2026-06-24 03:00",
+      "homeTeamId": "13",
+      "awayTeamId": "619",
+      "home": {
+        "name_en": "England",
+        "name_zh": "英格兰",
+        "name_vi": "Anh"
+      },
+      "away": {
+        "name_en": "Ghana",
+        "name_zh": "加纳",
+        "name_vi": "Ghana"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002048",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "L",
+      "kickoffBeijing": "2026-06-24 07:00:00",
+      "kickoffISO": "2026-06-24T07:00:00+08:00",
+      "kickoffVN": "2026-06-24 06:00",
+      "homeTeamId": "834",
+      "awayTeamId": "310",
+      "home": {
+        "name_en": "Panama",
+        "name_zh": "巴拿马",
+        "name_vi": "Panama"
+      },
+      "away": {
+        "name_en": "Croatia",
+        "name_zh": "克罗地亚",
+        "name_vi": "Croatia"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5058675",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "K",
+      "kickoffBeijing": "2026-06-24 10:00:00",
+      "kickoffISO": "2026-06-24T10:00:00+08:00",
+      "kickoffVN": "2026-06-24 09:00",
+      "homeTeamId": "383",
+      "awayTeamId": "908",
+      "home": {
+        "name_en": "Colombia",
+        "name_zh": "哥伦比亚",
+        "name_vi": "Colombia"
+      },
+      "away": {
+        "name_en": "Democratic Rep Congo",
+        "name_zh": "民主刚果",
+        "name_vi": "CHDC Congo"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002007",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "B",
+      "kickoffBeijing": "2026-06-25 03:00:00",
+      "kickoffISO": "2026-06-25T03:00:00+08:00",
+      "kickoffVN": "2026-06-25 02:00",
+      "homeTeamId": "171",
+      "awayTeamId": "334",
+      "home": {
+        "name_en": "Switzerland",
+        "name_zh": "瑞士",
+        "name_vi": "Thụy Sĩ"
+      },
+      "away": {
+        "name_en": "Canada",
+        "name_zh": "加拿大",
+        "name_vi": "Canada"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5058666",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "B",
+      "kickoffBeijing": "2026-06-25 03:00:00",
+      "kickoffISO": "2026-06-25T03:00:00+08:00",
+      "kickoffVN": "2026-06-25 02:00",
+      "homeTeamId": "465",
+      "awayTeamId": "940",
+      "home": {
+        "name_en": "Bosnia and Herzegovina",
+        "name_zh": "波黑",
+        "name_vi": "Bosna và Hercegovina"
+      },
+      "away": {
+        "name_en": "Qatar",
+        "name_zh": "卡塔尔",
+        "name_vi": "Qatar"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002003",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "C",
+      "kickoffBeijing": "2026-06-25 06:00:00",
+      "kickoffISO": "2026-06-25T06:00:00+08:00",
+      "kickoffVN": "2026-06-25 05:00",
+      "homeTeamId": "103",
+      "awayTeamId": "510",
+      "home": {
+        "name_en": "Scotland",
+        "name_zh": "苏格兰",
+        "name_vi": "Scotland"
+      },
+      "away": {
+        "name_en": "Brazil",
+        "name_zh": "巴西",
+        "name_vi": "Brazil"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002004",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "C",
+      "kickoffBeijing": "2026-06-25 06:00:00",
+      "kickoffISO": "2026-06-25T06:00:00+08:00",
+      "kickoffVN": "2026-06-25 05:00",
+      "homeTeamId": "912",
+      "awayTeamId": "1187",
+      "home": {
+        "name_en": "Morocco",
+        "name_zh": "摩洛哥",
+        "name_vi": "Morocco"
+      },
+      "away": {
+        "name_en": "Haiti",
+        "name_zh": "海地",
+        "name_vi": "Haiti"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5001995",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "A",
+      "kickoffBeijing": "2026-06-25 09:00:00",
+      "kickoffISO": "2026-06-25T09:00:00+08:00",
+      "kickoffVN": "2026-06-25 08:00",
+      "homeTeamId": "209",
+      "awayTeamId": "208",
+      "home": {
+        "name_en": "South Africa",
+        "name_zh": "南非",
+        "name_vi": "Nam Phi"
+      },
+      "away": {
+        "name_en": "Korea Republic",
+        "name_zh": "韩国",
+        "name_vi": "Hàn Quốc"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5058663",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "A",
+      "kickoffBeijing": "2026-06-25 09:00:00",
+      "kickoffISO": "2026-06-25T09:00:00+08:00",
+      "kickoffVN": "2026-06-25 08:00",
+      "homeTeamId": "331",
+      "awayTeamId": "214",
+      "home": {
+        "name_en": "Czech Republic",
+        "name_zh": "捷克",
+        "name_vi": "Séc"
+      },
+      "away": {
+        "name_en": "Mexico",
+        "name_zh": "墨西哥",
+        "name_vi": "Mexico"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002014",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "E",
+      "kickoffBeijing": "2026-06-26 04:00:00",
+      "kickoffISO": "2026-06-26T04:00:00+08:00",
+      "kickoffVN": "2026-06-26 03:00",
+      "homeTeamId": "16668",
+      "awayTeamId": "830",
+      "home": {
+        "name_en": "Curacao",
+        "name_zh": "库拉索",
+        "name_vi": "Curacao"
+      },
+      "away": {
+        "name_en": "Cote d'Ivoire",
+        "name_zh": "科特迪瓦",
+        "name_vi": "Bờ Biển Ngà"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002015",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "E",
+      "kickoffBeijing": "2026-06-26 04:00:00",
+      "kickoffISO": "2026-06-26T04:00:00+08:00",
+      "kickoffVN": "2026-06-26 03:00",
+      "homeTeamId": "412",
+      "awayTeamId": "431",
+      "home": {
+        "name_en": "Ecuador",
+        "name_zh": "厄瓜多尔",
+        "name_vi": "Ecuador"
+      },
+      "away": {
+        "name_en": "Germany",
+        "name_zh": "德国",
+        "name_vi": "Đức"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002018",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "F",
+      "kickoffBeijing": "2026-06-26 07:00:00",
+      "kickoffISO": "2026-06-26T07:00:00+08:00",
+      "kickoffVN": "2026-06-26 06:00",
+      "homeTeamId": "907",
+      "awayTeamId": "361",
+      "home": {
+        "name_en": "Tunisia",
+        "name_zh": "突尼斯",
+        "name_vi": "Tunisia"
+      },
+      "away": {
+        "name_en": "Netherlands",
+        "name_zh": "荷兰",
+        "name_vi": "Hà Lan"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5058673",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "F",
+      "kickoffBeijing": "2026-06-26 07:00:00",
+      "kickoffISO": "2026-06-26T07:00:00+08:00",
+      "kickoffVN": "2026-06-26 06:00",
+      "homeTeamId": "173",
+      "awayTeamId": "172",
+      "home": {
+        "name_en": "Japan",
+        "name_zh": "日本",
+        "name_vi": "Nhật Bản"
+      },
+      "away": {
+        "name_en": "Sweden",
+        "name_zh": "瑞典",
+        "name_vi": "Thụy Điển"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5001998",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "D",
+      "kickoffBeijing": "2026-06-26 10:00:00",
+      "kickoffISO": "2026-06-26T10:00:00+08:00",
+      "kickoffVN": "2026-06-26 09:00",
+      "homeTeamId": "519",
+      "awayTeamId": "632",
+      "home": {
+        "name_en": "Paraguay",
+        "name_zh": "巴拉圭",
+        "name_vi": "Paraguay"
+      },
+      "away": {
+        "name_en": "Australia",
+        "name_zh": "澳大利亚",
+        "name_vi": "Australia"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5058670",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "D",
+      "kickoffBeijing": "2026-06-26 10:00:00",
+      "kickoffISO": "2026-06-26T10:00:00+08:00",
+      "kickoffVN": "2026-06-26 09:00",
+      "homeTeamId": "79",
+      "awayTeamId": "232",
+      "home": {
+        "name_en": "Turkiye",
+        "name_zh": "土耳其",
+        "name_vi": "Thổ Nhĩ Kỳ"
+      },
+      "away": {
+        "name_en": "USA",
+        "name_zh": "美国",
+        "name_vi": "Mỹ"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002043",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "I",
+      "kickoffBeijing": "2026-06-27 03:00:00",
+      "kickoffISO": "2026-06-27T03:00:00+08:00",
+      "kickoffVN": "2026-06-27 02:00",
+      "homeTeamId": "196",
+      "awayTeamId": "410",
+      "home": {
+        "name_en": "Norway",
+        "name_zh": "挪威",
+        "name_vi": "Na Uy"
+      },
+      "away": {
+        "name_en": "France",
+        "name_zh": "法国",
+        "name_vi": "Pháp"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5058686",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "I",
+      "kickoffBeijing": "2026-06-27 03:00:00",
+      "kickoffISO": "2026-06-27T03:00:00+08:00",
+      "kickoffVN": "2026-06-27 02:00",
+      "homeTeamId": "164",
+      "awayTeamId": "928",
+      "home": {
+        "name_en": "Senegal",
+        "name_zh": "塞内加尔",
+        "name_vi": "Senegal"
+      },
+      "away": {
+        "name_en": "Iraq",
+        "name_zh": "伊拉克",
+        "name_vi": "Iraq"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002031",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "H",
+      "kickoffBeijing": "2026-06-27 08:00:00",
+      "kickoffISO": "2026-06-27T08:00:00+08:00",
+      "kickoffVN": "2026-06-27 07:00",
+      "homeTeamId": "1275",
+      "awayTeamId": "152",
+      "home": {
+        "name_en": "Cape Verde",
+        "name_zh": "佛得角",
+        "name_vi": "Cape Verde"
+      },
+      "away": {
+        "name_en": "Saudi Arabia",
+        "name_zh": "沙特阿拉伯",
+        "name_vi": "Saudi Arabia"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002032",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "H",
+      "kickoffBeijing": "2026-06-27 08:00:00",
+      "kickoffISO": "2026-06-27T08:00:00+08:00",
+      "kickoffVN": "2026-06-27 07:00",
+      "homeTeamId": "52",
+      "awayTeamId": "51",
+      "home": {
+        "name_en": "Uruguay",
+        "name_zh": "乌拉圭",
+        "name_vi": "Uruguay"
+      },
+      "away": {
+        "name_en": "Spain",
+        "name_zh": "西班牙",
+        "name_vi": "Tây Ban Nha"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002022",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "G",
+      "kickoffBeijing": "2026-06-27 11:00:00",
+      "kickoffISO": "2026-06-27T11:00:00+08:00",
+      "kickoffVN": "2026-06-27 10:00",
+      "homeTeamId": "565",
+      "awayTeamId": "16",
+      "home": {
+        "name_en": "Egypt",
+        "name_zh": "埃及",
+        "name_vi": "Ai Cập"
+      },
+      "away": {
+        "name_en": "Iran",
+        "name_zh": "伊朗",
+        "name_vi": "Iran"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002023",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "G",
+      "kickoffBeijing": "2026-06-27 11:00:00",
+      "kickoffISO": "2026-06-27T11:00:00+08:00",
+      "kickoffVN": "2026-06-27 10:00",
+      "homeTeamId": "612",
+      "awayTeamId": "481",
+      "home": {
+        "name_en": "New Zealand",
+        "name_zh": "新西兰",
+        "name_vi": "New Zealand"
+      },
+      "away": {
+        "name_en": "Belgium",
+        "name_zh": "比利时",
+        "name_vi": "Bỉ"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002049",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "L",
+      "kickoffBeijing": "2026-06-28 05:00:00",
+      "kickoffISO": "2026-06-28T05:00:00+08:00",
+      "kickoffVN": "2026-06-28 04:00",
+      "homeTeamId": "310",
+      "awayTeamId": "619",
+      "home": {
+        "name_en": "Croatia",
+        "name_zh": "克罗地亚",
+        "name_vi": "Croatia"
+      },
+      "away": {
+        "name_en": "Ghana",
+        "name_zh": "加纳",
+        "name_vi": "Ghana"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002050",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "L",
+      "kickoffBeijing": "2026-06-28 05:00:00",
+      "kickoffISO": "2026-06-28T05:00:00+08:00",
+      "kickoffVN": "2026-06-28 04:00",
+      "homeTeamId": "834",
+      "awayTeamId": "13",
+      "home": {
+        "name_en": "Panama",
+        "name_zh": "巴拿马",
+        "name_vi": "Panama"
+      },
+      "away": {
+        "name_en": "England",
+        "name_zh": "英格兰",
+        "name_vi": "Anh"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002053",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "K",
+      "kickoffBeijing": "2026-06-28 07:30:00",
+      "kickoffISO": "2026-06-28T07:30:00+08:00",
+      "kickoffVN": "2026-06-28 06:30",
+      "homeTeamId": "383",
+      "awayTeamId": "186",
+      "home": {
+        "name_en": "Colombia",
+        "name_zh": "哥伦比亚",
+        "name_vi": "Colombia"
+      },
+      "away": {
+        "name_en": "Portugal",
+        "name_zh": "葡萄牙",
+        "name_vi": "Bồ Đào Nha"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5058676",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "K",
+      "kickoffBeijing": "2026-06-28 07:30:00",
+      "kickoffISO": "2026-06-28T07:30:00+08:00",
+      "kickoffVN": "2026-06-28 06:30",
+      "homeTeamId": "908",
+      "awayTeamId": "706",
+      "home": {
+        "name_en": "Democratic Rep Congo",
+        "name_zh": "民主刚果",
+        "name_vi": "CHDC Congo"
+      },
+      "away": {
+        "name_en": "Uzbekistan",
+        "name_zh": "乌兹别克斯坦",
+        "name_vi": "Uzbekistan"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002040",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "J",
+      "kickoffBeijing": "2026-06-28 10:00:00",
+      "kickoffISO": "2026-06-28T10:00:00+08:00",
+      "kickoffVN": "2026-06-28 09:00",
+      "homeTeamId": "581",
+      "awayTeamId": "708",
+      "home": {
+        "name_en": "Algeria",
+        "name_zh": "阿尔及利亚",
+        "name_vi": "Algeria"
+      },
+      "away": {
+        "name_en": "Austria",
+        "name_zh": "奥地利",
+        "name_vi": "Áo"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5002041",
+      "stageId": "454644",
+      "stageName": {
+        "en": "Group Stage",
+        "vi": "Vòng bảng",
+        "zh": "分组赛"
+      },
+      "group": "J",
+      "kickoffBeijing": "2026-06-28 10:00:00",
+      "kickoffISO": "2026-06-28T10:00:00+08:00",
+      "kickoffVN": "2026-06-28 09:00",
+      "homeTeamId": "1017",
+      "awayTeamId": "580",
+      "home": {
+        "name_en": "Jordan",
+        "name_zh": "约旦",
+        "name_vi": "Jordan"
+      },
+      "away": {
+        "name_en": "Argentina",
+        "name_zh": "阿根廷",
+        "name_vi": "Argentina"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": true
+    },
+    {
+      "matchId": "5058728",
+      "stageId": "454645",
+      "stageName": {
+        "en": "Round of 32",
+        "vi": "Vòng 1/16",
+        "zh": "三十二强"
+      },
+      "group": null,
+      "kickoffBeijing": "2026-06-29 03:00:00",
+      "kickoffISO": "2026-06-29T03:00:00+08:00",
+      "kickoffVN": "2026-06-29 02:00",
+      "homeTeamId": "25570",
+      "awayTeamId": "25584",
+      "home": {
+        "name_en": "A2",
+        "name_zh": "A2",
+        "name_vi": "A2"
+      },
+      "away": {
+        "name_en": "B2",
+        "name_zh": "B2",
+        "name_vi": "B2"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": false
+    },
+    {
+      "matchId": "5058729",
+      "stageId": "454645",
+      "stageName": {
+        "en": "Round of 32",
+        "vi": "Vòng 1/16",
+        "zh": "三十二强"
+      },
+      "group": null,
+      "kickoffBeijing": "2026-06-30 01:00:00",
+      "kickoffISO": "2026-06-30T01:00:00+08:00",
+      "kickoffVN": "2026-06-30 00:00",
+      "homeTeamId": "25578",
+      "awayTeamId": "25585",
+      "home": {
+        "name_en": "C1",
+        "name_zh": "C1",
+        "name_vi": "C1"
+      },
+      "away": {
+        "name_en": "F2",
+        "name_zh": "F2",
+        "name_vi": "F2"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": false
+    },
+    {
+      "matchId": "5058730",
+      "stageId": "454645",
+      "stageName": {
+        "en": "Round of 32",
+        "vi": "Vòng 1/16",
+        "zh": "三十二强"
+      },
+      "group": null,
+      "kickoffBeijing": "2026-06-30 04:30:00",
+      "kickoffISO": "2026-06-30T04:30:00+08:00",
+      "kickoffVN": "2026-06-30 03:30",
+      "homeTeamId": "25582",
+      "awayTeamId": "727008",
+      "home": {
+        "name_en": "E1",
+        "name_zh": "E1",
+        "name_vi": "E1"
+      },
+      "away": {
+        "name_en": "A3/B3/C3/D3/F3",
+        "name_zh": "A3/B3/C3/D3/F3",
+        "name_vi": "A3/B3/C3/D3/F3"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": false
+    },
+    {
+      "matchId": "5058731",
+      "stageId": "454645",
+      "stageName": {
+        "en": "Round of 32",
+        "vi": "Vòng 1/16",
+        "zh": "三十二强"
+      },
+      "group": null,
+      "kickoffBeijing": "2026-06-30 09:00:00",
+      "kickoffISO": "2026-06-30T09:00:00+08:00",
+      "kickoffVN": "2026-06-30 08:00",
+      "homeTeamId": "25580",
+      "awayTeamId": "25568",
+      "home": {
+        "name_en": "F1",
+        "name_zh": "F1",
+        "name_vi": "F1"
+      },
+      "away": {
+        "name_en": "C2",
+        "name_zh": "C2",
+        "name_vi": "C2"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": false
+    },
+    {
+      "matchId": "5058732",
+      "stageId": "454645",
+      "stageName": {
+        "en": "Round of 32",
+        "vi": "Vòng 1/16",
+        "zh": "三十二强"
+      },
+      "group": null,
+      "kickoffBeijing": "2026-07-01 01:00:00",
+      "kickoffISO": "2026-07-01T01:00:00+08:00",
+      "kickoffVN": "2026-07-01 00:00",
+      "homeTeamId": "25581",
+      "awayTeamId": "727009",
+      "home": {
+        "name_en": "E2",
+        "name_zh": "E2",
+        "name_vi": "E2"
+      },
+      "away": {
+        "name_en": "I2",
+        "name_zh": "I2",
+        "name_vi": "I2"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": false
+    },
+    {
+      "matchId": "5058734",
+      "stageId": "454645",
+      "stageName": {
+        "en": "Round of 32",
+        "vi": "Vòng 1/16",
+        "zh": "三十二强"
+      },
+      "group": null,
+      "kickoffBeijing": "2026-07-01 05:00:00",
+      "kickoffISO": "2026-07-01T05:00:00+08:00",
+      "kickoffVN": "2026-07-01 04:00",
+      "homeTeamId": "727010",
+      "awayTeamId": "727011",
+      "home": {
+        "name_en": "I1",
+        "name_zh": "I1",
+        "name_vi": "I1"
+      },
+      "away": {
+        "name_en": "C3/D3/F3/G3/H3",
+        "name_zh": "C3/D3/F3/G3/H3",
+        "name_vi": "C3/D3/F3/G3/H3"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": false
+    },
+    {
+      "matchId": "5058735",
+      "stageId": "454645",
+      "stageName": {
+        "en": "Round of 32",
+        "vi": "Vòng 1/16",
+        "zh": "三十二强"
+      },
+      "group": null,
+      "kickoffBeijing": "2026-07-01 09:00:00",
+      "kickoffISO": "2026-07-01T09:00:00+08:00",
+      "kickoffVN": "2026-07-01 08:00",
+      "homeTeamId": "25576",
+      "awayTeamId": "727012",
+      "home": {
+        "name_en": "A1",
+        "name_zh": "A1",
+        "name_vi": "A1"
+      },
+      "away": {
+        "name_en": "C3/E3/F3/H3/I3",
+        "name_zh": "C3/E3/F3/H3/I3",
+        "name_vi": "C3/E3/F3/H3/I3"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": false
+    },
+    {
+      "matchId": "5058736",
+      "stageId": "454645",
+      "stageName": {
+        "en": "Round of 32",
+        "vi": "Vòng 1/16",
+        "zh": "三十二强"
+      },
+      "group": null,
+      "kickoffBeijing": "2026-07-01 23:59:00",
+      "kickoffISO": "2026-07-01T23:59:00+08:00",
+      "kickoffVN": "2026-07-01 22:59",
+      "homeTeamId": "727013",
+      "awayTeamId": "727014",
+      "home": {
+        "name_en": "L1",
+        "name_zh": "L1",
+        "name_vi": "L1"
+      },
+      "away": {
+        "name_en": "E3/H3/I3/J3/K3",
+        "name_zh": "E3/H3/I3/J3/K3",
+        "name_vi": "E3/H3/I3/J3/K3"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": false
+    },
+    {
+      "matchId": "5058737",
+      "stageId": "454645",
+      "stageName": {
+        "en": "Round of 32",
+        "vi": "Vòng 1/16",
+        "zh": "三十二强"
+      },
+      "group": null,
+      "kickoffBeijing": "2026-07-02 04:00:00",
+      "kickoffISO": "2026-07-02T04:00:00+08:00",
+      "kickoffVN": "2026-07-02 03:00",
+      "homeTeamId": "452103",
+      "awayTeamId": "727015",
+      "home": {
+        "name_en": "G1",
+        "name_zh": "G1",
+        "name_vi": "G1"
+      },
+      "away": {
+        "name_en": "A3/E3/H3/I3/J3",
+        "name_zh": "A3/E3/H3/I3/J3",
+        "name_vi": "A3/E3/H3/I3/J3"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": false
+    },
+    {
+      "matchId": "5058738",
+      "stageId": "454645",
+      "stageName": {
+        "en": "Round of 32",
+        "vi": "Vòng 1/16",
+        "zh": "三十二强"
+      },
+      "group": null,
+      "kickoffBeijing": "2026-07-02 08:00:00",
+      "kickoffISO": "2026-07-02T08:00:00+08:00",
+      "kickoffVN": "2026-07-02 07:00",
+      "homeTeamId": "25574",
+      "awayTeamId": "727016",
+      "home": {
+        "name_en": "D1",
+        "name_zh": "D1",
+        "name_vi": "D1"
+      },
+      "away": {
+        "name_en": "B3/E3/F3/I3/J3",
+        "name_zh": "B3/E3/F3/I3/J3",
+        "name_vi": "B3/E3/F3/I3/J3"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": false
+    },
+    {
+      "matchId": "5058739",
+      "stageId": "454645",
+      "stageName": {
+        "en": "Round of 32",
+        "vi": "Vòng 1/16",
+        "zh": "三十二强"
+      },
+      "group": null,
+      "kickoffBeijing": "2026-07-03 03:00:00",
+      "kickoffISO": "2026-07-03T03:00:00+08:00",
+      "kickoffVN": "2026-07-03 02:00",
+      "homeTeamId": "452104",
+      "awayTeamId": "749017",
+      "home": {
+        "name_en": "H1",
+        "name_zh": "H1",
+        "name_vi": "H1"
+      },
+      "away": {
+        "name_en": "J2",
+        "name_zh": "J2",
+        "name_vi": "J2"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": false
+    },
+    {
+      "matchId": "5058740",
+      "stageId": "454645",
+      "stageName": {
+        "en": "Round of 32",
+        "vi": "Vòng 1/16",
+        "zh": "三十二强"
+      },
+      "group": null,
+      "kickoffBeijing": "2026-07-03 07:00:00",
+      "kickoffISO": "2026-07-03T07:00:00+08:00",
+      "kickoffVN": "2026-07-03 06:00",
+      "homeTeamId": "749018",
+      "awayTeamId": "749019",
+      "home": {
+        "name_en": "K2",
+        "name_zh": "K2",
+        "name_vi": "K2"
+      },
+      "away": {
+        "name_en": "L2",
+        "name_zh": "L2",
+        "name_vi": "L2"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": false
+    },
+    {
+      "matchId": "5058741",
+      "stageId": "454645",
+      "stageName": {
+        "en": "Round of 32",
+        "vi": "Vòng 1/16",
+        "zh": "三十二强"
+      },
+      "group": null,
+      "kickoffBeijing": "2026-07-03 11:00:00",
+      "kickoffISO": "2026-07-03T11:00:00+08:00",
+      "kickoffVN": "2026-07-03 10:00",
+      "homeTeamId": "25572",
+      "awayTeamId": "749020",
+      "home": {
+        "name_en": "B1",
+        "name_zh": "B1",
+        "name_vi": "B1"
+      },
+      "away": {
+        "name_en": "E3/F3/G3/I3/J3",
+        "name_zh": "E3/F3/G3/I3/J3",
+        "name_vi": "E3/F3/G3/I3/J3"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": false
+    },
+    {
+      "matchId": "5058742",
+      "stageId": "454645",
+      "stageName": {
+        "en": "Round of 32",
+        "vi": "Vòng 1/16",
+        "zh": "三十二强"
+      },
+      "group": null,
+      "kickoffBeijing": "2026-07-04 02:00:00",
+      "kickoffISO": "2026-07-04T02:00:00+08:00",
+      "kickoffVN": "2026-07-04 01:00",
+      "homeTeamId": "25583",
+      "awayTeamId": "452106",
+      "home": {
+        "name_en": "D2",
+        "name_zh": "D2",
+        "name_vi": "D2"
+      },
+      "away": {
+        "name_en": "G2",
+        "name_zh": "G2",
+        "name_vi": "G2"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": false
+    },
+    {
+      "matchId": "5058743",
+      "stageId": "454645",
+      "stageName": {
+        "en": "Round of 32",
+        "vi": "Vòng 1/16",
+        "zh": "三十二强"
+      },
+      "group": null,
+      "kickoffBeijing": "2026-07-04 06:00:00",
+      "kickoffISO": "2026-07-04T06:00:00+08:00",
+      "kickoffVN": "2026-07-04 05:00",
+      "homeTeamId": "749021",
+      "awayTeamId": "452105",
+      "home": {
+        "name_en": "J1",
+        "name_zh": "J1",
+        "name_vi": "J1"
+      },
+      "away": {
+        "name_en": "H2",
+        "name_zh": "H2",
+        "name_vi": "H2"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": false
+    },
+    {
+      "matchId": "5058744",
+      "stageId": "454645",
+      "stageName": {
+        "en": "Round of 32",
+        "vi": "Vòng 1/16",
+        "zh": "三十二强"
+      },
+      "group": null,
+      "kickoffBeijing": "2026-07-04 09:30:00",
+      "kickoffISO": "2026-07-04T09:30:00+08:00",
+      "kickoffVN": "2026-07-04 08:30",
+      "homeTeamId": "749022",
+      "awayTeamId": "749023",
+      "home": {
+        "name_en": "K1",
+        "name_zh": "K1",
+        "name_vi": "K1"
+      },
+      "away": {
+        "name_en": "D3/E3/I3/J3/L3",
+        "name_zh": "D3/E3/I3/J3/L3",
+        "name_vi": "D3/E3/I3/J3/L3"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": false
+    },
+    {
+      "matchId": "5058745",
+      "stageId": "454646",
+      "stageName": {
+        "en": "Round of 16",
+        "vi": "Vòng 1/8",
+        "zh": "十六强"
+      },
+      "group": null,
+      "kickoffBeijing": "2026-07-05 01:00:00",
+      "kickoffISO": "2026-07-05T01:00:00+08:00",
+      "kickoffVN": "2026-07-05 00:00",
+      "homeTeamId": "749024",
+      "awayTeamId": "749026",
+      "home": {
+        "name_en": "Match 73 Winner",
+        "name_zh": "73场胜者",
+        "name_vi": "Thắng trận 73"
+      },
+      "away": {
+        "name_en": "Match 75 Winner",
+        "name_zh": "75场胜者",
+        "name_vi": "Thắng trận 75"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": false
+    },
+    {
+      "matchId": "5058746",
+      "stageId": "454646",
+      "stageName": {
+        "en": "Round of 16",
+        "vi": "Vòng 1/8",
+        "zh": "十六强"
+      },
+      "group": null,
+      "kickoffBeijing": "2026-07-05 05:00:00",
+      "kickoffISO": "2026-07-05T05:00:00+08:00",
+      "kickoffVN": "2026-07-05 04:00",
+      "homeTeamId": "749025",
+      "awayTeamId": "749028",
+      "home": {
+        "name_en": "Match 74 Winner",
+        "name_zh": "74场胜者",
+        "name_vi": "Thắng trận 74"
+      },
+      "away": {
+        "name_en": "Match 77 Winner",
+        "name_zh": "77场胜者",
+        "name_vi": "Thắng trận 77"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": false
+    },
+    {
+      "matchId": "5058747",
+      "stageId": "454646",
+      "stageName": {
+        "en": "Round of 16",
+        "vi": "Vòng 1/8",
+        "zh": "十六强"
+      },
+      "group": null,
+      "kickoffBeijing": "2026-07-06 04:00:00",
+      "kickoffISO": "2026-07-06T04:00:00+08:00",
+      "kickoffVN": "2026-07-06 03:00",
+      "homeTeamId": "749027",
+      "awayTeamId": "749029",
+      "home": {
+        "name_en": "Match 76 Winner",
+        "name_zh": "76场胜者",
+        "name_vi": "Thắng trận 76"
+      },
+      "away": {
+        "name_en": "Match 78 Winner",
+        "name_zh": "78场胜者",
+        "name_vi": "Thắng trận 78"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": false
+    },
+    {
+      "matchId": "5058748",
+      "stageId": "454646",
+      "stageName": {
+        "en": "Round of 16",
+        "vi": "Vòng 1/8",
+        "zh": "十六强"
+      },
+      "group": null,
+      "kickoffBeijing": "2026-07-06 08:00:00",
+      "kickoffISO": "2026-07-06T08:00:00+08:00",
+      "kickoffVN": "2026-07-06 07:00",
+      "homeTeamId": "749030",
+      "awayTeamId": "749031",
+      "home": {
+        "name_en": "Match 79 Winner",
+        "name_zh": "79场胜者",
+        "name_vi": "Thắng trận 79"
+      },
+      "away": {
+        "name_en": "Match 80 Winner",
+        "name_zh": "80场胜者",
+        "name_vi": "Thắng trận 80"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": false
+    },
+    {
+      "matchId": "5058749",
+      "stageId": "454646",
+      "stageName": {
+        "en": "Round of 16",
+        "vi": "Vòng 1/8",
+        "zh": "十六强"
+      },
+      "group": null,
+      "kickoffBeijing": "2026-07-07 03:00:00",
+      "kickoffISO": "2026-07-07T03:00:00+08:00",
+      "kickoffVN": "2026-07-07 02:00",
+      "homeTeamId": "749034",
+      "awayTeamId": "749035",
+      "home": {
+        "name_en": "Match 83 Winner",
+        "name_zh": "83场胜者",
+        "name_vi": "Thắng trận 83"
+      },
+      "away": {
+        "name_en": "Match 84 Winner",
+        "name_zh": "84场胜者",
+        "name_vi": "Thắng trận 84"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": false
+    },
+    {
+      "matchId": "5058750",
+      "stageId": "454646",
+      "stageName": {
+        "en": "Round of 16",
+        "vi": "Vòng 1/8",
+        "zh": "十六强"
+      },
+      "group": null,
+      "kickoffBeijing": "2026-07-07 08:00:00",
+      "kickoffISO": "2026-07-07T08:00:00+08:00",
+      "kickoffVN": "2026-07-07 07:00",
+      "homeTeamId": "749032",
+      "awayTeamId": "749033",
+      "home": {
+        "name_en": "Match 81 Winner",
+        "name_zh": "81场胜者",
+        "name_vi": "Thắng trận 81"
+      },
+      "away": {
+        "name_en": "Match 82 Winner",
+        "name_zh": "82场胜者",
+        "name_vi": "Thắng trận 82"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": false
+    },
+    {
+      "matchId": "5058751",
+      "stageId": "454646",
+      "stageName": {
+        "en": "Round of 16",
+        "vi": "Vòng 1/8",
+        "zh": "十六强"
+      },
+      "group": null,
+      "kickoffBeijing": "2026-07-07 23:59:00",
+      "kickoffISO": "2026-07-07T23:59:00+08:00",
+      "kickoffVN": "2026-07-07 22:59",
+      "homeTeamId": "749037",
+      "awayTeamId": "749039",
+      "home": {
+        "name_en": "Match 86 Winner",
+        "name_zh": "86场胜者",
+        "name_vi": "Thắng trận 86"
+      },
+      "away": {
+        "name_en": "Match 88 Winner",
+        "name_zh": "88场胜者",
+        "name_vi": "Thắng trận 88"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": false
+    },
+    {
+      "matchId": "5058752",
+      "stageId": "454646",
+      "stageName": {
+        "en": "Round of 16",
+        "vi": "Vòng 1/8",
+        "zh": "十六强"
+      },
+      "group": null,
+      "kickoffBeijing": "2026-07-08 04:00:00",
+      "kickoffISO": "2026-07-08T04:00:00+08:00",
+      "kickoffVN": "2026-07-08 03:00",
+      "homeTeamId": "749036",
+      "awayTeamId": "749038",
+      "home": {
+        "name_en": "Match 85 Winner",
+        "name_zh": "85场胜者",
+        "name_vi": "Thắng trận 85"
+      },
+      "away": {
+        "name_en": "Match 87 Winner",
+        "name_zh": "87场胜者",
+        "name_vi": "Thắng trận 87"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": false
+    },
+    {
+      "matchId": "5058753",
+      "stageId": "454647",
+      "stageName": {
+        "en": "Quarterfinals",
+        "vi": "Tứ kết",
+        "zh": "半准决赛"
+      },
+      "group": null,
+      "kickoffBeijing": "2026-07-10 04:00:00",
+      "kickoffISO": "2026-07-10T04:00:00+08:00",
+      "kickoffVN": "2026-07-10 03:00",
+      "homeTeamId": "749040",
+      "awayTeamId": "749041",
+      "home": {
+        "name_en": "Match 89 Winner",
+        "name_zh": "89场胜者",
+        "name_vi": "Thắng trận 89"
+      },
+      "away": {
+        "name_en": "Match 90 Winner",
+        "name_zh": "90场胜者",
+        "name_vi": "Thắng trận 90"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": false
+    },
+    {
+      "matchId": "5058754",
+      "stageId": "454647",
+      "stageName": {
+        "en": "Quarterfinals",
+        "vi": "Tứ kết",
+        "zh": "半准决赛"
+      },
+      "group": null,
+      "kickoffBeijing": "2026-07-11 03:00:00",
+      "kickoffISO": "2026-07-11T03:00:00+08:00",
+      "kickoffVN": "2026-07-11 02:00",
+      "homeTeamId": "749044",
+      "awayTeamId": "749045",
+      "home": {
+        "name_en": "Match 93 Winner",
+        "name_zh": "93场胜者",
+        "name_vi": "Thắng trận 93"
+      },
+      "away": {
+        "name_en": "Match 94 Winner",
+        "name_zh": "94场胜者",
+        "name_vi": "Thắng trận 94"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": false
+    },
+    {
+      "matchId": "5058755",
+      "stageId": "454647",
+      "stageName": {
+        "en": "Quarterfinals",
+        "vi": "Tứ kết",
+        "zh": "半准决赛"
+      },
+      "group": null,
+      "kickoffBeijing": "2026-07-12 05:00:00",
+      "kickoffISO": "2026-07-12T05:00:00+08:00",
+      "kickoffVN": "2026-07-12 04:00",
+      "homeTeamId": "749042",
+      "awayTeamId": "749043",
+      "home": {
+        "name_en": "Match 91 Winner",
+        "name_zh": "91场胜者",
+        "name_vi": "Thắng trận 91"
+      },
+      "away": {
+        "name_en": "Match 92 Winner",
+        "name_zh": "92场胜者",
+        "name_vi": "Thắng trận 92"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": false
+    },
+    {
+      "matchId": "5058756",
+      "stageId": "454647",
+      "stageName": {
+        "en": "Quarterfinals",
+        "vi": "Tứ kết",
+        "zh": "半准决赛"
+      },
+      "group": null,
+      "kickoffBeijing": "2026-07-12 09:00:00",
+      "kickoffISO": "2026-07-12T09:00:00+08:00",
+      "kickoffVN": "2026-07-12 08:00",
+      "homeTeamId": "749046",
+      "awayTeamId": "749047",
+      "home": {
+        "name_en": "Match 95 Winner",
+        "name_zh": "95场胜者",
+        "name_vi": "Thắng trận 95"
+      },
+      "away": {
+        "name_en": "Match 96 Winner",
+        "name_zh": "96场胜者",
+        "name_vi": "Thắng trận 96"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": false
+    },
+    {
+      "matchId": "5058757",
+      "stageId": "454648",
+      "stageName": {
+        "en": "Semifinals",
+        "vi": "Bán kết",
+        "zh": "半决赛"
+      },
+      "group": null,
+      "kickoffBeijing": "2026-07-15 03:00:00",
+      "kickoffISO": "2026-07-15T03:00:00+08:00",
+      "kickoffVN": "2026-07-15 02:00",
+      "homeTeamId": "749048",
+      "awayTeamId": "749049",
+      "home": {
+        "name_en": "Match 97 Winner",
+        "name_zh": "97场胜者",
+        "name_vi": "Thắng trận 97"
+      },
+      "away": {
+        "name_en": "Match 98 Winner",
+        "name_zh": "98场胜者",
+        "name_vi": "Thắng trận 98"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": false
+    },
+    {
+      "matchId": "5058758",
+      "stageId": "454648",
+      "stageName": {
+        "en": "Semifinals",
+        "vi": "Bán kết",
+        "zh": "半决赛"
+      },
+      "group": null,
+      "kickoffBeijing": "2026-07-16 03:00:00",
+      "kickoffISO": "2026-07-16T03:00:00+08:00",
+      "kickoffVN": "2026-07-16 02:00",
+      "homeTeamId": "749050",
+      "awayTeamId": "749051",
+      "home": {
+        "name_en": "Match 99 Winner",
+        "name_zh": "99场胜者",
+        "name_vi": "Thắng trận 99"
+      },
+      "away": {
+        "name_en": "Match 100 Winner",
+        "name_zh": "100场胜者",
+        "name_vi": "Thắng trận 100"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": false
+    },
+    {
+      "matchId": "5058759",
+      "stageId": "454649",
+      "stageName": {
+        "en": "3rd Place",
+        "vi": "Tranh hạng 3",
+        "zh": "季军赛"
+      },
+      "group": null,
+      "kickoffBeijing": "2026-07-19 05:00:00",
+      "kickoffISO": "2026-07-19T05:00:00+08:00",
+      "kickoffVN": "2026-07-19 04:00",
+      "homeTeamId": "452107",
+      "awayTeamId": "452108",
+      "home": {
+        "name_en": "Loser SF1",
+        "name_zh": "半决赛败者1",
+        "name_vi": "Thua BK1"
+      },
+      "away": {
+        "name_en": "Loser SF2",
+        "name_zh": "半决赛败者2",
+        "name_vi": "Thua BK2"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": false
+    },
+    {
+      "matchId": "5058760",
+      "stageId": "454650",
+      "stageName": {
+        "en": "Final",
+        "vi": "Chung kết",
+        "zh": "决赛"
+      },
+      "group": null,
+      "kickoffBeijing": "2026-07-20 03:00:00",
+      "kickoffISO": "2026-07-20T03:00:00+08:00",
+      "kickoffVN": "2026-07-20 02:00",
+      "homeTeamId": "18633",
+      "awayTeamId": "18634",
+      "home": {
+        "name_en": "Winner SF1",
+        "name_zh": "半决赛胜者1",
+        "name_vi": "Đội thắng 1 Bán kết"
+      },
+      "away": {
+        "name_en": "Winner SF2",
+        "name_zh": "半决赛胜者2",
+        "name_vi": "Đội thắng 2 Bán kết"
+      },
+      "homeScore": 0,
+      "awayScore": 0,
+      "finished": false
+    }
+  ],
+  "standings": {
+    "A": [
+      {
+        "teamId": "208",
+        "name_en": "Korea Republic",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      },
+      {
+        "teamId": "209",
+        "name_en": "South Africa",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      },
+      {
+        "teamId": "214",
+        "name_en": "Mexico",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      },
+      {
+        "teamId": "331",
+        "name_en": "Czech Republic",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      }
+    ],
+    "B": [
+      {
+        "teamId": "171",
+        "name_en": "Switzerland",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      },
+      {
+        "teamId": "334",
+        "name_en": "Canada",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      },
+      {
+        "teamId": "465",
+        "name_en": "Bosnia and Herzegovina",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      },
+      {
+        "teamId": "940",
+        "name_en": "Qatar",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      }
+    ],
+    "C": [
+      {
+        "teamId": "103",
+        "name_en": "Scotland",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      },
+      {
+        "teamId": "510",
+        "name_en": "Brazil",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      },
+      {
+        "teamId": "912",
+        "name_en": "Morocco",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      },
+      {
+        "teamId": "1187",
+        "name_en": "Haiti",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      }
+    ],
+    "D": [
+      {
+        "teamId": "79",
+        "name_en": "Turkiye",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      },
+      {
+        "teamId": "232",
+        "name_en": "USA",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      },
+      {
+        "teamId": "519",
+        "name_en": "Paraguay",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      },
+      {
+        "teamId": "632",
+        "name_en": "Australia",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      }
+    ],
+    "E": [
+      {
+        "teamId": "412",
+        "name_en": "Ecuador",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      },
+      {
+        "teamId": "431",
+        "name_en": "Germany",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      },
+      {
+        "teamId": "830",
+        "name_en": "Cote d'Ivoire",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      },
+      {
+        "teamId": "16668",
+        "name_en": "Curacao",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      }
+    ],
+    "F": [
+      {
+        "teamId": "172",
+        "name_en": "Sweden",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      },
+      {
+        "teamId": "173",
+        "name_en": "Japan",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      },
+      {
+        "teamId": "361",
+        "name_en": "Netherlands",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      },
+      {
+        "teamId": "907",
+        "name_en": "Tunisia",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      }
+    ],
+    "G": [
+      {
+        "teamId": "16",
+        "name_en": "Iran",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      },
+      {
+        "teamId": "481",
+        "name_en": "Belgium",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      },
+      {
+        "teamId": "565",
+        "name_en": "Egypt",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      },
+      {
+        "teamId": "612",
+        "name_en": "New Zealand",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      }
+    ],
+    "H": [
+      {
+        "teamId": "51",
+        "name_en": "Spain",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      },
+      {
+        "teamId": "52",
+        "name_en": "Uruguay",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      },
+      {
+        "teamId": "152",
+        "name_en": "Saudi Arabia",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      },
+      {
+        "teamId": "1275",
+        "name_en": "Cape Verde",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      }
+    ],
+    "I": [
+      {
+        "teamId": "164",
+        "name_en": "Senegal",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      },
+      {
+        "teamId": "196",
+        "name_en": "Norway",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      },
+      {
+        "teamId": "410",
+        "name_en": "France",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      },
+      {
+        "teamId": "928",
+        "name_en": "Iraq",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      }
+    ],
+    "J": [
+      {
+        "teamId": "580",
+        "name_en": "Argentina",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      },
+      {
+        "teamId": "581",
+        "name_en": "Algeria",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      },
+      {
+        "teamId": "708",
+        "name_en": "Austria",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      },
+      {
+        "teamId": "1017",
+        "name_en": "Jordan",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      }
+    ],
+    "K": [
+      {
+        "teamId": "186",
+        "name_en": "Portugal",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      },
+      {
+        "teamId": "383",
+        "name_en": "Colombia",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      },
+      {
+        "teamId": "706",
+        "name_en": "Uzbekistan",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      },
+      {
+        "teamId": "908",
+        "name_en": "Democratic Rep Congo",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      }
+    ],
+    "L": [
+      {
+        "teamId": "13",
+        "name_en": "England",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      },
+      {
+        "teamId": "310",
+        "name_en": "Croatia",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      },
+      {
+        "teamId": "619",
+        "name_en": "Ghana",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      },
+      {
+        "teamId": "834",
+        "name_en": "Panama",
+        "played": 0,
+        "win": 0,
+        "draw": 0,
+        "loss": 0,
+        "goalsFor": 0,
+        "goalsAgainst": 0,
+        "goalDiff": 0,
+        "points": 0
+      }
+    ]
+  }
+}
