@@ -76,21 +76,74 @@ export function renderFooter() {
       <p>Dữ liệu tổng hợp từ nhiều nguồn công khai · Đây là dự đoán mang tính tham khảo — bóng đá luôn bất ngờ.</p>
       <p class="mt-2 text-slate-400">Tác giả: <b class="text-emerald-300">huyhn (Huỳnh Nhật Huy)</b></p>
       <div class="mt-3 flex items-center justify-center gap-2 flex-wrap">
-        <a href="https://github.com/Yamus142/worldcup-tournament-2026" target="_blank" rel="noopener"
+        <a href="https://github.com/huyhn-ba-po/worldcup-tournament-2026" target="_blank" rel="noopener"
            class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs no-underline transition border border-slate-700 hover:border-emerald-500 hover:bg-emerald-500/10 text-slate-300">
           GitHub
         </a>
-        <a href="https://www.buymeacoffee.com/huyhn" target="_blank" rel="noopener"
-           class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold no-underline transition hover:scale-105"
-           style="background: linear-gradient(135deg, #ffdd00, #ffb300); color: #1f2937;">
-          <span>☕</span> Buy me a coffee
-        </a>
+        <button type="button" data-donate-trigger
+           class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition hover:scale-105 cursor-pointer border-0"
+           style="background: linear-gradient(135deg, #34d399, #10b981); color: #042f2e;">
+          <span>☕</span> Mời cà phê
+        </button>
         <a href="/about" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs no-underline transition border border-slate-700 hover:border-emerald-500 hover:bg-emerald-500/10 text-slate-300">
           Giới thiệu
         </a>
       </div>
     </footer>
+    ${renderDonateModal()}
   `;
+}
+
+function renderDonateModal() {
+  return `
+    <div id="donateModal" class="hidden fixed inset-0 z-50 items-center justify-center p-4" role="dialog" aria-modal="true" style="background: rgba(2, 6, 23, 0.85); backdrop-filter: blur(6px);">
+      <div class="relative max-w-md w-full rounded-2xl shadow-2xl overflow-hidden" style="background: linear-gradient(160deg, rgba(15,23,42,0.98), rgba(15,23,42,0.92)); border: 1px solid rgba(16, 185, 129, 0.3);">
+        <button type="button" data-donate-close class="absolute top-3 right-4 text-slate-400 hover:text-white text-3xl leading-none z-10" aria-label="Đóng">×</button>
+        <div class="p-6 sm:p-8 text-center">
+          <div class="text-2xl mb-1">☕</div>
+          <h3 class="text-xl font-bold text-emerald-300">Mời tác giả một ly cà phê</h3>
+          <p class="text-sm text-slate-400 mt-2 mb-4">Cảm ơn bạn đã ủng hộ dự án. Quét QR bên dưới hoặc chuyển khoản thủ công.</p>
+
+          <div class="bg-white rounded-2xl p-3 mx-auto mb-4" style="max-width: 280px;">
+            <img src="/img/qr-bank.png" alt="QR Banking" class="w-full h-auto rounded-lg"
+                 onerror="this.outerHTML='<div class=&quot;flex items-center justify-center h-64 text-slate-500 text-sm text-center p-4&quot;>QR code chưa được upload.<br>Vui lòng đặt ảnh tại<br><code class=&quot;text-xs&quot;>webapp/public/img/qr-bank.png</code></div>'" />
+          </div>
+
+          <div class="text-left bg-slate-950/60 rounded-xl p-4 text-sm space-y-1.5">
+            <div class="flex justify-between"><span class="text-slate-500">Ngân hàng</span><span class="text-slate-200" id="donateBank">—</span></div>
+            <div class="flex justify-between"><span class="text-slate-500">Số tài khoản</span><span class="text-slate-200 font-mono" id="donateAcc">—</span></div>
+            <div class="flex justify-between"><span class="text-slate-500">Chủ tài khoản</span><span class="text-slate-200" id="donateOwner">Huỳnh Nhật Huy</span></div>
+            <div class="text-xs text-slate-500 pt-2 border-t border-slate-800 mt-2">Nội dung CK gợi ý: <span class="text-emerald-300 font-mono">"Coffee WC2026"</span></div>
+          </div>
+
+          <div class="mt-4 flex gap-2 justify-center">
+            <a href="https://github.com/sponsors/huyhn-ba-po" target="_blank" rel="noopener"
+               class="text-xs px-3 py-2 rounded-lg border border-slate-700 hover:border-emerald-500 hover:bg-emerald-500/10 text-slate-300 no-underline transition">
+              GitHub Sponsors
+            </a>
+            <button type="button" data-donate-close class="text-xs px-3 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold transition">
+              Cảm ơn nhé!
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function openDonate() {
+  const m = document.getElementById('donateModal');
+  if (!m) return;
+  m.classList.remove('hidden');
+  m.classList.add('flex');
+  document.body.style.overflow = 'hidden';
+}
+function closeDonate() {
+  const m = document.getElementById('donateModal');
+  if (!m) return;
+  m.classList.add('hidden');
+  m.classList.remove('flex');
+  document.body.style.overflow = '';
 }
 
 export function mountLayout(currentPath) {
@@ -98,6 +151,23 @@ export function mountLayout(currentPath) {
   if (nav) nav.innerHTML = renderNav(currentPath);
   const footer = document.getElementById('footer');
   if (footer) footer.innerHTML = renderFooter();
+  attachDonateHandlers();
+}
+
+function attachDonateHandlers() {
+  // Trigger buttons (data-donate-trigger anywhere on page)
+  document.querySelectorAll('[data-donate-trigger]').forEach(el => {
+    el.addEventListener('click', (e) => { e.preventDefault(); openDonate(); });
+  });
+  // Close buttons
+  document.querySelectorAll('[data-donate-close]').forEach(el => {
+    el.addEventListener('click', () => closeDonate());
+  });
+  // Backdrop click
+  const m = document.getElementById('donateModal');
+  if (m) m.addEventListener('click', (e) => { if (e.target.id === 'donateModal') closeDonate(); });
+  // ESC
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDonate(); });
 }
 
 export function probBar(probA, probD, probB) {
