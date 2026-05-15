@@ -20,6 +20,10 @@ const app = Fastify({
 await app.register(fastifyStatic, {
   root: PUBLIC_DIR,
   prefix: '/',
+  setHeaders: (res) => {
+    // Dev: no cache. Production: cache JS/CSS with short max-age
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  },
 });
 
 // API routes
