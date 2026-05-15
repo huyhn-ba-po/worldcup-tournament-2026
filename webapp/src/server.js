@@ -32,6 +32,7 @@ const pages = [
   ['/teams', 'teams.html'],
   ['/team/:name', 'team-detail.html'],
   ['/match/:id', 'match-detail.html'],
+  ['/bracket', 'bracket.html'],
   ['/methodology', 'methodology.html'],
   ['/leaderboard', 'leaderboard.html'],
   ['/compare', 'compare.html'],

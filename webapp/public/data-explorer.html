@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Data Explorer — WC2026 Predictor</title>
+<title>Khám phá data — WC2026 Predictor</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="/css/main.css" />
@@ -12,13 +12,13 @@
 <div id="nav"></div>
 
 <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
-  <h1 class="text-3xl sm:text-4xl font-black mb-2">🔍 Data Explorer</h1>
-  <p class="text-slate-400 text-sm mb-6">Tìm kiếm trong 47,980 trận quốc tế từ 1872 đến 2024. Lọc theo đội, năm, giải đấu.</p>
+  <h1 class="text-3xl sm:text-4xl font-black mb-2">Khám phá data</h1>
+  <p class="text-slate-400 text-sm mb-6">Tìm kiếm trong 47.980 trận quốc tế từ 1872 đến 2024. Lọc theo đội, năm, giải đấu.</p>
 
   <section class="card p-5 mb-6">
     <div class="grid sm:grid-cols-4 gap-3 items-end">
       <div>
-        <label class="text-xs text-slate-400 uppercase">Đội (tên)</label>
+        <label class="text-xs text-slate-400 uppercase">Đội (tên tiếng Anh)</label>
         <input id="qTeam" type="search" placeholder="Mexico, Argentina..." class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 mt-1 text-sm" />
       </div>
       <div>
@@ -35,7 +35,7 @@
           <input id="qTo" type="number" placeholder="2024" min="1872" max="2025" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 mt-1 text-sm" />
         </div>
       </div>
-      <button id="searchBtn" class="bg-gradient-to-r from-emerald-500 to-blue-500 hover:opacity-90 text-white font-bold rounded-lg py-2 text-sm">🔍 Tìm</button>
+      <button id="searchBtn" class="bg-gradient-to-r from-emerald-500 to-blue-500 hover:opacity-90 text-white font-bold rounded-lg py-2 text-sm">Tìm</button>
     </div>
   </section>
 
@@ -71,8 +71,7 @@ async function search() {
     tournament: $('#qTournament').value.trim(),
     year_from: $('#qFrom').value,
     year_to: $('#qTo').value,
-    limit: LIMIT,
-    offset,
+    limit: LIMIT, offset,
   };
   const params = Object.entries(q).filter(([, v]) => v).map(([k, v]) => `${k}=${encodeURIComponent(v)}`).join('&');
   const url = '/api/search' + (params ? '?' + params : '');
@@ -113,7 +112,7 @@ async function search() {
 $('#searchBtn').addEventListener('click', () => { offset = 0; search(); });
 $('#prevBtn').addEventListener('click', () => { offset = Math.max(0, offset - LIMIT); search(); });
 $('#nextBtn').addEventListener('click', () => { offset = offset + LIMIT; search(); });
-[ '#qTeam', '#qTournament', '#qFrom', '#qTo' ].forEach(id => $(id).addEventListener('keypress', (e) => { if (e.key === 'Enter') { offset = 0; search(); } }));
+['#qTeam', '#qTournament', '#qFrom', '#qTo'].forEach(id => $(id).addEventListener('keypress', (e) => { if (e.key === 'Enter') { offset = 0; search(); } }));
 </script>
 </body>
 </html>

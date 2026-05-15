@@ -1,4 +1,4 @@
-// Hybrid stats baseline computation (Elo + Poisson + Conf×Stage + WCOI)
+// Hybrid stats baseline (Elo + Poisson + Conf×Stage + WCOI)
 import { ELO, POISSON, OVERLAY, BACKTEST, TEAMS_META } from './dataLoader.js';
 
 function expectedWinElo(rA, rB) { return 1 / (1 + Math.pow(10, (rB - rA) / 400)); }
@@ -13,19 +13,12 @@ const WEIGHTS = BACKTEST.best_weights;
 const GLOBAL_AVG = POISSON.global_avg_goals_per_team_per_match;
 const HOME_BOOST_POISSON = POISSON.home_boost_multiplier || 1.25;
 
-export function getEloRating(team) {
-  return ELO.wc2026[team] ?? 1500;
-}
-
-export function getPoissonParams(team) {
-  return POISSON.teams[team] || POISSON.default_param || { attack: 1.0, defense: 1.0 };
-}
-
-export function getWCOI(team) {
-  return OVERLAY.wcoi.per_team[team] || { wcoi: 0, wc_matches: 0 };
-}
+export const getEloRating = (team) => ELO.wc2026[team] ?? 1500;
+export const getPoissonParams = (team) => POISSON.teams[team] || POISSON.default_param || { attack: 1.0, defense: 1.0 };
+export const getWCOI = (team) => OVERLAY.wcoi.per_team[team] || { wcoi: 0, wc_matches: 0 };
 
 export function computeStatsBaseline(teamA, teamB, stage = 'group', fixture = null) {
+  if (!TEAMS_META.team_meta[teamA] || !TEAMS_META.team_meta[teamB]) return null;
   const eloA = getEloRating(teamA);
   const eloB = getEloRating(teamB);
   const pA = getPoissonParams(teamA);
@@ -33,28 +26,22 @@ export function computeStatsBaseline(teamA, teamB, stage = 'group', fixture = nu
   const wcoiA = getWCOI(teamA).wcoi;
   const wcoiB = getWCOI(teamB).wcoi;
 
-  // Host boost
   let hostBoost = 0;
   if (fixture && fixture.ground) {
-    const k1 = `${teamA}|${fixture.ground}`;
-    const k2 = `${teamB}|${fixture.ground}`;
-    if (OVERLAY.host_effects.boosts[k1]) hostBoost = OVERLAY.host_effects.boosts[k1];
-    else if (OVERLAY.host_effects.boosts[k2]) hostBoost = -OVERLAY.host_effects.boosts[k2];
+    if (OVERLAY.host_effects.boosts[`${teamA}|${fixture.ground}`]) hostBoost = OVERLAY.host_effects.boosts[`${teamA}|${fixture.ground}`];
+    else if (OVERLAY.host_effects.boosts[`${teamB}|${fixture.ground}`]) hostBoost = -OVERLAY.host_effects.boosts[`${teamB}|${fixture.ground}`];
   }
-  if (hostBoost === 0) {
+  if (hostBoost === 0 && stage === 'group') {
     if ((TEAMS_META.team_meta[teamA] || {}).host) hostBoost = 100;
     else if ((TEAMS_META.team_meta[teamB] || {}).host) hostBoost = -100;
   }
 
-  // ELO
-  const rA = eloA + hostBoost;
-  const rB = eloB;
-  const eloWinA = expectedWinElo(rA, rB);
-  const eloGap = Math.abs(rA - rB);
+  const rA = eloA + hostBoost, rB_ = eloB;
+  const eloWinA = expectedWinElo(rA, rB_);
+  const eloGap = Math.abs(rA - rB_);
   const drawProb = Math.max(0.18, 0.32 - eloGap / 1500);
   const pElo = { a: eloWinA * (1 - drawProb), d: drawProb, b: (1 - eloWinA) * (1 - drawProb) };
 
-  // POISSON
   const homeBoost = hostBoost > 0 ? HOME_BOOST_POISSON : hostBoost < 0 ? 1 / HOME_BOOST_POISSON : 1;
   const lambdaA = pA.attack * pB.defense * GLOBAL_AVG * homeBoost;
   const lambdaB = pB.attack * pA.defense * GLOBAL_AVG;
@@ -69,7 +56,6 @@ export function computeStatsBaseline(teamA, teamB, stage = 'group', fixture = nu
   }
   const topScores = scoreProbs.sort((x, y) => y.p - x.p).slice(0, 5);
 
-  // CONF × STAGE
   const cA = OVERLAY.team_confederation[teamA] || 'OTHER';
   const cB = OVERLAY.team_confederation[teamB] || 'OTHER';
   const stageGroup = stage === 'group' ? 'group' : 'knockout';
@@ -85,7 +71,6 @@ export function computeStatsBaseline(teamA, teamB, stage = 'group', fixture = nu
     };
   }
 
-  // WCOI
   const wcoiDelta = wcoiA - wcoiB;
   let pWcoi = {
     a: clamp(eloWinA + wcoiDelta * 0.5, 0.05, 0.95) * (1 - drawProb),
@@ -95,7 +80,6 @@ export function computeStatsBaseline(teamA, teamB, stage = 'group', fixture = nu
   const ws = pWcoi.a + pWcoi.d + pWcoi.b;
   pWcoi = { a: pWcoi.a / ws, d: pWcoi.d / ws, b: pWcoi.b / ws };
 
-  // AGGREGATE
   const w = WEIGHTS;
   const aggA = w.elo * pElo.a + w.poisson * pPoisA + w.conf * pConf.a + w.wcoi * pWcoi.a;
   const aggD = w.elo * pElo.d + w.poisson * pPoisD + w.conf * pConf.d + w.wcoi * pWcoi.d;
@@ -109,7 +93,7 @@ export function computeStatsBaseline(teamA, teamB, stage = 'group', fixture = nu
     expected_score: { a: +lambdaA.toFixed(2), b: +lambdaB.toFixed(2) },
     top_scores: topScores.map(s => ({ score: `${s.a}-${s.b}`, prob: Math.round(s.p * 100) })),
     breakdown: {
-      elo:     { rA: Math.round(rA), rB: Math.round(rB), host_boost: hostBoost, win_a: eloWinA, p: { a: Math.round(pElo.a * 100), d: Math.round(pElo.d * 100), b: Math.round(pElo.b * 100) } },
+      elo:     { rA: Math.round(rA), rB: Math.round(rB_), host_boost: hostBoost, win_a: eloWinA, p: { a: Math.round(pElo.a * 100), d: Math.round(pElo.d * 100), b: Math.round(pElo.b * 100) } },
       poisson: { lambdaA: +lambdaA.toFixed(2), lambdaB: +lambdaB.toFixed(2), p: { a: Math.round(pPoisA * 100), d: Math.round(pPoisD * 100), b: Math.round(pPoisB * 100) } },
       conf:    { key: matKey, n: mat?.n || 0, p: { a: Math.round(pConf.a * 100), d: Math.round(pConf.d * 100), b: Math.round(pConf.b * 100) } },
       wcoi:    { wcoi_a: wcoiA, wcoi_b: wcoiB, p: { a: Math.round(pWcoi.a * 100), d: Math.round(pWcoi.d * 100), b: Math.round(pWcoi.b * 100) } },
@@ -118,20 +102,21 @@ export function computeStatsBaseline(teamA, teamB, stage = 'group', fixture = nu
   };
 }
 
-// Stats card for team — used in team detail page
 export function getTeamCard(team) {
   const meta = TEAMS_META.team_meta[team];
+  if (!meta) return null;
   const elo = getEloRating(team);
   const pois = getPoissonParams(team);
   const wcoi = getWCOI(team);
   return {
     name: team,
-    flag: meta?.flag || '🏳️',
-    confederation: meta?.conf || '?',
-    is_host: meta?.host || false,
-    titles: meta?.titles || 0,
-    rank_tier: meta?.rank_tier || 4,
-    elo: elo,
+    name_vi: meta.name_vi || team,
+    flag: meta.flag || '🏳️',
+    confederation: meta.conf || '?',
+    is_host: meta.host || false,
+    titles: meta.titles || 0,
+    rank_tier: meta.rank_tier || 4,
+    elo,
     attack: pois.attack,
     defense: pois.defense,
     wcoi: wcoi.wcoi,
@@ -141,7 +126,6 @@ export function getTeamCard(team) {
   };
 }
 
-// Elo leaderboard
 export function getEloLeaderboard() {
   return Object.entries(ELO.wc2026)
     .map(([team, rating]) => ({ team, rating, ...getTeamCard(team) }))

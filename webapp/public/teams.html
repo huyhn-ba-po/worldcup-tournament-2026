@@ -12,10 +12,9 @@
 <div id="nav"></div>
 
 <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
-  <h1 class="text-3xl sm:text-4xl font-black mb-2">⚽ 48 Đội tuyển</h1>
+  <h1 class="text-3xl sm:text-4xl font-black mb-2">48 Đội tuyển</h1>
   <p class="text-slate-400 text-sm mb-6">Click 1 đội để xem stats chi tiết: Elo, Poisson, WCOI, phong độ gần đây, lịch sử WC, lịch đấu.</p>
 
-  <!-- Filters -->
   <div class="card p-4 mb-6 flex flex-wrap gap-3 items-center">
     <input id="searchInput" type="search" placeholder="Tìm tên đội..." class="bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-emerald-500" />
     <select id="confFilter" class="bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm">
@@ -47,13 +46,13 @@ function render() {
   const conf = $('#confFilter').value;
   const sortBy = $('#sortBy').value;
   let teams = allTeams.filter(t => {
-    if (q && !t.name.toLowerCase().includes(q)) return false;
+    if (q && !t.name.toLowerCase().includes(q) && !t.name_vi.toLowerCase().includes(q)) return false;
     if (conf && t.confederation !== conf) return false;
     return true;
   });
   teams.sort((a, b) => {
     if (sortBy === 'elo') return b.elo - a.elo;
-    if (sortBy === 'name') return a.name.localeCompare(b.name);
+    if (sortBy === 'name') return a.name_vi.localeCompare(b.name_vi);
     if (sortBy === 'wcoi') return b.wcoi - a.wcoi;
     if (sortBy === 'titles') return b.titles - a.titles;
     return 0;
@@ -62,7 +61,8 @@ function render() {
   $('#teamsGrid').innerHTML = teams.map(t => `
     <a href="/team/${encodeURIComponent(t.name)}" class="card p-4 no-underline block">
       <div class="text-3xl mb-1">${t.flag}</div>
-      <div class="font-bold text-sm text-slate-100 truncate">${escapeHtml(t.name)}</div>
+      <div class="font-bold text-sm text-slate-100 truncate">${escapeHtml(t.name_vi)}</div>
+      <div class="text-[10px] text-slate-500 truncate">${escapeHtml(t.name)}</div>
       <div class="flex items-center gap-1.5 mt-2">
         <span class="text-xs text-slate-500">${t.confederation}</span>
         ${tierBadge(t.rank_tier)}
@@ -71,7 +71,7 @@ function render() {
         <div class="flex justify-between"><span class="text-slate-500">Elo</span><span class="font-mono text-emerald-300">${t.elo}</span></div>
         <div class="flex justify-between"><span class="text-slate-500">WCOI</span><span class="font-mono ${t.wcoi > 0 ? 'text-emerald-300' : t.wcoi < 0 ? 'text-rose-300' : 'text-slate-400'}">${t.wcoi > 0 ? '+' : ''}${t.wcoi}</span></div>
         ${t.titles > 0 ? `<div class="flex justify-between"><span class="text-slate-500">Chức VĐ</span><span class="font-mono text-amber-300">${t.titles}</span></div>` : ''}
-        ${t.is_host ? `<div class="mt-1.5"><span class="pill pill-amber">🏠 Chủ nhà</span></div>` : ''}
+        ${t.is_host ? `<div class="mt-1.5"><span class="pill pill-amber">Chủ nhà</span></div>` : ''}
       </div>
     </a>
   `).join('');

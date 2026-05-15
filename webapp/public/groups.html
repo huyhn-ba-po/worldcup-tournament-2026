@@ -12,8 +12,8 @@
 <div id="nav"></div>
 
 <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
-  <h1 class="text-3xl sm:text-4xl font-black mb-2">📊 12 Bảng đấu A-L</h1>
-  <p class="text-slate-400 text-sm mb-6">Bốc thăm chính thức 5/12/2025 tại Washington DC · 48 đội · 72 trận vòng bảng · Click vào đội/trận để xem chi tiết.</p>
+  <h1 class="text-3xl sm:text-4xl font-black mb-2">12 Bảng đấu A-L</h1>
+  <p class="text-slate-400 text-sm mb-6">Bốc thăm chính thức 5/12/2025 tại Washington DC · 48 đội · 72 trận vòng bảng · Giờ Việt Nam (GMT+7).</p>
 
   <div id="groupsGrid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
     <div class="card p-6 skeleton h-64"></div>
@@ -25,21 +25,19 @@
 <div id="footer"></div>
 
 <script type="module">
-import { mountLayout, api, escapeHtml, $, teamLink, tierBadge } from '/js/shared.js';
+import { mountLayout, api, escapeHtml, $, teamLink, tierBadge, fmtDateVN } from '/js/shared.js';
 mountLayout('/groups');
 
-Promise.all([api('/api/teams'), api('/api/matches')]).then(([ts, mx]) => {
+Promise.all([api('/api/teams'), api('/api/matches?stage=group')]).then(([ts, mx]) => {
   const meta = Object.fromEntries(ts.teams.map(t => [t.name, t]));
   const byGroup = {};
   ts.teams.forEach(t => {
-    // Find group from fixtures
     const fxt = mx.matches.find(f => f.home === t.name || f.away === t.name);
     const g = fxt?.group;
-    if (g) { (byGroup[g] = byGroup[g] || []).push(t); }
+    if (g) (byGroup[g] = byGroup[g] || []).push(t);
   });
 
-  const groups = Object.keys(byGroup).sort();
-  const html = groups.map(g => {
+  const html = Object.keys(byGroup).sort().map(g => {
     const teams = byGroup[g].sort((a, b) => b.elo - a.elo);
     const matches = mx.matches.filter(f => f.group === g).sort((a, b) => a.match - b.match);
     return `
@@ -54,7 +52,7 @@ Promise.all([api('/api/teams'), api('/api/matches')]).then(([ts, mx]) => {
           ${teams.map(t => `
             <li class="flex items-center gap-2">
               <span class="flag">${t.flag}</span>
-              <a href="/team/${encodeURIComponent(t.name)}" class="text-slate-200 hover:text-emerald-300 no-underline">${escapeHtml(t.name)}</a>
+              <a href="/team/${encodeURIComponent(t.name)}" class="text-slate-200 hover:text-emerald-300 no-underline">${escapeHtml(t.name_vi)}</a>
               <span class="ml-auto flex items-center gap-1.5">
                 <span class="text-xs text-slate-500">${t.confederation}</span>
                 ${tierBadge(t.rank_tier)}
@@ -64,17 +62,20 @@ Promise.all([api('/api/teams'), api('/api/matches')]).then(([ts, mx]) => {
           `).join('')}
         </ul>
         <div class="border-t border-slate-700/40 pt-3">
-          <div class="text-xs uppercase tracking-wider text-slate-500 font-semibold mb-2">Lịch đấu</div>
+          <div class="text-xs uppercase tracking-wider text-slate-500 font-semibold mb-2">Lịch đấu (giờ VN)</div>
           <div class="space-y-1">
-            ${matches.map(m => `
-              <a href="/match/${m.match}" class="match-row block rounded-md border border-slate-700/40 p-2 text-xs hover:border-emerald-500/40 transition no-underline">
-                <div class="flex items-center gap-2">
-                  <span class="font-mono bg-slate-800 text-emerald-300 rounded px-1 py-0.5 text-[10px]">M${m.match}</span>
-                  <span class="text-slate-200 truncate">${meta[m.home]?.flag || '🏳️'} ${escapeHtml(m.home)} vs ${escapeHtml(m.away)} ${meta[m.away]?.flag || '🏳️'}</span>
-                </div>
-                <div class="text-[10px] text-slate-500 mt-0.5">${m.date} · ${m.ground}</div>
-              </a>
-            `).join('')}
+            ${matches.map(m => {
+              const mA = meta[m.home] || {}, mB = meta[m.away] || {};
+              return `
+                <a href="/match/${m.match}" class="match-row block rounded-md border border-slate-700/40 p-2 text-xs hover:border-emerald-500/40 transition no-underline">
+                  <div class="flex items-center gap-2">
+                    <span class="font-mono bg-slate-800 text-emerald-300 rounded px-1 py-0.5 text-[10px]">M${m.match}</span>
+                    <span class="text-slate-200 truncate">${mA.flag || '🏳️'} ${escapeHtml(mA.name_vi || m.home)} vs ${escapeHtml(mB.name_vi || m.away)} ${mB.flag || '🏳️'}</span>
+                  </div>
+                  <div class="text-[10px] text-slate-500 mt-0.5">${m.time_vn || '--:--'} ${fmtDateVN(m.date_vn)} · ${m.ground}</div>
+                </a>
+              `;
+            }).join('')}
           </div>
         </div>
       </section>

@@ -3,11 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>WC2026 Predictor — Dự đoán FIFA World Cup 2026 với AI + Stats</title>
-<meta name="description" content="Webapp dự đoán FIFA World Cup 2026 kết hợp Elo + Poisson + WCOI + Gemini AI. 47,980 trận quốc tế, 12 bảng A-L, đầy đủ data công khai." />
+<title>WC2026 Predictor — Dự đoán FIFA World Cup 2026</title>
+<meta name="description" content="Webapp dự đoán FIFA World Cup 2026 kết hợp Elo + Poisson + WCOI + Gemini AI. Đầy đủ data, phương pháp công khai." />
 <script src="https://cdn.tailwindcss.com"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="/css/main.css" />
 </head>
@@ -15,28 +13,23 @@
 <div id="nav"></div>
 
 <main class="max-w-7xl mx-auto px-4 sm:px-6">
-  <!-- HERO -->
   <section class="hero-bg rounded-3xl mt-6 mb-8 p-8 sm:p-12 border border-emerald-500/20">
-    <div class="flex items-center gap-2 mb-3">
-      <span class="text-3xl">🇺🇸</span><span class="text-3xl">🇨🇦</span><span class="text-3xl">🇲🇽</span>
-      <span class="text-xs sm:text-sm uppercase tracking-widest text-emerald-400 font-bold ml-2">FIFA World Cup 2026 · 11/6 → 19/7</span>
-    </div>
+    <div class="text-xs sm:text-sm uppercase tracking-widest text-emerald-400 font-bold mb-2">FIFA World Cup 2026 · 11/6 → 19/7</div>
     <h1 class="text-4xl sm:text-6xl font-black tracking-tight mb-3">
       Dự đoán <span class="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">World Cup 2026</span>
     </h1>
     <p class="text-lg text-slate-300 max-w-3xl">
-      Kết hợp <b class="text-emerald-300">Elo + Poisson + Gemini AI</b>, anchored bởi <b class="text-emerald-300">47,980 trận quốc tế</b> 1872-2025.
-      Backtest WC2018+2022 đạt <b class="text-emerald-300">55.5% accuracy</b>. Tất cả data + phương pháp công khai để bạn tự khám phá.
+      Mô hình thống kê <b class="text-emerald-300">Elo + Poisson + WCOI</b>, neo bằng <b class="text-emerald-300">47.980 trận quốc tế</b> lịch sử, kết hợp <b class="text-emerald-300">Gemini AI</b>.
+      Backtest WC2018+2022 đạt <b class="text-emerald-300">55.5% accuracy</b>. Toàn bộ phương pháp + data công khai.
     </p>
     <div class="mt-6 flex flex-wrap gap-3">
-      <a href="/groups" class="bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-400 hover:to-blue-400 text-white font-bold rounded-xl px-6 py-3 transition no-underline">📊 Xem 12 bảng</a>
-      <a href="/methodology" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded-xl px-6 py-3 text-sm font-medium transition no-underline">🔬 Phương pháp dự đoán</a>
-      <a href="/data" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded-xl px-6 py-3 text-sm font-medium transition no-underline">🔍 Khám phá 47k trận</a>
+      <a href="/groups" class="bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-400 hover:to-blue-400 text-white font-bold rounded-xl px-6 py-3 transition no-underline">Xem 12 bảng đấu</a>
+      <a href="/bracket" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded-xl px-6 py-3 text-sm font-medium transition no-underline">Bracket knockout</a>
+      <a href="/methodology" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded-xl px-6 py-3 text-sm font-medium transition no-underline">Phương pháp</a>
     </div>
   </section>
 
-  <!-- KEY METRICS -->
-  <section class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8" id="metrics">
+  <section class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
     <div class="card p-4 text-center">
       <div class="text-xs text-slate-400 uppercase tracking-wider">Đội tham dự</div>
       <div class="text-3xl font-black text-emerald-300 mt-1">48</div>
@@ -45,72 +38,63 @@
     <div class="card p-4 text-center">
       <div class="text-xs text-slate-400 uppercase tracking-wider">Trận đấu</div>
       <div class="text-3xl font-black text-emerald-300 mt-1">104</div>
-      <div class="text-xs text-slate-500">72 group + 32 KO</div>
+      <div class="text-xs text-slate-500">72 vòng bảng + 32 knockout</div>
     </div>
     <div class="card p-4 text-center">
       <div class="text-xs text-slate-400 uppercase tracking-wider">Data H2H</div>
-      <div class="text-3xl font-black text-emerald-300 mt-1">47,980</div>
-      <div class="text-xs text-slate-500">1872-2025 quốc tế</div>
+      <div class="text-3xl font-black text-emerald-300 mt-1">47.980</div>
+      <div class="text-xs text-slate-500">trận quốc tế 1872-2025</div>
     </div>
     <div class="card p-4 text-center">
-      <div class="text-xs text-slate-400 uppercase tracking-wider">Backtest Acc</div>
+      <div class="text-xs text-slate-400 uppercase tracking-wider">Backtest acc</div>
       <div class="text-3xl font-black text-emerald-300 mt-1">55.5%</div>
-      <div class="text-xs text-slate-500">WC2018+2022</div>
+      <div class="text-xs text-slate-500">WC2018 + WC2022</div>
     </div>
   </section>
 
-  <!-- COUNTDOWN -->
   <section class="card p-6 mb-8">
     <div class="flex items-center justify-between gap-4 flex-wrap">
       <div>
         <div class="text-xs text-slate-400 uppercase tracking-wider mb-1">Khai mạc còn</div>
         <div class="text-4xl font-black text-emerald-300" id="countdown">--</div>
-        <div class="text-sm text-slate-400 mt-1">11/6/2026 · Mexico vs South Africa · Estadio Azteca</div>
+        <div class="text-sm text-slate-400 mt-1">12/6/2026 · 02:00 (giờ VN) · Mexico vs Nam Phi · Estadio Azteca</div>
       </div>
       <a href="/match/1" class="bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 rounded-xl px-4 py-3 text-sm font-medium transition no-underline text-emerald-300">
-        ⚽ Xem trận khai mạc →
+        Xem trận khai mạc →
       </a>
     </div>
   </section>
 
-  <!-- 4 SECTIONS GRID -->
   <section class="grid md:grid-cols-2 gap-5 mb-8">
-    <!-- TOP ELO -->
     <div class="card p-5">
-      <h2 class="text-lg font-bold text-emerald-300 mb-3 flex items-center gap-2">🏆 Top 5 Elo WC2026</h2>
+      <h2 class="text-lg font-bold text-emerald-300 mb-3">Top 5 Elo WC2026</h2>
       <div id="topElo" class="space-y-1.5"></div>
       <a href="/leaderboard" class="text-xs text-emerald-400 hover:underline mt-3 inline-block">Xem full ranking →</a>
     </div>
 
-    <!-- UPCOMING -->
     <div class="card p-5">
-      <h2 class="text-lg font-bold text-emerald-300 mb-3 flex items-center gap-2">⚽ 5 trận đầu tiên</h2>
+      <h2 class="text-lg font-bold text-emerald-300 mb-3">5 trận đầu tiên</h2>
       <div id="upcoming" class="space-y-1.5"></div>
       <a href="/groups" class="text-xs text-emerald-400 hover:underline mt-3 inline-block">Xem tất cả 72 trận →</a>
     </div>
   </section>
 
-  <!-- NAVIGATION CARDS -->
   <section class="grid sm:grid-cols-2 md:grid-cols-4 gap-3 mb-8">
     <a href="/groups" class="card p-5 no-underline">
-      <div class="text-2xl mb-2">📊</div>
       <div class="font-bold text-emerald-300">12 Bảng đấu</div>
       <div class="text-xs text-slate-400 mt-1">A-L · 48 đội theo bốc thăm chính thức 5/12/2025</div>
     </a>
-    <a href="/teams" class="card p-5 no-underline">
-      <div class="text-2xl mb-2">⚽</div>
-      <div class="font-bold text-emerald-300">48 Đội tuyển</div>
-      <div class="text-xs text-slate-400 mt-1">Mỗi đội có trang riêng: Elo, Poisson, lịch sử, fixtures</div>
+    <a href="/bracket" class="card p-5 no-underline">
+      <div class="font-bold text-emerald-300">Bracket Knockout</div>
+      <div class="text-xs text-slate-400 mt-1">32 trận từ vòng 1/16 đến Chung kết 19/7</div>
     </a>
     <a href="/compare" class="card p-5 no-underline">
-      <div class="text-2xl mb-2">⚖️</div>
       <div class="font-bold text-emerald-300">So sánh 2 đội</div>
       <div class="text-xs text-slate-400 mt-1">H2H + stats side-by-side + dự đoán nếu gặp nhau</div>
     </a>
     <a href="/data" class="card p-5 no-underline">
-      <div class="text-2xl mb-2">🔍</div>
-      <div class="font-bold text-emerald-300">Data Explorer</div>
-      <div class="text-xs text-slate-400 mt-1">Tìm kiếm 47,980 trận quốc tế từ 1872</div>
+      <div class="font-bold text-emerald-300">Khám phá data</div>
+      <div class="text-xs text-slate-400 mt-1">Tìm kiếm 47.980 trận quốc tế từ 1872</div>
     </a>
   </section>
 </main>
@@ -118,12 +102,11 @@
 <div id="footer"></div>
 
 <script type="module">
-import { mountLayout, api, escapeHtml, teamLink, matchLink, $ } from '/js/shared.js';
+import { mountLayout, api, escapeHtml, teamLink, matchLink, loadTeams, $ } from '/js/shared.js';
 mountLayout('/');
 
-// Countdown
 function tickCountdown() {
-  const target = new Date('2026-06-11T19:00:00Z'); // Mexico 13:00 UTC-6
+  const target = new Date('2026-06-11T19:00:00Z');
   const diff = target - new Date();
   if (diff <= 0) { $('#countdown').textContent = 'Đang diễn ra'; return; }
   const d = Math.floor(diff / (24 * 3600 * 1000));
@@ -133,9 +116,7 @@ function tickCountdown() {
 }
 tickCountdown(); setInterval(tickCountdown, 60000);
 
-// Top Elo + upcoming
-Promise.all([api('/api/leaderboard'), api('/api/matches'), api('/api/teams')]).then(([lb, mx, ts]) => {
-  const meta = Object.fromEntries(ts.teams.map(t => [t.name, t]));
+Promise.all([api('/api/leaderboard'), api('/api/matches?stage=group'), loadTeams()]).then(([lb, mx, meta]) => {
   $('#topElo').innerHTML = lb.elo.slice(0, 5).map((t, i) => `
     <div class="flex items-center justify-between text-sm">
       <span><span class="text-slate-500 mr-2">#${i + 1}</span>${teamLink(t.name, t)}</span>

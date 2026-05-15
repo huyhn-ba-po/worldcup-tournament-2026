@@ -7,60 +7,140 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="/css/main.css" />
+<style>
+  /* Pipeline diagram styles */
+  .pipeline { position: relative; padding: 2rem 0; }
+  .pipe-row { display: grid; gap: 1rem; margin-bottom: 1.5rem; }
+  .pipe-node {
+    background: linear-gradient(160deg, rgba(15,23,42,0.96), rgba(15,23,42,0.78));
+    border: 1px solid rgba(16,185,129,0.35);
+    border-radius: 14px;
+    padding: 14px 16px;
+    text-align: center;
+    position: relative;
+  }
+  .pipe-node.blue { border-color: rgba(59,130,246,0.35); }
+  .pipe-node.amber { border-color: rgba(245,158,11,0.35); }
+  .pipe-node.large { padding: 18px 20px; }
+  .pipe-node .h {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #6ee7b7;
+    font-weight: 700;
+  }
+  .pipe-node.blue .h { color: #93c5fd; }
+  .pipe-node.amber .h { color: #fcd34d; }
+  .pipe-node .label { font-size: 14px; color: #e2e8f0; margin-top: 4px; font-weight: 500; }
+  .pipe-node .sub { font-size: 11px; color: #94a3b8; margin-top: 4px; }
+  .pipe-arrow {
+    width: 2px;
+    height: 28px;
+    background: linear-gradient(180deg, rgba(16,185,129,0.5), rgba(16,185,129,0.15));
+    margin: 0 auto;
+    position: relative;
+  }
+  .pipe-arrow::after {
+    content: ''; position: absolute; bottom: -1px; left: -4px;
+    width: 0; height: 0;
+    border-left: 5px solid transparent; border-right: 5px solid transparent;
+    border-top: 8px solid rgba(16,185,129,0.5);
+  }
+  .pipe-divider {
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    margin: 8px 0;
+  }
+  .pipe-divider .line {
+    flex: 1; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(16,185,129,0.4), transparent);
+  }
+  .pipe-divider .label {
+    font-size: 11px; color: #6ee7b7;
+    background: rgba(16,185,129,0.1);
+    padding: 4px 12px; border-radius: 9999px;
+    border: 1px solid rgba(16,185,129,0.3);
+  }
+</style>
 </head>
 <body>
 <div id="nav"></div>
 
 <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8">
-  <h1 class="text-3xl sm:text-4xl font-black mb-2">🔬 Phương pháp dự đoán</h1>
-  <p class="text-slate-400 text-sm mb-8">Hybrid Stats + AI — minh bạch hoàn toàn, mọi formula + data + backtest đều công khai.</p>
+  <h1 class="text-3xl sm:text-4xl font-black mb-2">Phương pháp dự đoán</h1>
+  <p class="text-slate-400 text-sm mb-8">Hybrid Stats + AI — minh bạch hoàn toàn, mọi công thức + data + backtest đều công khai.</p>
 
-  <!-- TỔNG QUAN PIPELINE -->
-  <section class="card p-6 mb-8">
-    <h2 class="text-xl font-bold text-emerald-300 mb-3">📐 Pipeline tổng quan</h2>
-    <pre class="text-xs text-slate-300 leading-relaxed overflow-x-auto scrollbar bg-slate-950/60 p-4 rounded-lg">
-                            Match: Team A vs Team B
-                                     │
-        ┌────────────────────────────┼────────────────────────────┐
-        ▼                            ▼                            ▼
-  ┌──────────┐               ┌──────────────┐            ┌─────────────┐
-  │   ELO    │               │   POISSON    │            │   H2H raw   │
-  │ (47k)    │               │ (6k major)   │            │  (lifetime) │
-  └────┬─────┘               └──────┬───────┘            └──────┬──────┘
-       │                            │                            │
-       │ P_elo(W/D/L)                │ λ_A, λ_B, top scores      │ form
-       │                            │                            │
-       ▼                            ▼                            ▼
-  ┌──────────────────────────────────────────────────────────────┐
-  │     AGGREGATOR — Weighted ensemble (Elo 35% + Poisson 35%     │
-  │                + Conf×Stage 20% + WCOI 10%)                  │
-  │     → P_baseline + expected score                             │
-  └──────────────────────────┬───────────────────────────────────┘
-                             ▼
-              ┌──────────────────────────────────────┐
-              │  GEMINI 2.5 Flash (Bayesian updater) │
-              │  Constraint: P_final ∈ baseline ±15% │
-              │  (±25% with qualitative reason)      │
-              └─────────────────┬────────────────────┘
-                                ▼
-            ┌────────────────────────────────┐
-            │  FINAL: prob_a/d/b + score +   │
-            │  confidence + Vietnamese analyt│
-            └────────────────────────────────┘
-    </pre>
+  <!-- Pipeline VISUAL diagram -->
+  <section class="card p-6 sm:p-8 mb-8">
+    <h2 class="text-xl font-bold text-emerald-300 mb-1">Pipeline tổng quan</h2>
+    <p class="text-sm text-slate-400 mb-6">Mỗi trận đi qua 5 layer: 3 mô hình thống kê → aggregator → AI updater → kết quả cuối.</p>
+
+    <div class="pipeline">
+      <!-- Input -->
+      <div class="pipe-node large mx-auto" style="max-width: 360px;">
+        <div class="h">Input</div>
+        <div class="label">Trận: Đội A vs Đội B</div>
+      </div>
+      <div class="pipe-arrow"></div>
+
+      <!-- 3 parallel models -->
+      <div class="pipe-divider"><span class="line"></span><span class="label">3 mô hình thống kê chạy song song</span><span class="line"></span></div>
+      <div class="pipe-row grid-cols-1 sm:grid-cols-3">
+        <div class="pipe-node">
+          <div class="h">ELO Rating</div>
+          <div class="label">47.980 trận lịch sử</div>
+          <div class="sub">K-factor theo giải · MOV multiplier · Host boost</div>
+          <div class="sub mt-1 font-mono text-emerald-300">→ P(W/D/L)</div>
+        </div>
+        <div class="pipe-node blue">
+          <div class="h">Poisson Model</div>
+          <div class="label">6.000 trận major</div>
+          <div class="sub">α attack, δ defense per team · Time decay</div>
+          <div class="sub mt-1 font-mono text-blue-300">→ λ_A, λ_B, top scores</div>
+        </div>
+        <div class="pipe-node amber">
+          <div class="h">WC Overlay</div>
+          <div class="label">1.069 trận WC</div>
+          <div class="sub">WCOI · Conf×Stage matrix · Stage params</div>
+          <div class="sub mt-1 font-mono text-amber-300">→ adjustments</div>
+        </div>
+      </div>
+      <div class="pipe-arrow"></div>
+
+      <!-- Aggregator -->
+      <div class="pipe-node large mx-auto" style="max-width: 480px;">
+        <div class="h">Aggregator</div>
+        <div class="label">Weighted ensemble</div>
+        <div class="sub">Elo 35% · Poisson 35% · Conf×Stage 20% · WCOI 10%</div>
+        <div class="sub mt-1 text-emerald-300">→ P_baseline + expected score</div>
+      </div>
+      <div class="pipe-arrow"></div>
+
+      <!-- AI -->
+      <div class="pipe-divider"><span class="line"></span><span class="label">Layer định tính</span><span class="line"></span></div>
+      <div class="pipe-node large mx-auto blue" style="max-width: 480px;">
+        <div class="h">Gemini 2.5 Flash · Bayesian Updater</div>
+        <div class="label">Constraint: P_final ∈ baseline ±15%</div>
+        <div class="sub">(±25% nếu có lý do định tính rõ ràng: chấn thương, treo giò, motivation, tactical)</div>
+      </div>
+      <div class="pipe-arrow"></div>
+
+      <!-- Output -->
+      <div class="pipe-node large mx-auto" style="max-width: 480px; border-color: rgba(16,185,129,0.6); background: linear-gradient(160deg, rgba(16,185,129,0.08), rgba(15,23,42,0.85));">
+        <div class="h">Kết quả cuối</div>
+        <div class="label">Xác suất 3 chiều · Tỉ số · Confidence · Phân tích VN</div>
+      </div>
+    </div>
   </section>
 
-  <!-- BACKTEST METRICS -->
   <section class="card p-6 mb-8">
-    <h2 class="text-xl font-bold text-emerald-300 mb-3">📊 Backtest WC2018 + WC2022 (leak-free)</h2>
+    <h2 class="text-xl font-bold text-emerald-300 mb-3">Backtest WC2018 + WC2022 (leak-free)</h2>
     <p class="text-sm text-slate-400 mb-4">Rebuild Elo + Poisson chỉ với data TRƯỚC mỗi trận, predict 128 trận của 2 kỳ WC gần nhất.</p>
     <div id="backtestTable" class="overflow-x-auto scrollbar"></div>
   </section>
 
-  <!-- TIER 1: ELO -->
   <section class="card p-6 mb-6">
-    <h2 class="text-xl font-bold text-emerald-300 mb-3">1️⃣ Elo Rating (35% weight)</h2>
-    <p class="text-sm text-slate-300 mb-3 leading-relaxed">FIFA-style Elo update sau mỗi trận của 47,980 trận quốc tế 1872-2025. K-factor theo mức độ quan trọng giải đấu.</p>
+    <h2 class="text-xl font-bold text-emerald-300 mb-3">1. Elo Rating (35% weight)</h2>
+    <p class="text-sm text-slate-300 mb-3 leading-relaxed">FIFA-style Elo update sau mỗi trận của 47.980 trận quốc tế 1872-2025. K-factor theo mức độ quan trọng giải đấu.</p>
     <div class="bg-slate-950/60 p-4 rounded-lg text-xs font-mono text-slate-300 leading-relaxed">
       <div>R'_A = R_A + K × m × (W_actual - W_expected)</div>
       <div>W_expected = 1 / (1 + 10^((R_B - R_A)/400))</div>
@@ -68,46 +148,42 @@
       <div class="text-emerald-400">m = log(|GD| + 1) × damp(rating_diff)  (margin of victory)</div>
       <div class="text-emerald-400">Host boost: +200 Mexico Azteca, +100-150 USA/Canada venues</div>
     </div>
-    <div class="text-xs text-slate-400 mt-3">📊 <a href="/leaderboard" class="text-emerald-400 hover:underline">Xem full Elo leaderboard →</a></div>
+    <div class="text-xs text-slate-400 mt-3"><a href="/leaderboard" class="text-emerald-400 hover:underline">Xem full Elo leaderboard →</a></div>
   </section>
 
-  <!-- TIER 2: POISSON -->
   <section class="card p-6 mb-6">
-    <h2 class="text-xl font-bold text-emerald-300 mb-3">2️⃣ Poisson Goal Model (35% weight)</h2>
+    <h2 class="text-xl font-bold text-emerald-300 mb-3">2. Poisson Goal Model (35% weight)</h2>
     <p class="text-sm text-slate-300 mb-3 leading-relaxed">Cho mỗi đội, fit attack (α) và defense (δ) strength so với mean toàn cầu. λ = expected goals.</p>
     <div class="bg-slate-950/60 p-4 rounded-lg text-xs font-mono text-slate-300 leading-relaxed">
       <div>λ_home = α_home × δ_away × home_boost × global_avg</div>
       <div>λ_away = α_away × δ_home × global_avg</div>
       <div>P(score=i,j) = Poisson(i; λ_home) × Poisson(j; λ_away)</div>
-      <div class="text-emerald-400 mt-2">α > 1 → ghi nhiều hơn TB. δ < 1 → thủ tốt hơn TB.</div>
-      <div class="text-emerald-400">Data: 6,028 trận major tournaments 2014+. Time-decay exp(-0.10 × age).</div>
+      <div class="text-emerald-400 mt-2">α &gt; 1 → ghi nhiều hơn TB. δ &lt; 1 → thủ tốt hơn TB.</div>
+      <div class="text-emerald-400">Data: 6.028 trận major tournaments 2014+. Time-decay exp(-0.10 × age).</div>
     </div>
   </section>
 
-  <!-- TIER 3: CONF MATRIX -->
   <section class="card p-6 mb-6">
-    <h2 class="text-xl font-bold text-emerald-300 mb-3">3️⃣ Confederation × Stage Matrix (20% weight)</h2>
-    <p class="text-sm text-slate-300 mb-3 leading-relaxed">Lịch sử WC cho thấy các liên đoàn không bình đẳng tại WC. Matrix trích từ 1,069 trận WC 1930-2022.</p>
+    <h2 class="text-xl font-bold text-emerald-300 mb-3">3. Confederation × Stage Matrix (20% weight)</h2>
+    <p class="text-sm text-slate-300 mb-3 leading-relaxed">Lịch sử WC cho thấy các liên đoàn không bình đẳng tại WC. Matrix trích từ 1.069 trận WC 1930-2022.</p>
     <div id="confMatrix" class="overflow-x-auto scrollbar"></div>
   </section>
 
-  <!-- TIER 4: WCOI -->
   <section class="card p-6 mb-6">
-    <h2 class="text-xl font-bold text-emerald-300 mb-3">4️⃣ WCOI — WC Overperformance Index (10% weight)</h2>
-    <p class="text-sm text-slate-300 mb-3 leading-relaxed">Đo: 1 đội có "đá hay hơn bình thường" khi vào WC không? Công thức:</p>
+    <h2 class="text-xl font-bold text-emerald-300 mb-3">4. WCOI — WC Overperformance Index (10% weight)</h2>
+    <p class="text-sm text-slate-300 mb-3 leading-relaxed">Đo: 1 đội có "đá hay hơn bình thường" khi vào WC không?</p>
     <div class="bg-slate-950/60 p-4 rounded-lg text-xs font-mono text-slate-300 mb-3">
-      WCOI = WC_win_rate - All_time_win_rate
+      WCOI = WC_win_rate − All_time_win_rate
     </div>
     <ul class="text-sm text-slate-300 space-y-1.5 list-disc list-inside">
-      <li><b class="text-emerald-300">Overperformers</b>: Argentina (+0.11), Croatia (+0.05), Germany (+0.05) — đá hay hơn lúc vào WC</li>
-      <li><b class="text-rose-300">Underperformers</b>: Iran (-0.41), South Korea (-0.36), Saudi Arabia (-0.33), Mexico (-0.21) — AFC + Mexico knockout curse</li>
+      <li><b class="text-emerald-300">Overperformers</b>: Argentina (+0.11), Croatia (+0.05), Đức (+0.05) — đá hay hơn lúc vào WC</li>
+      <li><b class="text-rose-300">Underperformers</b>: Iran (-0.41), Hàn Quốc (-0.36), Ả Rập Xê Út (-0.33), Mexico (-0.21) — AFC + Mexico knockout curse</li>
     </ul>
-    <div class="text-xs text-slate-400 mt-3">📊 <a href="/leaderboard" class="text-emerald-400 hover:underline">Xem full WCOI ranking →</a></div>
+    <div class="text-xs text-slate-400 mt-3"><a href="/leaderboard" class="text-emerald-400 hover:underline">Xem full WCOI ranking →</a></div>
   </section>
 
-  <!-- LLM LAYER -->
-  <section class="card p-6 mb-6">
-    <h2 class="text-xl font-bold text-emerald-300 mb-3">5️⃣ LLM Layer — Gemini 2.5 Flash as Bayesian Updater</h2>
+  <section class="card p-6">
+    <h2 class="text-xl font-bold text-emerald-300 mb-3">5. LLM Layer — Gemini 2.5 Flash as Bayesian Updater</h2>
     <p class="text-sm text-slate-300 mb-3 leading-relaxed">Stats baseline là điểm neo. Gemini được constraint <b>chỉ adjust ±15%</b> trừ khi có lý do qualitative rõ ràng (max ±25%).</p>
     <div class="bg-slate-950/60 p-4 rounded-lg text-xs text-slate-300 leading-relaxed">
       <div class="text-emerald-400 mb-2">Why constraint?</div>
@@ -118,18 +194,6 @@
       </ul>
     </div>
   </section>
-
-  <!-- DATA SOURCES -->
-  <section class="card p-6">
-    <h2 class="text-xl font-bold text-emerald-300 mb-3">📦 Data Sources</h2>
-    <ul class="text-sm text-slate-300 space-y-2 list-disc list-inside">
-      <li><b>openfootball/internationals</b>: 47,980 trận quốc tế 1872-2025 (CC0 Public Domain, mirror Mart Jürisoo Kaggle dataset)</li>
-      <li><b>openfootball/worldcup.json</b>: 1,069 trận WC + fixtures 2026 (CC0)</li>
-      <li><b>openfootball/worldcup.more</b>: WC chi tiết với scorers + lineups (chưa parse)</li>
-      <li><b>7m.com.cn</b>: Đa ngôn ngữ + live data (scrape AJAX endpoint công khai)</li>
-      <li><b>FIFA official</b>: Verify 12 bảng A-L draw 5/12/2025</li>
-    </ul>
-  </section>
 </main>
 
 <div id="footer"></div>
@@ -139,7 +203,6 @@ import { mountLayout, api, escapeHtml, $ } from '/js/shared.js';
 mountLayout('/methodology');
 
 api('/api/methodology').then(d => {
-  // Backtest table
   $('#backtestTable').innerHTML = `
     <table class="data text-sm">
       <thead><tr>
@@ -165,7 +228,6 @@ api('/api/methodology').then(d => {
     </table>
   `;
 
-  // Conf matrix
   $('#confMatrix').innerHTML = `
     <table class="data text-sm">
       <thead><tr><th>Matchup × Stage</th><th>n trận</th><th>Win rate C1</th><th>Draw</th><th>Win rate C2</th></tr></thead>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bracket Knockout — WC2026 Predictor</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/css/main.css" />
+<style>
+  .bracket-col { min-width: 200px; }
+  .ko-match {
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 13px;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+  .ko-match:hover {
+    border-color: rgba(16, 185, 129, 0.5);
+    background: rgba(16, 185, 129, 0.06);
+  }
+  .ko-match .slot { color: #cbd5e1; }
+  .ko-match .meta { font-size: 10px; color: #64748b; margin-top: 2px; }
+</style>
+</head>
+<body>
+<div id="nav"></div>
+
+<main class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+  <h1 class="text-3xl sm:text-4xl font-black mb-2">Bracket Knockout WC2026</h1>
+  <p class="text-slate-400 text-sm mb-6">32 trận từ Vòng 1/16 đến Chung kết 19/7 · Đội cụ thể sẽ xác định sau khi vòng bảng kết thúc · Giờ Việt Nam (GMT+7).</p>
+
+  <div class="overflow-x-auto scrollbar pb-4">
+    <div class="grid grid-flow-col gap-4 sm:gap-6 min-w-max" id="bracketGrid">
+      <div class="skeleton h-96 rounded-2xl bracket-col"></div>
+    </div>
+  </div>
+
+  <section class="card p-5 mt-8">
+    <h2 class="font-bold text-lg text-emerald-300 mb-3">Trận Chung kết — 19/7/2026</h2>
+    <p class="text-sm text-slate-300">MetLife Stadium, New Jersey · 02:00 sáng 20/7 (giờ VN, GMT+7) · Đội thắng SF1 vs Đội thắng SF2</p>
+    <a href="/match/104" class="inline-block mt-3 text-emerald-400 hover:underline text-sm">Xem detail trận #104 →</a>
+  </section>
+
+  <section class="card p-5 mt-4">
+    <h2 class="font-bold text-lg text-emerald-300 mb-3">Tranh hạng 3 — 18/7/2026</h2>
+    <p class="text-sm text-slate-300">Hard Rock Stadium, Miami · 02:00 sáng 19/7 (giờ VN) · Đội thua SF1 vs Đội thua SF2</p>
+    <a href="/match/103" class="inline-block mt-3 text-emerald-400 hover:underline text-sm">Xem detail trận #103 →</a>
+  </section>
+</main>
+
+<div id="footer"></div>
+
+<script type="module">
+import { mountLayout, api, escapeHtml, $, fmtDateVN } from '/js/shared.js';
+mountLayout('/bracket');
+
+api('/api/matches').then(({ matches, stage_names }) => {
+  const ko = matches.filter(m => m.stage !== 'group');
+  const byStage = { R32: [], R16: [], QF: [], SF: [], '3rd': [], Final: [] };
+  ko.forEach(m => { (byStage[m.stage] || (byStage[m.stage] = [])).push(m); });
+
+  const stageOrder = ['R32', 'R16', 'QF', 'SF', '3rd', 'Final'];
+  const html = stageOrder.map(s => {
+    const ms = byStage[s] || [];
+    if (!ms.length) return '';
+    return `
+      <div class="bracket-col">
+        <div class="text-xs uppercase tracking-wider text-emerald-400 font-bold mb-3">${stage_names[s] || s} · ${ms.length} trận</div>
+        <div class="space-y-3">
+          ${ms.map(m => `
+            <a href="/match/${m.match}" class="ko-match">
+              <div class="text-[10px] font-mono text-slate-500">M${m.match}</div>
+              <div class="slot truncate">${escapeHtml(m.home || m.home_slot)}</div>
+              <div class="text-center text-slate-500 text-xs">vs</div>
+              <div class="slot truncate">${escapeHtml(m.away || m.away_slot)}</div>
+              <div class="meta">${m.time_vn || '--:--'} ${fmtDateVN(m.date_vn)} · ${escapeHtml(m.ground)}</div>
+            </a>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }).join('');
+  $('#bracketGrid').innerHTML = html;
+}).catch(e => { $('#bracketGrid').innerHTML = `<div class="text-rose-400">${e.message}</div>`; });
+</script>
+</body>
+</html>

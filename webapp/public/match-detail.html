@@ -22,7 +22,7 @@
 <div id="footer"></div>
 
 <script type="module">
-import { mountLayout, api, escapeHtml, $, probBar, teamLink } from '/js/shared.js';
+import { mountLayout, api, escapeHtml, $, probBar, fmtDateVN, loadTeams } from '/js/shared.js';
 mountLayout('/match');
 
 const matchId = parseInt(window.location.pathname.split('/match/')[1] || '0', 10);
@@ -32,13 +32,56 @@ async function load() {
     $('#root').innerHTML = '<div class="card p-6 text-rose-400">Match ID không hợp lệ</div>';
     return;
   }
-  const d = await api(`/api/matches/${matchId}`);
+  const [d, allMeta] = await Promise.all([api(`/api/matches/${matchId}`), loadTeams()]);
   const { fixture: f, stats: s, h2h, recent_a: rA, recent_b: rB, ctx } = d;
-  document.title = `M${f.match}: ${f.home} vs ${f.away}`;
+  const nameA = ctx.nameA_vi || f.home, nameB = ctx.nameB_vi || f.away;
+  document.title = `M${f.match}: ${nameA} vs ${nameB}`;
 
-  const winnerBaselineText = s.prob_a > s.prob_d && s.prob_a > s.prob_b ? `${ctx.flagA} ${f.home}`
-                          : s.prob_b > s.prob_d ? `${ctx.flagB} ${f.away}`
-                          : '🤝 Hòa';
+  // Header (works for both group + knockout)
+  const headerHTML = `
+    <a href="${f.stage === 'group' ? '/groups' : '/bracket'}" class="text-emerald-400 text-sm hover:underline">← ${f.stage === 'group' ? 'Tất cả bảng đấu' : 'Bracket knockout'}</a>
+    <section class="card p-6 sm:p-8 mt-4 mb-6">
+      <div class="text-center">
+        <div class="text-xs text-emerald-400 uppercase tracking-wider font-bold mb-1">Match #${f.match} · ${ctx.stage_name}${f.group ? ' · Bảng ' + f.group : ''}</div>
+        <div class="flex items-center justify-around gap-4 mt-4 mb-4">
+          <div class="flex-1">
+            <div class="text-5xl sm:text-7xl">${ctx.flagA}</div>
+            ${f.is_placeholder
+              ? `<div class="mt-2 font-bold text-lg text-slate-300">${escapeHtml(f.home_slot)}</div>`
+              : `<a href="/team/${encodeURIComponent(f.home)}" class="block mt-2 font-bold text-lg text-slate-100 hover:text-emerald-300 no-underline">${escapeHtml(nameA)}</a>`
+            }
+          </div>
+          <div class="text-slate-400 text-2xl">vs</div>
+          <div class="flex-1">
+            <div class="text-5xl sm:text-7xl">${ctx.flagB}</div>
+            ${f.is_placeholder
+              ? `<div class="mt-2 font-bold text-lg text-slate-300">${escapeHtml(f.away_slot)}</div>`
+              : `<a href="/team/${encodeURIComponent(f.away)}" class="block mt-2 font-bold text-lg text-slate-100 hover:text-emerald-300 no-underline">${escapeHtml(nameB)}</a>`
+            }
+          </div>
+        </div>
+        <div class="text-sm text-slate-300 font-medium">
+          <span class="text-emerald-300 font-mono text-lg">${f.time_vn || '--:--'}</span> ${fmtDateVN(f.date_vn)} <span class="text-slate-500">(giờ VN, GMT+7)</span>
+        </div>
+        <div class="text-xs text-slate-500 mt-1">${f.ground} · giờ địa phương ${f.time}</div>
+      </div>
+    </section>
+  `;
+
+  // Placeholder match (knockout TBD)
+  if (f.is_placeholder) {
+    $('#root').innerHTML = headerHTML + `
+      <section class="card p-6 text-center">
+        <div class="text-slate-400 mb-2">Đội tuyển sẽ được xác định sau khi vòng bảng kết thúc.</div>
+        <div class="text-xs text-slate-500">Slot home: <b>${escapeHtml(f.home_slot)}</b> · Slot away: <b>${escapeHtml(f.away_slot)}</b></div>
+        <a href="/bracket" class="inline-block mt-4 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 rounded-xl px-4 py-2 text-sm text-emerald-300 no-underline">Xem full bracket →</a>
+      </section>
+    `;
+    return;
+  }
+
+  const winnerBaselineText = s.prob_a > s.prob_d && s.prob_a > s.prob_b ? `${ctx.flagA} ${nameA}`
+                          : s.prob_b > s.prob_d ? `${ctx.flagB} ${nameB}` : 'Hòa';
   const topScoresStr = s.top_scores.slice(0, 3).map(t => `<span class="pill pill-slate">${t.score} (${t.prob}%)</span>`).join(' ');
   const h2hRows = h2h.matches.slice(0, 10).map(m => `
     <tr>
@@ -48,30 +91,9 @@ async function load() {
     </tr>
   `).join('');
 
-  $('#root').innerHTML = `
-    <a href="/groups" class="text-emerald-400 text-sm hover:underline">← Tất cả bảng đấu</a>
-    <!-- Hero -->
-    <section class="card p-6 sm:p-8 mt-4 mb-6">
-      <div class="text-center">
-        <div class="text-xs text-emerald-400 uppercase tracking-wider font-bold mb-1">Match #${f.match} · Bảng ${f.group}</div>
-        <div class="flex items-center justify-around gap-4 mt-4 mb-4">
-          <div class="flex-1">
-            <div class="text-5xl sm:text-7xl">${ctx.flagA}</div>
-            <a href="/team/${encodeURIComponent(f.home)}" class="block mt-2 font-bold text-lg text-slate-100 hover:text-emerald-300 no-underline">${escapeHtml(f.home)}</a>
-          </div>
-          <div class="text-slate-400 text-2xl">vs</div>
-          <div class="flex-1">
-            <div class="text-5xl sm:text-7xl">${ctx.flagB}</div>
-            <a href="/team/${encodeURIComponent(f.away)}" class="block mt-2 font-bold text-lg text-slate-100 hover:text-emerald-300 no-underline">${escapeHtml(f.away)}</a>
-          </div>
-        </div>
-        <div class="text-sm text-slate-400">📍 ${f.ground} · ${f.date} · ${f.time}</div>
-      </div>
-    </section>
-
-    <!-- STATS BASELINE -->
+  $('#root').innerHTML = headerHTML + `
     <section class="card p-5 sm:p-6 mb-6">
-      <h2 class="font-bold text-lg text-emerald-300 mb-3 flex items-center gap-2">🔬 Stats Baseline (Hybrid Elo + Poisson + WCOI)</h2>
+      <h2 class="font-bold text-lg text-emerald-300 mb-3">Stats Baseline (Hybrid Elo + Poisson + WCOI)</h2>
       <div class="flex items-center justify-between gap-3 mb-3 flex-wrap">
         <div>
           <div class="text-xs text-slate-400 uppercase tracking-wider">Dự đoán</div>
@@ -88,73 +110,69 @@ async function load() {
       </div>
       ${probBar(s.prob_a, s.prob_d, s.prob_b)}
       <div class="flex justify-between text-[11px] mt-1 text-slate-400">
-        <span class="text-emerald-400 font-semibold">${escapeHtml(f.home)} ${s.prob_a}%</span>
+        <span class="text-emerald-400 font-semibold">${escapeHtml(nameA)} ${s.prob_a}%</span>
         <span>Hòa ${s.prob_d}%</span>
-        <span class="text-blue-400 font-semibold">${s.prob_b}% ${escapeHtml(f.away)}</span>
+        <span class="text-blue-400 font-semibold">${s.prob_b}% ${escapeHtml(nameB)}</span>
       </div>
     </section>
 
-    <!-- BREAKDOWN -->
     <section class="grid md:grid-cols-2 gap-4 mb-6">
       <div class="card-flat p-4">
-        <h3 class="font-bold text-emerald-300 mb-2 text-sm">📈 ELO Rating</h3>
+        <h3 class="font-bold text-emerald-300 mb-2 text-sm">ELO Rating</h3>
         <div class="text-xs text-slate-400 mb-2">Weight ${Math.round(s.weights.elo * 100)}% · Host boost ${s.breakdown.elo.host_boost >= 0 ? '+' : ''}${s.breakdown.elo.host_boost}</div>
         <table class="data text-xs">
-          <tr><td>${escapeHtml(f.home)}</td><td class="font-mono text-emerald-300">${s.breakdown.elo.rA}</td></tr>
-          <tr><td>${escapeHtml(f.away)}</td><td class="font-mono text-blue-300">${s.breakdown.elo.rB}</td></tr>
+          <tr><td>${escapeHtml(nameA)}</td><td class="font-mono text-emerald-300">${s.breakdown.elo.rA}</td></tr>
+          <tr><td>${escapeHtml(nameB)}</td><td class="font-mono text-blue-300">${s.breakdown.elo.rB}</td></tr>
           <tr><td class="text-slate-500">P(W/D/L)</td><td>${s.breakdown.elo.p.a}/${s.breakdown.elo.p.d}/${s.breakdown.elo.p.b}</td></tr>
         </table>
       </div>
       <div class="card-flat p-4">
-        <h3 class="font-bold text-emerald-300 mb-2 text-sm">⚽ Poisson Goal Model</h3>
+        <h3 class="font-bold text-emerald-300 mb-2 text-sm">Poisson Goal Model</h3>
         <div class="text-xs text-slate-400 mb-2">Weight ${Math.round(s.weights.poisson * 100)}%</div>
         <table class="data text-xs">
-          <tr><td>λ ${escapeHtml(f.home)}</td><td class="font-mono text-emerald-300">${s.breakdown.poisson.lambdaA}</td></tr>
-          <tr><td>λ ${escapeHtml(f.away)}</td><td class="font-mono text-blue-300">${s.breakdown.poisson.lambdaB}</td></tr>
+          <tr><td>λ ${escapeHtml(nameA)}</td><td class="font-mono text-emerald-300">${s.breakdown.poisson.lambdaA}</td></tr>
+          <tr><td>λ ${escapeHtml(nameB)}</td><td class="font-mono text-blue-300">${s.breakdown.poisson.lambdaB}</td></tr>
           <tr><td class="text-slate-500">P(W/D/L)</td><td>${s.breakdown.poisson.p.a}/${s.breakdown.poisson.p.d}/${s.breakdown.poisson.p.b}</td></tr>
         </table>
       </div>
       <div class="card-flat p-4">
-        <h3 class="font-bold text-emerald-300 mb-2 text-sm">🌍 Confederation × Stage</h3>
+        <h3 class="font-bold text-emerald-300 mb-2 text-sm">Confederation × Stage</h3>
         <div class="text-xs text-slate-400 mb-2">Weight ${Math.round(s.weights.conf * 100)}% · ${s.breakdown.conf.key} (n=${s.breakdown.conf.n} trận WC)</div>
         <div class="text-sm">P(W/D/L) = ${s.breakdown.conf.p.a}/${s.breakdown.conf.p.d}/${s.breakdown.conf.p.b}</div>
       </div>
       <div class="card-flat p-4">
-        <h3 class="font-bold text-emerald-300 mb-2 text-sm">📊 WCOI (WC Overperformance)</h3>
+        <h3 class="font-bold text-emerald-300 mb-2 text-sm">WCOI (WC Overperformance)</h3>
         <div class="text-xs text-slate-400 mb-2">Weight ${Math.round(s.weights.wcoi * 100)}%</div>
         <table class="data text-xs">
-          <tr><td>${escapeHtml(f.home)}</td><td class="font-mono ${s.breakdown.wcoi.wcoi_a > 0 ? 'text-emerald-300' : 'text-rose-300'}">${s.breakdown.wcoi.wcoi_a > 0 ? '+' : ''}${s.breakdown.wcoi.wcoi_a}</td></tr>
-          <tr><td>${escapeHtml(f.away)}</td><td class="font-mono ${s.breakdown.wcoi.wcoi_b > 0 ? 'text-emerald-300' : 'text-rose-300'}">${s.breakdown.wcoi.wcoi_b > 0 ? '+' : ''}${s.breakdown.wcoi.wcoi_b}</td></tr>
+          <tr><td>${escapeHtml(nameA)}</td><td class="font-mono ${s.breakdown.wcoi.wcoi_a > 0 ? 'text-emerald-300' : 'text-rose-300'}">${s.breakdown.wcoi.wcoi_a > 0 ? '+' : ''}${s.breakdown.wcoi.wcoi_a}</td></tr>
+          <tr><td>${escapeHtml(nameB)}</td><td class="font-mono ${s.breakdown.wcoi.wcoi_b > 0 ? 'text-emerald-300' : 'text-rose-300'}">${s.breakdown.wcoi.wcoi_b > 0 ? '+' : ''}${s.breakdown.wcoi.wcoi_b}</td></tr>
         </table>
       </div>
     </section>
 
-    <!-- AI PREDICTION -->
     <section class="card p-5 sm:p-6 mb-6" id="aiSection">
       <div class="flex items-center justify-between mb-3 gap-3 flex-wrap">
-        <h2 class="font-bold text-lg text-emerald-300 flex items-center gap-2">🤖 AI Dự đoán (Gemini 2.5 Flash)</h2>
-        <button id="aiBtn" class="bg-gradient-to-r from-emerald-500 to-blue-500 hover:opacity-90 text-white font-bold rounded-lg px-4 py-2 text-sm">🤖 Tạo dự đoán AI</button>
+        <h2 class="font-bold text-lg text-emerald-300">AI Dự đoán (Gemini 2.5 Flash)</h2>
+        <button id="aiBtn" class="bg-gradient-to-r from-emerald-500 to-blue-500 hover:opacity-90 text-white font-bold rounded-lg px-4 py-2 text-sm">Tạo dự đoán AI</button>
       </div>
       <div id="aiBody" class="text-sm text-slate-400">Click nút trên để Gemini phân tích trận này dựa trên stats baseline + form gần nhất. Cần backend có GEMINI_API_KEY.</div>
     </section>
 
-    <!-- RECENT FORM -->
     <section class="grid md:grid-cols-2 gap-4 mb-6">
       <div class="card p-5">
-        <h3 class="font-bold text-emerald-300 mb-3">🔥 Phong độ ${escapeHtml(f.home)}</h3>
+        <h3 class="font-bold text-emerald-300 mb-3">Phong độ ${escapeHtml(nameA)}</h3>
         <div class="text-sm text-slate-300 mb-2">${rA.wins}W - ${rA.draws}D - ${rA.losses}L (${Math.round(rA.win_rate * 100)}%)</div>
         <div class="text-xs text-slate-500">${rA.matches.length} trận gần nhất từ 2020</div>
       </div>
       <div class="card p-5">
-        <h3 class="font-bold text-blue-300 mb-3">🔥 Phong độ ${escapeHtml(f.away)}</h3>
+        <h3 class="font-bold text-blue-300 mb-3">Phong độ ${escapeHtml(nameB)}</h3>
         <div class="text-sm text-slate-300 mb-2">${rB.wins}W - ${rB.draws}D - ${rB.losses}L (${Math.round(rB.win_rate * 100)}%)</div>
         <div class="text-xs text-slate-500">${rB.matches.length} trận gần nhất từ 2020</div>
       </div>
     </section>
 
-    <!-- H2H HISTORY -->
     <section class="card p-5">
-      <h2 class="font-bold text-lg text-emerald-300 mb-3">🧮 Đối đầu lịch sử (${h2h.total} trận, ${escapeHtml(f.home)} ${h2h.a_wins}W - ${h2h.draws}D - ${h2h.b_wins}L)</h2>
+      <h2 class="font-bold text-lg text-emerald-300 mb-3">Đối đầu lịch sử (${h2h.total} trận, ${escapeHtml(nameA)} ${h2h.a_wins}W - ${h2h.draws}D - ${h2h.b_wins}L)</h2>
       ${h2h.total === 0 ? '<div class="text-slate-500 text-sm">Chưa từng gặp nhau.</div>' : `
         <div class="overflow-x-auto scrollbar">
           <table class="data">
@@ -166,12 +184,9 @@ async function load() {
     </section>
   `;
 
-  // AI predict handler
   $('#aiBtn').addEventListener('click', async () => {
-    const btn = $('#aiBtn');
-    const body = $('#aiBody');
-    btn.disabled = true;
-    btn.innerHTML = '<span class="spinner"></span> Đang phân tích...';
+    const btn = $('#aiBtn'), body = $('#aiBody');
+    btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Đang phân tích...';
     body.textContent = 'Gemini đang phân tích...';
     try {
       const res = await fetch(`/api/predict/${matchId}`, { method: 'POST' });
@@ -182,7 +197,7 @@ async function load() {
       }
       const r = await res.json();
       const p = r.prediction;
-      const winner = p.winner === 'Hòa' ? '🤝 Hòa' : (p.winner === f.home ? ctx.flagA : ctx.flagB) + ' ' + p.winner;
+      const winner = p.winner === 'Hòa' ? 'Hòa' : (p.winner === f.home ? ctx.flagA + ' ' + nameA : ctx.flagB + ' ' + nameB);
       body.innerHTML = `
         <div class="flex items-center justify-between gap-3 mb-3 flex-wrap">
           <div><div class="text-xs text-slate-400 uppercase">AI dự đoán</div><div class="font-bold text-emerald-300">${winner} · ${p.confidence}%</div></div>
@@ -190,23 +205,23 @@ async function load() {
         </div>
         ${probBar(p.prob_a, p.prob_draw, p.prob_b)}
         <div class="flex justify-between text-[11px] mt-1 text-slate-400">
-          <span class="text-emerald-400 font-semibold">${escapeHtml(f.home)} ${p.prob_a}%</span>
+          <span class="text-emerald-400 font-semibold">${escapeHtml(nameA)} ${p.prob_a}%</span>
           <span>Hòa ${p.prob_draw}%</span>
-          <span class="text-blue-400 font-semibold">${p.prob_b}% ${escapeHtml(f.away)}</span>
+          <span class="text-blue-400 font-semibold">${p.prob_b}% ${escapeHtml(nameB)}</span>
         </div>
         <div class="flex flex-wrap gap-1.5 mt-3">${(p.key_factors || []).map(k => `<span class="pill">${escapeHtml(k)}</span>`).join('')}</div>
         <div class="grid sm:grid-cols-3 gap-3 mt-4 text-xs">
-          <div class="card-flat p-3"><div class="font-bold text-emerald-300 mb-1">🔥 Phong độ</div>${escapeHtml(p.analysis_form || '')}</div>
-          <div class="card-flat p-3"><div class="font-bold text-emerald-300 mb-1">📜 Lịch sử</div>${escapeHtml(p.analysis_history || '')}</div>
-          <div class="card-flat p-3"><div class="font-bold text-emerald-300 mb-1">🎯 Dự đoán</div>${escapeHtml(p.analysis_prediction || '')}</div>
+          <div class="card-flat p-3"><div class="font-bold text-emerald-300 mb-1">Phong độ</div>${escapeHtml(p.analysis_form || '')}</div>
+          <div class="card-flat p-3"><div class="font-bold text-emerald-300 mb-1">Lịch sử</div>${escapeHtml(p.analysis_history || '')}</div>
+          <div class="card-flat p-3"><div class="font-bold text-emerald-300 mb-1">Dự đoán</div>${escapeHtml(p.analysis_prediction || '')}</div>
         </div>
-        ${r.cached ? '<div class="text-xs text-slate-500 mt-2">📦 Cached</div>' : ''}
+        ${r.cached ? '<div class="text-xs text-slate-500 mt-2">Cached</div>' : ''}
       `;
     } catch (e) {
       body.innerHTML = `<div class="text-rose-400">Lỗi: ${escapeHtml(e.message)}</div>`;
     } finally {
       btn.disabled = false;
-      btn.innerHTML = '🔄 Dự đoán lại';
+      btn.innerHTML = 'Dự đoán lại';
     }
   });
 }

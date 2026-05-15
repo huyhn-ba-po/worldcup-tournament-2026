@@ -12,22 +12,22 @@
 <div id="nav"></div>
 
 <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8">
-  <h1 class="text-3xl sm:text-4xl font-black mb-2">🏆 Xếp hạng WC2026</h1>
+  <h1 class="text-3xl sm:text-4xl font-black mb-2">Xếp hạng WC2026</h1>
   <p class="text-slate-400 text-sm mb-6">Elo rating + WCOI (Overperformance Index) cho 48 đội tham dự.</p>
 
   <section class="card p-5 mb-6">
-    <h2 class="font-bold text-lg text-emerald-300 mb-3">📈 Elo Rating Leaderboard</h2>
+    <h2 class="font-bold text-lg text-emerald-300 mb-3">Elo Rating Leaderboard</h2>
     <div id="eloTable" class="overflow-x-auto scrollbar"></div>
   </section>
 
   <section class="grid md:grid-cols-2 gap-5">
     <div class="card p-5">
-      <h2 class="font-bold text-lg text-emerald-300 mb-3">⬆️ Top WC Overperformers</h2>
-      <p class="text-xs text-slate-400 mb-3">Đá hay hơn lúc vào WC vs phong độ chung (yêu cầu ≥5 trận WC)</p>
+      <h2 class="font-bold text-lg text-emerald-300 mb-3">Top WC Overperformers</h2>
+      <p class="text-xs text-slate-400 mb-3">Đá hay hơn lúc vào WC vs phong độ chung (≥5 trận WC)</p>
       <div id="wcoiTop"></div>
     </div>
     <div class="card p-5">
-      <h2 class="font-bold text-lg text-rose-300 mb-3">⬇️ Top WC Underperformers</h2>
+      <h2 class="font-bold text-lg text-rose-300 mb-3">Top WC Underperformers</h2>
       <p class="text-xs text-slate-400 mb-3">Đá kém hơn lúc vào WC</p>
       <div id="wcoiBottom"></div>
     </div>
@@ -48,7 +48,7 @@ api('/api/leaderboard').then(d => {
         ${d.elo.map((t, i) => `
           <tr>
             <td class="text-slate-500 font-mono text-xs">${i + 1}</td>
-            <td><a href="/team/${encodeURIComponent(t.name)}" class="text-emerald-300 hover:text-emerald-200 no-underline"><span class="flag mr-1">${t.flag}</span>${escapeHtml(t.name)}</a> ${t.is_host ? '<span class="pill pill-amber ml-1">🏠</span>' : ''}</td>
+            <td><a href="/team/${encodeURIComponent(t.name)}" class="text-emerald-300 hover:text-emerald-200 no-underline"><span class="flag mr-1">${t.flag}</span>${escapeHtml(t.name_vi)}</a> ${t.is_host ? '<span class="pill pill-amber ml-1">Chủ nhà</span>' : ''}</td>
             <td class="text-xs text-slate-400">${t.confederation}</td>
             <td>${tierBadge(t.rank_tier)}</td>
             <td class="text-right font-mono font-bold text-emerald-300">${t.elo}</td>
@@ -63,7 +63,7 @@ api('/api/leaderboard').then(d => {
 
   $('#wcoiTop').innerHTML = d.wcoi_top.map(t => `
     <div class="flex items-center justify-between py-1.5 text-sm border-b border-slate-800/40 last:border-0">
-      <a href="/team/${encodeURIComponent(t.team)}" class="text-slate-200 hover:text-emerald-300 no-underline">${escapeHtml(t.team)}</a>
+      <a href="/team/${encodeURIComponent(t.team)}" class="text-slate-200 hover:text-emerald-300 no-underline">${escapeHtml(t.name_vi || t.team)}</a>
       <span class="flex items-center gap-3 text-xs">
         <span class="text-slate-500">WC ${Math.round(t.wc_win_rate * 100)}% / All ${Math.round(t.all_win_rate * 100)}%</span>
         <span class="font-mono font-bold text-emerald-300">+${t.wcoi.toFixed(3)}</span>
@@ -73,7 +73,7 @@ api('/api/leaderboard').then(d => {
 
   $('#wcoiBottom').innerHTML = d.wcoi_bottom.map(t => `
     <div class="flex items-center justify-between py-1.5 text-sm border-b border-slate-800/40 last:border-0">
-      <a href="/team/${encodeURIComponent(t.team)}" class="text-slate-200 hover:text-emerald-300 no-underline">${escapeHtml(t.team)}</a>
+      <a href="/team/${encodeURIComponent(t.team)}" class="text-slate-200 hover:text-emerald-300 no-underline">${escapeHtml(t.name_vi || t.team)}</a>
       <span class="flex items-center gap-3 text-xs">
         <span class="text-slate-500">WC ${Math.round(t.wc_win_rate * 100)}% / All ${Math.round(t.all_win_rate * 100)}%</span>
         <span class="font-mono font-bold text-rose-300">${t.wcoi.toFixed(3)}</span>

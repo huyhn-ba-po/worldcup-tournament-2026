@@ -12,20 +12,20 @@
 <div id="nav"></div>
 
 <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
-  <h1 class="text-3xl sm:text-4xl font-black mb-2">⚖️ So sánh 2 đội</h1>
+  <h1 class="text-3xl sm:text-4xl font-black mb-2">So sánh 2 đội</h1>
   <p class="text-slate-400 text-sm mb-6">Chọn 2 đội bất kỳ → mô hình tính prediction baseline nếu họ gặp nhau + lịch sử H2H đầy đủ.</p>
 
   <section class="card p-5 mb-6">
     <div class="grid sm:grid-cols-3 gap-3 items-end">
       <div>
-        <label class="text-xs text-slate-400 uppercase tracking-wider">Đội 1 (home)</label>
+        <label class="text-xs text-slate-400 uppercase tracking-wider">Đội 1 (sân nhà)</label>
         <select id="teamA" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 mt-1 text-sm"></select>
       </div>
       <div>
-        <label class="text-xs text-slate-400 uppercase tracking-wider">Đội 2 (away)</label>
+        <label class="text-xs text-slate-400 uppercase tracking-wider">Đội 2 (sân khách)</label>
         <select id="teamB" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 mt-1 text-sm"></select>
       </div>
-      <button id="goBtn" class="bg-gradient-to-r from-emerald-500 to-blue-500 hover:opacity-90 text-white font-bold rounded-lg py-2 text-sm">⚡ So sánh</button>
+      <button id="goBtn" class="bg-gradient-to-r from-emerald-500 to-blue-500 hover:opacity-90 text-white font-bold rounded-lg py-2 text-sm">So sánh</button>
     </div>
   </section>
 
@@ -35,17 +35,18 @@
 <div id="footer"></div>
 
 <script type="module">
-import { mountLayout, api, escapeHtml, $, probBar, tierBadge } from '/js/shared.js';
+import { mountLayout, api, escapeHtml, $, probBar } from '/js/shared.js';
 mountLayout('/compare');
 
 let teams = [];
 
 api('/api/teams').then(d => {
-  teams = d.teams.sort((a, b) => a.name.localeCompare(b.name));
-  const opts = teams.map(t => `<option value="${escapeHtml(t.name)}">${t.flag} ${escapeHtml(t.name)}</option>`).join('');
+  teams = d.teams.sort((a, b) => a.name_vi.localeCompare(b.name_vi));
+  const opts = teams.map(t => `<option value="${escapeHtml(t.name)}">${t.flag} ${escapeHtml(t.name_vi)}</option>`).join('');
   $('#teamA').innerHTML = opts; $('#teamB').innerHTML = opts;
   $('#teamA').value = 'Mexico';
   $('#teamB').value = 'South Africa';
+  setTimeout(() => compare(), 100);
 });
 
 async function compare() {
@@ -63,13 +64,13 @@ async function compare() {
       api(`/api/teams/${encodeURIComponent(a)}`),
       api(`/api/teams/${encodeURIComponent(b)}`),
     ]);
-    render(a, b, stats, h2h, tA, tB);
+    render(stats, h2h, tA, tB);
   } catch (e) {
     $('#result').innerHTML = `<div class="card p-6 text-rose-400">${e.message}</div>`;
   }
 }
 
-function render(nameA, nameB, stats, h2h, tA, tB) {
+function render(stats, h2h, tA, tB) {
   const A = tA.team, B = tB.team;
   const h2hRows = h2h.matches.map(m => `
     <tr>
@@ -80,16 +81,15 @@ function render(nameA, nameB, stats, h2h, tA, tB) {
   `).join('');
 
   $('#result').innerHTML = `
-    <!-- HERO -->
     <section class="card p-6 mb-6">
       <div class="grid sm:grid-cols-3 items-center gap-4">
         <div class="text-center">
           <div class="text-6xl">${A.flag}</div>
-          <a href="/team/${encodeURIComponent(A.name)}" class="block mt-2 font-bold text-lg hover:text-emerald-300 no-underline">${escapeHtml(A.name)}</a>
+          <a href="/team/${encodeURIComponent(A.name)}" class="block mt-2 font-bold text-lg hover:text-emerald-300 no-underline">${escapeHtml(A.name_vi)}</a>
           <div class="text-xs text-slate-500 mt-1">${A.confederation} · Elo ${A.elo}</div>
         </div>
         <div class="text-center">
-          <div class="text-xs text-slate-400 uppercase">Stats baseline (host bias for ${escapeHtml(A.name)})</div>
+          <div class="text-xs text-slate-400 uppercase">Stats baseline (sân ${escapeHtml(A.name_vi)})</div>
           <div class="font-mono font-black text-3xl mt-1">${stats.expected_score.a} - ${stats.expected_score.b}</div>
           <div class="mt-3">${probBar(stats.prob_a, stats.prob_d, stats.prob_b)}</div>
           <div class="flex justify-between text-[11px] mt-1 text-slate-400">
@@ -100,35 +100,33 @@ function render(nameA, nameB, stats, h2h, tA, tB) {
         </div>
         <div class="text-center">
           <div class="text-6xl">${B.flag}</div>
-          <a href="/team/${encodeURIComponent(B.name)}" class="block mt-2 font-bold text-lg hover:text-emerald-300 no-underline">${escapeHtml(B.name)}</a>
+          <a href="/team/${encodeURIComponent(B.name)}" class="block mt-2 font-bold text-lg hover:text-emerald-300 no-underline">${escapeHtml(B.name_vi)}</a>
           <div class="text-xs text-slate-500 mt-1">${B.confederation} · Elo ${B.elo}</div>
         </div>
       </div>
     </section>
 
-    <!-- Side-by-side stats -->
     <section class="card p-5 mb-6">
-      <h2 class="font-bold text-lg text-emerald-300 mb-3">📊 Side-by-side</h2>
+      <h2 class="font-bold text-lg text-emerald-300 mb-3">Side-by-side</h2>
       <table class="data text-sm">
-        <thead><tr><th class="text-emerald-300">${escapeHtml(A.name)}</th><th class="text-center">Metric</th><th class="text-blue-300">${escapeHtml(B.name)}</th></tr></thead>
+        <thead><tr><th class="text-emerald-300">${escapeHtml(A.name_vi)}</th><th class="text-center">Metric</th><th class="text-blue-300">${escapeHtml(B.name_vi)}</th></tr></thead>
         <tbody>
           <tr><td class="font-mono">${A.elo}</td><td class="text-center text-slate-500 text-xs">Elo</td><td class="font-mono">${B.elo}</td></tr>
           <tr><td class="font-mono">${A.attack}</td><td class="text-center text-slate-500 text-xs">Attack α</td><td class="font-mono">${B.attack}</td></tr>
           <tr><td class="font-mono">${A.defense}</td><td class="text-center text-slate-500 text-xs">Defense δ</td><td class="font-mono">${B.defense}</td></tr>
           <tr><td class="font-mono">${A.wcoi}</td><td class="text-center text-slate-500 text-xs">WCOI</td><td class="font-mono">${B.wcoi}</td></tr>
           <tr><td class="font-mono">${A.titles}</td><td class="text-center text-slate-500 text-xs">WC titles</td><td class="font-mono">${B.titles}</td></tr>
-          <tr><td>${tA.recent_form.wins}-${tA.recent_form.draws}-${tA.recent_form.losses}</td><td class="text-center text-slate-500 text-xs">Form 10</td><td>${tB.recent_form.wins}-${tB.recent_form.draws}-${tB.recent_form.losses}</td></tr>
+          <tr><td>${tA.recent_form.wins}-${tA.recent_form.draws}-${tA.recent_form.losses}</td><td class="text-center text-slate-500 text-xs">Form 10 trận</td><td>${tB.recent_form.wins}-${tB.recent_form.draws}-${tB.recent_form.losses}</td></tr>
         </tbody>
       </table>
     </section>
 
-    <!-- H2H -->
     <section class="card p-5">
-      <h2 class="font-bold text-lg text-emerald-300 mb-3">🧮 Đối đầu lịch sử (${h2h.total} trận)</h2>
+      <h2 class="font-bold text-lg text-emerald-300 mb-3">Đối đầu lịch sử (${h2h.total} trận)</h2>
       <div class="mb-3 text-sm">
-        <span class="pill mr-2">${escapeHtml(A.name)} thắng ${h2h.a_wins}</span>
+        <span class="pill mr-2">${escapeHtml(A.name_vi)} thắng ${h2h.a_wins}</span>
         <span class="pill pill-slate mr-2">Hòa ${h2h.draws}</span>
-        <span class="pill pill-blue">${escapeHtml(B.name)} thắng ${h2h.b_wins}</span>
+        <span class="pill pill-blue">${escapeHtml(B.name_vi)} thắng ${h2h.b_wins}</span>
         <span class="ml-3 text-xs text-slate-500">Tổng bàn ${h2h.a_goals} - ${h2h.b_goals}</span>
       </div>
       ${h2h.total === 0 ? '<div class="text-slate-500 text-sm">Chưa từng gặp nhau.</div>' : `
@@ -141,8 +139,6 @@ function render(nameA, nameB, stats, h2h, tA, tB) {
 }
 
 $('#goBtn').addEventListener('click', compare);
-// Auto-run with default selections on page load
-setTimeout(() => compare(), 200);
 </script>
 </body>
 </html>
