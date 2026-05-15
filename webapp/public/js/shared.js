@@ -110,9 +110,14 @@ function renderDonateModal() {
           </div>
 
           <div class="text-left bg-slate-950/60 rounded-xl p-4 text-sm space-y-1.5">
-            <div class="flex justify-between"><span class="text-slate-500">Ngân hàng</span><span class="text-slate-200" id="donateBank">—</span></div>
-            <div class="flex justify-between"><span class="text-slate-500">Số tài khoản</span><span class="text-slate-200 font-mono" id="donateAcc">—</span></div>
-            <div class="flex justify-between"><span class="text-slate-500">Chủ tài khoản</span><span class="text-slate-200" id="donateOwner">Huỳnh Nhật Huy</span></div>
+            <div class="flex justify-between items-center"><span class="text-slate-500">Ngân hàng</span><span class="text-slate-200 font-semibold">Techcombank</span></div>
+            <div class="flex justify-between items-center"><span class="text-slate-500">Số tài khoản</span>
+              <span class="flex items-center gap-2">
+                <span class="text-emerald-300 font-mono font-bold" id="donateAcc">1402968888</span>
+                <button type="button" data-copy-acc class="text-[10px] px-1.5 py-0.5 rounded bg-slate-800 hover:bg-emerald-600 hover:text-white text-slate-400 transition">Copy</button>
+              </span>
+            </div>
+            <div class="flex justify-between"><span class="text-slate-500">Chủ tài khoản</span><span class="text-slate-200">HUYNH NHAT HUY</span></div>
             <div class="text-xs text-slate-500 pt-2 border-t border-slate-800 mt-2">Nội dung CK gợi ý: <span class="text-emerald-300 font-mono">"Coffee WC2026"</span></div>
           </div>
 
@@ -155,19 +160,30 @@ export function mountLayout(currentPath) {
 }
 
 function attachDonateHandlers() {
-  // Trigger buttons (data-donate-trigger anywhere on page)
   document.querySelectorAll('[data-donate-trigger]').forEach(el => {
     el.addEventListener('click', (e) => { e.preventDefault(); openDonate(); });
   });
-  // Close buttons
   document.querySelectorAll('[data-donate-close]').forEach(el => {
     el.addEventListener('click', () => closeDonate());
   });
-  // Backdrop click
   const m = document.getElementById('donateModal');
   if (m) m.addEventListener('click', (e) => { if (e.target.id === 'donateModal') closeDonate(); });
-  // ESC
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDonate(); });
+  // Copy account number
+  document.querySelectorAll('[data-copy-acc]').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const acc = document.getElementById('donateAcc')?.textContent?.trim();
+      if (!acc) return;
+      try {
+        await navigator.clipboard.writeText(acc);
+        const original = btn.textContent;
+        btn.textContent = 'Copied!';
+        btn.style.background = '#10b981';
+        btn.style.color = 'white';
+        setTimeout(() => { btn.textContent = original; btn.style.background = ''; btn.style.color = ''; }, 1500);
+      } catch {}
+    });
+  });
 }
 
 export function probBar(probA, probD, probB) {
