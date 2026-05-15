@@ -12,17 +12,29 @@ const PUBLIC_DIR = join(__dirname, '..', 'public');
 const HOST = process.env.HOST || '0.0.0.0';
 const PORT = +(process.env.PORT || 3000);
 
+const IS_PROD = process.env.NODE_ENV === 'production';
 const app = Fastify({
-  logger: { transport: { target: 'pino-pretty', options: { translateTime: 'HH:MM:ss', ignore: 'pid,hostname' } } },
+  logger: IS_PROD
+    ? true  // JSON logs in production (cleaner for Railway logs)
+    : { transport: { target: 'pino-pretty', options: { translateTime: 'HH:MM:ss', ignore: 'pid,hostname' } } },
+  trustProxy: true, // Railway/Render set X-Forwarded-* headers
 });
 
 // Static files
 await app.register(fastifyStatic, {
   root: PUBLIC_DIR,
   prefix: '/',
-  setHeaders: (res) => {
-    // Dev: no cache. Production: cache JS/CSS with short max-age
-    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  setHeaders: (res, filepath) => {
+    if (IS_PROD) {
+      // Production: cache CSS/JS/images, no-cache HTML (so updates show immediately)
+      if (filepath.endsWith('.html')) {
+        res.setHeader('Cache-Control', 'no-cache, must-revalidate');
+      } else {
+        res.setHeader('Cache-Control', 'public, max-age=3600');
+      }
+    } else {
+      res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+    }
   },
 });
 
