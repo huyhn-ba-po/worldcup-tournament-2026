@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Dự đoán World Cup 2026 với AI · v2.0</title>
-<!-- v2.0 — AI phân tích từ 966 trận World Cup lịch sử + bảng đấu chính thức -->
+<title>Dự đoán World Cup 2026 với AI · v2.2</title>
+<!-- v2.2 — UX redesign: compact list + detail modal · data từ 8865 trận quốc tế -->
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -99,6 +99,100 @@
   }
   .scrollbar::-webkit-scrollbar { width: 8px; }
   .scrollbar::-webkit-scrollbar-thumb { background: rgba(16,185,129,0.3); border-radius: 4px; }
+
+  /* === Compact match row (after prediction) === */
+  .match-row.predicted {
+    border-color: rgba(16, 185, 129, 0.35);
+    background: linear-gradient(90deg, rgba(16,185,129,0.04), rgba(59,130,246,0.04));
+  }
+  .match-row.predicted:hover {
+    border-color: rgba(16, 185, 129, 0.6);
+    background: linear-gradient(90deg, rgba(16,185,129,0.08), rgba(59,130,246,0.08));
+  }
+  .winner-badge {
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.35);
+    color: #6ee7b7;
+    font-weight: 600;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 9999px;
+    white-space: nowrap;
+  }
+  .winner-badge.draw {
+    background: rgba(148, 163, 184, 0.12);
+    border-color: rgba(148, 163, 184, 0.35);
+    color: #cbd5e1;
+  }
+  .winner-badge.away {
+    background: rgba(59, 130, 246, 0.15);
+    border-color: rgba(59, 130, 246, 0.35);
+    color: #93c5fd;
+  }
+  .prob-bar-mini {
+    height: 4px;
+    border-radius: 9999px;
+    overflow: hidden;
+    display: flex;
+    background: rgba(15,23,42,0.8);
+    margin-top: 8px;
+  }
+  .score-pill {
+    font-family: ui-monospace, SFMono-Regular, monospace;
+    font-weight: 700;
+    font-size: 15px;
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    border-radius: 8px;
+    padding: 2px 10px;
+    color: #fff;
+    letter-spacing: 0.05em;
+  }
+
+  /* === Prediction modal === */
+  .pred-modal-card {
+    background: linear-gradient(160deg, rgba(15,23,42,0.98), rgba(15,23,42,0.92));
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .pred-tabs {
+    display: flex;
+    gap: 4px;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+    padding: 0 4px;
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+  .pred-tab {
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #94a3b8;
+    border: none;
+    background: transparent;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  .pred-tab:hover { color: #cbd5e1; }
+  .pred-tab.active {
+    color: #6ee7b7;
+    border-bottom-color: #10b981;
+  }
+  .pred-tab-content {
+    padding: 18px 4px;
+    color: #e2e8f0;
+    line-height: 1.65;
+  }
+  .pred-tab-content p { margin: 0; }
+
+  /* Group card breathing room */
+  @media (min-width: 768px) {
+    .group-card { padding: 1.5rem; }
+  }
   /* Respect reduced motion preference */
   @media (prefers-reduced-motion: reduce) {
     .spinner { animation: none; border-top-color: rgba(255,255,255,0.6); }
@@ -129,11 +223,11 @@
           AI phân tích từng trận · 48 đội · 12 bảng · 11/6 → 19/7, 2026
         </p>
         <div class="mt-3 inline-flex items-center gap-2 v2-badge rounded-full px-3 py-1.5 text-xs">
-          <span class="font-bold text-emerald-300">🆕 v2.0</span>
+          <span class="font-bold text-emerald-300">🆕 v2.2</span>
           <span class="text-slate-300">·</span>
-          <span class="text-slate-200">AI phân tích từ <b class="text-emerald-300">966 trận WC lịch sử</b></span>
+          <span class="text-slate-200">AI phân tích từ <b class="text-emerald-300">8.865 trận quốc tế</b></span>
           <span class="text-slate-300">·</span>
-          <span class="text-slate-200">Bảng đấu chính thức</span>
+          <span class="text-slate-200">Bảng đấu chính thức FIFA</span>
         </div>
       </div>
       <div class="flex gap-2 flex-wrap items-start">
@@ -175,10 +269,10 @@
 
 <!-- === MAIN CONTENT === -->
 <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
-  <div id="groupsContainer" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5"></div>
+  <div id="groupsContainer" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-7"></div>
 
   <footer class="mt-12 text-center text-xs text-slate-500">
-    <p>Dữ liệu lịch sử: 966 trận FIFA World Cup (1930-2022) · Powered by Google Gemini 2.5 Flash</p>
+    <p>Dữ liệu: 8.865 trận quốc tế (1872-2024) · openfootball CC0 · Powered by Google Gemini 2.5 Flash</p>
     <p class="mt-1">Đây là dự đoán mang tính tham khảo — bóng đá luôn bất ngờ ⚽</p>
   </footer>
 </main>
@@ -238,6 +332,44 @@
         <div class="font-bold text-yellow-300 mb-1">⚠️ Lưu ý về tên đội</div>
         <p class="text-xs">Các đội cũ được ánh xạ sang đội hiện đại khi tra cứu H2H: West Germany → Germany, Soviet Union → Russia, Czechoslovakia → Czech Republic, Yugoslavia / FR Yugoslavia → Serbia. Có thể không hoàn toàn chính xác về mặt lịch sử nhưng hữu ích cho mục đích dự đoán.</p>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- === PREDICTION DETAIL MODAL === -->
+<div id="predictionModal" class="hidden fixed inset-0 z-50 modal-bg items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="predictionModalTitle">
+  <div class="pred-modal-card rounded-2xl max-w-3xl w-full shadow-2xl relative">
+    <!-- Header -->
+    <div class="flex items-start justify-between gap-3 p-5 sm:p-6 pb-3 border-b border-slate-700/40">
+      <div class="min-w-0 flex-1">
+        <div class="text-[10px] uppercase tracking-wider text-emerald-400 font-bold" id="predictionModalMeta">—</div>
+        <h2 id="predictionModalTitle" class="text-lg sm:text-xl font-bold text-white mt-1 truncate">—</h2>
+        <div id="predictionModalVenue" class="text-xs text-slate-400 mt-1">—</div>
+      </div>
+      <button id="closePredictionBtn" class="text-slate-400 hover:text-white text-3xl leading-none shrink-0 -mt-1" aria-label="Đóng">×</button>
+    </div>
+
+    <!-- Hero score -->
+    <div class="px-5 sm:px-6 py-5">
+      <div class="flex items-center justify-between gap-3" id="predictionModalScore">
+        <!-- populated via JS -->
+      </div>
+      <div class="prob-bar mt-4" id="predictionModalProbBar"></div>
+      <div class="flex justify-between text-[11px] mt-1.5" id="predictionModalProbLabels"></div>
+      <div class="mt-4 flex flex-wrap gap-1.5" id="predictionModalChips"></div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="pred-tabs px-5 sm:px-6">
+      <button class="pred-tab active" data-tab="form">🔥 Phong độ</button>
+      <button class="pred-tab" data-tab="history">📜 Lịch sử</button>
+      <button class="pred-tab" data-tab="prediction">🎯 Dự đoán</button>
+      <button class="pred-tab" data-tab="data">📊 Dữ liệu thô</button>
+    </div>
+
+    <!-- Tab content (scrollable) -->
+    <div class="overflow-y-auto scrollbar px-5 sm:px-6 pb-5 sm:pb-6" style="max-height: 45vh;">
+      <div class="pred-tab-content" id="predictionModalTabBody"></div>
     </div>
   </div>
 </div>
@@ -9660,7 +9792,7 @@ function renderGroups() {
           <div class="text-xs uppercase tracking-wider text-slate-500 font-semibold">Các trận đấu</div>
           <div class="text-[10px] text-slate-600">Nhấn 🔮 để dự đoán</div>
         </div>
-        <div class="space-y-2" id="matches-${g}">
+        <div class="space-y-2.5" id="matches-${g}">
           ${fixtures.map(f => renderMatchRow(f)).join("")}
         </div>
         <div id="standings-${g}" class="hidden mt-4 pt-3 border-t border-slate-700/40"></div>
@@ -9697,111 +9829,147 @@ function renderGroups() {
   }
 }
 
+// Compact row — pre-prediction shows "vs + 🔮 button", post-prediction shows score + winner badge + mini bar
 function renderMatchRow(f) {
   const ha = TEAM_META[f.home] || {flag:"🏳️"};
   const aw = TEAM_META[f.away] || {flag:"🏳️"};
   return `
-    <div class="match-row rounded-lg border border-slate-700/40 p-2.5" id="row-${f.match}">
-      <div class="flex items-center gap-2 text-sm">
-        <span class="text-[10px] font-mono bg-slate-800 text-emerald-300 rounded px-1.5 py-0.5">M${f.match}</span>
-        <span class="flex-1 truncate"><span class="flag mr-1">${ha.flag}</span>${f.home}</span>
+    <div class="match-row rounded-lg border border-slate-700/40 p-3" id="row-${f.match}" data-match="${f.match}">
+      <div class="flex items-center gap-2 text-sm" id="row-body-${f.match}">
+        <span class="text-[10px] font-mono bg-slate-800 text-emerald-300 rounded px-1.5 py-0.5 shrink-0">M${f.match}</span>
+        <span class="flex-1 min-w-0 truncate"><span class="flag mr-1">${ha.flag}</span>${f.home}</span>
         <span class="text-slate-500 text-xs">vs</span>
-        <span class="flex-1 truncate text-right"><span class="flag mr-1">${aw.flag}</span>${f.away}</span>
-        <button class="predict-match-btn ml-2 text-xs bg-slate-800 hover:bg-emerald-600 hover:text-white border border-slate-700 rounded-md px-2 py-1 transition shrink-0" data-match="${f.match}" aria-label="Dự đoán trận ${f.home} vs ${f.away}">
+        <span class="flex-1 min-w-0 truncate text-right">${f.away}<span class="flag ml-1">${aw.flag}</span></span>
+        <button class="predict-match-btn text-xs bg-slate-800 hover:bg-emerald-600 hover:text-white border border-slate-700 rounded-md px-2.5 py-1 transition shrink-0" data-match="${f.match}" aria-label="Dự đoán ${f.home} vs ${f.away}">
           🔮
         </button>
       </div>
-      <div class="prediction-slot mt-0 hidden" aria-live="polite"></div>
     </div>
   `;
 }
 
-// ============================================================
-// === RENDER: PREDICTION CARD ================================
-// ============================================================
+// Render compact prediction summary INTO existing row (replaces vs body)
+// Click row → open modal
 function renderPredictionIntoRow(fixture, bundle) {
   const row = document.getElementById(`row-${fixture.match}`);
   if (!row) return;
-  const slot = row.querySelector(".prediction-slot");
-  slot.innerHTML = renderPredictionHTML(fixture, bundle);
-  slot.classList.remove("hidden");
-}
+  const body = document.getElementById(`row-body-${fixture.match}`);
+  if (!body) return;
 
-function renderPredictionHTML(fixture, bundle) {
-  const { result: r, features: feat } = bundle;
+  const r = bundle.result;
   const teamA = fixture.home, teamB = fixture.away;
   const ha = TEAM_META[teamA] || {flag:"🏳️"};
   const aw = TEAM_META[teamB] || {flag:"🏳️"};
-  const winnerLabel = r.winner === "Hòa"
-    ? `🤝 Hòa`
-    : `${r.winner === teamA ? ha.flag : aw.flag} ${r.winner}`;
-
   const probA = r.prob_a ?? 0, probD = r.prob_draw ?? 0, probB = r.prob_b ?? 0;
 
-  return `
-    <div class="pred-panel rounded-xl p-3.5 mt-2.5 space-y-3">
-      <!-- Header -->
-      <div class="flex items-center justify-between gap-2">
-        <div>
-          <div class="text-[10px] uppercase tracking-wider text-slate-400">Dự đoán AI</div>
-          <div class="font-bold text-emerald-300">${winnerLabel}</div>
-        </div>
-        <div class="text-right">
-          <div class="text-[10px] uppercase tracking-wider text-slate-400">Tỉ số</div>
-          <div class="font-mono font-bold text-xl text-white">${r.score_a ?? "?"} - ${r.score_b ?? "?"}</div>
-        </div>
-        <div class="text-right">
-          <div class="text-[10px] uppercase tracking-wider text-slate-400">Confidence</div>
-          <div class="font-bold text-blue-300">${r.confidence ?? "?"}%</div>
-        </div>
+  let winnerClass = "draw", winnerText = "🤝 Hòa";
+  if (r.winner === teamA)      { winnerClass = "", winnerText = `${ha.flag} ${teamA}`; }
+  else if (r.winner === teamB) { winnerClass = "away", winnerText = `${aw.flag} ${teamB}`; }
+
+  body.innerHTML = `
+    <span class="text-[10px] font-mono bg-slate-800 text-emerald-300 rounded px-1.5 py-0.5 shrink-0">M${fixture.match}</span>
+    <span class="flex-1 min-w-0 truncate"><span class="flag mr-1">${ha.flag}</span>${teamA}</span>
+    <span class="score-pill">${r.score_a ?? "?"} - ${r.score_b ?? "?"}</span>
+    <span class="flex-1 min-w-0 truncate text-right">${teamB}<span class="flag ml-1">${aw.flag}</span></span>
+  `;
+  // Append below: winner badge + mini bar + open modal hint
+  body.insertAdjacentHTML("afterend", `
+    <div class="flex items-center gap-2 mt-2.5">
+      <span class="winner-badge ${winnerClass}">${winnerText} · ${r.confidence ?? "?"}%</span>
+      <div class="flex-1 prob-bar-mini">
+        <div class="prob-seg bg-emerald-500" style="width: ${probA}%"></div>
+        <div class="prob-seg bg-slate-500" style="width: ${probD}%"></div>
+        <div class="prob-seg bg-blue-500" style="width: ${probB}%"></div>
       </div>
+      <button class="open-modal-btn text-xs text-slate-400 hover:text-emerald-300 transition" data-match="${fixture.match}" aria-label="Chi tiết dự đoán">📊</button>
+    </div>
+  `);
 
-      <!-- Probability bar -->
-      <div>
-        <div class="prob-bar">
-          <div class="prob-seg bg-emerald-500" style="width: ${probA}%"></div>
-          <div class="prob-seg bg-slate-500" style="width: ${probD}%"></div>
-          <div class="prob-seg bg-blue-500" style="width: ${probB}%"></div>
-        </div>
-        <div class="flex justify-between text-[10px] mt-1 text-slate-400">
-          <span class="text-emerald-400 font-semibold">${teamA} ${probA}%</span>
-          <span>Hòa ${probD}%</span>
-          <span class="text-blue-400 font-semibold">${probB}% ${teamB}</span>
-        </div>
-      </div>
+  row.classList.add("predicted");
+  row.setAttribute("role", "button");
+  row.setAttribute("tabindex", "0");
+}
 
-      <!-- Key factors -->
-      ${Array.isArray(r.key_factors) && r.key_factors.length ? `
-        <div class="flex flex-wrap gap-1.5">
-          ${r.key_factors.map(k => `<span class="chip text-[11px] rounded-full px-2 py-0.5">${escapeHtml(k)}</span>`).join("")}
-        </div>
-      ` : ""}
+// ============================================================
+// === PREDICTION DETAIL MODAL ================================
+// ============================================================
+let _currentModalBundle = null;
 
-      <!-- 3 analysis paragraphs -->
-      <div class="grid sm:grid-cols-3 gap-2 text-xs">
-        <div class="pred-block rounded-lg p-2.5">
-          <div class="font-bold text-emerald-300 mb-1">🔥 Phong độ</div>
-          <p class="text-slate-200 leading-relaxed">${escapeHtml(r.analysis_form || "")}</p>
-        </div>
-        <div class="pred-block rounded-lg p-2.5">
-          <div class="font-bold text-emerald-300 mb-1">📜 Lịch sử</div>
-          <p class="text-slate-200 leading-relaxed">${escapeHtml(r.analysis_history || "")}</p>
-        </div>
-        <div class="pred-block rounded-lg p-2.5">
-          <div class="font-bold text-emerald-300 mb-1">🎯 Dự đoán</div>
-          <p class="text-slate-200 leading-relaxed">${escapeHtml(r.analysis_prediction || "")}</p>
-        </div>
-      </div>
+function openPredictionModal(fixture, bundle) {
+  _currentModalBundle = { fixture, bundle };
+  const r = bundle.result;
+  const teamA = fixture.home, teamB = fixture.away;
+  const ha = TEAM_META[teamA] || {flag:"🏳️"};
+  const aw = TEAM_META[teamB] || {flag:"🏳️"};
+  const probA = r.prob_a ?? 0, probD = r.prob_draw ?? 0, probB = r.prob_b ?? 0;
 
-      <!-- Data transparency panel -->
-      <details class="text-xs">
-        <summary class="text-slate-400 hover:text-emerald-300 transition cursor-pointer">
-          📊 <span class="underline decoration-dotted underline-offset-2">Dữ liệu AI đã dùng</span>
-        </summary>
-        ${renderFeatureTable(teamA, teamB, feat)}
-      </details>
+  let winnerClass = "draw", winnerText = "🤝 Hòa";
+  if (r.winner === teamA)      { winnerClass = "", winnerText = `${ha.flag} ${teamA} thắng`; }
+  else if (r.winner === teamB) { winnerClass = "away", winnerText = `${aw.flag} ${teamB} thắng`; }
+
+  document.getElementById("predictionModalMeta").textContent = `Match ${fixture.match} · Bảng ${fixture.group}`;
+  document.getElementById("predictionModalTitle").textContent = `${teamA} vs ${teamB}`;
+  const venueParts = [fixture.ground, fixture.date, fixture.time].filter(Boolean);
+  document.getElementById("predictionModalVenue").textContent = venueParts.length ? `📍 ${venueParts.join(" · ")}` : "";
+
+  document.getElementById("predictionModalScore").innerHTML = `
+    <div class="flex-1 min-w-0 text-center">
+      <div class="text-2xl sm:text-3xl mb-1">${ha.flag}</div>
+      <div class="text-sm sm:text-base font-semibold text-slate-100 truncate">${teamA}</div>
+    </div>
+    <div class="shrink-0 text-center">
+      <div class="text-[10px] uppercase tracking-wider text-slate-400 mb-1">Tỉ số dự đoán</div>
+      <div class="font-mono font-black text-3xl sm:text-5xl text-white">${r.score_a ?? "?"} - ${r.score_b ?? "?"}</div>
+      <div class="mt-2"><span class="winner-badge ${winnerClass}">${winnerText} · ${r.confidence ?? "?"}%</span></div>
+    </div>
+    <div class="flex-1 min-w-0 text-center">
+      <div class="text-2xl sm:text-3xl mb-1">${aw.flag}</div>
+      <div class="text-sm sm:text-base font-semibold text-slate-100 truncate">${teamB}</div>
     </div>
   `;
+  document.getElementById("predictionModalProbBar").innerHTML = `
+    <div class="prob-seg bg-emerald-500" style="width: ${probA}%"></div>
+    <div class="prob-seg bg-slate-500" style="width: ${probD}%"></div>
+    <div class="prob-seg bg-blue-500" style="width: ${probB}%"></div>
+  `;
+  document.getElementById("predictionModalProbLabels").innerHTML = `
+    <span class="text-emerald-400 font-semibold">${teamA} ${probA}%</span>
+    <span class="text-slate-400">Hòa ${probD}%</span>
+    <span class="text-blue-400 font-semibold">${probB}% ${teamB}</span>
+  `;
+  document.getElementById("predictionModalChips").innerHTML = (Array.isArray(r.key_factors) && r.key_factors.length)
+    ? r.key_factors.map(k => `<span class="chip text-[11px] rounded-full px-2.5 py-1">${escapeHtml(k)}</span>`).join("")
+    : "";
+
+  // Reset to first tab
+  document.querySelectorAll(".pred-tab").forEach(b => b.classList.toggle("active", b.dataset.tab === "form"));
+  renderModalTab("form");
+
+  const m = document.getElementById("predictionModal");
+  m.classList.remove("hidden");
+  m.classList.add("flex");
+  document.body.style.overflow = "hidden";
+}
+
+function closePredictionModal() {
+  const m = document.getElementById("predictionModal");
+  m.classList.add("hidden");
+  m.classList.remove("flex");
+  document.body.style.overflow = "";
+  _currentModalBundle = null;
+}
+
+function renderModalTab(tabName) {
+  if (!_currentModalBundle) return;
+  const { fixture, bundle } = _currentModalBundle;
+  const r = bundle.result;
+  const teamA = fixture.home, teamB = fixture.away;
+  const body = document.getElementById("predictionModalTabBody");
+
+  if (tabName === "form")        body.innerHTML = `<p>${escapeHtml(r.analysis_form || "—")}</p>`;
+  else if (tabName === "history") body.innerHTML = `<p>${escapeHtml(r.analysis_history || "—")}</p>`;
+  else if (tabName === "prediction") body.innerHTML = `<p>${escapeHtml(r.analysis_prediction || "—")}</p>`;
+  else if (tabName === "data")    body.innerHTML = renderFeatureTable(teamA, teamB, bundle.features);
 }
 
 function renderFeatureTable(teamA, teamB, feat) {
@@ -9810,10 +9978,10 @@ function renderFeatureTable(teamA, teamB, feat) {
     ? `${h2h.last_meeting.year}: ${teamA} ${h2h.last_meeting.score_a}-${h2h.last_meeting.score_b} ${teamB}`
     : "Chưa từng";
   return `
-    <div class="mt-2 pred-block rounded-lg p-3 space-y-3">
+    <div class="space-y-4 text-xs">
       <div>
-        <div class="font-bold text-emerald-300 text-[11px] mb-1">🧮 H2H tại World Cup</div>
-        <table class="data-table w-full text-[11px]">
+        <div class="font-bold text-emerald-300 text-[11px] mb-2 uppercase tracking-wider">🧮 Đối đầu lịch sử (H2H)</div>
+        <table class="data-table w-full">
           <tr><th>Tổng số trận</th><td class="text-white font-semibold">${h2h.total}</td></tr>
           <tr><th>${teamA} thắng / Hòa / ${teamB} thắng</th><td class="text-white">${h2h.a_wins} / ${h2h.draws} / ${h2h.b_wins}</td></tr>
           <tr><th>Tổng bàn thắng</th><td class="text-white">${teamA} ${h2h.a_goals_total} – ${h2h.b_goals_total} ${teamB}</td></tr>
@@ -9821,33 +9989,33 @@ function renderFeatureTable(teamA, teamB, feat) {
           <tr><th>Win rate time-decayed của ${teamA}</th><td class="text-white">${h2h.time_decay_win_rate_a != null ? pct(h2h.time_decay_win_rate_a) + "%" : "—"}</td></tr>
         </table>
       </div>
-      <div class="grid sm:grid-cols-2 gap-3">
+      <div class="grid sm:grid-cols-2 gap-4">
         <div>
-          <div class="font-bold text-emerald-300 text-[11px] mb-1">💪 Sức mạnh ${teamA}</div>
-          <table class="data-table w-full text-[11px]">
+          <div class="font-bold text-emerald-300 text-[11px] mb-2 uppercase tracking-wider">💪 Sức mạnh ${teamA}</div>
+          <table class="data-table w-full">
             <tr><th>Số kỳ WC tham dự</th><td class="text-white">${tsA.wc_appearances}</td></tr>
             <tr><th>Chức vô địch</th><td class="text-white">${tsA.wc_titles}</td></tr>
-            <tr><th>Trận / Thắng / Hòa / Thua</th><td class="text-white">${tsA.all_time_matches}/${tsA.all_time_wins}/${tsA.all_time_draws}/${tsA.all_time_losses}</td></tr>
+            <tr><th>Trận / T / H / Th</th><td class="text-white">${tsA.all_time_matches}/${tsA.all_time_wins}/${tsA.all_time_draws}/${tsA.all_time_losses}</td></tr>
             <tr><th>Win rate</th><td class="text-white">${pct(tsA.win_rate)}%</td></tr>
             <tr><th>TB bàn thắng / thủng</th><td class="text-white">${fmtNum(tsA.avg_goals_for)} / ${fmtNum(tsA.avg_goals_against)}</td></tr>
-            <tr><th>2018+2022 (T-W-D-L)</th><td class="text-white">${tsA.recent_form_2018_2022.played}-${tsA.recent_form_2018_2022.won}-${tsA.recent_form_2018_2022.drawn}-${tsA.recent_form_2018_2022.lost}, ${tsA.recent_form_2018_2022.gf}/${tsA.recent_form_2018_2022.ga}</td></tr>
+            <tr><th>Recent 2018+2022</th><td class="text-white">${tsA.recent_form_2018_2022.played}-${tsA.recent_form_2018_2022.won}-${tsA.recent_form_2018_2022.drawn}-${tsA.recent_form_2018_2022.lost}, ${tsA.recent_form_2018_2022.gf}/${tsA.recent_form_2018_2022.ga}</td></tr>
           </table>
         </div>
         <div>
-          <div class="font-bold text-emerald-300 text-[11px] mb-1">💪 Sức mạnh ${teamB}</div>
-          <table class="data-table w-full text-[11px]">
+          <div class="font-bold text-blue-300 text-[11px] mb-2 uppercase tracking-wider">💪 Sức mạnh ${teamB}</div>
+          <table class="data-table w-full">
             <tr><th>Số kỳ WC tham dự</th><td class="text-white">${tsB.wc_appearances}</td></tr>
             <tr><th>Chức vô địch</th><td class="text-white">${tsB.wc_titles}</td></tr>
-            <tr><th>Trận / Thắng / Hòa / Thua</th><td class="text-white">${tsB.all_time_matches}/${tsB.all_time_wins}/${tsB.all_time_draws}/${tsB.all_time_losses}</td></tr>
+            <tr><th>Trận / T / H / Th</th><td class="text-white">${tsB.all_time_matches}/${tsB.all_time_wins}/${tsB.all_time_draws}/${tsB.all_time_losses}</td></tr>
             <tr><th>Win rate</th><td class="text-white">${pct(tsB.win_rate)}%</td></tr>
             <tr><th>TB bàn thắng / thủng</th><td class="text-white">${fmtNum(tsB.avg_goals_for)} / ${fmtNum(tsB.avg_goals_against)}</td></tr>
-            <tr><th>2018+2022 (T-W-D-L)</th><td class="text-white">${tsB.recent_form_2018_2022.played}-${tsB.recent_form_2018_2022.won}-${tsB.recent_form_2018_2022.drawn}-${tsB.recent_form_2018_2022.lost}, ${tsB.recent_form_2018_2022.gf}/${tsB.recent_form_2018_2022.ga}</td></tr>
+            <tr><th>Recent 2018+2022</th><td class="text-white">${tsB.recent_form_2018_2022.played}-${tsB.recent_form_2018_2022.won}-${tsB.recent_form_2018_2022.drawn}-${tsB.recent_form_2018_2022.lost}, ${tsB.recent_form_2018_2022.gf}/${tsB.recent_form_2018_2022.ga}</td></tr>
           </table>
         </div>
       </div>
       <div>
-        <div class="font-bold text-emerald-300 text-[11px] mb-1">🌍 Bối cảnh 2026</div>
-        <table class="data-table w-full text-[11px]">
+        <div class="font-bold text-emerald-300 text-[11px] mb-2 uppercase tracking-wider">🌍 Bối cảnh 2026</div>
+        <table class="data-table w-full">
           <tr><th>Tier ${teamA} vs ${teamB}</th><td class="text-white">Tier ${ctx.rank_tier_a} vs Tier ${ctx.rank_tier_b}</td></tr>
           <tr><th>Lợi thế sân nhà</th><td class="text-white">${ctx.host_advantage === "A" ? teamA : ctx.host_advantage === "B" ? teamB : ctx.host_advantage === "both" ? "Cả hai" : "Không"}</td></tr>
           <tr><th>Liên đoàn</th><td class="text-white">${ctx.confederation_matchup}</td></tr>
@@ -10113,6 +10281,43 @@ function init() {
   document.getElementById("predictAllBtn").addEventListener("click", predictAll);
   document.getElementById("clearCacheBtn").addEventListener("click", clearCache);
 
+  // Prediction detail modal
+  document.getElementById("closePredictionBtn").addEventListener("click", closePredictionModal);
+  document.getElementById("predictionModal").addEventListener("click", (e) => {
+    if (e.target.id === "predictionModal") closePredictionModal();
+  });
+  document.querySelectorAll(".pred-tab").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".pred-tab").forEach(b => b.classList.toggle("active", b === btn));
+      renderModalTab(btn.dataset.tab);
+    });
+  });
+
+  // Delegated: click on predicted row OR 📊 btn → open prediction modal
+  document.getElementById("groupsContainer").addEventListener("click", (e) => {
+    // Ignore clicks on the original 🔮 predict button (handled separately)
+    if (e.target.closest(".predict-match-btn")) return;
+
+    const openBtn = e.target.closest(".open-modal-btn");
+    const predictedRow = e.target.closest(".match-row.predicted");
+    const row = openBtn ? openBtn.closest(".match-row") : predictedRow;
+    if (!row) return;
+    const matchNum = parseInt(row.dataset.match, 10);
+    const fixture = FIXTURES_2026.find(f => f.match === matchNum);
+    if (!fixture) return;
+    const cached = localStorage.getItem(`pred_match_${matchNum}`);
+    if (!cached) return;
+    try { openPredictionModal(fixture, JSON.parse(cached)); } catch (err) {}
+  });
+  // Keyboard: Enter/Space on focused predicted row opens modal
+  document.getElementById("groupsContainer").addEventListener("keydown", (e) => {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    const row = e.target.closest(".match-row.predicted");
+    if (!row) return;
+    e.preventDefault();
+    row.click();
+  });
+
   // Close modals on backdrop click
   document.getElementById("settingsModal").addEventListener("click", (e) => {
     if (e.target.id === "settingsModal") closeSettings();
@@ -10122,7 +10327,7 @@ function init() {
   });
   // ESC closes modals
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") { closeSettings(); closeMethodology(); }
+    if (e.key === "Escape") { closeSettings(); closeMethodology(); closePredictionModal(); }
   });
 
   // First-time hint
