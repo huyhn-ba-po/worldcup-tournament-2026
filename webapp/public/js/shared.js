@@ -77,8 +77,10 @@ export function renderFooter() {
       <p class="mt-2 text-slate-400">Tác giả: <b class="text-emerald-300">huyhn (Huỳnh Nhật Huy)</b></p>
       <div class="mt-3 flex items-center justify-center gap-2 flex-wrap">
         <a href="https://github.com/huyhn-ba-po/worldcup-tournament-2026" target="_blank" rel="noopener"
-           class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs no-underline transition border border-slate-700 hover:border-emerald-500 hover:bg-emerald-500/10 text-slate-300">
-          GitHub
+           class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold no-underline transition border hover:scale-105"
+           style="border-color: rgba(245, 158, 11, 0.4); color: #fcd34d; background: rgba(245, 158, 11, 0.05);">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          Star GitHub
         </a>
         <button type="button" data-donate-trigger
            class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition hover:scale-105 cursor-pointer border-0"
