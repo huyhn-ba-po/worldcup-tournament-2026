@@ -1,0 +1,287 @@
+{
+  "source": "all_internationals.json (1872-2025)",
+  "method": "FIFA-style Elo with K-factor by tournament + margin of victory multiplier",
+  "default_rating": 1500,
+  "computed_at": "2026-05-15T14:23:57.308Z",
+  "matches_processed": 47980,
+  "k_factors": {
+    "fifa_world_cup": 55,
+    "fifa_world_cup_qualification": 35,
+    "uefa_euro": 45,
+    "uefa_euro_qualification": 30,
+    "uefa_nations_league": 35,
+    "copa_america": 45,
+    "copa_america_qualification": 30,
+    "african_cup_of_nations": 40,
+    "african_cup_of_nations_qualification": 30,
+    "afc_asian_cup": 40,
+    "afc_asian_cup_qualification": 30,
+    "gold_cup": 40,
+    "gold_cup_qualification": 30,
+    "concacaf_championship_qualification": 30,
+    "concacaf_nations_league": 30,
+    "concacaf_nations_league_qualification": 25,
+    "oceania_nations_cup": 35,
+    "oceania_nations_cup_qualification": 25,
+    "oceania_nations_cup_qualification_for_2026": 25,
+    "arab_cup": 30,
+    "asean_championship": 30,
+    "saff_cup": 25,
+    "gulf_cup": 25,
+    "friendly": 20,
+    "olympic_games": 25,
+    "fifa_confederations_cup": 40
+  },
+  "wc2026": {
+    "Mexico": 1834,
+    "South Africa": 1653,
+    "South Korea": 1830,
+    "Czech Republic": 1750,
+    "Canada": 1811,
+    "Bosnia & Herzegovina": 1576,
+    "Qatar": 1660,
+    "Switzerland": 1828,
+    "Brazil": 2001,
+    "Morocco": 1844,
+    "Haiti": 1643,
+    "Scotland": 1749,
+    "United States": 1855,
+    "Paraguay": 1750,
+    "Australia": 1805,
+    "Turkey": 1762,
+    "Germany": 1984,
+    "Curaçao": 1522,
+    "Ivory Coast": 1718,
+    "Ecuador": 1893,
+    "Netherlands": 1958,
+    "Japan": 1945,
+    "Sweden": 1774,
+    "Tunisia": 1719,
+    "Belgium": 1886,
+    "Egypt": 1743,
+    "Iran": 1866,
+    "New Zealand": 1749,
+    "Spain": 2104,
+    "Cape Verde": 1583,
+    "Saudi Arabia": 1650,
+    "Uruguay": 1931,
+    "France": 2026,
+    "Senegal": 1798,
+    "Iraq": 1697,
+    "Norway": 1783,
+    "Argentina": 2075,
+    "Algeria": 1765,
+    "Austria": 1854,
+    "Jordan": 1703,
+    "Portugal": 1989,
+    "DR Congo": 1654,
+    "Uzbekistan": 1767,
+    "Colombia": 1971,
+    "England": 1992,
+    "Croatia": 1883,
+    "Ghana": 1588,
+    "Panama": 1754
+  },
+  "top_50_global": [
+    {
+      "team": "Spain",
+      "rating": 2104
+    },
+    {
+      "team": "Argentina",
+      "rating": 2075
+    },
+    {
+      "team": "France",
+      "rating": 2026
+    },
+    {
+      "team": "Brazil",
+      "rating": 2001
+    },
+    {
+      "team": "England",
+      "rating": 1992
+    },
+    {
+      "team": "Portugal",
+      "rating": 1989
+    },
+    {
+      "team": "Germany",
+      "rating": 1984
+    },
+    {
+      "team": "Colombia",
+      "rating": 1971
+    },
+    {
+      "team": "Netherlands",
+      "rating": 1958
+    },
+    {
+      "team": "Japan",
+      "rating": 1945
+    },
+    {
+      "team": "Uruguay",
+      "rating": 1931
+    },
+    {
+      "team": "Italy",
+      "rating": 1925
+    },
+    {
+      "team": "Ecuador",
+      "rating": 1893
+    },
+    {
+      "team": "Belgium",
+      "rating": 1886
+    },
+    {
+      "team": "Croatia",
+      "rating": 1883
+    },
+    {
+      "team": "Denmark",
+      "rating": 1870
+    },
+    {
+      "team": "Iran",
+      "rating": 1866
+    },
+    {
+      "team": "United States",
+      "rating": 1855
+    },
+    {
+      "team": "Austria",
+      "rating": 1854
+    },
+    {
+      "team": "Morocco",
+      "rating": 1844
+    },
+    {
+      "team": "Mexico",
+      "rating": 1834
+    },
+    {
+      "team": "South Korea",
+      "rating": 1830
+    },
+    {
+      "team": "Switzerland",
+      "rating": 1828
+    },
+    {
+      "team": "Serbia",
+      "rating": 1815
+    },
+    {
+      "team": "Canada",
+      "rating": 1811
+    },
+    {
+      "team": "Australia",
+      "rating": 1805
+    },
+    {
+      "team": "Senegal",
+      "rating": 1798
+    },
+    {
+      "team": "Greece",
+      "rating": 1797
+    },
+    {
+      "team": "Russia",
+      "rating": 1786
+    },
+    {
+      "team": "Norway",
+      "rating": 1783
+    },
+    {
+      "team": "Jersey",
+      "rating": 1778
+    },
+    {
+      "team": "Hungary",
+      "rating": 1778
+    },
+    {
+      "team": "Sweden",
+      "rating": 1774
+    },
+    {
+      "team": "Venezuela",
+      "rating": 1773
+    },
+    {
+      "team": "Ukraine",
+      "rating": 1769
+    },
+    {
+      "team": "Uzbekistan",
+      "rating": 1767
+    },
+    {
+      "team": "Algeria",
+      "rating": 1765
+    },
+    {
+      "team": "Turkey",
+      "rating": 1762
+    },
+    {
+      "team": "Basque Country",
+      "rating": 1762
+    },
+    {
+      "team": "Peru",
+      "rating": 1760
+    },
+    {
+      "team": "Panama",
+      "rating": 1754
+    },
+    {
+      "team": "Poland",
+      "rating": 1751
+    },
+    {
+      "team": "Czech Republic",
+      "rating": 1750
+    },
+    {
+      "team": "Paraguay",
+      "rating": 1750
+    },
+    {
+      "team": "Scotland",
+      "rating": 1749
+    },
+    {
+      "team": "New Zealand",
+      "rating": 1749
+    },
+    {
+      "team": "Wales",
+      "rating": 1749
+    },
+    {
+      "team": "Chile",
+      "rating": 1748
+    },
+    {
+      "team": "Egypt",
+      "rating": 1743
+    },
+    {
+      "team": "Slovenia",
+      "rating": 1732
+    }
+  ]
+}

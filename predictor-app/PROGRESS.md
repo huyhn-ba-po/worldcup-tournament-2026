@@ -130,9 +130,73 @@ Clone 3 repo vào [_data_openfootball/](_data_openfootball/):
 
 ---
 
-## ⏳ Phase 2 — Còn lại (TODO)
+## ✅ Phase 2 — Hybrid Stats + LLM Pipeline (DONE 2026-05-15)
 
-### Phase 2.1 — Wikipedia squads scrape (chưa làm)
+Backtest WC2018+2022 (128 matches, leak-free): **55.5% accuracy 3-way · Brier 0.58 · LogLoss 0.98**
+
+Architecture: **Stats Baseline → Gemini với constraint ±15%**
+
+### Phase 2.1 — Elo rating (47k matches → 48 teams)
+- `build_elo.js`: FIFA-style Elo với K-factor by tournament (WC=55, qual=35, friendly=20) + MOV multiplier
+- Output: `elo_ratings.json` (5.1 KB) với 48 đội WC2026 + top 50 thế giới
+- Top: Spain 2104, Argentina 2075, France 2026, Brazil 2001, England 1992
+
+### Phase 2.2 — Poisson α/δ per team
+- `build_poisson.js`: fit attack/defense rate từ 6,028 trận major tournaments 2014+
+- Time-decay weight `exp(-0.10 × age_years)`
+- Output: `poisson_params.json` (7.4 KB)
+- Note: Naive Poisson — bias cho OFC/AFC teams nhiều qualifier weak opponents (NZ α=2.46). Aggregator bù lại.
+
+### Phase 2.3 — WC overlay (4 signals)
+- `build_wc_overlay.js`: Output `wc_overlay.json` (13.2 KB)
+- **WCOI**: WC win rate - All-time win rate (+ overperformer, - underperformer)
+  - Iran -0.41, SK -0.36, Saudi -0.33 (AFC underperform at WC)
+  - Mexico -0.21 ("knockout curse")
+- **Stage params**: avg goals + draw rate (group 2.65g/25%, final 3.78g/33%)
+- **Conf×Stage matrix**: e.g. UEFA vs AFC group = 61/18/21 from 61 matches
+- **Host effects**: Mexico Azteca +200 Elo, USA/Canada +150/+130
+
+### Phase 2.4 — Backtest WC2018+2022 (leak-free)
+- `backtest_wc.js`: re-build Elo at start of WC2018 & WC2022, predict 128 matches
+- Grid search 9 weight combos
+- Best: elo=0.35, poisson=0.35, conf=0.20, wcoi=0.10
+- Compared:
+  - Hybrid: 55.5% acc · 0.58 Brier · 0.98 logloss
+  - Elo-only: 56.3% acc · 0.59 Brier · 0.99 logloss
+  - Poisson-only: 46.1% acc · 0.65 Brier · 1.08 logloss (naive)
+
+### Phase 2.5 — Wire vào app
+- `build_embed_stats.js`: combine Elo + Poisson + WC overlay → `embedded_stats.js` (12.5 KB)
+- Inject vào `index.html` → `STATS_DATA` global
+- `computeStatsBaseline(teamA, teamB, stage, fixture)`: aggregator chạy in-browser
+- `computeMatchFeatures` augmented với `stats_baseline`
+- `buildGeminiPrompt`: prepend STATS BASELINE block + "anchor ±15%" instruction
+
+### Files added trong _data_openfootball/
+```
+build_elo.js              elo_ratings.json
+build_poisson.js          poisson_params.json
+build_wc_overlay.js       wc_overlay.json
+backtest_wc.js            backtest_report.json
+build_embed_stats.js      embedded_stats.js
+```
+
+### Sample baseline output (Mexico vs South Africa, Match 1)
+```
+Aggregate: 55% Mexico / 22% Draw / 23% South Africa
+Expected score: 1.33 - 0.79  (top: 1-0 16%, 1-1 13%, 0-0 12%)
+Elo: 1934 (host+100) vs 1653 → 68/18/14
+Conf×Stage: CAF|CONCACAF|group n=9 → 33/22/44
+WCOI: Mexico -0.21 (underperformer), SA -0.15
+```
+
+LLM thấy stats baseline rồi adjust ±15% dựa trên qualitative (form 2025, chấn thương, motivation…) — kỳ vọng đẩy accuracy 55.5% (stats-only) → 58-62% (stats + LLM).
+
+---
+
+## ⏳ Phase 3 — Còn lại (TODO)
+
+### Phase 3.1 — Wikipedia squads scrape (chưa làm)
 
 Lấy đội hình 26-man WC2026 cho 48 đội từ Wikipedia squad pages. Mục tiêu: thêm "key players" + "đội hình" vào AI prompt.
 

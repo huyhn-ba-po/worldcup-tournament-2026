@@ -9257,6 +9257,618 @@ const HISTORICAL_MATCHES = [{"h":"Scotland","a":"England","y":1872,"hg":0,"ag":0
 // ============================================================
 // === DATA: GROUPS + FIXTURES ================================
 // ============================================================
+// === EMBEDDED STATS ===
+// Auto-generated from build_embed_stats.js
+// Sources: openfootball/* (CC0 Public Domain)
+// Backtest WC2018+2022: 55.5% accuracy, Brier 0.5797, LogLoss 0.979
+const STATS_DATA = {
+  "meta": {
+    "description": "Hybrid stats baseline for WC2026 prediction (Elo + Poisson + WC overlay)",
+    "generated_at": "2026-05-15T14:52:14.929Z",
+    "backtest_acc": 0.5547,
+    "backtest_brier": 0.5797,
+    "backtest_logloss": 0.979,
+    "sources": [
+      "openfootball/internationals (1872-2025, 47980 matches)",
+      "openfootball/worldcup.json (1930-2026)"
+    ]
+  },
+  "weights": {
+    "elo": 0.35,
+    "poisson": 0.35,
+    "conf": 0.2,
+    "wcoi": 0.1
+  },
+  "poisson_global_avg": 1.353,
+  "poisson_home_boost": 1.25,
+  "teams": {
+    "Mexico": {
+      "elo": 1834,
+      "attack": 1.164,
+      "defense": 0.557,
+      "wcoi": -0.209,
+      "wc_matches": 60
+    },
+    "South Africa": {
+      "elo": 1653,
+      "attack": 1.048,
+      "defense": 0.675,
+      "wcoi": -0.151,
+      "wc_matches": 9
+    },
+    "South Korea": {
+      "elo": 1830,
+      "attack": 1.437,
+      "defense": 0.542,
+      "wcoi": -0.356,
+      "wc_matches": 38
+    },
+    "Czech Republic": {
+      "elo": 1750,
+      "attack": 1.044,
+      "defense": 0.901,
+      "wcoi": -0.136,
+      "wc_matches": 33
+    },
+    "Canada": {
+      "elo": 1811,
+      "attack": 1.485,
+      "defense": 0.681,
+      "wcoi": -0.49,
+      "wc_matches": 6
+    },
+    "Bosnia & Herzegovina": {
+      "elo": 1576,
+      "attack": 0.94,
+      "defense": 1.245,
+      "wcoi": 0,
+      "wc_matches": 0
+    },
+    "Qatar": {
+      "elo": 1660,
+      "attack": 1.411,
+      "defense": 0.817,
+      "wcoi": -0.535,
+      "wc_matches": 3
+    },
+    "Switzerland": {
+      "elo": 1828,
+      "attack": 1.283,
+      "defense": 0.872,
+      "wcoi": -0.017,
+      "wc_matches": 41
+    },
+    "Brazil": {
+      "elo": 2001,
+      "attack": 1.372,
+      "defense": 0.456,
+      "wcoi": 0.008,
+      "wc_matches": 114
+    },
+    "Morocco": {
+      "elo": 1844,
+      "attack": 1.414,
+      "defense": 0.378,
+      "wcoi": -0.251,
+      "wc_matches": 23
+    },
+    "Haiti": {
+      "elo": 1643,
+      "attack": 1.744,
+      "defense": 0.852,
+      "wcoi": -0.532,
+      "wc_matches": 3
+    },
+    "Scotland": {
+      "elo": 1749,
+      "attack": 1.147,
+      "defense": 0.892,
+      "wcoi": -0.253,
+      "wc_matches": 23
+    },
+    "United States": {
+      "elo": 1855,
+      "attack": 1.556,
+      "defense": 0.563,
+      "wcoi": -0.168,
+      "wc_matches": 37
+    },
+    "Paraguay": {
+      "elo": 1750,
+      "attack": 0.628,
+      "defense": 0.947,
+      "wcoi": -0.02,
+      "wc_matches": 27
+    },
+    "Australia": {
+      "elo": 1805,
+      "attack": 1.471,
+      "defense": 0.56,
+      "wcoi": -0.314,
+      "wc_matches": 20
+    },
+    "Turkey": {
+      "elo": 1762,
+      "attack": 1.271,
+      "defense": 0.887,
+      "wcoi": -0.015,
+      "wc_matches": 10
+    },
+    "Germany": {
+      "elo": 1984,
+      "attack": 1.887,
+      "defense": 0.732,
+      "wcoi": 0.012,
+      "wc_matches": 117
+    },
+    "Curaçao": {
+      "elo": 1522,
+      "attack": 1.165,
+      "defense": 0.742,
+      "wcoi": 0,
+      "wc_matches": 0
+    },
+    "Ivory Coast": {
+      "elo": 1718,
+      "attack": 1.205,
+      "defense": 0.569,
+      "wcoi": -0.246,
+      "wc_matches": 9
+    },
+    "Ecuador": {
+      "elo": 1893,
+      "attack": 0.91,
+      "defense": 0.814,
+      "wcoi": 0.025,
+      "wc_matches": 13
+    },
+    "Netherlands": {
+      "elo": 1958,
+      "attack": 1.612,
+      "defense": 0.772,
+      "wcoi": 0.074,
+      "wc_matches": 55
+    },
+    "Japan": {
+      "elo": 1945,
+      "attack": 1.957,
+      "defense": 0.51,
+      "wcoi": -0.193,
+      "wc_matches": 25
+    },
+    "Sweden": {
+      "elo": 1774,
+      "attack": 1.267,
+      "defense": 0.816,
+      "wcoi": -0.091,
+      "wc_matches": 51
+    },
+    "Tunisia": {
+      "elo": 1719,
+      "attack": 1.066,
+      "defense": 0.487,
+      "wcoi": -0.269,
+      "wc_matches": 18
+    },
+    "Belgium": {
+      "elo": 1886,
+      "attack": 1.714,
+      "defense": 0.616,
+      "wcoi": -0.039,
+      "wc_matches": 51
+    },
+    "Egypt": {
+      "elo": 1743,
+      "attack": 1.172,
+      "defense": 0.458,
+      "wcoi": -0.481,
+      "wc_matches": 7
+    },
+    "Iran": {
+      "elo": 1866,
+      "attack": 1.562,
+      "defense": 0.531,
+      "wcoi": -0.411,
+      "wc_matches": 18
+    },
+    "New Zealand": {
+      "elo": 1749,
+      "attack": 2.462,
+      "defense": 0.228,
+      "wcoi": -0.257,
+      "wc_matches": 6
+    },
+    "Spain": {
+      "elo": 2104,
+      "attack": 1.702,
+      "defense": 0.536,
+      "wcoi": -0.113,
+      "wc_matches": 67
+    },
+    "Cape Verde": {
+      "elo": 1583,
+      "attack": 0.791,
+      "defense": 0.715,
+      "wcoi": 0,
+      "wc_matches": 0
+    },
+    "Saudi Arabia": {
+      "elo": 1650,
+      "attack": 1.15,
+      "defense": 0.601,
+      "wcoi": -0.327,
+      "wc_matches": 19
+    },
+    "Uruguay": {
+      "elo": 1931,
+      "attack": 0.989,
+      "defense": 0.66,
+      "wcoi": -0.03,
+      "wc_matches": 59
+    },
+    "France": {
+      "elo": 2026,
+      "attack": 1.484,
+      "defense": 0.576,
+      "wcoi": 0.01,
+      "wc_matches": 73
+    },
+    "Senegal": {
+      "elo": 1798,
+      "attack": 1.231,
+      "defense": 0.397,
+      "wcoi": -0.051,
+      "wc_matches": 12
+    },
+    "Iraq": {
+      "elo": 1697,
+      "attack": 1.097,
+      "defense": 0.69,
+      "wcoi": -0.608,
+      "wc_matches": 3
+    },
+    "Norway": {
+      "elo": 1783,
+      "attack": 1.238,
+      "defense": 0.844,
+      "wcoi": 0.015,
+      "wc_matches": 8
+    },
+    "Argentina": {
+      "elo": 2075,
+      "attack": 1.2,
+      "defense": 0.494,
+      "wcoi": -0.052,
+      "wc_matches": 88
+    },
+    "Algeria": {
+      "elo": 1765,
+      "attack": 1.577,
+      "defense": 0.634,
+      "wcoi": -0.203,
+      "wc_matches": 13
+    },
+    "Austria": {
+      "elo": 1854,
+      "attack": 1.261,
+      "defense": 0.842,
+      "wcoi": -0.063,
+      "wc_matches": 29
+    },
+    "Jordan": {
+      "elo": 1703,
+      "attack": 1.447,
+      "defense": 0.603,
+      "wcoi": 0,
+      "wc_matches": 0
+    },
+    "Portugal": {
+      "elo": 1989,
+      "attack": 1.631,
+      "defense": 0.537,
+      "wcoi": -0.042,
+      "wc_matches": 35
+    },
+    "DR Congo": {
+      "elo": 1654,
+      "attack": 1.043,
+      "defense": 0.654,
+      "wcoi": -0.525,
+      "wc_matches": 3
+    },
+    "Uzbekistan": {
+      "elo": 1767,
+      "attack": 1.282,
+      "defense": 0.559,
+      "wcoi": 0,
+      "wc_matches": 0
+    },
+    "Colombia": {
+      "elo": 1971,
+      "attack": 0.936,
+      "defense": 0.62,
+      "wcoi": -0.04,
+      "wc_matches": 22
+    },
+    "England": {
+      "elo": 1992,
+      "attack": 1.656,
+      "defense": 0.521,
+      "wcoi": -0.116,
+      "wc_matches": 74
+    },
+    "Croatia": {
+      "elo": 1883,
+      "attack": 1.195,
+      "defense": 0.808,
+      "wcoi": -0.106,
+      "wc_matches": 30
+    },
+    "Ghana": {
+      "elo": 1588,
+      "attack": 0.983,
+      "defense": 0.686,
+      "wcoi": -0.197,
+      "wc_matches": 15
+    },
+    "Panama": {
+      "elo": 1754,
+      "attack": 1.193,
+      "defense": 0.919,
+      "wcoi": -0.453,
+      "wc_matches": 3
+    }
+  },
+  "team_confederation": {
+    "Argentina": "CONMEBOL",
+    "Brazil": "CONMEBOL",
+    "Uruguay": "CONMEBOL",
+    "Colombia": "CONMEBOL",
+    "Ecuador": "CONMEBOL",
+    "Paraguay": "CONMEBOL",
+    "Chile": "CONMEBOL",
+    "Peru": "CONMEBOL",
+    "Bolivia": "CONMEBOL",
+    "Venezuela": "CONMEBOL",
+    "France": "UEFA",
+    "Spain": "UEFA",
+    "England": "UEFA",
+    "Portugal": "UEFA",
+    "Netherlands": "UEFA",
+    "Belgium": "UEFA",
+    "Italy": "UEFA",
+    "Germany": "UEFA",
+    "Croatia": "UEFA",
+    "Switzerland": "UEFA",
+    "Denmark": "UEFA",
+    "Austria": "UEFA",
+    "Serbia": "UEFA",
+    "Poland": "UEFA",
+    "Turkey": "UEFA",
+    "Scotland": "UEFA",
+    "Sweden": "UEFA",
+    "Norway": "UEFA",
+    "Bosnia & Herzegovina": "UEFA",
+    "Czech Republic": "UEFA",
+    "Hungary": "UEFA",
+    "Republic of Ireland": "UEFA",
+    "Northern Ireland": "UEFA",
+    "Wales": "UEFA",
+    "Greece": "UEFA",
+    "Romania": "UEFA",
+    "Russia": "UEFA",
+    "Mexico": "CONCACAF",
+    "Canada": "CONCACAF",
+    "United States": "CONCACAF",
+    "Panama": "CONCACAF",
+    "Haiti": "CONCACAF",
+    "Curaçao": "CONCACAF",
+    "Honduras": "CONCACAF",
+    "Costa Rica": "CONCACAF",
+    "Jamaica": "CONCACAF",
+    "El Salvador": "CONCACAF",
+    "Senegal": "CAF",
+    "Morocco": "CAF",
+    "Egypt": "CAF",
+    "Tunisia": "CAF",
+    "Nigeria": "CAF",
+    "Ivory Coast": "CAF",
+    "Algeria": "CAF",
+    "Ghana": "CAF",
+    "Mali": "CAF",
+    "South Africa": "CAF",
+    "Cape Verde": "CAF",
+    "DR Congo": "CAF",
+    "Cameroon": "CAF",
+    "Angola": "CAF",
+    "Zambia": "CAF",
+    "Japan": "AFC",
+    "South Korea": "AFC",
+    "Iran": "AFC",
+    "Australia": "AFC",
+    "Saudi Arabia": "AFC",
+    "Qatar": "AFC",
+    "Uzbekistan": "AFC",
+    "Jordan": "AFC",
+    "Iraq": "AFC",
+    "United Arab Emirates": "AFC",
+    "New Zealand": "OFC"
+  },
+  "conf_stage_matrix": {
+    "CONCACAF|UEFA|group": {
+      "n": 75,
+      "c1_win_rate": 0.16,
+      "draw_rate": 0.267,
+      "c2_win_rate": 0.573
+    },
+    "CONMEBOL|UEFA|group": {
+      "n": 149,
+      "c1_win_rate": 0.383,
+      "draw_rate": 0.255,
+      "c2_win_rate": 0.362
+    },
+    "CONCACAF|CONMEBOL|group": {
+      "n": 22,
+      "c1_win_rate": 0.182,
+      "draw_rate": 0.136,
+      "c2_win_rate": 0.682
+    },
+    "CONMEBOL|CONMEBOL|group": {
+      "n": 9,
+      "c1_win_rate": 0.556,
+      "draw_rate": 0.111,
+      "c2_win_rate": 0.333
+    },
+    "CONCACAF|CONMEBOL|knockout": {
+      "n": 5,
+      "c1_win_rate": 0,
+      "draw_rate": 0.2,
+      "c2_win_rate": 0.8
+    },
+    "CONMEBOL|UEFA|knockout": {
+      "n": 76,
+      "c1_win_rate": 0.395,
+      "draw_rate": 0.263,
+      "c2_win_rate": 0.342
+    },
+    "CONMEBOL|CONMEBOL|knockout": {
+      "n": 12,
+      "c1_win_rate": 0.75,
+      "draw_rate": 0.083,
+      "c2_win_rate": 0.167
+    },
+    "UEFA|UEFA|knockout": {
+      "n": 87,
+      "c1_win_rate": 0.494,
+      "draw_rate": 0.253,
+      "c2_win_rate": 0.253
+    },
+    "UEFA|UEFA|group": {
+      "n": 144,
+      "c1_win_rate": 0.528,
+      "draw_rate": 0.257,
+      "c2_win_rate": 0.215
+    },
+    "AFC|UEFA|group": {
+      "n": 61,
+      "c1_win_rate": 0.213,
+      "draw_rate": 0.18,
+      "c2_win_rate": 0.607
+    },
+    "CAF|UEFA|group": {
+      "n": 75,
+      "c1_win_rate": 0.187,
+      "draw_rate": 0.307,
+      "c2_win_rate": 0.507
+    },
+    "CAF|CONMEBOL|group": {
+      "n": 28,
+      "c1_win_rate": 0.143,
+      "draw_rate": 0.143,
+      "c2_win_rate": 0.714
+    },
+    "CONCACAF|UEFA|knockout": {
+      "n": 10,
+      "c1_win_rate": 0,
+      "draw_rate": 0.4,
+      "c2_win_rate": 0.6
+    },
+    "AFC|CONMEBOL|group": {
+      "n": 20,
+      "c1_win_rate": 0.1,
+      "draw_rate": 0.15,
+      "c2_win_rate": 0.75
+    },
+    "CAF|CONCACAF|group": {
+      "n": 9,
+      "c1_win_rate": 0.444,
+      "draw_rate": 0.222,
+      "c2_win_rate": 0.333
+    },
+    "OFC|UEFA|group": {
+      "n": 3,
+      "c1_win_rate": 0,
+      "draw_rate": 0.333,
+      "c2_win_rate": 0.667
+    },
+    "AFC|CONCACAF|group": {
+      "n": 10,
+      "c1_win_rate": 0.1,
+      "draw_rate": 0.1,
+      "c2_win_rate": 0.8
+    },
+    "CAF|UEFA|knockout": {
+      "n": 13,
+      "c1_win_rate": 0.077,
+      "draw_rate": 0.462,
+      "c2_win_rate": 0.462
+    },
+    "CAF|CONMEBOL|knockout": {
+      "n": 3,
+      "c1_win_rate": 0,
+      "draw_rate": 0.667,
+      "c2_win_rate": 0.333
+    },
+    "AFC|CAF|group": {
+      "n": 18,
+      "c1_win_rate": 0.333,
+      "draw_rate": 0.389,
+      "c2_win_rate": 0.278
+    },
+    "AFC|UEFA|knockout": {
+      "n": 9,
+      "c1_win_rate": 0,
+      "draw_rate": 0.333,
+      "c2_win_rate": 0.667
+    },
+    "AFC|CONMEBOL|knockout": {
+      "n": 4,
+      "c1_win_rate": 0,
+      "draw_rate": 0.25,
+      "c2_win_rate": 0.75
+    }
+  },
+  "stage_params": {
+    "group": {
+      "matches": 696,
+      "avg_goals_per_match": 2.65,
+      "draw_rate": 0.249
+    },
+    "r16_r32": {
+      "matches": 80,
+      "avg_goals_per_match": 2.44,
+      "draw_rate": 0.325
+    },
+    "quarterfinal": {
+      "matches": 70,
+      "avg_goals_per_match": 2.66,
+      "draw_rate": 0.286
+    },
+    "semifinal": {
+      "matches": 38,
+      "avg_goals_per_match": 3.11,
+      "draw_rate": 0.237
+    },
+    "final": {
+      "matches": 27,
+      "avg_goals_per_match": 3.78,
+      "draw_rate": 0.333
+    },
+    "third": {
+      "matches": 20,
+      "avg_goals_per_match": 3.7,
+      "draw_rate": 0.05
+    }
+  },
+  "host_boosts": {
+    "Mexico|Estadio Azteca": 200,
+    "Mexico|Guadalajara (Zapopan)": 180,
+    "Mexico|Monterrey (Guadalupe)": 170,
+    "United States|*": 150,
+    "Canada|*": 130
+  }
+};
+
 // FIFA official draw 2025-12-05 — data từ openfootball/worldcup.json + 7m.com.cn (đã verify)
 const GROUPS_2026 = {
   A: ["Mexico", "South Africa", "South Korea", "Czech Republic"],
@@ -9542,7 +10154,106 @@ function computeTeamStrength(team) {
   };
 }
 
-function computeMatchFeatures(teamA, teamB, groupLetter) {
+// === HYBRID STATS BASELINE (Elo + Poisson + Conf×Stage + WCOI) ===
+// Backtest WC2018+2022: 55.5% accuracy 3-way (vs Elo-only 56.3%, Poisson-only 46.1%)
+function expectedWinElo(rA, rB) { return 1 / (1 + Math.pow(10, (rB - rA) / 400)); }
+function clampStat(x, lo, hi) { return Math.max(lo, Math.min(hi, x)); }
+function poissonPmf(k, lambda) {
+  let logP = -lambda + k * Math.log(lambda || 1e-9);
+  for (let i = 2; i <= k; i++) logP -= Math.log(i);
+  return Math.exp(logP);
+}
+
+function computeStatsBaseline(teamA, teamB, stage, fixture) {
+  const tA = STATS_DATA.teams[teamA], tB = STATS_DATA.teams[teamB];
+  if (!tA || !tB) return null;
+
+  // Host boost from ground or fallback
+  let hostBoost = 0;
+  if (fixture && fixture.ground) {
+    if (STATS_DATA.host_boosts[`${teamA}|${fixture.ground}`]) hostBoost = STATS_DATA.host_boosts[`${teamA}|${fixture.ground}`];
+    else if (STATS_DATA.host_boosts[`${teamB}|${fixture.ground}`]) hostBoost = -STATS_DATA.host_boosts[`${teamB}|${fixture.ground}`];
+  }
+  if (hostBoost === 0) {
+    if ((TEAM_META[teamA] || {}).host) hostBoost = 100;
+    else if ((TEAM_META[teamB] || {}).host) hostBoost = -100;
+  }
+
+  // ELO probability
+  const rA = tA.elo + hostBoost;
+  const rB = tB.elo;
+  const eloWinA = expectedWinElo(rA, rB);
+  const eloGap = Math.abs(rA - rB);
+  const drawProb = Math.max(0.18, 0.32 - eloGap / 1500);
+  const pElo = { a: eloWinA * (1 - drawProb), d: drawProb, b: (1 - eloWinA) * (1 - drawProb) };
+
+  // POISSON
+  const G = STATS_DATA.poisson_global_avg;
+  const homeBoost = hostBoost > 0 ? STATS_DATA.poisson_home_boost :
+                    hostBoost < 0 ? 1 / STATS_DATA.poisson_home_boost : 1;
+  const lambdaA = tA.attack * tB.defense * G * homeBoost;
+  const lambdaB = tB.attack * tA.defense * G;
+  let pPoisA = 0, pPoisD = 0, pPoisB = 0;
+  const scoreProbs = [];
+  for (let i = 0; i <= 6; i++) {
+    for (let j = 0; j <= 6; j++) {
+      const p = poissonPmf(i, lambdaA) * poissonPmf(j, lambdaB);
+      if (i > j) pPoisA += p; else if (i < j) pPoisB += p; else pPoisD += p;
+      scoreProbs.push({ a: i, b: j, p });
+    }
+  }
+  const topScores = scoreProbs.sort((x, y) => y.p - x.p).slice(0, 3);
+
+  // CONF × STAGE matrix
+  const cA = STATS_DATA.team_confederation[teamA] || 'OTHER';
+  const cB = STATS_DATA.team_confederation[teamB] || 'OTHER';
+  const stageGroup = stage === 'group' ? 'group' : 'knockout';
+  const matKey = (cA <= cB ? `${cA}|${cB}` : `${cB}|${cA}`) + '|' + stageGroup;
+  const mat = STATS_DATA.conf_stage_matrix[matKey];
+  let pConf = { a: 0.33, d: 0.33, b: 0.34 };
+  if (mat && mat.n >= 5) {
+    const rev = cA > cB;
+    pConf = {
+      a: rev ? mat.c2_win_rate : mat.c1_win_rate,
+      d: mat.draw_rate,
+      b: rev ? mat.c1_win_rate : mat.c2_win_rate,
+    };
+  }
+
+  // WCOI adjustment
+  const wcoiDelta = tA.wcoi - tB.wcoi;
+  let pWcoi = {
+    a: clampStat(eloWinA + wcoiDelta * 0.5, 0.05, 0.95) * (1 - drawProb),
+    d: drawProb,
+    b: clampStat(1 - eloWinA - wcoiDelta * 0.5, 0.05, 0.95) * (1 - drawProb),
+  };
+  const ws = pWcoi.a + pWcoi.d + pWcoi.b;
+  pWcoi = { a: pWcoi.a / ws, d: pWcoi.d / ws, b: pWcoi.b / ws };
+
+  // AGGREGATE
+  const w = STATS_DATA.weights;
+  const pA = w.elo * pElo.a + w.poisson * pPoisA + w.conf * pConf.a + w.wcoi * pWcoi.a;
+  const pD = w.elo * pElo.d + w.poisson * pPoisD + w.conf * pConf.d + w.wcoi * pWcoi.d;
+  const pB = w.elo * pElo.b + w.poisson * pPoisB + w.conf * pConf.b + w.wcoi * pWcoi.b;
+  const tot = pA + pD + pB;
+
+  return {
+    prob_a: Math.round((pA / tot) * 100),
+    prob_d: Math.round((pD / tot) * 100),
+    prob_b: Math.round((pB / tot) * 100),
+    expected_score: { a: +lambdaA.toFixed(2), b: +lambdaB.toFixed(2) },
+    top_3_scores: topScores.map(s => ({ score: `${s.a}-${s.b}`, prob: Math.round(s.p * 100) })),
+    breakdown: {
+      elo:     { rA: Math.round(rA), rB: Math.round(rB), host_boost: hostBoost, p: { a: Math.round(pElo.a*100), d: Math.round(pElo.d*100), b: Math.round(pElo.b*100) } },
+      poisson: { lambdaA: +lambdaA.toFixed(2), lambdaB: +lambdaB.toFixed(2), p: { a: Math.round(pPoisA*100), d: Math.round(pPoisD*100), b: Math.round(pPoisB*100) } },
+      conf:    { key: matKey, n: mat?.n || 0, p: { a: Math.round(pConf.a*100), d: Math.round(pConf.d*100), b: Math.round(pConf.b*100) } },
+      wcoi:    { wcoi_a: tA.wcoi, wcoi_b: tB.wcoi, p: { a: Math.round(pWcoi.a*100), d: Math.round(pWcoi.d*100), b: Math.round(pWcoi.b*100) } },
+    },
+    weights: w,
+  };
+}
+
+function computeMatchFeatures(teamA, teamB, groupLetter, fixture) {
   const metaA = TEAM_META[teamA] || {};
   const metaB = TEAM_META[teamB] || {};
   let host_advantage = "none";
@@ -9550,12 +10261,16 @@ function computeMatchFeatures(teamA, teamB, groupLetter) {
   else if (!metaA.host && metaB.host) host_advantage = "B";
   else if (metaA.host && metaB.host) host_advantage = "both";
 
+  const stage = "group";
+  const stats_baseline = computeStatsBaseline(teamA, teamB, stage, fixture);
+
   return {
     h2h: computeH2H(teamA, teamB),
     team_a_strength: computeTeamStrength(teamA),
     team_b_strength: computeTeamStrength(teamB),
+    stats_baseline,
     context: {
-      stage: "group",
+      stage,
       group: groupLetter,
       host_advantage,
       rank_tier_a: metaA.rank_tier || 4,
@@ -9579,10 +10294,10 @@ function hostAdvantageVi(adv, teamA, teamB) {
 }
 
 function buildGeminiPrompt(fixture, features) {
-  const { home: teamA, away: teamB, group, match } = fixture;
+  const { home: teamA, away: teamB, group, match, ground, date, time } = fixture;
   const metaA = TEAM_META[teamA] || { flag: "🏳️" };
   const metaB = TEAM_META[teamB] || { flag: "🏳️" };
-  const { h2h, team_a_strength: tsA, team_b_strength: tsB, context: ctx } = features;
+  const { h2h, team_a_strength: tsA, team_b_strength: tsB, stats_baseline: sb, context: ctx } = features;
 
   const h2hTotalPct = h2h.total > 0 ? {
     a: Math.round(100 * h2h.a_wins / h2h.total),
@@ -9592,47 +10307,59 @@ function buildGeminiPrompt(fixture, features) {
 
   const lastMeeting = h2h.last_meeting
     ? `${h2h.last_meeting.year} (${teamA} ${h2h.last_meeting.score_a} - ${h2h.last_meeting.score_b} ${teamB})`
-    : "Chưa từng gặp tại World Cup";
+    : "Chưa từng gặp";
 
-  const decayLine = h2h.time_decay_win_rate_a != null
-    ? `Win rate time-decayed của ${teamA}: ${pct(h2h.time_decay_win_rate_a)}% (trận gần đây trọng số cao hơn)`
-    : `Win rate time-decayed: chưa có dữ liệu`;
+  // === STATS BASELINE BLOCK ===
+  let statsBlock = "";
+  if (sb) {
+    const topScoresStr = sb.top_3_scores.map(s => `${s.score} (${s.prob}%)`).join(", ");
+    const eloA = sb.breakdown.elo.rA, eloB = sb.breakdown.elo.rB;
+    statsBlock = `
+=== 🔬 STATS BASELINE (anchor, đã backtest WC2018+2022 = 55.5% accuracy) ===
+Đây là baseline thống kê — bạn PHẢI dùng làm điểm neo. Adjust ±15% trừ khi có lý do định tính rõ ràng (cite reason, max ±25%):
+
+▸ Xác suất aggregate (Elo 35% + Poisson 35% + Conf 20% + WCOI 10%):
+  ${teamA} thắng: ${sb.prob_a}%  |  Hòa: ${sb.prob_d}%  |  ${teamB} thắng: ${sb.prob_b}%
+
+▸ Tỉ số kỳ vọng (Poisson): ${teamA} ${sb.expected_score.a} - ${sb.expected_score.b} ${teamB}
+▸ Top 3 tỉ số khả năng nhất: ${topScoresStr}
+
+▸ Breakdown:
+  • Elo: ${teamA} ${eloA} (boost ${sb.breakdown.elo.host_boost >= 0 ? '+' : ''}${sb.breakdown.elo.host_boost}) vs ${teamB} ${eloB} → ${sb.breakdown.elo.p.a}/${sb.breakdown.elo.p.d}/${sb.breakdown.elo.p.b}
+  • Poisson: λ_${teamA}=${sb.breakdown.poisson.lambdaA} λ_${teamB}=${sb.breakdown.poisson.lambdaB} → ${sb.breakdown.poisson.p.a}/${sb.breakdown.poisson.p.d}/${sb.breakdown.poisson.p.b}
+  • Conf×Stage (${sb.breakdown.conf.key}, n=${sb.breakdown.conf.n}): ${sb.breakdown.conf.p.a}/${sb.breakdown.conf.p.d}/${sb.breakdown.conf.p.b}
+  • WCOI: ${teamA}=${sb.breakdown.wcoi.wcoi_a > 0 ? '+' : ''}${sb.breakdown.wcoi.wcoi_a} (${sb.breakdown.wcoi.wcoi_a > 0 ? 'overperformer' : 'underperformer'} tại WC), ${teamB}=${sb.breakdown.wcoi.wcoi_b > 0 ? '+' : ''}${sb.breakdown.wcoi.wcoi_b}
+`;
+  }
 
   return `Bạn là chuyên gia phân tích bóng đá, đang dự đoán một trận đấu tại FIFA World Cup 2026.
 
 TRẬN ĐẤU: ${teamA} ${metaA.flag} vs ${teamB} ${metaB.flag}
-Vòng: Vòng bảng ${group} · Match #${match}
+Vòng: Vòng bảng ${group} · Match #${match}${ground ? `\nĐịa điểm: ${ground} · ${date || ''} ${time || ''}` : ''}
+${statsBlock}
+=== ĐỐI ĐẦU LỊCH SỬ ===
+Tổng số trận: ${h2h.total} (cả friendly + qualifier + tournament)
+${teamA} thắng: ${h2h.a_wins} (${h2hTotalPct.a}%)  |  Hòa: ${h2h.draws}  |  ${teamB} thắng: ${h2h.b_wins} (${h2hTotalPct.b}%)
+Tổng bàn: ${teamA} ${h2h.a_goals_total} - ${h2h.b_goals_total} ${teamB}
+Gặp gần nhất: ${lastMeeting}
 
-=== ĐỐI ĐẦU LỊCH SỬ TẠI WORLD CUP ===
-Tổng số trận: ${h2h.total}
-${teamA} thắng: ${h2h.a_wins} (${h2hTotalPct.a}%)
-Hòa: ${h2h.draws} (${h2hTotalPct.d}%)
-${teamB} thắng: ${h2h.b_wins} (${h2hTotalPct.b}%)
-Tổng bàn thắng: ${teamA} ${h2h.a_goals_total} - ${h2h.b_goals_total} ${teamB}
-Gặp gần nhất tại WC: ${lastMeeting}
-${decayLine}
-
-=== SỨC MẠNH LỊCH SỬ WORLD CUP ===
-${teamA}: ${tsA.wc_appearances} kỳ tham dự · ${tsA.wc_titles} chức vô địch · Win rate ${pct(tsA.win_rate)}% · TB ${fmtNum(tsA.avg_goals_for)} bàn/trận (thủng ${fmtNum(tsA.avg_goals_against)})
-${teamB}: ${tsB.wc_appearances} kỳ tham dự · ${tsB.wc_titles} chức vô địch · Win rate ${pct(tsB.win_rate)}% · TB ${fmtNum(tsB.avg_goals_for)} bàn/trận (thủng ${fmtNum(tsB.avg_goals_against)})
-
-=== PHONG ĐỘ 2 KỲ GẦN NHẤT (2018, 2022) ===
-${teamA}: ${tsA.recent_form_2018_2022.played}T - ${tsA.recent_form_2018_2022.won}W ${tsA.recent_form_2018_2022.drawn}D ${tsA.recent_form_2018_2022.lost}L, ${tsA.recent_form_2018_2022.gf}-${tsA.recent_form_2018_2022.ga} (bàn/thủng)
-${teamB}: ${tsB.recent_form_2018_2022.played}T - ${tsB.recent_form_2018_2022.won}W ${tsB.recent_form_2018_2022.drawn}D ${tsB.recent_form_2018_2022.lost}L, ${tsB.recent_form_2018_2022.gf}-${tsB.recent_form_2018_2022.ga} (bàn/thủng)
+=== SỨC MẠNH TỔNG (qua ${tsA.all_time_matches} + ${tsB.all_time_matches} trận quốc tế 1872-2024) ===
+${teamA}: ${tsA.wc_titles} chức VĐ WC · Win rate ${pct(tsA.win_rate)}% · TB ${fmtNum(tsA.avg_goals_for)} bàn/trận (thủng ${fmtNum(tsA.avg_goals_against)}) · ${tsA.all_time_matches} trận
+${teamB}: ${tsB.wc_titles} chức VĐ WC · Win rate ${pct(tsB.win_rate)}% · TB ${fmtNum(tsB.avg_goals_for)} bàn/trận (thủng ${fmtNum(tsB.avg_goals_against)}) · ${tsB.all_time_matches} trận
 
 === BỐI CẢNH 2026 ===
-- Tier FIFA ranking (ước lượng): ${teamA} Tier ${ctx.rank_tier_a} vs ${teamB} Tier ${ctx.rank_tier_b} (Tier 1 = top 10 thế giới)
+- Tier FIFA: ${teamA} T${ctx.rank_tier_a} vs ${teamB} T${ctx.rank_tier_b}
 - Lợi thế sân nhà: ${hostAdvantageVi(ctx.host_advantage, teamA, teamB)}
 - Liên đoàn: ${ctx.confederation_matchup}
 
 === NHIỆM VỤ ===
-1. Phân tích các số liệu trên + sử dụng kiến thức của bạn về phong độ 2024-2026, ngôi sao chủ chốt, HLV, lối chơi.
-2. Đưa ra xác suất 3 kết quả (cộng phải = 100).
-3. Dự đoán tỉ số có khả năng nhất.
-4. Nêu 3 yếu tố then chốt quyết định trận đấu.
-5. Viết 3 đoạn phân tích NGẮN bằng tiếng Việt (giọng văn báo chí, mỗi đoạn 2-3 câu).
+1. ${sb ? 'Bắt đầu từ STATS BASELINE ở trên — đó là điểm neo. Adjust ±15% mỗi outcome KHI và CHỈ KHI bạn có lý do định tính (chấn thương, treo giò, phong độ 2025-2026, lối chơi, áp lực, motivation...). Beyond ±15% phải cite reason rõ ràng.' : 'Phân tích các số liệu trên + kiến thức của bạn về phong độ 2024-2026, ngôi sao chủ chốt, HLV, lối chơi.'}
+2. Đưa ra xác suất 3 kết quả (cộng = 100).
+3. Tỉ số: chọn từ top 3 Poisson hoặc tỉ số liền kề.
+4. Nêu 3 yếu tố then chốt.
+5. 3 đoạn phân tích NGẮN bằng tiếng Việt (giọng báo chí, 2-3 câu/đoạn).
 
-Trả về DUY NHẤT JSON sau, không markdown, không text thừa:
+Trả về DUY NHẤT JSON sau, không markdown:
 {
   "prob_a": <int 0-100>,
   "prob_draw": <int 0-100>,
@@ -9643,8 +10370,8 @@ Trả về DUY NHẤT JSON sau, không markdown, không text thừa:
   "confidence": <int 0-100>,
   "key_factors": ["yếu tố 1", "yếu tố 2", "yếu tố 3"],
   "analysis_form": "<đoạn 1: phong độ hiện tại 2024-2026>",
-  "analysis_history": "<đoạn 2: lịch sử đối đầu>",
-  "analysis_prediction": "<đoạn 3: dự đoán + lý do>"
+  "analysis_history": "<đoạn 2: lịch sử đối đầu + WCOI nếu liên quan>",
+  "analysis_prediction": "<đoạn 3: dự đoán + giải thích sai khác với stats baseline (nếu có)>"
 }
 
 Đảm bảo prob_a + prob_draw + prob_b = 100.`;
@@ -9745,7 +10472,7 @@ async function predictMatch(fixture) {
     catch (e) { /* fall through */ }
   }
 
-  const features = computeMatchFeatures(fixture.home, fixture.away, fixture.group);
+  const features = computeMatchFeatures(fixture.home, fixture.away, fixture.group, fixture);
   const prompt = buildGeminiPrompt(fixture, features);
   const result = await callGemini(prompt, apiKey);
   const bundle = { fixture, features, result, predicted_at: Date.now() };
@@ -9993,8 +10720,7 @@ function renderFeatureTable(teamA, teamB, feat) {
         <div>
           <div class="font-bold text-emerald-300 text-[11px] mb-2 uppercase tracking-wider">💪 Sức mạnh ${teamA}</div>
           <table class="data-table w-full">
-            <tr><th>Số kỳ WC tham dự</th><td class="text-white">${tsA.wc_appearances}</td></tr>
-            <tr><th>Chức vô địch</th><td class="text-white">${tsA.wc_titles}</td></tr>
+            <tr><th>Chức vô địch WC</th><td class="text-white">${tsA.wc_titles}</td></tr>
             <tr><th>Trận / T / H / Th</th><td class="text-white">${tsA.all_time_matches}/${tsA.all_time_wins}/${tsA.all_time_draws}/${tsA.all_time_losses}</td></tr>
             <tr><th>Win rate</th><td class="text-white">${pct(tsA.win_rate)}%</td></tr>
             <tr><th>TB bàn thắng / thủng</th><td class="text-white">${fmtNum(tsA.avg_goals_for)} / ${fmtNum(tsA.avg_goals_against)}</td></tr>
@@ -10004,8 +10730,7 @@ function renderFeatureTable(teamA, teamB, feat) {
         <div>
           <div class="font-bold text-blue-300 text-[11px] mb-2 uppercase tracking-wider">💪 Sức mạnh ${teamB}</div>
           <table class="data-table w-full">
-            <tr><th>Số kỳ WC tham dự</th><td class="text-white">${tsB.wc_appearances}</td></tr>
-            <tr><th>Chức vô địch</th><td class="text-white">${tsB.wc_titles}</td></tr>
+            <tr><th>Chức vô địch WC</th><td class="text-white">${tsB.wc_titles}</td></tr>
             <tr><th>Trận / T / H / Th</th><td class="text-white">${tsB.all_time_matches}/${tsB.all_time_wins}/${tsB.all_time_draws}/${tsB.all_time_losses}</td></tr>
             <tr><th>Win rate</th><td class="text-white">${pct(tsB.win_rate)}%</td></tr>
             <tr><th>TB bàn thắng / thủng</th><td class="text-white">${fmtNum(tsB.avg_goals_for)} / ${fmtNum(tsB.avg_goals_against)}</td></tr>
