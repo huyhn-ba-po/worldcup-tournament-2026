@@ -3,127 +3,598 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>WC2026 Predictor — Dự đoán FIFA World Cup 2026</title>
-<meta name="description" content="Webapp dự đoán FIFA World Cup 2026 kết hợp Elo + Poisson + WCOI + Gemini AI. Đầy đủ data, phương pháp công khai." />
+<title>WC2026 Predictor — Dự đoán FIFA World Cup 2026 với Elo + Poisson + AI</title>
+<meta name="description" content="Webapp dự đoán FIFA World Cup 2026 kết hợp 3 mô hình thống kê (Elo, Poisson, WCOI) + Gemini AI. Backtest 55.5% accuracy. Toàn bộ data + phương pháp công khai." />
+<meta property="og:title" content="WC2026 Predictor — Hybrid Stats + AI" />
+<meta property="og:description" content="Dự đoán 104 trận World Cup 2026 minh bạch, mã nguồn mở, dữ liệu công khai." />
+<meta property="og:type" content="website" />
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="/css/main.css" />
+<style>
+  .hero-headline {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    font-weight: 900;
+  }
+  .badge-live {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 14px; border-radius: 9999px;
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(16, 185, 129, 0.35);
+    color: #6ee7b7;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.05em;
+  }
+  .badge-live::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: #10b981; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6);
+    animation: pulse-dot 2s infinite;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); }
+    50% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+  }
+  .gradient-text {
+    background: linear-gradient(135deg, #34d399 0%, #60a5fa 50%, #a78bfa 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+    color: white;
+    font-weight: 700;
+    padding: 14px 28px;
+    border-radius: 14px;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    box-shadow: 0 10px 32px rgba(16, 185, 129, 0.25);
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 15px;
+    min-height: 48px;
+    text-decoration: none;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(16, 185, 129, 0.35); }
+  .btn-primary:focus-visible { outline: 2px solid #6ee7b7; outline-offset: 3px; }
+  .btn-secondary {
+    background: rgba(30, 41, 59, 0.8);
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    color: #e2e8f0;
+    font-weight: 600;
+    padding: 14px 28px;
+    border-radius: 14px;
+    transition: border-color 0.18s ease, background 0.18s ease;
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 15px;
+    min-height: 48px;
+    text-decoration: none;
+  }
+  .btn-secondary:hover { border-color: rgba(16, 185, 129, 0.5); background: rgba(16, 185, 129, 0.08); }
+  .btn-secondary:focus-visible { outline: 2px solid #6ee7b7; outline-offset: 3px; }
+
+  .feature-card {
+    background: linear-gradient(160deg, rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.55));
+    border: 1px solid rgba(148, 163, 184, 0.15);
+    border-radius: 18px;
+    padding: 28px;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .feature-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(16, 185, 129, 0.4);
+    box-shadow: 0 16px 48px rgba(16, 185, 129, 0.10);
+  }
+  .feature-card::before {
+    content: ''; position: absolute; top: 0; right: 0;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.08), transparent 70%);
+    border-radius: 50%;
+    transform: translate(50%, -50%);
+    pointer-events: none;
+  }
+  .feature-number {
+    font-family: 'Outfit', system-ui;
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 1;
+    background: linear-gradient(180deg, #34d399, transparent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0.6;
+  }
+
+  .step-card {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    border-radius: 16px;
+    padding: 24px;
+    position: relative;
+  }
+  .step-num {
+    width: 40px; height: 40px;
+    border-radius: 12px;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, #10b981, #3b82f6);
+    color: white; font-weight: 800; font-size: 18px;
+    margin-bottom: 14px;
+  }
+
+  .stat-card {
+    background: linear-gradient(160deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.6));
+    border: 1px solid rgba(16, 185, 129, 0.18);
+    border-radius: 16px;
+    padding: 22px;
+    text-align: center;
+    transition: border-color 0.2s ease;
+  }
+  .stat-card:hover { border-color: rgba(16, 185, 129, 0.45); }
+  .stat-num {
+    font-family: 'Outfit', system-ui;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1;
+    color: #6ee7b7;
+  }
+
+  .featured-card {
+    background:
+      radial-gradient(circle at 20% 30%, rgba(16, 185, 129, 0.18), transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.15), transparent 50%),
+      linear-gradient(160deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.85));
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 24px;
+    overflow: hidden;
+  }
+
+  details.faq {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(148, 163, 184, 0.15);
+    border-radius: 14px;
+    padding: 18px 20px;
+    transition: border-color 0.2s ease;
+  }
+  details.faq[open] { border-color: rgba(16, 185, 129, 0.4); }
+  details.faq summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: #e2e8f0;
+    list-style: none;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px;
+  }
+  details.faq summary::-webkit-details-marker { display: none; }
+  details.faq summary::after {
+    content: '+';
+    color: #6ee7b7; font-size: 20px;
+    transition: transform 0.2s ease;
+  }
+  details.faq[open] summary::after { content: '−'; }
+  details.faq[open] p { margin-top: 12px; color: #cbd5e1; line-height: 1.6; font-size: 14px; }
+
+  .section-eyebrow {
+    display: inline-block;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #6ee7b7;
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-family: 'Outfit', system-ui;
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    color: #f1f5f9;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+  .section-lead {
+    color: #94a3b8;
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 640px;
+  }
+
+  .final-cta {
+    background:
+      radial-gradient(circle at 20% 50%, rgba(16, 185, 129, 0.25), transparent 60%),
+      radial-gradient(circle at 80% 50%, rgba(59, 130, 246, 0.20), transparent 60%),
+      linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.75));
+    border: 1px solid rgba(16, 185, 129, 0.35);
+    border-radius: 28px;
+    padding: 48px 32px;
+    text-align: center;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .badge-live::before { animation: none; }
+    .feature-card, .btn-primary, .btn-secondary, .stat-card { transition: none; }
+    .feature-card:hover, .btn-primary:hover { transform: none; }
+  }
+</style>
 </head>
 <body>
 <div id="nav"></div>
 
-<main class="max-w-7xl mx-auto px-4 sm:px-6">
-  <section class="hero-bg rounded-3xl mt-6 mb-8 p-8 sm:p-12 border border-emerald-500/20">
-    <div class="text-xs sm:text-sm uppercase tracking-widest text-emerald-400 font-bold mb-2">FIFA World Cup 2026 · 11/6 → 19/7</div>
-    <h1 class="text-4xl sm:text-6xl font-black tracking-tight mb-3">
-      Dự đoán <span class="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">World Cup 2026</span>
-    </h1>
-    <p class="text-lg text-slate-300 max-w-3xl">
-      Mô hình thống kê <b class="text-emerald-300">Elo + Poisson + WCOI</b>, neo bằng <b class="text-emerald-300">47.980 trận quốc tế</b> lịch sử, kết hợp <b class="text-emerald-300">Gemini AI</b>.
-      Backtest WC2018+2022 đạt <b class="text-emerald-300">55.5% accuracy</b>. Toàn bộ phương pháp + data công khai.
-    </p>
-    <div class="mt-6 flex flex-wrap gap-3">
-      <a href="/groups" class="bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-400 hover:to-blue-400 text-white font-bold rounded-xl px-6 py-3 transition no-underline">Xem 12 bảng đấu</a>
-      <a href="/bracket" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded-xl px-6 py-3 text-sm font-medium transition no-underline">Bracket knockout</a>
-      <a href="/methodology" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded-xl px-6 py-3 text-sm font-medium transition no-underline">Phương pháp</a>
-    </div>
-  </section>
-
-  <section class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
-    <div class="card p-4 text-center">
-      <div class="text-xs text-slate-400 uppercase tracking-wider">Đội tham dự</div>
-      <div class="text-3xl font-black text-emerald-300 mt-1">48</div>
-      <div class="text-xs text-slate-500">12 bảng A-L</div>
-    </div>
-    <div class="card p-4 text-center">
-      <div class="text-xs text-slate-400 uppercase tracking-wider">Trận đấu</div>
-      <div class="text-3xl font-black text-emerald-300 mt-1">104</div>
-      <div class="text-xs text-slate-500">72 vòng bảng + 32 knockout</div>
-    </div>
-    <div class="card p-4 text-center">
-      <div class="text-xs text-slate-400 uppercase tracking-wider">Data H2H</div>
-      <div class="text-3xl font-black text-emerald-300 mt-1">47.980</div>
-      <div class="text-xs text-slate-500">trận quốc tế 1872-2025</div>
-    </div>
-    <div class="card p-4 text-center">
-      <div class="text-xs text-slate-400 uppercase tracking-wider">Backtest acc</div>
-      <div class="text-3xl font-black text-emerald-300 mt-1">55.5%</div>
-      <div class="text-xs text-slate-500">WC2018 + WC2022</div>
-    </div>
-  </section>
-
-  <section class="card p-6 mb-8">
-    <div class="flex items-center justify-between gap-4 flex-wrap">
-      <div>
-        <div class="text-xs text-slate-400 uppercase tracking-wider mb-1">Khai mạc còn</div>
-        <div class="text-4xl font-black text-emerald-300" id="countdown">--</div>
-        <div class="text-sm text-slate-400 mt-1">12/6/2026 · 02:00 (giờ VN) · Mexico vs Nam Phi · Estadio Azteca</div>
+<main>
+  <!-- HERO -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 pt-10 sm:pt-16 pb-16 sm:pb-20">
+    <div class="text-center max-w-4xl mx-auto">
+      <span class="badge-live">FIFA World Cup 2026 · 11/6 → 19/7</span>
+      <h1 class="hero-headline mt-5">
+        Dự đoán <span class="gradient-text">World Cup 2026</span><br>
+        bằng thống kê + AI
+      </h1>
+      <p class="mt-6 text-lg sm:text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto">
+        Mô hình Hybrid <b class="text-emerald-300">Elo + Poisson + WCOI</b>, neo bằng
+        <b class="text-emerald-300">47.980 trận quốc tế</b> lịch sử,
+        kết hợp <b class="text-emerald-300">Gemini AI</b>. Toàn bộ phương pháp công khai để bạn tự kiểm chứng.
+      </p>
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <a href="/groups" class="btn-primary" aria-label="Xem dự đoán 12 bảng đấu">
+          <span>Khám phá dự đoán</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="/methodology" class="btn-secondary" aria-label="Đọc về phương pháp">
+          <span>Phương pháp</span>
+        </a>
       </div>
-      <a href="/match/1" class="bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 rounded-xl px-4 py-3 text-sm font-medium transition no-underline text-emerald-300">
-        Xem trận khai mạc →
+      <p class="mt-5 text-xs text-slate-500">
+        Backtest WC2018 + WC2022 (128 trận, leak-free):
+        <b class="text-emerald-400">55.5% accuracy 3-way</b> · Brier 0.58 · Log Loss 0.98
+      </p>
+    </div>
+  </section>
+
+  <!-- COUNTDOWN + OPENER -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 mb-16 sm:mb-20">
+    <div class="featured-card p-6 sm:p-8">
+      <div class="grid md:grid-cols-2 gap-6 items-center">
+        <div>
+          <span class="badge-live">Trận khai mạc</span>
+          <h2 class="text-2xl sm:text-3xl font-bold mt-3 mb-1">Mexico <span class="text-slate-500">vs</span> Nam Phi</h2>
+          <p class="text-sm text-slate-400">Estadio Azteca · Mexico City · 02:00 sáng 12/6/2026 (giờ VN)</p>
+          <div class="mt-5 grid grid-cols-4 gap-3" id="countdownGrid"></div>
+          <div class="mt-5 flex flex-wrap gap-2">
+            <a href="/match/1" class="btn-primary text-sm" style="padding: 10px 18px; min-height: 44px;">
+              Xem stats baseline →
+            </a>
+          </div>
+        </div>
+        <div class="hidden md:block">
+          <div class="flex items-center justify-around gap-4">
+            <div class="text-center">
+              <div class="text-7xl">🇲🇽</div>
+              <div class="mt-2 font-bold text-slate-100">Mexico</div>
+              <div class="text-xs text-emerald-400 font-mono">Elo 1834</div>
+            </div>
+            <div class="text-slate-500 text-3xl font-light">vs</div>
+            <div class="text-center">
+              <div class="text-7xl">🇿🇦</div>
+              <div class="mt-2 font-bold text-slate-100">Nam Phi</div>
+              <div class="text-xs text-blue-400 font-mono">Elo 1653</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METRICS -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 mb-20">
+    <div class="text-center mb-8">
+      <span class="section-eyebrow">Khối dữ liệu</span>
+      <h2 class="section-title mx-auto">Tất cả con số bạn cần</h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+      <div class="stat-card">
+        <div class="stat-num">48</div>
+        <div class="text-xs text-slate-400 uppercase tracking-wider mt-2">Đội tham dự</div>
+        <div class="text-xs text-slate-500 mt-1">12 bảng A→L</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">104</div>
+        <div class="text-xs text-slate-400 uppercase tracking-wider mt-2">Trận đấu</div>
+        <div class="text-xs text-slate-500 mt-1">72 bảng + 32 KO</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">47.980</div>
+        <div class="text-xs text-slate-400 uppercase tracking-wider mt-2">Data H2H</div>
+        <div class="text-xs text-slate-500 mt-1">1872 → 2025</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">55.5%</div>
+        <div class="text-xs text-slate-400 uppercase tracking-wider mt-2">Backtest acc</div>
+        <div class="text-xs text-slate-500 mt-1">WC2018 + 2022</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 mb-20">
+    <div class="text-center mb-10">
+      <span class="section-eyebrow">Tính năng</span>
+      <h2 class="section-title mx-auto">Phân tích minh bạch, dữ liệu mở</h2>
+      <p class="section-lead mx-auto">Mọi dự đoán đều có baseline thống kê + breakdown chi tiết. Không hộp đen.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="feature-card">
+        <div class="feature-number">01</div>
+        <h3 class="font-bold text-lg text-emerald-300 mt-3 mb-2">Hybrid Elo + Poisson</h3>
+        <p class="text-sm text-slate-300 leading-relaxed">
+          3 mô hình thống kê chạy song song: Elo rating từ 47k trận, Poisson goal model 2014+, WCOI overlay
+          1.069 trận World Cup. Ensemble weighted bằng backtest.
+        </p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-number">02</div>
+        <h3 class="font-bold text-lg text-emerald-300 mt-3 mb-2">AI làm Bayesian Updater</h3>
+        <p class="text-sm text-slate-300 leading-relaxed">
+          Gemini 2.5 Flash nhận stats baseline làm anchor, được constraint chỉ adjust ±15%
+          (±25% nếu có lý do định tính). Tránh hallucinate, tận dụng tactical context.
+        </p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-number">03</div>
+        <h3 class="font-bold text-lg text-emerald-300 mt-3 mb-2">Đa ngôn ngữ + giờ VN</h3>
+        <p class="text-sm text-slate-300 leading-relaxed">
+          Tên đội phiên âm tiếng Việt (Hàn Quốc, Nam Phi, Đức, Pháp...).
+          Tất cả giờ thi đấu hiển thị GMT+7 — không phải tính lại.
+        </p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-number">04</div>
+        <h3 class="font-bold text-lg text-emerald-300 mt-3 mb-2">Knockout bracket đầy đủ</h3>
+        <p class="text-sm text-slate-300 leading-relaxed">
+          32 trận từ Vòng 1/16 đến Chung kết 19/7. Hiển thị placeholder slot (1A, W73, L101)
+          — sẽ điền cụ thể sau khi vòng bảng kết thúc.
+        </p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-number">05</div>
+        <h3 class="font-bold text-lg text-emerald-300 mt-3 mb-2">So sánh + khám phá data</h3>
+        <p class="text-sm text-slate-300 leading-relaxed">
+          So sánh 2 đội bất kỳ side-by-side với baseline + H2H 20 trận.
+          Search engine cho 47.980 trận quốc tế từ 1872, filter theo đội/giải/năm.
+        </p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-number">06</div>
+        <h3 class="font-bold text-lg text-emerald-300 mt-3 mb-2">Mã nguồn mở, miễn phí</h3>
+        <p class="text-sm text-slate-300 leading-relaxed">
+          Tất cả phương pháp, weights, backtest results, scripts đều công khai trên GitHub.
+          Bạn có thể tự run lại pipeline trên máy mình.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 mb-20">
+    <div class="text-center mb-10">
+      <span class="section-eyebrow">Pipeline</span>
+      <h2 class="section-title mx-auto">3 bước để có 1 dự đoán</h2>
+      <p class="section-lead mx-auto">Mỗi trận đi qua 3 lớp: thống kê → tổng hợp → AI tinh chỉnh.</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-4">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h3 class="font-bold text-lg text-slate-100 mb-2">Stats Models</h3>
+        <p class="text-sm text-slate-400 leading-relaxed mb-3">
+          3 mô hình tính độc lập: Elo rating, Poisson expected goals, WC overlay (WCOI + confederation matrix).
+        </p>
+        <div class="text-xs font-mono text-emerald-400">→ P(Win/Draw/Loss) + expected score</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h3 class="font-bold text-lg text-slate-100 mb-2">Aggregator</h3>
+        <p class="text-sm text-slate-400 leading-relaxed mb-3">
+          Weighted ensemble: Elo 35% + Poisson 35% + Conf×Stage 20% + WCOI 10%.
+          Weights tuned bằng backtest WC2018+2022.
+        </p>
+        <div class="text-xs font-mono text-emerald-400">→ Stats baseline + top 3 score</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h3 class="font-bold text-lg text-slate-100 mb-2">Gemini AI</h3>
+        <p class="text-sm text-slate-400 leading-relaxed mb-3">
+          AI nhận stats baseline làm anchor, adjust ±15% dựa trên qualitative (form, chấn thương, motivation).
+        </p>
+        <div class="text-xs font-mono text-emerald-400">→ Prediction + phân tích VN</div>
+      </div>
+    </div>
+    <div class="text-center mt-6">
+      <a href="/methodology" class="text-sm text-emerald-400 hover:underline">Xem diagram đầy đủ + công thức →</a>
+    </div>
+  </section>
+
+  <!-- PROOF -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 mb-20">
+    <div class="grid md:grid-cols-2 gap-5">
+      <div class="card p-6">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="font-bold text-lg text-emerald-300">Top 5 Elo Rating</h2>
+          <a href="/leaderboard" class="text-xs text-emerald-400 hover:underline">Full ranking →</a>
+        </div>
+        <div id="topElo" class="space-y-2"></div>
+      </div>
+      <div class="card p-6">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="font-bold text-lg text-emerald-300">5 trận đầu tiên</h2>
+          <a href="/groups" class="text-xs text-emerald-400 hover:underline">Lịch đầy đủ →</a>
+        </div>
+        <div id="upcoming" class="space-y-2"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPLORE -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 mb-20">
+    <div class="text-center mb-10">
+      <span class="section-eyebrow">Tự khám phá</span>
+      <h2 class="section-title mx-auto">9 trang cho bạn đào sâu</h2>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+      <a href="/groups" class="feature-card">
+        <div class="text-xs text-emerald-400 font-bold uppercase tracking-wider">12 BẢNG</div>
+        <div class="font-bold text-lg text-slate-100 mt-2">Vòng bảng A-L</div>
+        <p class="text-xs text-slate-400 mt-2">72 trận với lịch + dự đoán baseline</p>
+      </a>
+      <a href="/bracket" class="feature-card">
+        <div class="text-xs text-emerald-400 font-bold uppercase tracking-wider">KNOCKOUT</div>
+        <div class="font-bold text-lg text-slate-100 mt-2">Bracket 1/16 → Final</div>
+        <p class="text-xs text-slate-400 mt-2">32 trận tới 19/7 Chung kết</p>
+      </a>
+      <a href="/teams" class="feature-card">
+        <div class="text-xs text-emerald-400 font-bold uppercase tracking-wider">48 ĐỘI</div>
+        <div class="font-bold text-lg text-slate-100 mt-2">Mỗi đội có trang riêng</div>
+        <p class="text-xs text-slate-400 mt-2">Elo + Poisson + form + lịch sử WC</p>
+      </a>
+      <a href="/leaderboard" class="feature-card">
+        <div class="text-xs text-emerald-400 font-bold uppercase tracking-wider">XẾP HẠNG</div>
+        <div class="font-bold text-lg text-slate-100 mt-2">Top Elo + WCOI</div>
+        <p class="text-xs text-slate-400 mt-2">Ai overperform/underperform tại WC?</p>
+      </a>
+      <a href="/compare" class="feature-card">
+        <div class="text-xs text-emerald-400 font-bold uppercase tracking-wider">SO SÁNH</div>
+        <div class="font-bold text-lg text-slate-100 mt-2">2 đội bất kỳ</div>
+        <p class="text-xs text-slate-400 mt-2">Side-by-side stats + H2H 20 trận</p>
+      </a>
+      <a href="/data" class="feature-card">
+        <div class="text-xs text-emerald-400 font-bold uppercase tracking-wider">DATA EXPLORER</div>
+        <div class="font-bold text-lg text-slate-100 mt-2">Search 47k trận</div>
+        <p class="text-xs text-slate-400 mt-2">Filter theo đội, giải, năm</p>
+      </a>
+      <a href="/methodology" class="feature-card">
+        <div class="text-xs text-emerald-400 font-bold uppercase tracking-wider">PHƯƠNG PHÁP</div>
+        <div class="font-bold text-lg text-slate-100 mt-2">Pipeline + backtest</div>
+        <p class="text-xs text-slate-400 mt-2">Công thức + weights tuning</p>
+      </a>
+      <a href="/about" class="feature-card">
+        <div class="text-xs text-emerald-400 font-bold uppercase tracking-wider">GIỚI THIỆU</div>
+        <div class="font-bold text-lg text-slate-100 mt-2">Về tác giả + ủng hộ</div>
+        <p class="text-xs text-slate-400 mt-2">GitHub, QR donate, disclaimer</p>
       </a>
     </div>
   </section>
 
-  <section class="grid md:grid-cols-2 gap-5 mb-8">
-    <div class="card p-5">
-      <h2 class="text-lg font-bold text-emerald-300 mb-3">Top 5 Elo WC2026</h2>
-      <div id="topElo" class="space-y-1.5"></div>
-      <a href="/leaderboard" class="text-xs text-emerald-400 hover:underline mt-3 inline-block">Xem full ranking →</a>
+  <!-- FAQ -->
+  <section class="max-w-3xl mx-auto px-4 sm:px-6 mb-20">
+    <div class="text-center mb-10">
+      <span class="section-eyebrow">Câu hỏi thường gặp</span>
+      <h2 class="section-title mx-auto">FAQ</h2>
     </div>
-
-    <div class="card p-5">
-      <h2 class="text-lg font-bold text-emerald-300 mb-3">5 trận đầu tiên</h2>
-      <div id="upcoming" class="space-y-1.5"></div>
-      <a href="/groups" class="text-xs text-emerald-400 hover:underline mt-3 inline-block">Xem tất cả 72 trận →</a>
+    <div class="space-y-3">
+      <details class="faq">
+        <summary>Dự đoán có chính xác không?</summary>
+        <p>Backtest WC2018 + WC2022 (128 trận, leak-free): <b>55.5% accuracy 3-way</b>. Tốt hơn random (33%) nhưng không bằng bookmaker (~68-72%). Nói cách khác: <b>1/2 dự đoán sai</b>. Bóng đá luôn bất ngờ.</p>
+      </details>
+      <details class="faq">
+        <summary>Tại sao kết hợp AI với thống kê?</summary>
+        <p>Thống kê (Elo, Poisson) đáng tin với data có sẵn nhưng không biết về chấn thương, treo giò, motivation. LLM bù lại context định tính nhưng dễ hallucinate. Hybrid với constraint ±15% giữ rigor thống kê và tận dụng AI reasoning.</p>
+      </details>
+      <details class="faq">
+        <summary>Data lấy ở đâu?</summary>
+        <p>47.980 trận quốc tế lịch sử từ nhiều nguồn public domain. Lịch thi đấu WC2026 chính thức theo bốc thăm 5/12/2025. Toàn bộ code + data + scripts đều mở trên GitHub.</p>
+      </details>
+      <details class="faq">
+        <summary>Có cần đăng ký không?</summary>
+        <p>Không. Mọi trang đều free, không cần tài khoản. AI prediction chỉ cần backend có GEMINI_API_KEY (lấy free tại aistudio.google.com).</p>
+      </details>
+      <details class="faq">
+        <summary>Có thể dùng để cá cược không?</summary>
+        <p><b>Không</b>. Webapp này phục vụ mục đích học thuật và giải trí. Backtest accuracy 55.5% nghĩa là kèo bị thua thường xuyên. Không phải lời khuyên tài chính.</p>
+      </details>
+      <details class="faq">
+        <summary>Tôi có thể đóng góp / yêu cầu tính năng?</summary>
+        <p>Có. Mở issue/PR trên GitHub repo, hoặc liên hệ qua email ở trang Giới thiệu. Nếu thấy hữu ích, có thể ủng hộ qua QR Banking (Techcombank) trong trang About.</p>
+      </details>
     </div>
   </section>
 
-  <section class="grid sm:grid-cols-2 md:grid-cols-4 gap-3 mb-8">
-    <a href="/groups" class="card p-5 no-underline">
-      <div class="font-bold text-emerald-300">12 Bảng đấu</div>
-      <div class="text-xs text-slate-400 mt-1">A-L · 48 đội theo bốc thăm chính thức 5/12/2025</div>
-    </a>
-    <a href="/bracket" class="card p-5 no-underline">
-      <div class="font-bold text-emerald-300">Bracket Knockout</div>
-      <div class="text-xs text-slate-400 mt-1">32 trận từ vòng 1/16 đến Chung kết 19/7</div>
-    </a>
-    <a href="/compare" class="card p-5 no-underline">
-      <div class="font-bold text-emerald-300">So sánh 2 đội</div>
-      <div class="text-xs text-slate-400 mt-1">H2H + stats side-by-side + dự đoán nếu gặp nhau</div>
-    </a>
-    <a href="/data" class="card p-5 no-underline">
-      <div class="font-bold text-emerald-300">Khám phá data</div>
-      <div class="text-xs text-slate-400 mt-1">Tìm kiếm 47.980 trận quốc tế từ 1872</div>
-    </a>
+  <!-- FINAL CTA -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 mb-20">
+    <div class="final-cta">
+      <h2 class="section-title">Sẵn sàng xem WC2026 với data?</h2>
+      <p class="section-lead mx-auto mt-2">
+        Bắt đầu từ trận khai mạc Mexico vs Nam Phi, hoặc khám phá bảng đấu của đội yêu thích.
+      </p>
+      <div class="mt-7 flex flex-wrap items-center justify-center gap-3">
+        <a href="/groups" class="btn-primary">
+          <span>Xem 12 bảng đấu</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="/bracket" class="btn-secondary">
+          <span>Xem bracket knockout</span>
+        </a>
+      </div>
+      <p class="mt-6 text-xs text-slate-500">
+        Open source · Mã nguồn mở · Đóng góp:
+        <a href="https://github.com/huyhn-ba-po/worldcup-tournament-2026" target="_blank" rel="noopener" class="text-emerald-400 hover:underline">GitHub</a>
+      </p>
+    </div>
   </section>
 </main>
 
 <div id="footer"></div>
 
 <script type="module">
-import { mountLayout, api, escapeHtml, teamLink, matchLink, loadTeams, $ } from '/js/shared.js?v=7';
+import { mountLayout, api, escapeHtml, $, loadTeams, fmtDateVN } from '/js/shared.js?v=7';
 mountLayout('/');
 
 function tickCountdown() {
   const target = new Date('2026-06-11T19:00:00Z');
   const diff = target - new Date();
-  if (diff <= 0) { $('#countdown').textContent = 'Đang diễn ra'; return; }
-  const d = Math.floor(diff / (24 * 3600 * 1000));
-  const h = Math.floor((diff % (24 * 3600 * 1000)) / (3600 * 1000));
-  const m = Math.floor((diff % (3600 * 1000)) / 60000);
-  $('#countdown').textContent = `${d} ngày ${h} giờ ${m} phút`;
+  const grid = $('#countdownGrid');
+  if (!grid) return;
+  if (diff <= 0) {
+    grid.innerHTML = '<div class="col-span-full text-center text-emerald-300 font-bold py-4">Đang diễn ra</div>';
+    return;
+  }
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  const cell = (n, l) => `<div class="bg-slate-950/60 rounded-xl border border-slate-800 p-3 text-center">
+    <div class="font-mono font-black text-2xl sm:text-3xl text-emerald-300 leading-none">${String(n).padStart(2,'0')}</div>
+    <div class="text-[10px] uppercase tracking-wider text-slate-500 mt-1.5">${l}</div>
+  </div>`;
+  grid.innerHTML = cell(d, 'Ngày') + cell(h, 'Giờ') + cell(m, 'Phút') + cell(s, 'Giây');
 }
-tickCountdown(); setInterval(tickCountdown, 60000);
+tickCountdown(); setInterval(tickCountdown, 1000);
 
 Promise.all([api('/api/leaderboard'), api('/api/matches?stage=group'), loadTeams()]).then(([lb, mx, meta]) => {
   $('#topElo').innerHTML = lb.elo.slice(0, 5).map((t, i) => `
-    <div class="flex items-center justify-between text-sm">
-      <span><span class="text-slate-500 mr-2">#${i + 1}</span>${teamLink(t.name, t)}</span>
+    <a href="/team/${encodeURIComponent(t.name)}" class="flex items-center justify-between gap-3 p-2 rounded-lg hover:bg-emerald-500/5 no-underline transition">
+      <div class="flex items-center gap-3 min-w-0">
+        <span class="text-slate-500 font-mono text-xs w-5">#${i + 1}</span>
+        <span class="text-2xl">${t.flag}</span>
+        <div class="min-w-0">
+          <div class="font-semibold text-slate-100 truncate">${escapeHtml(t.name_vi)}</div>
+          <div class="text-xs text-slate-500">${t.confederation}</div>
+        </div>
+      </div>
       <span class="font-mono font-bold text-emerald-300">${t.rating}</span>
-    </div>
+    </a>
   `).join('');
-  $('#upcoming').innerHTML = mx.matches.slice(0, 5).map(m => matchLink(m, meta)).join('');
+
+  $('#upcoming').innerHTML = mx.matches.slice(0, 5).map(m => {
+    const mA = meta[m.home] || {}, mB = meta[m.away] || {};
+    return `<a href="/match/${m.match}" class="block p-2 rounded-lg hover:bg-emerald-500/5 no-underline transition">
+      <div class="flex items-center gap-2 text-sm">
+        <span class="text-[10px] font-mono bg-slate-800 text-emerald-300 rounded px-1.5 py-0.5">M${m.match}</span>
+        <span class="text-slate-100 truncate">${mA.flag || '🏳️'} ${escapeHtml(mA.name_vi || m.home)} vs ${escapeHtml(mB.name_vi || m.away)} ${mB.flag || '🏳️'}</span>
+      </div>
+      <div class="text-xs text-slate-500 mt-1 ml-7">${m.time_vn} ${fmtDateVN(m.date_vn)} (giờ VN)</div>
+    </a>`;
+  }).join('');
 }).catch(err => {
   console.error(err);
   $('#topElo').innerHTML = '<div class="text-rose-400 text-sm">Lỗi tải data</div>';
