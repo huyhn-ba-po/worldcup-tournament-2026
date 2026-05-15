@@ -104,9 +104,11 @@ function renderDonateModal() {
           <h3 class="text-xl font-bold text-emerald-300">Mời tác giả một ly cà phê</h3>
           <p class="text-sm text-slate-400 mt-2 mb-4">Cảm ơn bạn đã ủng hộ dự án. Quét QR bên dưới hoặc chuyển khoản thủ công.</p>
 
-          <div class="bg-white rounded-2xl p-3 mx-auto mb-4" style="max-width: 280px;">
-            <img src="/img/qr-bank.png" alt="QR Banking" class="w-full h-auto rounded-lg"
-                 onerror="this.outerHTML='<div class=&quot;flex items-center justify-center h-64 text-slate-500 text-sm text-center p-4&quot;>QR code chưa được upload.<br>Vui lòng đặt ảnh tại<br><code class=&quot;text-xs&quot;>webapp/public/img/qr-bank.png</code></div>'" />
+          <div class="bg-white rounded-2xl p-3 mx-auto mb-4 relative" style="max-width: 280px;">
+            <img id="donateQrImg" src="/img/qr-bank.png?v=2" alt="QR Banking Techcombank" class="w-full h-auto rounded-lg block" />
+            <div id="donateQrFallback" class="hidden absolute inset-3 flex items-center justify-center text-slate-500 text-xs text-center p-4 bg-white rounded-lg">
+              QR code chưa upload.<br>Đặt ảnh tại<br><code class="text-[10px]">webapp/public/img/qr-bank.png</code>
+            </div>
           </div>
 
           <div class="text-left bg-slate-950/60 rounded-xl p-4 text-sm space-y-1.5">
@@ -160,6 +162,19 @@ export function mountLayout(currentPath) {
 }
 
 function attachDonateHandlers() {
+  // QR image: show fallback if image fails to load (preserves img element)
+  const qrImg = document.getElementById('donateQrImg');
+  const qrFallback = document.getElementById('donateQrFallback');
+  if (qrImg && qrFallback) {
+    qrImg.addEventListener('error', () => {
+      qrImg.style.display = 'none';
+      qrFallback.classList.remove('hidden');
+    });
+    qrImg.addEventListener('load', () => {
+      qrImg.style.display = 'block';
+      qrFallback.classList.add('hidden');
+    });
+  }
   document.querySelectorAll('[data-donate-trigger]').forEach(el => {
     el.addEventListener('click', (e) => { e.preventDefault(); openDonate(); });
   });
