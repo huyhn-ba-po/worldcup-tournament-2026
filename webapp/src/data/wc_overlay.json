@@ -1,0 +1,567 @@
+{
+  "source": "all_internationals.json + wc_all_matches.json",
+  "computed_at": "2026-05-15T14:49:28.681Z",
+  "team_confederation": {
+    "Argentina": "CONMEBOL",
+    "Brazil": "CONMEBOL",
+    "Uruguay": "CONMEBOL",
+    "Colombia": "CONMEBOL",
+    "Ecuador": "CONMEBOL",
+    "Paraguay": "CONMEBOL",
+    "Chile": "CONMEBOL",
+    "Peru": "CONMEBOL",
+    "Bolivia": "CONMEBOL",
+    "Venezuela": "CONMEBOL",
+    "France": "UEFA",
+    "Spain": "UEFA",
+    "England": "UEFA",
+    "Portugal": "UEFA",
+    "Netherlands": "UEFA",
+    "Belgium": "UEFA",
+    "Italy": "UEFA",
+    "Germany": "UEFA",
+    "Croatia": "UEFA",
+    "Switzerland": "UEFA",
+    "Denmark": "UEFA",
+    "Austria": "UEFA",
+    "Serbia": "UEFA",
+    "Poland": "UEFA",
+    "Turkey": "UEFA",
+    "Scotland": "UEFA",
+    "Sweden": "UEFA",
+    "Norway": "UEFA",
+    "Bosnia & Herzegovina": "UEFA",
+    "Czech Republic": "UEFA",
+    "Hungary": "UEFA",
+    "Republic of Ireland": "UEFA",
+    "Northern Ireland": "UEFA",
+    "Wales": "UEFA",
+    "Greece": "UEFA",
+    "Romania": "UEFA",
+    "Russia": "UEFA",
+    "Mexico": "CONCACAF",
+    "Canada": "CONCACAF",
+    "United States": "CONCACAF",
+    "Panama": "CONCACAF",
+    "Haiti": "CONCACAF",
+    "Curaçao": "CONCACAF",
+    "Honduras": "CONCACAF",
+    "Costa Rica": "CONCACAF",
+    "Jamaica": "CONCACAF",
+    "El Salvador": "CONCACAF",
+    "Senegal": "CAF",
+    "Morocco": "CAF",
+    "Egypt": "CAF",
+    "Tunisia": "CAF",
+    "Nigeria": "CAF",
+    "Ivory Coast": "CAF",
+    "Algeria": "CAF",
+    "Ghana": "CAF",
+    "Mali": "CAF",
+    "South Africa": "CAF",
+    "Cape Verde": "CAF",
+    "DR Congo": "CAF",
+    "Cameroon": "CAF",
+    "Angola": "CAF",
+    "Zambia": "CAF",
+    "Japan": "AFC",
+    "South Korea": "AFC",
+    "Iran": "AFC",
+    "Australia": "AFC",
+    "Saudi Arabia": "AFC",
+    "Qatar": "AFC",
+    "Uzbekistan": "AFC",
+    "Jordan": "AFC",
+    "Iraq": "AFC",
+    "United Arab Emirates": "AFC",
+    "New Zealand": "OFC"
+  },
+  "wcoi": {
+    "description": "WC win rate - All-time win rate. Positive = overperformer at WC.",
+    "formula": "(wc_wins + 0.5*wc_draws)/wc_total - same for all",
+    "per_team": {
+      "Mexico": {
+        "wcoi": -0.209,
+        "wc_matches": 60,
+        "wc_win_rate": 0.417,
+        "all_win_rate": 0.626
+      },
+      "South Africa": {
+        "wcoi": -0.151,
+        "wc_matches": 9,
+        "wc_win_rate": 0.444,
+        "all_win_rate": 0.596
+      },
+      "South Korea": {
+        "wcoi": -0.356,
+        "wc_matches": 38,
+        "wc_win_rate": 0.303,
+        "all_win_rate": 0.659
+      },
+      "Czech Republic": {
+        "wcoi": -0.136,
+        "wc_matches": 33,
+        "wc_win_rate": 0.455,
+        "all_win_rate": 0.591
+      },
+      "Canada": {
+        "wcoi": -0.49,
+        "wc_matches": 6,
+        "wc_win_rate": 0,
+        "all_win_rate": 0.49
+      },
+      "Bosnia & Herzegovina": {
+        "wcoi": 0,
+        "wc_matches": 0,
+        "wc_win_rate": null,
+        "all_win_rate": 0.47769516728624534,
+        "note": "never played at WC"
+      },
+      "Qatar": {
+        "wcoi": -0.535,
+        "wc_matches": 3,
+        "wc_win_rate": 0,
+        "all_win_rate": 0.535
+      },
+      "Switzerland": {
+        "wcoi": -0.017,
+        "wc_matches": 41,
+        "wc_win_rate": 0.451,
+        "all_win_rate": 0.468
+      },
+      "Brazil": {
+        "wcoi": 0.008,
+        "wc_matches": 114,
+        "wc_win_rate": 0.746,
+        "all_win_rate": 0.738
+      },
+      "Morocco": {
+        "wcoi": -0.251,
+        "wc_matches": 23,
+        "wc_win_rate": 0.37,
+        "all_win_rate": 0.621
+      },
+      "Haiti": {
+        "wcoi": -0.532,
+        "wc_matches": 3,
+        "wc_win_rate": 0,
+        "all_win_rate": 0.532
+      },
+      "Scotland": {
+        "wcoi": -0.253,
+        "wc_matches": 23,
+        "wc_win_rate": 0.326,
+        "all_win_rate": 0.579
+      },
+      "United States": {
+        "wcoi": -0.168,
+        "wc_matches": 37,
+        "wc_win_rate": 0.378,
+        "all_win_rate": 0.546
+      },
+      "Paraguay": {
+        "wcoi": -0.02,
+        "wc_matches": 27,
+        "wc_win_rate": 0.463,
+        "all_win_rate": 0.482
+      },
+      "Australia": {
+        "wcoi": -0.314,
+        "wc_matches": 20,
+        "wc_win_rate": 0.3,
+        "all_win_rate": 0.614
+      },
+      "Turkey": {
+        "wcoi": -0.015,
+        "wc_matches": 10,
+        "wc_win_rate": 0.5,
+        "all_win_rate": 0.515
+      },
+      "Germany": {
+        "wcoi": 0.012,
+        "wc_matches": 117,
+        "wc_win_rate": 0.697,
+        "all_win_rate": 0.684
+      },
+      "Curaçao": {
+        "wcoi": 0,
+        "wc_matches": 0,
+        "wc_win_rate": null,
+        "all_win_rate": 0.5,
+        "note": "never played at WC"
+      },
+      "Ivory Coast": {
+        "wcoi": -0.246,
+        "wc_matches": 9,
+        "wc_win_rate": 0.389,
+        "all_win_rate": 0.635
+      },
+      "Ecuador": {
+        "wcoi": 0.025,
+        "wc_matches": 13,
+        "wc_win_rate": 0.462,
+        "all_win_rate": 0.437
+      },
+      "Netherlands": {
+        "wcoi": 0.074,
+        "wc_matches": 55,
+        "wc_win_rate": 0.7,
+        "all_win_rate": 0.626
+      },
+      "Japan": {
+        "wcoi": -0.193,
+        "wc_matches": 25,
+        "wc_win_rate": 0.4,
+        "all_win_rate": 0.593
+      },
+      "Sweden": {
+        "wcoi": -0.091,
+        "wc_matches": 51,
+        "wc_win_rate": 0.51,
+        "all_win_rate": 0.601
+      },
+      "Tunisia": {
+        "wcoi": -0.269,
+        "wc_matches": 18,
+        "wc_win_rate": 0.306,
+        "all_win_rate": 0.574
+      },
+      "Belgium": {
+        "wcoi": -0.039,
+        "wc_matches": 51,
+        "wc_win_rate": 0.51,
+        "all_win_rate": 0.548
+      },
+      "Egypt": {
+        "wcoi": -0.481,
+        "wc_matches": 7,
+        "wc_win_rate": 0.143,
+        "all_win_rate": 0.624
+      },
+      "Iran": {
+        "wcoi": -0.411,
+        "wc_matches": 18,
+        "wc_win_rate": 0.278,
+        "all_win_rate": 0.689
+      },
+      "New Zealand": {
+        "wcoi": -0.257,
+        "wc_matches": 6,
+        "wc_win_rate": 0.25,
+        "all_win_rate": 0.507
+      },
+      "Spain": {
+        "wcoi": -0.113,
+        "wc_matches": 67,
+        "wc_win_rate": 0.59,
+        "all_win_rate": 0.703
+      },
+      "Cape Verde": {
+        "wcoi": 0,
+        "wc_matches": 0,
+        "wc_win_rate": null,
+        "all_win_rate": 0.48853211009174313,
+        "note": "never played at WC"
+      },
+      "Saudi Arabia": {
+        "wcoi": -0.327,
+        "wc_matches": 19,
+        "wc_win_rate": 0.263,
+        "all_win_rate": 0.59
+      },
+      "Uruguay": {
+        "wcoi": -0.03,
+        "wc_matches": 59,
+        "wc_win_rate": 0.534,
+        "all_win_rate": 0.564
+      },
+      "France": {
+        "wcoi": 0.01,
+        "wc_matches": 73,
+        "wc_win_rate": 0.623,
+        "all_win_rate": 0.613
+      },
+      "Senegal": {
+        "wcoi": -0.051,
+        "wc_matches": 12,
+        "wc_win_rate": 0.542,
+        "all_win_rate": 0.593
+      },
+      "Iraq": {
+        "wcoi": -0.608,
+        "wc_matches": 3,
+        "wc_win_rate": 0,
+        "all_win_rate": 0.608
+      },
+      "Norway": {
+        "wcoi": 0.015,
+        "wc_matches": 8,
+        "wc_win_rate": 0.5,
+        "all_win_rate": 0.485
+      },
+      "Argentina": {
+        "wcoi": -0.052,
+        "wc_matches": 88,
+        "wc_win_rate": 0.619,
+        "all_win_rate": 0.671
+      },
+      "Algeria": {
+        "wcoi": -0.203,
+        "wc_matches": 13,
+        "wc_win_rate": 0.385,
+        "all_win_rate": 0.588
+      },
+      "Austria": {
+        "wcoi": -0.063,
+        "wc_matches": 29,
+        "wc_win_rate": 0.466,
+        "all_win_rate": 0.529
+      },
+      "Jordan": {
+        "wcoi": 0,
+        "wc_matches": 0,
+        "wc_win_rate": null,
+        "all_win_rate": 0.5109170305676856,
+        "note": "never played at WC"
+      },
+      "Portugal": {
+        "wcoi": -0.042,
+        "wc_matches": 35,
+        "wc_win_rate": 0.571,
+        "all_win_rate": 0.614
+      },
+      "DR Congo": {
+        "wcoi": -0.525,
+        "wc_matches": 3,
+        "wc_win_rate": 0,
+        "all_win_rate": 0.525
+      },
+      "Uzbekistan": {
+        "wcoi": 0,
+        "wc_matches": 0,
+        "wc_win_rate": null,
+        "all_win_rate": 0.5808823529411765,
+        "note": "never played at WC"
+      },
+      "Colombia": {
+        "wcoi": -0.04,
+        "wc_matches": 22,
+        "wc_win_rate": 0.5,
+        "all_win_rate": 0.54
+      },
+      "England": {
+        "wcoi": -0.116,
+        "wc_matches": 74,
+        "wc_win_rate": 0.574,
+        "all_win_rate": 0.69
+      },
+      "Croatia": {
+        "wcoi": -0.106,
+        "wc_matches": 30,
+        "wc_win_rate": 0.55,
+        "all_win_rate": 0.656
+      },
+      "Ghana": {
+        "wcoi": -0.197,
+        "wc_matches": 15,
+        "wc_win_rate": 0.4,
+        "all_win_rate": 0.597
+      },
+      "Panama": {
+        "wcoi": -0.453,
+        "wc_matches": 3,
+        "wc_win_rate": 0,
+        "all_win_rate": 0.453
+      }
+    }
+  },
+  "stage_params": {
+    "description": "Average goals & draw rate by tournament stage.",
+    "per_stage": {
+      "group": {
+        "matches": 696,
+        "avg_goals_per_match": 2.65,
+        "draw_rate": 0.249
+      },
+      "r16_r32": {
+        "matches": 80,
+        "avg_goals_per_match": 2.44,
+        "draw_rate": 0.325
+      },
+      "quarterfinal": {
+        "matches": 70,
+        "avg_goals_per_match": 2.66,
+        "draw_rate": 0.286
+      },
+      "semifinal": {
+        "matches": 38,
+        "avg_goals_per_match": 3.11,
+        "draw_rate": 0.237
+      },
+      "final": {
+        "matches": 27,
+        "avg_goals_per_match": 3.78,
+        "draw_rate": 0.333
+      },
+      "third": {
+        "matches": 20,
+        "avg_goals_per_match": 3.7,
+        "draw_rate": 0.05
+      }
+    }
+  },
+  "conf_stage_matrix": {
+    "description": "Win/Draw/Loss rate when confederation C1 plays C2 at given stage. Keys normalized (alphabetical).",
+    "per_matchup": {
+      "CONCACAF|UEFA|group": {
+        "n": 75,
+        "c1_win_rate": 0.16,
+        "draw_rate": 0.267,
+        "c2_win_rate": 0.573
+      },
+      "CONMEBOL|UEFA|group": {
+        "n": 149,
+        "c1_win_rate": 0.383,
+        "draw_rate": 0.255,
+        "c2_win_rate": 0.362
+      },
+      "CONCACAF|CONMEBOL|group": {
+        "n": 22,
+        "c1_win_rate": 0.182,
+        "draw_rate": 0.136,
+        "c2_win_rate": 0.682
+      },
+      "CONMEBOL|CONMEBOL|group": {
+        "n": 9,
+        "c1_win_rate": 0.556,
+        "draw_rate": 0.111,
+        "c2_win_rate": 0.333
+      },
+      "CONCACAF|CONMEBOL|knockout": {
+        "n": 5,
+        "c1_win_rate": 0,
+        "draw_rate": 0.2,
+        "c2_win_rate": 0.8
+      },
+      "CONMEBOL|UEFA|knockout": {
+        "n": 76,
+        "c1_win_rate": 0.395,
+        "draw_rate": 0.263,
+        "c2_win_rate": 0.342
+      },
+      "CONMEBOL|CONMEBOL|knockout": {
+        "n": 12,
+        "c1_win_rate": 0.75,
+        "draw_rate": 0.083,
+        "c2_win_rate": 0.167
+      },
+      "UEFA|UEFA|knockout": {
+        "n": 87,
+        "c1_win_rate": 0.494,
+        "draw_rate": 0.253,
+        "c2_win_rate": 0.253
+      },
+      "UEFA|UEFA|group": {
+        "n": 144,
+        "c1_win_rate": 0.528,
+        "draw_rate": 0.257,
+        "c2_win_rate": 0.215
+      },
+      "AFC|UEFA|group": {
+        "n": 61,
+        "c1_win_rate": 0.213,
+        "draw_rate": 0.18,
+        "c2_win_rate": 0.607
+      },
+      "CAF|UEFA|group": {
+        "n": 75,
+        "c1_win_rate": 0.187,
+        "draw_rate": 0.307,
+        "c2_win_rate": 0.507
+      },
+      "CAF|CONMEBOL|group": {
+        "n": 28,
+        "c1_win_rate": 0.143,
+        "draw_rate": 0.143,
+        "c2_win_rate": 0.714
+      },
+      "CONCACAF|UEFA|knockout": {
+        "n": 10,
+        "c1_win_rate": 0,
+        "draw_rate": 0.4,
+        "c2_win_rate": 0.6
+      },
+      "AFC|CONMEBOL|group": {
+        "n": 20,
+        "c1_win_rate": 0.1,
+        "draw_rate": 0.15,
+        "c2_win_rate": 0.75
+      },
+      "CAF|CONCACAF|group": {
+        "n": 9,
+        "c1_win_rate": 0.444,
+        "draw_rate": 0.222,
+        "c2_win_rate": 0.333
+      },
+      "OFC|UEFA|group": {
+        "n": 3,
+        "c1_win_rate": 0,
+        "draw_rate": 0.333,
+        "c2_win_rate": 0.667
+      },
+      "AFC|CONCACAF|group": {
+        "n": 10,
+        "c1_win_rate": 0.1,
+        "draw_rate": 0.1,
+        "c2_win_rate": 0.8
+      },
+      "CAF|UEFA|knockout": {
+        "n": 13,
+        "c1_win_rate": 0.077,
+        "draw_rate": 0.462,
+        "c2_win_rate": 0.462
+      },
+      "CAF|CONMEBOL|knockout": {
+        "n": 3,
+        "c1_win_rate": 0,
+        "draw_rate": 0.667,
+        "c2_win_rate": 0.333
+      },
+      "AFC|CAF|group": {
+        "n": 18,
+        "c1_win_rate": 0.333,
+        "draw_rate": 0.389,
+        "c2_win_rate": 0.278
+      },
+      "AFC|UEFA|knockout": {
+        "n": 9,
+        "c1_win_rate": 0,
+        "draw_rate": 0.333,
+        "c2_win_rate": 0.667
+      },
+      "AFC|CONMEBOL|knockout": {
+        "n": 4,
+        "c1_win_rate": 0,
+        "draw_rate": 0.25,
+        "c2_win_rate": 0.75
+      }
+    }
+  },
+  "host_effects": {
+    "description": "Elo boost for host nations playing in their own venues.",
+    "boosts": {
+      "Mexico|Estadio Azteca": 200,
+      "Mexico|Guadalajara (Zapopan)": 180,
+      "Mexico|Monterrey (Guadalupe)": 170,
+      "United States|*": 150,
+      "Canada|*": 130
+    },
+    "historical_baseline": {
+      "past_group": 0.91,
+      "past_r16": 0.77,
+      "past_qf": 0.64,
+      "past_sf": 0.5,
+      "won": 0.27
+    }
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "backtest_set": "WC2018 + WC2022",
+  "matches": 128,
+  "computed_at": "2026-05-15T14:51:16.961Z",
+  "best_weights": {
+    "elo": 0.35,
+    "poisson": 0.35,
+    "conf": 0.2,
+    "wcoi": 0.1
+  },
+  "best_metrics": {
+    "weights": {
+      "elo": 0.35,
+      "poisson": 0.35,
+      "conf": 0.2,
+      "wcoi": 0.1
+    },
+    "accuracy_3way": 0.5547,
+    "brier_score": 0.5797,
+    "log_loss": 0.979,
+    "exact_score_acc": 0.0781,
+    "correct": 71,
+    "total": 128
+  },
+  "all_results": [
+    {
+      "weights": {
+        "elo": 0.35,
+        "poisson": 0.35,
+        "conf": 0.2,
+        "wcoi": 0.1
+      },
+      "accuracy_3way": 0.5547,
+      "brier_score": 0.5797,
+      "log_loss": 0.979,
+      "exact_score_acc": 0.0781,
+      "correct": 71,
+      "total": 128
+    },
+    {
+      "weights": {
+        "elo": 0.45,
+        "poisson": 0.3,
+        "conf": 0.15,
+        "wcoi": 0.1
+      },
+      "accuracy_3way": 0.5625,
+      "brier_score": 0.5802,
+      "log_loss": 0.9801,
+      "exact_score_acc": 0.0781,
+      "correct": 72,
+      "total": 128
+    },
+    {
+      "weights": {
+        "elo": 0.6,
+        "poisson": 0.2,
+        "conf": 0.1,
+        "wcoi": 0.1
+      },
+      "accuracy_3way": 0.5625,
+      "brier_score": 0.5803,
+      "log_loss": 0.9812,
+      "exact_score_acc": 0.0781,
+      "correct": 72,
+      "total": 128
+    },
+    {
+      "weights": {
+        "elo": 0.45,
+        "poisson": 0.3,
+        "conf": 0.1,
+        "wcoi": 0.15
+      },
+      "accuracy_3way": 0.5547,
+      "brier_score": 0.5809,
+      "log_loss": 0.9812,
+      "exact_score_acc": 0.0781,
+      "correct": 71,
+      "total": 128
+    },
+    {
+      "weights": {
+        "elo": 0.4,
+        "poisson": 0.35,
+        "conf": 0.15,
+        "wcoi": 0.1
+      },
+      "accuracy_3way": 0.5547,
+      "brier_score": 0.5817,
+      "log_loss": 0.9816,
+      "exact_score_acc": 0.0781,
+      "correct": 71,
+      "total": 128
+    },
+    {
+      "weights": {
+        "elo": 0.55,
+        "poisson": 0.25,
+        "conf": 0.1,
+        "wcoi": 0.1
+      },
+      "accuracy_3way": 0.5625,
+      "brier_score": 0.5812,
+      "log_loss": 0.9819,
+      "exact_score_acc": 0.0781,
+      "correct": 72,
+      "total": 128
+    },
+    {
+      "weights": {
+        "elo": 0.5,
+        "poisson": 0.3,
+        "conf": 0.1,
+        "wcoi": 0.1
+      },
+      "accuracy_3way": 0.5547,
+      "brier_score": 0.5823,
+      "log_loss": 0.983,
+      "exact_score_acc": 0.0781,
+      "correct": 71,
+      "total": 128
+    },
+    {
+      "weights": {
+        "elo": 1,
+        "poisson": 0,
+        "conf": 0,
+        "wcoi": 0
+      },
+      "accuracy_3way": 0.5625,
+      "brier_score": 0.5871,
+      "log_loss": 0.9927,
+      "exact_score_acc": 0.0781,
+      "correct": 72,
+      "total": 128
+    },
+    {
+      "weights": {
+        "elo": 0,
+        "poisson": 1,
+        "conf": 0,
+        "wcoi": 0
+      },
+      "accuracy_3way": 0.4609,
+      "brier_score": 0.6504,
+      "log_loss": 1.082,
+      "exact_score_acc": 0.0781,
+      "correct": 59,
+      "total": 128
+    }
+  ]
+}

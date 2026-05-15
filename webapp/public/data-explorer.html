@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Data Explorer — WC2026 Predictor</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+<div id="nav"></div>
+
+<main class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+  <h1 class="text-3xl sm:text-4xl font-black mb-2">🔍 Data Explorer</h1>
+  <p class="text-slate-400 text-sm mb-6">Tìm kiếm trong 47,980 trận quốc tế từ 1872 đến 2024. Lọc theo đội, năm, giải đấu.</p>
+
+  <section class="card p-5 mb-6">
+    <div class="grid sm:grid-cols-4 gap-3 items-end">
+      <div>
+        <label class="text-xs text-slate-400 uppercase">Đội (tên)</label>
+        <input id="qTeam" type="search" placeholder="Mexico, Argentina..." class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 mt-1 text-sm" />
+      </div>
+      <div>
+        <label class="text-xs text-slate-400 uppercase">Giải đấu</label>
+        <input id="qTournament" type="search" placeholder="fifa_world_cup, friendly..." class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 mt-1 text-sm" />
+      </div>
+      <div class="grid grid-cols-2 gap-2">
+        <div>
+          <label class="text-xs text-slate-400 uppercase">Năm từ</label>
+          <input id="qFrom" type="number" placeholder="2000" min="1872" max="2025" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 mt-1 text-sm" />
+        </div>
+        <div>
+          <label class="text-xs text-slate-400 uppercase">đến</label>
+          <input id="qTo" type="number" placeholder="2024" min="1872" max="2025" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 mt-1 text-sm" />
+        </div>
+      </div>
+      <button id="searchBtn" class="bg-gradient-to-r from-emerald-500 to-blue-500 hover:opacity-90 text-white font-bold rounded-lg py-2 text-sm">🔍 Tìm</button>
+    </div>
+  </section>
+
+  <section class="card p-5">
+    <div class="flex items-center justify-between mb-3">
+      <h2 class="font-bold text-lg text-emerald-300">Kết quả</h2>
+      <div id="meta" class="text-xs text-slate-500"></div>
+    </div>
+    <div id="results" class="overflow-x-auto scrollbar">
+      <div class="text-slate-500 text-sm">Nhập filter và click Tìm để bắt đầu.</div>
+    </div>
+    <div class="flex items-center justify-between mt-4">
+      <button id="prevBtn" disabled class="px-3 py-1.5 text-sm bg-slate-800 hover:bg-slate-700 rounded-lg disabled:opacity-30">← Trước</button>
+      <span id="pageLabel" class="text-xs text-slate-500"></span>
+      <button id="nextBtn" disabled class="px-3 py-1.5 text-sm bg-slate-800 hover:bg-slate-700 rounded-lg disabled:opacity-30">Tiếp →</button>
+    </div>
+  </section>
+</main>
+
+<div id="footer"></div>
+
+<script type="module">
+import { mountLayout, api, escapeHtml, $ } from '/js/shared.js';
+mountLayout('/data');
+
+let offset = 0;
+const LIMIT = 50;
+let total = 0;
+
+async function search() {
+  const q = {
+    team: $('#qTeam').value.trim(),
+    tournament: $('#qTournament').value.trim(),
+    year_from: $('#qFrom').value,
+    year_to: $('#qTo').value,
+    limit: LIMIT,
+    offset,
+  };
+  const params = Object.entries(q).filter(([, v]) => v).map(([k, v]) => `${k}=${encodeURIComponent(v)}`).join('&');
+  const url = '/api/search' + (params ? '?' + params : '');
+  $('#results').innerHTML = '<div class="text-slate-500 text-sm"><span class="spinner"></span> Đang tìm...</div>';
+  try {
+    const d = await api(url);
+    total = d.total;
+    $('#meta').textContent = `${total.toLocaleString()} trận khớp filter`;
+    $('#pageLabel').textContent = total > 0 ? `${offset + 1} - ${Math.min(offset + LIMIT, total)} / ${total}` : '';
+    $('#prevBtn').disabled = offset === 0;
+    $('#nextBtn').disabled = offset + LIMIT >= total;
+    if (d.matches.length === 0) {
+      $('#results').innerHTML = '<div class="text-slate-500 text-sm">Không có kết quả.</div>';
+      return;
+    }
+    $('#results').innerHTML = `
+      <table class="data text-sm">
+        <thead><tr><th>Ngày</th><th>Đội nhà</th><th class="text-center">Tỉ số</th><th>Đội khách</th><th>Giải</th><th>Sân</th></tr></thead>
+        <tbody>
+          ${d.matches.map(m => `
+            <tr>
+              <td class="text-xs text-slate-500">${m.date}</td>
+              <td>${escapeHtml(m.team1)}</td>
+              <td class="text-center font-mono font-bold ${m.score1 > m.score2 ? 'text-emerald-300' : m.score1 < m.score2 ? 'text-rose-300' : 'text-slate-400'}">${m.score1}-${m.score2}</td>
+              <td>${escapeHtml(m.team2)}</td>
+              <td class="text-xs text-slate-400">${escapeHtml(m.tournament)}${m.note ? ' (' + m.note + ')' : ''}</td>
+              <td class="text-xs text-slate-500">${escapeHtml(m.venue || '—')}</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    `;
+  } catch (e) {
+    $('#results').innerHTML = `<div class="text-rose-400">Lỗi: ${e.message}</div>`;
+  }
+}
+
+$('#searchBtn').addEventListener('click', () => { offset = 0; search(); });
+$('#prevBtn').addEventListener('click', () => { offset = Math.max(0, offset - LIMIT); search(); });
+$('#nextBtn').addEventListener('click', () => { offset = offset + LIMIT; search(); });
+[ '#qTeam', '#qTournament', '#qFrom', '#qTo' ].forEach(id => $(id).addEventListener('keypress', (e) => { if (e.key === 'Enter') { offset = 0; search(); } }));
+</script>
+</body>
+</html>

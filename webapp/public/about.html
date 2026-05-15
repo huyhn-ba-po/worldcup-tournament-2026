@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Giới thiệu — WC2026 Predictor</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+<div id="nav"></div>
+
+<main class="max-w-3xl mx-auto px-4 sm:px-6 py-8">
+  <h1 class="text-3xl sm:text-4xl font-black mb-2">ℹ️ Giới thiệu</h1>
+  <p class="text-slate-400 text-sm mb-6">WC2026 Predictor — webapp dự đoán FIFA World Cup 2026 kết hợp data thống kê + AI, minh bạch hoàn toàn.</p>
+
+  <section class="card p-6 mb-6">
+    <h2 class="text-xl font-bold text-emerald-300 mb-3">🎯 Mục tiêu</h2>
+    <p class="text-slate-300 leading-relaxed text-sm">
+      Đem statistical rigor (Elo, Poisson, WCOI) kết hợp với LLM reasoning (Gemini) để dự đoán 104 trận WC2026.
+      Mọi data, formula, backtest, weights đều <b class="text-emerald-300">công khai</b> để bạn tự kiểm tra và đóng góp.
+    </p>
+  </section>
+
+  <section class="card p-6 mb-6">
+    <h2 class="text-xl font-bold text-emerald-300 mb-3">📦 Tech stack</h2>
+    <ul class="text-sm text-slate-300 space-y-2 list-disc list-inside">
+      <li><b>Backend</b>: Node.js + Fastify (multi-page webapp)</li>
+      <li><b>Frontend</b>: Vanilla JS + Tailwind CSS (no build step)</li>
+      <li><b>AI</b>: Google Gemini 2.5 Flash (constrained Bayesian updater)</li>
+      <li><b>Cache</b>: LRU in-memory (24h TTL cho predictions)</li>
+      <li><b>Data</b>: openfootball/* (CC0 Public Domain), 7m.com.cn (scrape)</li>
+    </ul>
+  </section>
+
+  <section class="card p-6 mb-6">
+    <h2 class="text-xl font-bold text-emerald-300 mb-3">🔗 Sources</h2>
+    <ul class="text-sm text-slate-300 space-y-2">
+      <li>📂 GitHub: <a href="https://github.com/Yamus142/worldcup-tournament-2026" class="text-emerald-400 hover:underline" target="_blank">Yamus142/worldcup-tournament-2026</a></li>
+      <li>📊 Data primary: <a href="https://github.com/openfootball/internationals" class="text-emerald-400 hover:underline" target="_blank">openfootball/internationals</a> (1872-2025, Mart Jürisoo mirror)</li>
+      <li>🏆 WC data: <a href="https://github.com/openfootball/worldcup.json" class="text-emerald-400 hover:underline" target="_blank">openfootball/worldcup.json</a></li>
+      <li>⚽ Live updates: <a href="https://www.7m.com.cn/2026worldcup/" class="text-emerald-400 hover:underline" target="_blank">7m.com.cn/2026worldcup</a></li>
+      <li>🏛 FIFA official: <a href="https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026" class="text-emerald-400 hover:underline" target="_blank">FIFA WC2026</a></li>
+    </ul>
+  </section>
+
+  <section class="card p-6 mb-6">
+    <h2 class="text-xl font-bold text-emerald-300 mb-3">📜 License</h2>
+    <p class="text-sm text-slate-300 leading-relaxed">
+      Data từ openfootball là <b>CC0 Public Domain</b> — không cần ghi nguồn.
+      Code của webapp này under license của repo gốc.
+      AI predictions hiển thị có tính tham khảo, không phải lời khuyên cá cược.
+    </p>
+  </section>
+
+  <section class="card p-6">
+    <h2 class="text-xl font-bold text-emerald-300 mb-3">⚠️ Disclaimer</h2>
+    <p class="text-sm text-slate-300 leading-relaxed">
+      Dự đoán đến từ mô hình thống kê + AI, không phải lời khuyên tài chính hay cá cược.
+      Bóng đá luôn bất ngờ — backtest accuracy 55.5% nghĩa là <b>1/2 dự đoán sai</b>.
+      Hãy dùng webapp này để học về football analytics, không phải để cược tiền ⚽
+    </p>
+  </section>
+</main>
+
+<div id="footer"></div>
+
+<script type="module">
+import { mountLayout } from '/js/shared.js';
+mountLayout('/about');
+</script>
+</body>
+</html>

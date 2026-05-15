@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Phương pháp dự đoán — WC2026 Predictor</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+<div id="nav"></div>
+
+<main class="max-w-5xl mx-auto px-4 sm:px-6 py-8">
+  <h1 class="text-3xl sm:text-4xl font-black mb-2">🔬 Phương pháp dự đoán</h1>
+  <p class="text-slate-400 text-sm mb-8">Hybrid Stats + AI — minh bạch hoàn toàn, mọi formula + data + backtest đều công khai.</p>
+
+  <!-- TỔNG QUAN PIPELINE -->
+  <section class="card p-6 mb-8">
+    <h2 class="text-xl font-bold text-emerald-300 mb-3">📐 Pipeline tổng quan</h2>
+    <pre class="text-xs text-slate-300 leading-relaxed overflow-x-auto scrollbar bg-slate-950/60 p-4 rounded-lg">
+                            Match: Team A vs Team B
+                                     │
+        ┌────────────────────────────┼────────────────────────────┐
+        ▼                            ▼                            ▼
+  ┌──────────┐               ┌──────────────┐            ┌─────────────┐
+  │   ELO    │               │   POISSON    │            │   H2H raw   │
+  │ (47k)    │               │ (6k major)   │            │  (lifetime) │
+  └────┬─────┘               └──────┬───────┘            └──────┬──────┘
+       │                            │                            │
+       │ P_elo(W/D/L)                │ λ_A, λ_B, top scores      │ form
+       │                            │                            │
+       ▼                            ▼                            ▼
+  ┌──────────────────────────────────────────────────────────────┐
+  │     AGGREGATOR — Weighted ensemble (Elo 35% + Poisson 35%     │
+  │                + Conf×Stage 20% + WCOI 10%)                  │
+  │     → P_baseline + expected score                             │
+  └──────────────────────────┬───────────────────────────────────┘
+                             ▼
+              ┌──────────────────────────────────────┐
+              │  GEMINI 2.5 Flash (Bayesian updater) │
+              │  Constraint: P_final ∈ baseline ±15% │
+              │  (±25% with qualitative reason)      │
+              └─────────────────┬────────────────────┘
+                                ▼
+            ┌────────────────────────────────┐
+            │  FINAL: prob_a/d/b + score +   │
+            │  confidence + Vietnamese analyt│
+            └────────────────────────────────┘
+    </pre>
+  </section>
+
+  <!-- BACKTEST METRICS -->
+  <section class="card p-6 mb-8">
+    <h2 class="text-xl font-bold text-emerald-300 mb-3">📊 Backtest WC2018 + WC2022 (leak-free)</h2>
+    <p class="text-sm text-slate-400 mb-4">Rebuild Elo + Poisson chỉ với data TRƯỚC mỗi trận, predict 128 trận của 2 kỳ WC gần nhất.</p>
+    <div id="backtestTable" class="overflow-x-auto scrollbar"></div>
+  </section>
+
+  <!-- TIER 1: ELO -->
+  <section class="card p-6 mb-6">
+    <h2 class="text-xl font-bold text-emerald-300 mb-3">1️⃣ Elo Rating (35% weight)</h2>
+    <p class="text-sm text-slate-300 mb-3 leading-relaxed">FIFA-style Elo update sau mỗi trận của 47,980 trận quốc tế 1872-2025. K-factor theo mức độ quan trọng giải đấu.</p>
+    <div class="bg-slate-950/60 p-4 rounded-lg text-xs font-mono text-slate-300 leading-relaxed">
+      <div>R'_A = R_A + K × m × (W_actual - W_expected)</div>
+      <div>W_expected = 1 / (1 + 10^((R_B - R_A)/400))</div>
+      <div class="text-emerald-400 mt-2">K = 55 (WC) | 45 (Euro/Copa) | 35 (WC qualifier) | 20 (friendly)</div>
+      <div class="text-emerald-400">m = log(|GD| + 1) × damp(rating_diff)  (margin of victory)</div>
+      <div class="text-emerald-400">Host boost: +200 Mexico Azteca, +100-150 USA/Canada venues</div>
+    </div>
+    <div class="text-xs text-slate-400 mt-3">📊 <a href="/leaderboard" class="text-emerald-400 hover:underline">Xem full Elo leaderboard →</a></div>
+  </section>
+
+  <!-- TIER 2: POISSON -->
+  <section class="card p-6 mb-6">
+    <h2 class="text-xl font-bold text-emerald-300 mb-3">2️⃣ Poisson Goal Model (35% weight)</h2>
+    <p class="text-sm text-slate-300 mb-3 leading-relaxed">Cho mỗi đội, fit attack (α) và defense (δ) strength so với mean toàn cầu. λ = expected goals.</p>
+    <div class="bg-slate-950/60 p-4 rounded-lg text-xs font-mono text-slate-300 leading-relaxed">
+      <div>λ_home = α_home × δ_away × home_boost × global_avg</div>
+      <div>λ_away = α_away × δ_home × global_avg</div>
+      <div>P(score=i,j) = Poisson(i; λ_home) × Poisson(j; λ_away)</div>
+      <div class="text-emerald-400 mt-2">α > 1 → ghi nhiều hơn TB. δ < 1 → thủ tốt hơn TB.</div>
+      <div class="text-emerald-400">Data: 6,028 trận major tournaments 2014+. Time-decay exp(-0.10 × age).</div>
+    </div>
+  </section>
+
+  <!-- TIER 3: CONF MATRIX -->
+  <section class="card p-6 mb-6">
+    <h2 class="text-xl font-bold text-emerald-300 mb-3">3️⃣ Confederation × Stage Matrix (20% weight)</h2>
+    <p class="text-sm text-slate-300 mb-3 leading-relaxed">Lịch sử WC cho thấy các liên đoàn không bình đẳng tại WC. Matrix trích từ 1,069 trận WC 1930-2022.</p>
+    <div id="confMatrix" class="overflow-x-auto scrollbar"></div>
+  </section>
+
+  <!-- TIER 4: WCOI -->
+  <section class="card p-6 mb-6">
+    <h2 class="text-xl font-bold text-emerald-300 mb-3">4️⃣ WCOI — WC Overperformance Index (10% weight)</h2>
+    <p class="text-sm text-slate-300 mb-3 leading-relaxed">Đo: 1 đội có "đá hay hơn bình thường" khi vào WC không? Công thức:</p>
+    <div class="bg-slate-950/60 p-4 rounded-lg text-xs font-mono text-slate-300 mb-3">
+      WCOI = WC_win_rate - All_time_win_rate
+    </div>
+    <ul class="text-sm text-slate-300 space-y-1.5 list-disc list-inside">
+      <li><b class="text-emerald-300">Overperformers</b>: Argentina (+0.11), Croatia (+0.05), Germany (+0.05) — đá hay hơn lúc vào WC</li>
+      <li><b class="text-rose-300">Underperformers</b>: Iran (-0.41), South Korea (-0.36), Saudi Arabia (-0.33), Mexico (-0.21) — AFC + Mexico knockout curse</li>
+    </ul>
+    <div class="text-xs text-slate-400 mt-3">📊 <a href="/leaderboard" class="text-emerald-400 hover:underline">Xem full WCOI ranking →</a></div>
+  </section>
+
+  <!-- LLM LAYER -->
+  <section class="card p-6 mb-6">
+    <h2 class="text-xl font-bold text-emerald-300 mb-3">5️⃣ LLM Layer — Gemini 2.5 Flash as Bayesian Updater</h2>
+    <p class="text-sm text-slate-300 mb-3 leading-relaxed">Stats baseline là điểm neo. Gemini được constraint <b>chỉ adjust ±15%</b> trừ khi có lý do qualitative rõ ràng (max ±25%).</p>
+    <div class="bg-slate-950/60 p-4 rounded-lg text-xs text-slate-300 leading-relaxed">
+      <div class="text-emerald-400 mb-2">Why constraint?</div>
+      <ul class="list-disc list-inside space-y-1">
+        <li>No constraint → LLM hay overconfident, predict bừa (90%, 5%, 5%)</li>
+        <li>Too tight (±5%) → LLM thành no-op, chỉ copy stats</li>
+        <li><b>±15% sweet spot</b> → LLM giữ statistical rigor + thêm qualitative (form 2025, injury, motivation, tactical)</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- DATA SOURCES -->
+  <section class="card p-6">
+    <h2 class="text-xl font-bold text-emerald-300 mb-3">📦 Data Sources</h2>
+    <ul class="text-sm text-slate-300 space-y-2 list-disc list-inside">
+      <li><b>openfootball/internationals</b>: 47,980 trận quốc tế 1872-2025 (CC0 Public Domain, mirror Mart Jürisoo Kaggle dataset)</li>
+      <li><b>openfootball/worldcup.json</b>: 1,069 trận WC + fixtures 2026 (CC0)</li>
+      <li><b>openfootball/worldcup.more</b>: WC chi tiết với scorers + lineups (chưa parse)</li>
+      <li><b>7m.com.cn</b>: Đa ngôn ngữ + live data (scrape AJAX endpoint công khai)</li>
+      <li><b>FIFA official</b>: Verify 12 bảng A-L draw 5/12/2025</li>
+    </ul>
+  </section>
+</main>
+
+<div id="footer"></div>
+
+<script type="module">
+import { mountLayout, api, escapeHtml, $ } from '/js/shared.js';
+mountLayout('/methodology');
+
+api('/api/methodology').then(d => {
+  // Backtest table
+  $('#backtestTable').innerHTML = `
+    <table class="data text-sm">
+      <thead><tr>
+        <th>Weights (Elo/Poisson/Conf/WCOI)</th>
+        <th>Accuracy 3-way</th>
+        <th>Brier ↓</th>
+        <th>Log Loss ↓</th>
+        <th>Tỉ số chính xác</th>
+      </tr></thead>
+      <tbody>
+        ${d.all_results.map((r, i) => {
+          const w = r.weights;
+          const isBest = i === 0;
+          return `<tr ${isBest ? 'class="bg-emerald-500/5"' : ''}>
+            <td><span class="font-mono text-xs">${w.elo}/${w.poisson}/${w.conf}/${w.wcoi}</span> ${isBest ? '<span class="pill ml-2">BEST</span>' : ''}</td>
+            <td class="font-mono ${isBest ? 'text-emerald-300 font-bold' : ''}">${(r.accuracy_3way * 100).toFixed(1)}%</td>
+            <td class="font-mono">${r.brier_score.toFixed(4)}</td>
+            <td class="font-mono">${r.log_loss.toFixed(4)}</td>
+            <td class="font-mono">${(r.exact_score_acc * 100).toFixed(1)}%</td>
+          </tr>`;
+        }).join('')}
+      </tbody>
+    </table>
+  `;
+
+  // Conf matrix
+  $('#confMatrix').innerHTML = `
+    <table class="data text-sm">
+      <thead><tr><th>Matchup × Stage</th><th>n trận</th><th>Win rate C1</th><th>Draw</th><th>Win rate C2</th></tr></thead>
+      <tbody>
+        ${d.overlay.conf_stage_top.map(r => {
+          const [c1, c2, stage] = r.key.split('|');
+          return `<tr>
+            <td>${escapeHtml(c1)} vs ${escapeHtml(c2)} <span class="pill pill-slate ml-1">${stage}</span></td>
+            <td class="font-mono text-xs">${r.n}</td>
+            <td class="font-mono">${(r.c1_win_rate * 100).toFixed(0)}%</td>
+            <td class="font-mono text-slate-400">${(r.draw_rate * 100).toFixed(0)}%</td>
+            <td class="font-mono">${(r.c2_win_rate * 100).toFixed(0)}%</td>
+          </tr>`;
+        }).join('')}
+      </tbody>
+    </table>
+  `;
+}).catch(e => {
+  $('#backtestTable').innerHTML = '<div class="text-rose-400">Lỗi tải data</div>';
+  console.error(e);
+});
+</script>
+</body>
+</html>
