@@ -75,6 +75,20 @@ export function renderFooter() {
     <footer class="mt-16 border-t border-slate-800 py-6 text-center text-xs text-slate-500">
       <p>Dữ liệu tổng hợp từ nhiều nguồn công khai · Đây là dự đoán mang tính tham khảo — bóng đá luôn bất ngờ.</p>
       <p class="mt-2 text-slate-400">Tác giả: <b class="text-emerald-300">huyhn (Huỳnh Nhật Huy)</b></p>
+      <div class="mt-3 flex items-center justify-center gap-2 flex-wrap">
+        <a href="https://github.com/Yamus142/worldcup-tournament-2026" target="_blank" rel="noopener"
+           class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs no-underline transition border border-slate-700 hover:border-emerald-500 hover:bg-emerald-500/10 text-slate-300">
+          GitHub
+        </a>
+        <a href="https://www.buymeacoffee.com/huyhn" target="_blank" rel="noopener"
+           class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold no-underline transition hover:scale-105"
+           style="background: linear-gradient(135deg, #ffdd00, #ffb300); color: #1f2937;">
+          <span>☕</span> Buy me a coffee
+        </a>
+        <a href="/about" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs no-underline transition border border-slate-700 hover:border-emerald-500 hover:bg-emerald-500/10 text-slate-300">
+          Giới thiệu
+        </a>
+      </div>
     </footer>
   `;
 }
