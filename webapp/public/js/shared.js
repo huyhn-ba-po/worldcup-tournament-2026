@@ -119,12 +119,8 @@ function renderDonateModal() {
             <div class="text-xs text-slate-500 pt-2 border-t border-slate-800 mt-2">Nội dung CK gợi ý: <span class="text-emerald-300 font-mono">"Coffee WC2026"</span></div>
           </div>
 
-          <div class="mt-4 flex gap-2 justify-center">
-            <a href="https://github.com/sponsors/huyhn-ba-po" target="_blank" rel="noopener"
-               class="text-xs px-3 py-2 rounded-lg border border-slate-700 hover:border-emerald-500 hover:bg-emerald-500/10 text-slate-300 no-underline transition">
-              GitHub Sponsors
-            </a>
-            <button type="button" data-donate-close class="text-xs px-3 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold transition">
+          <div class="mt-4 flex justify-center">
+            <button type="button" data-donate-close class="text-xs px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold transition">
               Cảm ơn nhé!
             </button>
           </div>
