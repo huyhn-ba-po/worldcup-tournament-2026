@@ -13,47 +13,57 @@
 
 <main class="max-w-3xl mx-auto px-4 sm:px-6 py-8">
   <h1 class="text-3xl sm:text-4xl font-black mb-2">Giới thiệu</h1>
-  <p class="text-slate-400 text-sm mb-6">WC2026 Predictor — webapp dự đoán FIFA World Cup 2026 kết hợp data thống kê + AI.</p>
+  <p class="text-slate-400 text-sm mb-6">Tất cả những gì bạn cần biết về webapp này.</p>
 
+  <!-- Hero / What -->
   <section class="card p-6 mb-6">
-    <h2 class="text-xl font-bold text-emerald-300 mb-3">Mục tiêu</h2>
-    <p class="text-slate-300 leading-relaxed text-sm">
-      Đem statistical rigor (Elo, Poisson, WCOI) kết hợp với LLM reasoning (Gemini) để dự đoán 104 trận WC2026.
-      Mọi data, formula, backtest, weights đều <b class="text-emerald-300">công khai</b> để bạn tự kiểm tra.
+    <h2 class="text-xl font-bold text-emerald-300 mb-3">Đây là gì?</h2>
+    <p class="text-slate-200 leading-relaxed">
+      <b>WC2026 Predictor</b> là webapp dự đoán kết quả các trận đấu tại
+      <b class="text-emerald-300">World Cup 2026</b> (Mỹ – Canada – Mexico, 11/6 → 19/7).
+      Mỗi trận đều có dự đoán xác suất thắng/hòa/thua, tỉ số kỳ vọng và phân tích bằng tiếng Việt.
     </p>
   </section>
 
+  <!-- Who -->
   <section class="card p-6 mb-6">
-    <h2 class="text-xl font-bold text-emerald-300 mb-3">Tech stack</h2>
-    <ul class="text-sm text-slate-300 space-y-2 list-disc list-inside">
-      <li><b>Backend</b>: Node.js + Fastify (multi-page webapp)</li>
-      <li><b>Frontend</b>: Vanilla JS + Tailwind CSS (no build step)</li>
-      <li><b>AI</b>: Google Gemini 2.5 Flash (constrained Bayesian updater)</li>
-      <li><b>Cache</b>: LRU in-memory (24h TTL cho predictions)</li>
+    <h2 class="text-xl font-bold text-emerald-300 mb-3">Dành cho ai?</h2>
+    <ul class="space-y-2 text-slate-200 leading-relaxed">
+      <li>• <b>Người hâm mộ bóng đá</b> muốn theo dõi 48 đội, 104 trận, biết trước phong độ và dự đoán.</li>
+      <li>• <b>Người mới quan tâm World Cup 2026</b> muốn nắm lịch thi đấu theo giờ Việt Nam, biết đội nào mạnh – yếu, nhóm nào dễ – khó.</li>
+      <li>• <b>Người yêu số liệu</b> muốn xem dự đoán có cơ sở (thống kê + AI) chứ không phải đoán mò.</li>
     </ul>
   </section>
 
+  <!-- How -->
   <section class="card p-6 mb-6">
-    <h2 class="text-xl font-bold text-emerald-300 mb-3">Tác giả</h2>
-    <div class="flex items-start gap-4 flex-wrap">
-      <div class="flex-1 min-w-0">
-        <p class="text-sm text-slate-300 leading-relaxed">
-          <b class="text-emerald-300 text-base">huyhn (Huỳnh Nhật Huy)</b>
-        </p>
-        <ul class="mt-3 space-y-1.5 text-sm text-slate-300">
-          <li>Email: <a href="mailto:huynhnhathuyks@gmail.com" class="text-emerald-400 hover:underline">huynhnhathuyks@gmail.com</a></li>
-          <li>GitHub: <a href="https://github.com/huyhn-ba-po" target="_blank" rel="noopener" class="text-emerald-400 hover:underline">github.com/huyhn-ba-po</a></li>
-          <li>Repo dự án: <a href="https://github.com/huyhn-ba-po/worldcup-tournament-2026" target="_blank" rel="noopener" class="text-emerald-400 hover:underline">huyhn-ba-po/worldcup-tournament-2026</a></li>
-        </ul>
-      </div>
-    </div>
+    <h2 class="text-xl font-bold text-emerald-300 mb-3">Cách dùng</h2>
+    <ol class="space-y-3 text-slate-200 leading-relaxed list-decimal list-inside">
+      <li>Vào trang <a href="/groups" class="text-emerald-400 hover:underline">12 Bảng đấu</a> để xem tất cả các trận vòng bảng.</li>
+      <li>Click vào một trận bất kỳ → xem dự đoán chi tiết, tỉ số kỳ vọng, phân tích phong độ và lịch sử đối đầu.</li>
+      <li>Sau vòng bảng, vào <a href="/bracket" class="text-emerald-400 hover:underline">Bracket Knockout</a> để theo dõi nhánh đấu loại đến Chung kết 19/7.</li>
+    </ol>
+    <p class="text-sm text-slate-400 mt-4">
+      Toàn bộ miễn phí, không cần đăng ký, không quảng cáo.
+      Giờ thi đấu hiển thị theo <b class="text-emerald-300">giờ Việt Nam (GMT+7)</b>.
+    </p>
   </section>
 
+  <!-- Author -->
+  <section class="card p-6 mb-6">
+    <h2 class="text-xl font-bold text-emerald-300 mb-3">Tác giả</h2>
+    <p class="text-slate-200">
+      Webapp được phát triển bởi <b class="text-emerald-300">huyhn (Huỳnh Nhật Huy)</b>
+      — một người yêu bóng đá và số liệu.
+    </p>
+  </section>
+
+  <!-- Donate -->
   <section class="card p-6 mb-6 relative overflow-hidden" style="border-color: rgba(16, 185, 129, 0.35);">
     <div class="absolute -top-12 -right-12 text-9xl opacity-10 select-none">☕</div>
     <h2 class="text-xl font-bold mb-2 text-emerald-300">Ủng hộ tác giả</h2>
     <p class="text-sm text-slate-300 leading-relaxed mb-4 max-w-2xl">
-      Webapp này được làm hoàn toàn miễn phí, mã nguồn mở. Nếu thấy hữu ích, bạn có thể mời mình một ly cà phê qua chuyển khoản ngân hàng (quét QR), giúp mình duy trì dự án và phát triển thêm tính năng mới.
+      Webapp này được làm hoàn toàn miễn phí, không quảng cáo. Nếu thấy hữu ích, bạn có thể mời mình một ly cà phê qua chuyển khoản ngân hàng (quét QR), giúp mình duy trì và phát triển thêm tính năng mới.
     </p>
     <div class="flex flex-wrap gap-3 items-center">
       <button type="button" data-donate-trigger
@@ -62,30 +72,52 @@
         <span class="text-xl">☕</span>
         <span>Mời cà phê — quét QR</span>
       </button>
-      <a href="https://github.com/huyhn-ba-po/worldcup-tournament-2026" target="_blank" rel="noopener"
-         class="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-bold text-base transition hover:scale-105 no-underline"
-         style="background: linear-gradient(135deg, #fcd34d, #f59e0b); color: #422006; box-shadow: 0 8px 24px rgba(245, 158, 11, 0.25);">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        <span>Star trên GitHub</span>
-      </a>
     </div>
-    <p class="text-xs text-slate-500 mt-3">Một lượt ⭐ trên GitHub là cách miễn phí nhưng cực kỳ ý nghĩa để ủng hộ dự án.</p>
   </section>
 
-  <section class="card p-6">
-    <h2 class="text-xl font-bold text-emerald-300 mb-3">Disclaimer</h2>
-    <p class="text-sm text-slate-300 leading-relaxed">
-      Dự đoán đến từ mô hình thống kê + AI, không phải lời khuyên tài chính hay cá cược.
-      Bóng đá luôn bất ngờ — backtest accuracy 55.5% nghĩa là <b>1/2 dự đoán sai</b>.
-      Hãy dùng webapp này để học về football analytics.
-    </p>
+  <!-- Disclaimer -->
+  <section class="card p-6" style="border-color: rgba(245, 158, 11, 0.35); background: linear-gradient(160deg, rgba(245, 158, 11, 0.05), rgba(15, 23, 42, 0.7));">
+    <h2 class="text-xl font-bold mb-3" style="color: #fcd34d;">⚠️ Tuyên bố miễn trừ trách nhiệm</h2>
+    <div class="space-y-3 text-sm text-slate-200 leading-relaxed">
+      <p>
+        <b>1. Mục đích sử dụng:</b> Webapp này được tạo ra với mục đích <b>giải trí, giáo dục và tham khảo</b>.
+        Nội dung không nhằm mục đích cung cấp lời khuyên về cá cược, đầu tư tài chính, hoặc bất kỳ quyết định
+        nào liên quan đến tiền bạc.
+      </p>
+      <p>
+        <b>2. Độ chính xác:</b> Mọi dự đoán đều dựa trên mô hình thống kê và AI, có sai số. Backtest trên các kỳ
+        World Cup trước cho độ chính xác khoảng <b>55%</b> — nghĩa là gần một nửa số dự đoán có thể sai.
+        Bóng đá vốn có nhiều bất ngờ.
+      </p>
+      <p>
+        <b>3. Không khuyến khích cá cược:</b> Tác giả <b>không khuyến khích</b> việc sử dụng dự đoán này
+        để cá cược dưới mọi hình thức. Cá cược bóng đá bất hợp pháp tại Việt Nam và có thể gây ra
+        thiệt hại tài chính nghiêm trọng.
+      </p>
+      <p>
+        <b>4. Miễn trừ trách nhiệm:</b> Tác giả <b>không chịu trách nhiệm</b> cho bất kỳ tổn thất tài chính,
+        tinh thần, hoặc hậu quả nào phát sinh từ việc sử dụng thông tin trên webapp này. Người dùng tự chịu
+        trách nhiệm cho mọi quyết định và hành động của mình.
+      </p>
+      <p>
+        <b>5. Bản quyền dữ liệu:</b> Dữ liệu thống kê được tổng hợp từ các nguồn công khai. Mọi thông tin
+        về cầu thủ, đội tuyển, kết quả thi đấu thuộc bản quyền của FIFA và các tổ chức liên quan.
+      </p>
+      <p>
+        <b>6. Thay đổi nội dung:</b> Tác giả có quyền cập nhật, sửa đổi hoặc gỡ bỏ webapp này bất kỳ lúc nào
+        mà không cần báo trước.
+      </p>
+      <p class="text-xs text-slate-500 pt-3 border-t border-slate-700/40">
+        Bằng việc tiếp tục sử dụng webapp này, bạn xác nhận đã đọc và đồng ý với các điều khoản trên.
+      </p>
+    </div>
   </section>
 </main>
 
 <div id="footer"></div>
 
 <script type="module">
-import { mountLayout } from '/js/shared.js?v=8';
+import { mountLayout } from '/js/shared.js?v=9';
 mountLayout('/about');
 </script>
 </body>
