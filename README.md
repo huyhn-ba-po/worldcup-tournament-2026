@@ -277,7 +277,7 @@ Data từ openfootball ecosystem là **CC0 Public Domain** (không cần ghi ngu
 Nếu thấy dự án hữu ích:
 
 - ⭐ **[Star repo này trên GitHub](https://github.com/huyhn-ba-po/worldcup-tournament-2026)** — miễn phí mà giúp lan rộng
-- ☕ Mời tác giả một ly cà phê: quét QR Techcombank trong trang [/about](https://github.com/huyhn-ba-po/worldcup-tournament-2026/blob/main/webapp/public/about.html) — STK `1402968888`
+- ☕ Mời tác giả một ly cà phê: quét QR Banking trong trang **/about** của webapp
 
 ## 🙏 Acknowledgments
 
