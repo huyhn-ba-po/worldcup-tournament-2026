@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cầu thủ — WC2026 Predictor</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+<div id="nav"></div>
+
+<main class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+  <h1 class="text-3xl sm:text-4xl font-black mb-2">Cầu thủ</h1>
+  <p class="text-slate-400 text-sm mb-2">Tìm kiếm hơn 1.000 cầu thủ trong 48 đội tham dự WC2026.</p>
+  <p class="text-xs text-amber-300/80 mb-6">⚠️ Đội hình hiện tại từ qualifiers/friendlies (Wikipedia). Squad 26-man chính thức sẽ công bố cuối tháng 5/2026.</p>
+
+  <section class="card p-5 mb-6">
+    <div class="grid sm:grid-cols-4 gap-3 items-end">
+      <div class="sm:col-span-2">
+        <label class="text-xs text-slate-400 uppercase tracking-wider">Tìm theo tên cầu thủ hoặc club</label>
+        <input id="qSearch" type="search" placeholder="Messi, Real Madrid, Mbappé..." class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 mt-1 text-sm" />
+      </div>
+      <div>
+        <label class="text-xs text-slate-400 uppercase tracking-wider">Đội</label>
+        <select id="qTeam" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 mt-1 text-sm">
+          <option value="">Tất cả 48 đội</option>
+        </select>
+      </div>
+      <div>
+        <label class="text-xs text-slate-400 uppercase tracking-wider">Vị trí</label>
+        <select id="qPosition" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 mt-1 text-sm">
+          <option value="">Mọi vị trí</option>
+          <option value="goalkeepers">Thủ môn</option>
+          <option value="defenders">Hậu vệ</option>
+          <option value="midfielders">Tiền vệ</option>
+          <option value="forwards">Tiền đạo</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <section class="card p-5">
+    <div class="flex items-center justify-between mb-3">
+      <h2 class="font-bold text-lg text-emerald-300">Kết quả</h2>
+      <div id="meta" class="text-xs text-slate-500"></div>
+    </div>
+    <div id="results"><div class="text-slate-500 text-sm">Đang tải...</div></div>
+    <div class="flex items-center justify-between mt-4">
+      <button id="prevBtn" disabled class="px-3 py-1.5 text-sm bg-slate-800 hover:bg-slate-700 rounded-lg disabled:opacity-30">← Trước</button>
+      <span id="pageLabel" class="text-xs text-slate-500"></span>
+      <button id="nextBtn" disabled class="px-3 py-1.5 text-sm bg-slate-800 hover:bg-slate-700 rounded-lg disabled:opacity-30">Tiếp →</button>
+    </div>
+  </section>
+</main>
+
+<div id="footer"></div>
+
+<script type="module">
+import { mountLayout, api, escapeHtml, $ } from '/js/shared.js?v=12';
+mountLayout('/players');
+
+let offset = 0;
+const LIMIT = 30;
+let debounceTimer;
+
+const POS_LABEL_VI = {
+  GK: 'Thủ môn', DF: 'Hậu vệ', CB: 'Trung vệ', LB: 'Hậu vệ trái', RB: 'Hậu vệ phải',
+  LWB: 'Hậu vệ chạy cánh trái', RWB: 'Hậu vệ chạy cánh phải',
+  MF: 'Tiền vệ', CM: 'Tiền vệ trung tâm', DM: 'Tiền vệ phòng ngự', AM: 'Tiền vệ tấn công',
+  LM: 'Tiền vệ trái', RM: 'Tiền vệ phải',
+  FW: 'Tiền đạo', CF: 'Tiền đạo cắm', LW: 'Tiền đạo cánh trái', RW: 'Tiền đạo cánh phải',
+  ST: 'Tiền đạo', SS: 'Tiền đạo lùi',
+};
+
+async function loadTeamList() {
+  const d = await api('/api/squads');
+  const sel = $('#qTeam');
+  d.teams.sort((a, b) => a.name_vi.localeCompare(b.name_vi)).forEach(t => {
+    if (!t.has_data) return;
+    const opt = document.createElement('option');
+    opt.value = t.team;
+    opt.textContent = `${t.flag} ${t.name_vi} (${t.total})`;
+    sel.appendChild(opt);
+  });
+}
+
+async function search() {
+  const q = $('#qSearch').value.trim();
+  const team = $('#qTeam').value;
+  const position = $('#qPosition').value;
+  const url = `/api/players?q=${encodeURIComponent(q)}&team=${encodeURIComponent(team)}&position=${position}&limit=${LIMIT}&offset=${offset}`;
+  $('#results').innerHTML = '<div class="text-slate-500 text-sm"><span class="spinner"></span> Đang tìm...</div>';
+  try {
+    const d = await api(url);
+    $('#meta').textContent = `${d.total.toLocaleString()} cầu thủ khớp filter`;
+    $('#pageLabel').textContent = d.total > 0 ? `${offset + 1} - ${Math.min(offset + LIMIT, d.total)} / ${d.total}` : '';
+    $('#prevBtn').disabled = offset === 0;
+    $('#nextBtn').disabled = offset + LIMIT >= d.total;
+    if (!d.players.length) {
+      $('#results').innerHTML = '<div class="text-slate-500 text-sm py-8 text-center">Không tìm thấy cầu thủ nào.</div>';
+      return;
+    }
+    $('#results').innerHTML = `
+      <div class="overflow-x-auto scrollbar">
+        <table class="data text-sm">
+          <thead><tr>
+            <th>#</th>
+            <th>Cầu thủ</th>
+            <th>Đội</th>
+            <th>Vị trí</th>
+            <th>Club</th>
+            <th class="text-right">Caps</th>
+            <th class="text-right">Bàn</th>
+          </tr></thead>
+          <tbody>
+            ${d.players.map((p, i) => `
+              <tr class="hover:bg-emerald-500/5">
+                <td class="text-xs text-slate-500 font-mono">${offset + i + 1}</td>
+                <td>
+                  <div class="font-semibold text-slate-100">${escapeHtml(p.name)}</div>
+                  ${p.age ? `<div class="text-xs text-slate-500">${p.age} tuổi</div>` : ''}
+                </td>
+                <td>
+                  <a href="/team/${encodeURIComponent(p.team)}" class="text-emerald-300 hover:text-emerald-200 no-underline">
+                    <span class="flag mr-1">${p.flag}</span>${escapeHtml(p.team_vi)}
+                  </a>
+                </td>
+                <td><span class="text-xs px-2 py-0.5 rounded-full bg-slate-800 text-slate-300">${escapeHtml(POS_LABEL_VI[p.pos] || p.pos)}</span></td>
+                <td class="text-xs text-slate-300">${escapeHtml(p.club || '—')}</td>
+                <td class="text-right font-mono text-emerald-300">${p.caps ?? 0}</td>
+                <td class="text-right font-mono ${p.goals ? 'text-amber-300' : 'text-slate-500'}">${p.goals ?? 0}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    `;
+  } catch (e) {
+    $('#results').innerHTML = `<div class="text-rose-400">Lỗi: ${e.message}</div>`;
+  }
+}
+
+(async () => {
+  await loadTeamList();
+  search();
+  $('#qSearch').addEventListener('input', () => {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => { offset = 0; search(); }, 300);
+  });
+  $('#qTeam').addEventListener('change', () => { offset = 0; search(); });
+  $('#qPosition').addEventListener('change', () => { offset = 0; search(); });
+  $('#prevBtn').addEventListener('click', () => { offset = Math.max(0, offset - LIMIT); search(); });
+  $('#nextBtn').addEventListener('click', () => { offset = offset + LIMIT; search(); });
+})();
+</script>
+</body>
+</html>

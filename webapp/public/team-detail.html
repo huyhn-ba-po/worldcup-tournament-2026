@@ -19,8 +19,64 @@
 <div id="footer"></div>
 
 <script type="module">
-import { mountLayout, api, escapeHtml, $, tierBadge, fmtDateVN, loadTeams } from '/js/shared.js?v=11';
+import { mountLayout, api, escapeHtml, $, tierBadge, fmtDateVN, loadTeams } from '/js/shared.js?v=12';
 mountLayout('/team');
+
+function renderSquad(squad) {
+  if (!squad || squad.error) {
+    return `<section class="card p-5 mb-6">
+      <h2 class="font-bold text-lg text-emerald-300 mb-1">Đội hình</h2>
+      <p class="text-sm text-slate-500">Chưa có dữ liệu đội hình cho đội này.</p>
+    </section>`;
+  }
+  const cats = [
+    { key: 'goalkeepers', label: 'Thủ môn', color: 'text-amber-300' },
+    { key: 'defenders', label: 'Hậu vệ', color: 'text-blue-300' },
+    { key: 'midfielders', label: 'Tiền vệ', color: 'text-emerald-300' },
+    { key: 'forwards', label: 'Tiền đạo', color: 'text-rose-300' },
+  ];
+  const renderPlayer = (p) => `
+    <div class="flex items-center justify-between py-1.5 px-2 hover:bg-emerald-500/5 rounded text-sm">
+      <div class="min-w-0 flex-1">
+        <div class="font-semibold text-slate-100 truncate">
+          ${p.no ? `<span class="text-xs text-slate-500 font-mono mr-2">#${p.no}</span>` : ''}
+          ${escapeHtml(p.name)}
+          ${p.age ? `<span class="text-xs text-slate-500 ml-1">(${p.age}t)</span>` : ''}
+        </div>
+        ${p.club ? `<div class="text-xs text-slate-500 truncate">${escapeHtml(p.club)}</div>` : ''}
+      </div>
+      <div class="text-right text-xs ml-2 shrink-0">
+        ${p.caps != null ? `<span class="font-mono text-emerald-300">${p.caps}</span><span class="text-slate-500"> caps</span>` : ''}
+        ${p.goals ? ` · <span class="font-mono text-amber-300">${p.goals}</span><span class="text-slate-500"> bàn</span>` : ''}
+      </div>
+    </div>
+  `;
+  return `<section class="card p-5 mb-6">
+    <div class="flex items-center justify-between mb-3 flex-wrap gap-2">
+      <h2 class="font-bold text-lg text-emerald-300">Đội hình (${squad.total} cầu thủ)</h2>
+      <span class="text-xs text-slate-500">Nguồn: <a href="${squad.source_url}" target="_blank" rel="noopener" class="text-emerald-400 hover:underline">Wikipedia</a></span>
+    </div>
+    <p class="text-xs text-amber-300/80 mb-4">⚠️ Đội hình hiện tại từ qualifiers/friendlies. Squad WC2026 26-man chính thức sẽ công bố cuối tháng 5/2026.</p>
+
+    ${squad.key_players?.length ? `
+      <div class="mb-5 p-4 rounded-xl bg-gradient-to-r from-emerald-500/5 to-blue-500/5 border border-emerald-500/20">
+        <div class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">⭐ Cầu thủ chủ chốt (top 7 theo caps + goals)</div>
+        <div class="space-y-1">${squad.key_players.map(renderPlayer).join('')}</div>
+      </div>
+    ` : ''}
+
+    <div class="grid sm:grid-cols-2 gap-4">
+      ${cats.map(c => {
+        const players = squad.by_position?.[c.key] || [];
+        if (!players.length) return '';
+        return `<div>
+          <div class="font-bold ${c.color} text-sm mb-2 uppercase tracking-wider">${c.label} <span class="text-slate-500 text-xs">(${players.length})</span></div>
+          <div class="space-y-0.5">${players.map(renderPlayer).join('')}</div>
+        </div>`;
+      }).join('')}
+    </div>
+  </section>`;
+}
 
 const teamName = decodeURIComponent(window.location.pathname.split('/team/')[1] || '');
 
@@ -108,6 +164,8 @@ if (!teamName) {
         <h2 class="font-bold text-lg text-emerald-300 mb-3">Lịch đấu vòng bảng (giờ VN)</h2>
         <div class="space-y-2">${groupMatches}</div>
       </section>
+
+      ${renderSquad(d.squad)}
 
       <section class="card p-5 mb-6">
         <h2 class="font-bold text-lg text-emerald-300 mb-3">10 trận quốc tế gần nhất (2020+)</h2>

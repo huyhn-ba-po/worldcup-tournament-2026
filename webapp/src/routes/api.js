@@ -1,5 +1,5 @@
 // API routes
-import { TEAMS_META, BACKTEST, OVERLAY, POISSON, ELO, ALL_INT, WC_MATCHES, FIXTURES_2026 } from '../lib/dataLoader.js';
+import { TEAMS_META, BACKTEST, OVERLAY, POISSON, ELO, ALL_INT, WC_MATCHES, FIXTURES_2026, SQUADS } from '../lib/dataLoader.js';
 import { STAGE_NAMES } from '../data/fixtures.js';
 import { computeStatsBaseline, getTeamCard, getEloLeaderboard } from '../lib/stats.js';
 import { getH2H, getRecentForm, getTeamWCHistory, searchMatches } from '../lib/h2h.js';
@@ -36,7 +36,57 @@ export default async function apiRoutes(fastify) {
     const groupMatches = FIXTURES_2026.filter(f => f.group === group && f.stage === 'group');
     const recentForm = getRecentForm(team, { limit: 10, sinceYear: 2020 });
     const wcHistory = getTeamWCHistory(team);
-    return { team: card, group, group_matches: groupMatches, recent_form: recentForm, wc_history: wcHistory };
+    const squad = SQUADS.teams[team] || null;
+    return { team: card, group, group_matches: groupMatches, recent_form: recentForm, wc_history: wcHistory, squad };
+  });
+
+  // === SQUADS ===
+  fastify.get('/api/squads', async () => ({
+    source: SQUADS.source,
+    scraped_at: SQUADS.scraped_at,
+    note: SQUADS.note,
+    teams: Object.entries(SQUADS.teams).map(([team, data]) => ({
+      team,
+      name_vi: TEAMS_META.team_meta[team]?.name_vi || team,
+      flag: TEAMS_META.team_meta[team]?.flag || '🏳️',
+      total: data.total || 0,
+      has_data: !data.error,
+    })),
+  }));
+
+  // === PLAYERS SEARCH ===
+  fastify.get('/api/players', async (req) => {
+    const { q = '', team = '', position = '', limit = 50, offset = 0 } = req.query;
+    const qLower = q.toLowerCase();
+    const results = [];
+    for (const [teamName, data] of Object.entries(SQUADS.teams)) {
+      if (data.error) continue;
+      if (team && teamName !== team) continue;
+      const teamMeta = TEAMS_META.team_meta[teamName];
+      const allPlayers = [
+        ...(data.by_position.goalkeepers || []),
+        ...(data.by_position.defenders || []),
+        ...(data.by_position.midfielders || []),
+        ...(data.by_position.forwards || []),
+        ...(data.by_position.other || []),
+      ];
+      for (const p of allPlayers) {
+        if (position && p.category !== position) continue;
+        if (qLower && !p.name.toLowerCase().includes(qLower) && !(p.club || '').toLowerCase().includes(qLower)) continue;
+        results.push({
+          ...p,
+          team: teamName,
+          team_vi: teamMeta?.name_vi || teamName,
+          flag: teamMeta?.flag || '🏳️',
+        });
+      }
+    }
+    // Sort by caps desc
+    results.sort((a, b) => (b.caps || 0) - (a.caps || 0));
+    return {
+      total: results.length,
+      players: results.slice(+offset, +offset + +limit),
+    };
   });
 
   fastify.get('/api/matches', async (req) => {
@@ -129,7 +179,9 @@ export default async function apiRoutes(fastify) {
     const h2h = getH2H(fixture.home, fixture.away);
     const recentA = getRecentForm(fixture.home, { limit: 10, sinceYear: 2020 });
     const recentB = getRecentForm(fixture.away, { limit: 10, sinceYear: 2020 });
-    const prompt = buildPredictionPrompt(fixture, h2h, recentA, recentB, stats, ctx);
+    const squadA = SQUADS.teams[fixture.home];
+    const squadB = SQUADS.teams[fixture.away];
+    const prompt = buildPredictionPrompt(fixture, h2h, recentA, recentB, stats, ctx, squadA, squadB);
 
     try {
       const text = await generatePrediction(prompt);

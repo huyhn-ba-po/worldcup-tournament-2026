@@ -30,7 +30,18 @@ export function tryParseJSON(text) {
   try { return JSON.parse(cleaned); } catch { return null; }
 }
 
-export function buildPredictionPrompt(fixture, h2h, recentA, recentB, stats, ctx) {
+function formatKeyPlayers(squad, teamName) {
+  if (!squad || squad.error || !squad.key_players?.length) return null;
+  const lines = squad.key_players.slice(0, 5).map(p => {
+    const club = p.club ? ` (${p.club})` : '';
+    const caps = p.caps ? `, ${p.caps} caps` : '';
+    const goals = p.goals ? `, ${p.goals} bàn` : '';
+    return `  · ${p.name}${club} — ${p.pos_vi || p.pos}${caps}${goals}`;
+  });
+  return lines.join('\n');
+}
+
+export function buildPredictionPrompt(fixture, h2h, recentA, recentB, stats, ctx, squadA, squadB) {
   const { home: teamA, away: teamB, group, match, ground, date, time } = fixture;
   const lines = [];
   lines.push(`Bạn là chuyên gia phân tích bóng đá, đang dự đoán một trận đấu tại FIFA World Cup 2026.`);
@@ -59,6 +70,17 @@ export function buildPredictionPrompt(fixture, h2h, recentA, recentB, stats, ctx
   lines.push(`${teamA}: ${recentA.wins}W-${recentA.draws}D-${recentA.losses}L, win rate ${Math.round(recentA.win_rate * 100)}%`);
   lines.push(`${teamB}: ${recentB.wins}W-${recentB.draws}D-${recentB.losses}L, win rate ${Math.round(recentB.win_rate * 100)}%`);
   lines.push(``);
+
+  // === Key players (NEW) ===
+  const kpA = formatKeyPlayers(squadA, teamA);
+  const kpB = formatKeyPlayers(squadB, teamB);
+  if (kpA || kpB) {
+    lines.push(`=== ⭐ CẦU THỦ CHỦ CHỐT (top 5 theo caps + goals, từ Wikipedia) ===`);
+    if (kpA) { lines.push(`${teamA}:`); lines.push(kpA); }
+    if (kpB) { lines.push(`${teamB}:`); lines.push(kpB); }
+    lines.push(``);
+  }
+
   lines.push(`=== NHIỆM VỤ ===`);
   lines.push(`1. Anchor từ stats baseline. Adjust ±15% nếu có lý do qualitative (chấn thương, suspension, motivation, tactical, form 2025-2026).`);
   lines.push(`2. Đưa ra xác suất 3 kết quả (cộng = 100).`);

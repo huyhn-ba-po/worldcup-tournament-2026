@@ -18,6 +18,7 @@ export const WC_MATCHES = loadJSON('wc_all_matches.json');
 export const ALL_INT = loadJSON('all_internationals.json');
 export const TEAMS_META = loadJSON('teams_meta.json');
 export const WC2026_CLEAN = loadJSON('wc2026_clean.json');
+export const SQUADS = loadJSON('squads.json');
 
 export { FIXTURES_2026 } from '../data/fixtures.js';
 

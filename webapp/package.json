@@ -10,6 +10,7 @@
   "dependencies": {
     "@fastify/static": "^7.0.4",
     "@google/genai": "^1.0.0",
+    "cheerio": "^1.2.0",
     "dotenv": "^16.4.5",
     "fastify": "^4.28.1",
     "lru-cache": "^11.0.2",

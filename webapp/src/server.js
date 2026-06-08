@@ -47,6 +47,7 @@ const pages = [
   ['/groups', 'groups.html'],
   ['/teams', 'teams.html'],
   ['/team/:name', 'team-detail.html'],
+  ['/players', 'players.html'],
   ['/match/:id', 'match-detail.html'],
   ['/bracket', 'bracket.html'],
   ['/methodology', 'methodology.html'],
