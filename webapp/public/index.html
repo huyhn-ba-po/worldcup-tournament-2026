@@ -314,7 +314,7 @@
     <div class="text-center mb-10">
       <span class="section-eyebrow">Tính năng</span>
       <h2 class="section-title mx-auto">Vì sao webapp này hay?</h2>
-      <p class="section-lead mx-auto">6 lý do bạn nên ghim trang này lại cho mùa World Cup.</p>
+      <p class="section-lead mx-auto">5 lý do bạn nên ghim trang này lại cho mùa World Cup.</p>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
       <div class="feature-card">
@@ -342,18 +342,11 @@
         <div class="feature-number">04</div>
         <h3 class="font-bold text-lg text-emerald-300 mt-3 mb-2">48 đội + 1.000+ cầu thủ</h3>
         <p class="text-sm text-slate-300 leading-relaxed">
-          Mỗi đội có trang riêng với đội hình + phong độ. Search cầu thủ theo tên: Messi, Mbappé, Bellingham...
+          Mỗi đội có trang riêng với đội hình, phong độ gần đây và lịch sử dự World Cup.
         </p>
       </div>
       <div class="feature-card">
         <div class="feature-number">05</div>
-        <h3 class="font-bold text-lg text-emerald-300 mt-3 mb-2">So sánh 2 đội bất kỳ</h3>
-        <p class="text-sm text-slate-300 leading-relaxed">
-          Brazil gặp Argentina ai thắng? Pháp đối đầu Đức? AI so sánh sức mạnh + lịch sử đối đầu giúp bạn.
-        </p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-number">06</div>
         <h3 class="font-bold text-lg text-emerald-300 mt-3 mb-2">Miễn phí + không quảng cáo</h3>
         <p class="text-sm text-slate-300 leading-relaxed">
           Vào xem thoải mái, không cần đăng ký. Không pop-up, không banner. Nguồn data lấy từ Wikipedia + FIFA.
@@ -423,29 +416,19 @@
     </div>
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
       <a href="/groups" class="feature-card">
-        <div class="text-xs text-emerald-400 font-bold uppercase tracking-wider">12 BẢNG</div>
-        <div class="font-bold text-lg text-slate-100 mt-2">Vòng bảng A-L</div>
+        <div class="text-xs text-emerald-400 font-bold uppercase tracking-wider">LỊCH VÒNG BẢNG</div>
+        <div class="font-bold text-lg text-slate-100 mt-2">12 bảng A-L</div>
         <p class="text-xs text-slate-400 mt-2">72 trận, lịch + AI dự đoán mỗi trận</p>
       </a>
       <a href="/bracket" class="feature-card">
-        <div class="text-xs text-emerald-400 font-bold uppercase tracking-wider">KNOCKOUT</div>
-        <div class="font-bold text-lg text-slate-100 mt-2">Bracket 1/16 → Final</div>
+        <div class="text-xs text-emerald-400 font-bold uppercase tracking-wider">VÒNG LOẠI TRỰC TIẾP</div>
+        <div class="font-bold text-lg text-slate-100 mt-2">Vòng 1/16 → Chung kết</div>
         <p class="text-xs text-slate-400 mt-2">32 trận tới chung kết 19/7</p>
       </a>
       <a href="/teams" class="feature-card">
-        <div class="text-xs text-emerald-400 font-bold uppercase tracking-wider">48 ĐỘI</div>
+        <div class="text-xs text-emerald-400 font-bold uppercase tracking-wider">48 ĐỘI TUYỂN</div>
         <div class="font-bold text-lg text-slate-100 mt-2">Mỗi đội có trang riêng</div>
         <p class="text-xs text-slate-400 mt-2">Đội hình, phong độ, lịch sử dự WC</p>
-      </a>
-      <a href="/players" class="feature-card">
-        <div class="text-xs text-emerald-400 font-bold uppercase tracking-wider">CẦU THỦ</div>
-        <div class="font-bold text-lg text-slate-100 mt-2">Search 1.000+ cầu thủ</div>
-        <p class="text-xs text-slate-400 mt-2">Tìm Messi, Mbappé, Bellingham...</p>
-      </a>
-      <a href="/compare" class="feature-card">
-        <div class="text-xs text-emerald-400 font-bold uppercase tracking-wider">SO SÁNH</div>
-        <div class="font-bold text-lg text-slate-100 mt-2">Brazil gặp Argentina ai thắng?</div>
-        <p class="text-xs text-slate-400 mt-2">So sánh 2 đội + lịch sử đối đầu</p>
       </a>
       <a href="/about" class="feature-card">
         <div class="text-xs text-emerald-400 font-bold uppercase tracking-wider">GIỚI THIỆU</div>
@@ -511,7 +494,7 @@
 <div id="footer"></div>
 
 <script type="module">
-import { mountLayout, api, escapeHtml, $, loadTeams, fmtDateVN } from '/js/shared.js?v=16';
+import { mountLayout, api, escapeHtml, $, loadTeams, fmtDateVN } from '/js/shared.js?v=17';
 mountLayout('/');
 
 function tickCountdown() {

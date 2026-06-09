@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Bracket Knockout — WC2026 Predictor</title>
+<title>Vòng loại trực tiếp — WC2026 Predictor</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="/js/tw.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -33,7 +33,7 @@
 <div id="nav"></div>
 
 <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
-  <h1 class="text-3xl sm:text-4xl font-black mb-2">Bracket Knockout WC2026</h1>
+  <h1 class="text-3xl sm:text-4xl font-black mb-2">Vòng loại trực tiếp WC2026</h1>
   <p class="text-slate-400 text-sm mb-6">32 trận từ Vòng 1/16 đến Chung kết 19/7 · Đội cụ thể sẽ xác định sau khi vòng bảng kết thúc · Giờ Việt Nam (GMT+7).</p>
 
   <div class="overflow-x-auto scrollbar pb-4">
@@ -58,7 +58,7 @@
 <div id="footer"></div>
 
 <script type="module">
-import { mountLayout, api, escapeHtml, $, fmtDateVN } from '/js/shared.js?v=15';
+import { mountLayout, api, escapeHtml, $, fmtDateVN } from '/js/shared.js?v=17';
 mountLayout('/bracket');
 
 api('/api/matches').then(({ matches, stage_names }) => {

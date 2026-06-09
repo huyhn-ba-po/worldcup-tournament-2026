@@ -47,11 +47,9 @@ export function teamFlag(team, teamMeta) {
 export function renderNav(currentPath) {
   const links = [
     { href: '/', label: 'Trang chủ' },
-    { href: '/groups', label: '12 Bảng' },
+    { href: '/groups', label: 'Lịch vòng bảng' },
+    { href: '/bracket', label: 'Vòng loại trực tiếp' },
     { href: '/teams', label: 'Đội tuyển' },
-    { href: '/players', label: 'Cầu thủ' },
-    { href: '/bracket', label: 'Bracket' },
-    { href: '/compare', label: 'So sánh' },
     { href: '/about', label: 'Giới thiệu' },
   ];
   return `
