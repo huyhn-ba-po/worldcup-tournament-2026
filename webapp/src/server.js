@@ -50,10 +50,7 @@ const pages = [
   ['/players', 'players.html'],
   ['/match/:id', 'match-detail.html'],
   ['/bracket', 'bracket.html'],
-  ['/methodology', 'methodology.html'],
-  ['/leaderboard', 'leaderboard.html'],
   ['/compare', 'compare.html'],
-  ['/data', 'data-explorer.html'],
   ['/about', 'about.html'],
 ];
 for (const [route, file] of pages) {
