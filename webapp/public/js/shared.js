@@ -51,10 +51,7 @@ export function renderNav(currentPath) {
     { href: '/teams', label: 'Đội tuyển' },
     { href: '/players', label: 'Cầu thủ' },
     { href: '/bracket', label: 'Bracket' },
-    { href: '/leaderboard', label: 'Xếp hạng' },
     { href: '/compare', label: 'So sánh' },
-    { href: '/data', label: 'Khám phá data' },
-    { href: '/methodology', label: 'Phương pháp' },
     { href: '/about', label: 'Giới thiệu' },
   ];
   return `
