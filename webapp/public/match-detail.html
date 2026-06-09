@@ -94,7 +94,7 @@ async function load() {
 
   $('#root').innerHTML = headerHTML + `
     <section class="card p-5 sm:p-6 mb-6">
-      <h2 class="font-bold text-lg text-emerald-300 mb-3">Stats Baseline (Hybrid Elo + Poisson + WCOI)</h2>
+      <h2 class="font-bold text-lg text-emerald-300 mb-3">Stats Baseline</h2>
       <div class="flex items-center justify-between gap-3 mb-3 flex-wrap">
         <div>
           <div class="text-xs text-slate-400 uppercase tracking-wider">Dự đoán</div>
@@ -117,46 +117,12 @@ async function load() {
       </div>
     </section>
 
-    <section class="grid md:grid-cols-2 gap-4 mb-6">
-      <div class="card-flat p-4">
-        <h3 class="font-bold text-emerald-300 mb-2 text-sm">ELO Rating</h3>
-        <div class="text-xs text-slate-400 mb-2">Weight ${Math.round(s.weights.elo * 100)}% · Host boost ${s.breakdown.elo.host_boost >= 0 ? '+' : ''}${s.breakdown.elo.host_boost}</div>
-        <table class="data text-xs">
-          <tr><td>${escapeHtml(nameA)}</td><td class="font-mono text-emerald-300">${s.breakdown.elo.rA}</td></tr>
-          <tr><td>${escapeHtml(nameB)}</td><td class="font-mono text-blue-300">${s.breakdown.elo.rB}</td></tr>
-          <tr><td class="text-slate-500">P(W/D/L)</td><td>${s.breakdown.elo.p.a}/${s.breakdown.elo.p.d}/${s.breakdown.elo.p.b}</td></tr>
-        </table>
-      </div>
-      <div class="card-flat p-4">
-        <h3 class="font-bold text-emerald-300 mb-2 text-sm">Poisson Goal Model</h3>
-        <div class="text-xs text-slate-400 mb-2">Weight ${Math.round(s.weights.poisson * 100)}%</div>
-        <table class="data text-xs">
-          <tr><td>λ ${escapeHtml(nameA)}</td><td class="font-mono text-emerald-300">${s.breakdown.poisson.lambdaA}</td></tr>
-          <tr><td>λ ${escapeHtml(nameB)}</td><td class="font-mono text-blue-300">${s.breakdown.poisson.lambdaB}</td></tr>
-          <tr><td class="text-slate-500">P(W/D/L)</td><td>${s.breakdown.poisson.p.a}/${s.breakdown.poisson.p.d}/${s.breakdown.poisson.p.b}</td></tr>
-        </table>
-      </div>
-      <div class="card-flat p-4">
-        <h3 class="font-bold text-emerald-300 mb-2 text-sm">Confederation × Stage</h3>
-        <div class="text-xs text-slate-400 mb-2">Weight ${Math.round(s.weights.conf * 100)}% · ${s.breakdown.conf.key} (n=${s.breakdown.conf.n} trận WC)</div>
-        <div class="text-sm">P(W/D/L) = ${s.breakdown.conf.p.a}/${s.breakdown.conf.p.d}/${s.breakdown.conf.p.b}</div>
-      </div>
-      <div class="card-flat p-4">
-        <h3 class="font-bold text-emerald-300 mb-2 text-sm">WCOI (WC Overperformance)</h3>
-        <div class="text-xs text-slate-400 mb-2">Weight ${Math.round(s.weights.wcoi * 100)}%</div>
-        <table class="data text-xs">
-          <tr><td>${escapeHtml(nameA)}</td><td class="font-mono ${s.breakdown.wcoi.wcoi_a > 0 ? 'text-emerald-300' : 'text-rose-300'}">${s.breakdown.wcoi.wcoi_a > 0 ? '+' : ''}${s.breakdown.wcoi.wcoi_a}</td></tr>
-          <tr><td>${escapeHtml(nameB)}</td><td class="font-mono ${s.breakdown.wcoi.wcoi_b > 0 ? 'text-emerald-300' : 'text-rose-300'}">${s.breakdown.wcoi.wcoi_b > 0 ? '+' : ''}${s.breakdown.wcoi.wcoi_b}</td></tr>
-        </table>
-      </div>
-    </section>
-
     <section class="card p-5 sm:p-6 mb-6" id="aiSection">
       <div class="flex items-center justify-between mb-3 gap-3 flex-wrap">
         <h2 class="font-bold text-lg text-emerald-300">AI Dự đoán</h2>
         <button id="aiBtn" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-lg px-4 py-2 text-sm">Tạo dự đoán AI</button>
       </div>
-      <div id="aiBody" class="text-sm text-slate-400">Click nút trên để xem dự đoán AI cho trận này, dựa trên stats baseline (Elo + Poisson + đối đầu) và phân tích định tính.</div>
+      <div id="aiBody" class="text-sm text-slate-400">Click nút trên để xem dự đoán AI cho trận này — phân tích phong độ, lịch sử đối đầu và cầu thủ chủ chốt.</div>
     </section>
 
     <section class="grid md:grid-cols-2 gap-4 mb-6">
