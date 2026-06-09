@@ -224,17 +224,20 @@ async function load() {
       // Người thắng LUÔN theo lõi tĩnh (khớp với phần phân tích) — chỉ tỉ số & % dao động
       const wKey = p.winner === 'Hòa' ? 'draw' : (p.winner === f.home ? 'home' : 'away');
       const winner = wKey === 'draw' ? 'Hòa' : (wKey === 'home' ? ctx.flagA + ' ' + nameA : ctx.flagB + ' ' + nameB);
-      // Tỉ số: 1-3 tỉ số mô phỏng, hoặc tỉ số lõi
-      const scoreMain = sim ? sim.primary.label.replace('-', ' - ') : `${p.score_a} - ${p.score_b}`;
-      const scoreAlts = (sim && sim.scorelines.length > 1)
-        ? sim.scorelines.slice(1).map(s => s.label).join(' · ') : '';
+      // Tỉ số: random 1 tỉ số từ scorelines mô phỏng (mỗi click 1 kết quả khác nhau)
+      let scoreMain;
+      if (sim && sim.scorelines?.length) {
+        const pick = sim.scorelines[Math.floor(Math.random() * sim.scorelines.length)];
+        scoreMain = pick.label.replace('-', ' - ');
+      } else {
+        scoreMain = sim ? sim.primary.label.replace('-', ' - ') : `${p.score_a} - ${p.score_b}`;
+      }
       body.innerHTML = `
         <div class="flex items-center justify-between gap-3 mb-3 flex-wrap">
           <div><div class="text-xs text-slate-400 uppercase">AI dự đoán${sim ? ' · mô phỏng' : ''}</div><div class="font-bold text-emerald-300">${winner} · tin cậy ${p.confidence}%</div></div>
           <div class="text-center">
-            <div class="text-xs text-slate-400 uppercase">Tỉ số${sim ? ' khả dĩ' : ''}</div>
+            <div class="text-xs text-slate-400 uppercase">Tỉ số</div>
             <div class="font-mono font-black text-2xl">${scoreMain}</div>
-            ${scoreAlts ? `<div class="text-[11px] text-slate-400 font-mono mt-0.5">hoặc ${scoreAlts}</div>` : ''}
           </div>
         </div>
         ${probBar(Pa, Pd, Pb)}
