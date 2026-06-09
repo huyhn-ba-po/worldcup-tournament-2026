@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Đội tuyển — WC2026 Predictor</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<script src="/js/tw.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="/css/main.css" />
 </head>
 <body>
@@ -19,7 +20,7 @@
 <div id="footer"></div>
 
 <script type="module">
-import { mountLayout, api, escapeHtml, $, tierBadge, fmtDateVN, loadTeams } from '/js/shared.js?v=12';
+import { mountLayout, api, escapeHtml, $, tierBadge, fmtDateVN, loadTeams, tournamentBadge } from '/js/shared.js?v=13';
 mountLayout('/team');
 
 function renderSquad(squad) {
@@ -92,7 +93,7 @@ if (!teamName) {
       return `<tr>
         <td class="text-xs text-slate-500">${m.date}</td>
         <td>${escapeHtml(m.is_home ? me : opp)} <span class="font-mono font-bold ${m.gf > m.ga ? 'text-emerald-300' : m.gf < m.ga ? 'text-rose-300' : 'text-slate-400'}">${m.gf}-${m.ga}</span> ${escapeHtml(m.is_home ? opp : me)}</td>
-        <td class="text-xs text-slate-500">${escapeHtml(m.tournament)}</td>
+        <td class="text-xs text-slate-500">${tournamentBadge(m.tournament)}</td>
       </tr>`;
     }).join('');
 

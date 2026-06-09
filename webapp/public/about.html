@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Giới thiệu — WC2026 Predictor</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<script src="/js/tw.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="/css/main.css" />
 </head>
 <body>
@@ -61,7 +62,7 @@
   </section>
 
   <!-- Donate -->
-  <section class="card p-6 mb-6 relative overflow-hidden" style="border-color: rgba(16, 185, 129, 0.35);">
+  <section class="card p-6 mb-6 relative overflow-hidden" style="border-color: rgba(19, 91, 236, 0.35);">
     <div class="absolute -top-12 -right-12 text-9xl opacity-10 select-none">☕</div>
     <h2 class="text-xl font-bold mb-2 text-emerald-300">Ủng hộ tác giả</h2>
     <p class="text-sm text-slate-300 leading-relaxed mb-4 max-w-2xl">
@@ -70,7 +71,7 @@
     <div class="flex flex-wrap gap-3 items-center">
       <button type="button" data-donate-trigger
               class="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-bold text-base transition hover:scale-105 cursor-pointer border-0"
-              style="background: linear-gradient(135deg, #34d399, #10b981); color: #042f2e; box-shadow: 0 8px 24px rgba(16, 185, 129, 0.25);">
+              style="background: linear-gradient(135deg, rgb(var(--brand-400)), rgb(var(--brand-500))); color: #ffffff; box-shadow: 0 8px 24px rgba(19, 91, 236, 0.25);">
         <span class="text-xl">☕</span>
         <span>Mời cà phê — quét QR</span>
       </button>
@@ -78,7 +79,7 @@
   </section>
 
   <!-- Disclaimer -->
-  <section class="card p-6" style="border-color: rgba(245, 158, 11, 0.35); background: linear-gradient(160deg, rgba(245, 158, 11, 0.05), rgba(15, 23, 42, 0.7));">
+  <section class="card p-6" style="border-color: rgba(245, 158, 11, 0.35); background: linear-gradient(160deg, rgba(245, 158, 11, 0.05), rgb(var(--slate-900) / 0.7));">
     <h2 class="text-xl font-bold mb-3" style="color: #fcd34d;">⚠️ Tuyên bố miễn trừ trách nhiệm</h2>
     <div class="space-y-3 text-sm text-slate-200 leading-relaxed">
       <p>
@@ -119,7 +120,7 @@
 <div id="footer"></div>
 
 <script type="module">
-import { mountLayout } from '/js/shared.js?v=12';
+import { mountLayout } from '/js/shared.js?v=13';
 mountLayout('/about');
 </script>
 </body>

@@ -5,38 +5,39 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Phương pháp dự đoán — WC2026 Predictor</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<script src="/js/tw.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="/css/main.css" />
 <style>
   /* Pipeline diagram styles */
   .pipeline { position: relative; padding: 2rem 0; }
   .pipe-row { display: grid; gap: 1rem; margin-bottom: 1.5rem; }
   .pipe-node {
-    background: linear-gradient(160deg, rgba(15,23,42,0.96), rgba(15,23,42,0.78));
-    border: 1px solid rgba(16,185,129,0.35);
+    background: linear-gradient(160deg, rgb(var(--slate-900) / 0.96), rgb(var(--slate-900) / 0.78));
+    border: 1px solid rgba(19,91,236,0.35);
     border-radius: 14px;
     padding: 14px 16px;
     text-align: center;
     position: relative;
   }
-  .pipe-node.blue { border-color: rgba(59,130,246,0.35); }
+  .pipe-node.blue { border-color: rgba(249,115,22,0.35); }
   .pipe-node.amber { border-color: rgba(245,158,11,0.35); }
   .pipe-node.large { padding: 18px 20px; }
   .pipe-node .h {
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: #6ee7b7;
+    color: rgb(var(--brand-300));
     font-weight: 700;
   }
-  .pipe-node.blue .h { color: #93c5fd; }
+  .pipe-node.blue .h { color: rgb(var(--accent-300)); }
   .pipe-node.amber .h { color: #fcd34d; }
-  .pipe-node .label { font-size: 14px; color: #e2e8f0; margin-top: 4px; font-weight: 500; }
-  .pipe-node .sub { font-size: 11px; color: #94a3b8; margin-top: 4px; }
+  .pipe-node .label { font-size: 14px; color: rgb(var(--slate-200)); margin-top: 4px; font-weight: 500; }
+  .pipe-node .sub { font-size: 11px; color: rgb(var(--slate-400)); margin-top: 4px; }
   .pipe-arrow {
     width: 2px;
     height: 28px;
-    background: linear-gradient(180deg, rgba(16,185,129,0.5), rgba(16,185,129,0.15));
+    background: linear-gradient(180deg, rgba(19,91,236,0.5), rgba(19,91,236,0.15));
     margin: 0 auto;
     position: relative;
   }
@@ -44,7 +45,7 @@
     content: ''; position: absolute; bottom: -1px; left: -4px;
     width: 0; height: 0;
     border-left: 5px solid transparent; border-right: 5px solid transparent;
-    border-top: 8px solid rgba(16,185,129,0.5);
+    border-top: 8px solid rgba(19,91,236,0.5);
   }
   .pipe-divider {
     display: flex; align-items: center; justify-content: center; gap: 6px;
@@ -52,13 +53,13 @@
   }
   .pipe-divider .line {
     flex: 1; height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(16,185,129,0.4), transparent);
+    background: linear-gradient(90deg, transparent, rgba(19,91,236,0.4), transparent);
   }
   .pipe-divider .label {
-    font-size: 11px; color: #6ee7b7;
-    background: rgba(16,185,129,0.1);
+    font-size: 11px; color: rgb(var(--brand-300));
+    background: rgba(19,91,236,0.1);
     padding: 4px 12px; border-radius: 9999px;
-    border: 1px solid rgba(16,185,129,0.3);
+    border: 1px solid rgba(19,91,236,0.3);
   }
 </style>
 </head>
@@ -67,12 +68,25 @@
 
 <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8">
   <h1 class="text-3xl sm:text-4xl font-black mb-2">Phương pháp dự đoán</h1>
-  <p class="text-slate-400 text-sm mb-8">Hybrid Stats + AI — minh bạch hoàn toàn, mọi công thức + data + backtest đều công khai.</p>
+  <p class="text-slate-400 text-sm mb-6">Hybrid Stats + AI — minh bạch hoàn toàn, mọi công thức + data + backtest đều công khai.</p>
+
+  <!-- Plain-language intro -->
+  <section class="card p-6 mb-8" style="border-color: rgba(19,91,236,0.4); background: linear-gradient(160deg, rgba(19,91,236,0.07), rgb(var(--slate-900) / 0.85));">
+    <h2 class="text-xl font-bold text-emerald-300 mb-3">🎯 Giải thích đơn giản (cho mọi người)</h2>
+    <p class="text-sm text-slate-200 mb-3 leading-relaxed">Hãy tưởng tượng dự đoán mỗi trận giống như <b>hỏi ý kiến một hội đồng chuyên gia</b>:</p>
+    <ul class="text-sm text-slate-300 space-y-2 leading-relaxed">
+      <li><b class="text-emerald-300">3 "chuyên gia máy tính"</b> phân tích gần <b>48.000 trận đấu trong lịch sử</b> để chấm điểm: đội nào mạnh hơn, ai hay ghi bàn, châu lục nào thường đá tốt ở World Cup.</li>
+      <li><b class="text-emerald-300">Tổng hợp ý kiến</b> 3 chuyên gia đó thành một con số gốc (đội A thắng bao nhiêu %).</li>
+      <li><b class="text-amber-300">Xét điều kiện sân bãi</b>: trời nóng hay mát, sân ở vùng núi cao không (ảnh hưởng thể lực cầu thủ).</li>
+      <li><b class="text-blue-300">"Chuyên gia AI"</b> xem thêm tình hình mới nhất — phong độ, chấn thương, đội hình — rồi chỉnh con số gốc cho hợp lý, <b>nhưng không được chỉnh quá tay</b> (tối đa ±15%) để tránh phán bừa.</li>
+    </ul>
+    <p class="text-sm text-slate-400 mt-3 leading-relaxed">Kết quả: xác suất thắng/hòa/thua + tỉ số dự đoán + phân tích bằng tiếng Việt. Mọi con số đều dựa trên dữ liệu thật, không phải "phán đại". Phần bên dưới giải thích chi tiết từng bước.</p>
+  </section>
 
   <!-- Pipeline VISUAL diagram -->
   <section class="card p-6 sm:p-8 mb-8">
     <h2 class="text-xl font-bold text-emerald-300 mb-1">Pipeline tổng quan</h2>
-    <p class="text-sm text-slate-400 mb-6">Mỗi trận đi qua 5 layer: 3 mô hình thống kê → aggregator → AI updater → kết quả cuối.</p>
+    <p class="text-sm text-slate-400 mb-6">Mỗi trận đi qua 6 layer: 3 mô hình thống kê → aggregator → tầng điều kiện &amp; bối cảnh → AI Chuyên gia bóng đá → kết quả cuối.</p>
 
     <div class="pipeline">
       <!-- Input -->
@@ -87,19 +101,22 @@
       <div class="pipe-row grid-cols-1 sm:grid-cols-3">
         <div class="pipe-node">
           <div class="h">ELO Rating</div>
-          <div class="label">47.980 trận lịch sử</div>
+          <div class="sub" style="font-style:italic;color:rgb(var(--brand-300));">Chấm điểm sức mạnh từng đội</div>
+          <div class="label mt-1">47.980 trận lịch sử</div>
           <div class="sub">K-factor theo giải · MOV multiplier · Host boost</div>
           <div class="sub mt-1 font-mono text-emerald-300">→ P(W/D/L)</div>
         </div>
         <div class="pipe-node blue">
           <div class="h">Poisson Model</div>
-          <div class="label">6.000 trận major</div>
+          <div class="sub" style="font-style:italic;color:rgb(var(--accent-300));">Đoán khả năng ghi bàn &amp; tỉ số</div>
+          <div class="label mt-1">6.000 trận major</div>
           <div class="sub">α attack, δ defense per team · Time decay</div>
           <div class="sub mt-1 font-mono text-blue-300">→ λ_A, λ_B, top scores</div>
         </div>
         <div class="pipe-node amber">
           <div class="h">WC Overlay</div>
-          <div class="label">1.069 trận WC</div>
+          <div class="sub" style="font-style:italic;color:#fcd34d;">Điều chỉnh theo lịch sử World Cup</div>
+          <div class="label mt-1">1.069 trận WC</div>
           <div class="sub">WCOI · Conf×Stage matrix · Stage params</div>
           <div class="sub mt-1 font-mono text-amber-300">→ adjustments</div>
         </div>
@@ -109,23 +126,42 @@
       <!-- Aggregator -->
       <div class="pipe-node large mx-auto" style="max-width: 480px;">
         <div class="h">Aggregator</div>
-        <div class="label">Weighted ensemble</div>
+        <div class="sub" style="font-style:italic;color:rgb(var(--brand-300));">Gộp ý kiến 3 mô hình thành con số gốc</div>
+        <div class="label mt-1">Weighted ensemble</div>
         <div class="sub">Elo 35% · Poisson 35% · Conf×Stage 20% · WCOI 10%</div>
         <div class="sub mt-1 text-emerald-300">→ P_baseline + expected score</div>
       </div>
       <div class="pipe-arrow"></div>
 
+      <!-- Environment & context layer -->
+      <div class="pipe-divider"><span class="line"></span><span class="label">Tầng điều kiện &amp; bối cảnh</span><span class="line"></span></div>
+      <div class="pipe-row grid-cols-1 sm:grid-cols-2">
+        <div class="pipe-node amber">
+          <div class="h">🌡️ Điều kiện thi đấu</div>
+          <div class="label">Nhiệt độ lúc đá · độ cao sân</div>
+          <div class="sub">Giờ địa phương + mái che → heat-stress · độ cao (vd Mexico City 2.240m)</div>
+          <div class="sub mt-1 font-mono text-amber-300">→ điều chỉnh thể lực/cường độ</div>
+        </div>
+        <div class="pipe-node blue">
+          <div class="h">📰 Bối cảnh hiện tại</div>
+          <div class="label">Đội hình · phong độ 2025-26</div>
+          <div class="sub">Chấn thương, treo giò, HLV, động lực, tactical</div>
+          <div class="sub mt-1 font-mono text-blue-300">→ tinh chỉnh định tính</div>
+        </div>
+      </div>
+      <div class="pipe-arrow"></div>
+
       <!-- AI -->
-      <div class="pipe-divider"><span class="line"></span><span class="label">Layer định tính</span><span class="line"></span></div>
+      <div class="pipe-divider"><span class="line"></span><span class="label">Tầng AI</span><span class="line"></span></div>
       <div class="pipe-node large mx-auto blue" style="max-width: 480px;">
-        <div class="h">Gemini 2.5 Flash · Bayesian Updater</div>
-        <div class="label">Constraint: P_final ∈ baseline ±15%</div>
-        <div class="sub">(±25% nếu có lý do định tính rõ ràng: chấn thương, treo giò, motivation, tactical)</div>
+        <div class="h">AI Chuyên gia bóng đá · Bayesian Updater</div>
+        <div class="label">Neo vào baseline, điều chỉnh ±15% theo điều kiện + bối cảnh</div>
+        <div class="sub">(±25% nếu lý do định tính rõ ràng) · dự đoán sinh sẵn, nhất quán mọi người</div>
       </div>
       <div class="pipe-arrow"></div>
 
       <!-- Output -->
-      <div class="pipe-node large mx-auto" style="max-width: 480px; border-color: rgba(16,185,129,0.6); background: linear-gradient(160deg, rgba(16,185,129,0.08), rgba(15,23,42,0.85));">
+      <div class="pipe-node large mx-auto" style="max-width: 480px; border-color: rgba(19,91,236,0.6); background: linear-gradient(160deg, rgba(19,91,236,0.08), rgb(var(--slate-900) / 0.85));">
         <div class="h">Kết quả cuối</div>
         <div class="label">Xác suất 3 chiều · Tỉ số · Confidence · Phân tích VN</div>
       </div>
@@ -133,13 +169,15 @@
   </section>
 
   <section class="card p-6 mb-8">
-    <h2 class="text-xl font-bold text-emerald-300 mb-3">Backtest WC2018 + WC2022 (leak-free)</h2>
+    <h2 class="text-xl font-bold text-emerald-300 mb-3">Backtest WC2018 + WC2022 (kiểm chứng không gian lận)</h2>
+    <p class="text-sm text-slate-200 mb-2 leading-relaxed"><b class="text-emerald-300">💡 Nói đơn giản:</b> Để chứng minh không "chém gió", bọn mình bắt hệ thống dự đoán lại 2 kỳ World Cup gần nhất (2018 &amp; 2022), chỉ cho nó dùng dữ liệu có <b>trước</b> mỗi trận. Kết quả đoán đúng ~<b>55,5%</b> — cao hơn hẳn đoán mò.</p>
     <p class="text-sm text-slate-400 mb-4">Rebuild Elo + Poisson chỉ với data TRƯỚC mỗi trận, predict 128 trận của 2 kỳ WC gần nhất.</p>
     <div id="backtestTable" class="overflow-x-auto scrollbar"></div>
   </section>
 
   <section class="card p-6 mb-6">
-    <h2 class="text-xl font-bold text-emerald-300 mb-3">1. Elo Rating (35% weight)</h2>
+    <h2 class="text-xl font-bold text-emerald-300 mb-3">1. Elo Rating — điểm sức mạnh đội (35%)</h2>
+    <p class="text-sm text-slate-200 mb-2 leading-relaxed"><b class="text-emerald-300">💡 Nói đơn giản:</b> Giống điểm xếp hạng trong cờ vua hay game online. Mỗi đội có một số điểm sức mạnh; <b>thắng đội mạnh được cộng nhiều</b>, thua đội yếu bị trừ nhiều, thắng đậm cộng thêm. Đội chủ nhà được cộng điểm lợi thế sân nhà.</p>
     <p class="text-sm text-slate-300 mb-3 leading-relaxed">FIFA-style Elo update sau mỗi trận của 47.980 trận quốc tế 1872-2025. K-factor theo mức độ quan trọng giải đấu.</p>
     <div class="bg-slate-950/60 p-4 rounded-lg text-xs font-mono text-slate-300 leading-relaxed">
       <div>R'_A = R_A + K × m × (W_actual - W_expected)</div>
@@ -152,7 +190,8 @@
   </section>
 
   <section class="card p-6 mb-6">
-    <h2 class="text-xl font-bold text-emerald-300 mb-3">2. Poisson Goal Model (35% weight)</h2>
+    <h2 class="text-xl font-bold text-emerald-300 mb-3">2. Poisson — mô hình ghi bàn (35%)</h2>
+    <p class="text-sm text-slate-200 mb-2 leading-relaxed"><b class="text-emerald-300">💡 Nói đơn giản:</b> Dựa trên việc mỗi đội thường <b>ghi và thủng bao nhiêu bàn</b>, mô hình tính ra tỉ số nào dễ xảy ra nhất (vd 2-0, 1-1...) và khả năng thắng/hòa/thua. Đội tấn công mạnh gặp đội thủ yếu → kỳ vọng ghi nhiều bàn.</p>
     <p class="text-sm text-slate-300 mb-3 leading-relaxed">Cho mỗi đội, fit attack (α) và defense (δ) strength so với mean toàn cầu. λ = expected goals.</p>
     <div class="bg-slate-950/60 p-4 rounded-lg text-xs font-mono text-slate-300 leading-relaxed">
       <div>λ_home = α_home × δ_away × home_boost × global_avg</div>
@@ -164,13 +203,15 @@
   </section>
 
   <section class="card p-6 mb-6">
-    <h2 class="text-xl font-bold text-emerald-300 mb-3">3. Confederation × Stage Matrix (20% weight)</h2>
+    <h2 class="text-xl font-bold text-emerald-300 mb-3">3. Sức mạnh theo châu lục (20%)</h2>
+    <p class="text-sm text-slate-200 mb-2 leading-relaxed"><b class="text-emerald-300">💡 Nói đơn giản:</b> Lịch sử World Cup cho thấy các châu lục <b>không ngang nhau</b> — đội châu Âu, Nam Mỹ thường đá tốt hơn đội châu Á, châu Phi, Bắc Mỹ ở các vòng tương ứng. Mô hình phản ánh đúng thực tế đó thay vì coi mọi đội như nhau.</p>
     <p class="text-sm text-slate-300 mb-3 leading-relaxed">Lịch sử WC cho thấy các liên đoàn không bình đẳng tại WC. Matrix trích từ 1.069 trận WC 1930-2022.</p>
     <div id="confMatrix" class="overflow-x-auto scrollbar"></div>
   </section>
 
   <section class="card p-6 mb-6">
-    <h2 class="text-xl font-bold text-emerald-300 mb-3">4. WCOI — WC Overperformance Index (10% weight)</h2>
+    <h2 class="text-xl font-bold text-emerald-300 mb-3">4. "Chất World Cup" — WCOI (10%)</h2>
+    <p class="text-sm text-slate-200 mb-2 leading-relaxed"><b class="text-emerald-300">💡 Nói đơn giản:</b> Có đội cứ tới World Cup là "lên đồng", đá hay hơn ngày thường (Argentina, Đức, Croatia); ngược lại có đội hay gây thất vọng ở sân chơi lớn (Iran, Hàn Quốc, Ả Rập Xê Út). Chỉ số này <b>thưởng/phạt</b> theo thói quen đó.</p>
     <p class="text-sm text-slate-300 mb-3 leading-relaxed">Đo: 1 đội có "đá hay hơn bình thường" khi vào WC không?</p>
     <div class="bg-slate-950/60 p-4 rounded-lg text-xs font-mono text-slate-300 mb-3">
       WCOI = WC_win_rate − All_time_win_rate
@@ -182,16 +223,31 @@
     <div class="text-xs text-slate-400 mt-3"><a href="/leaderboard" class="text-emerald-400 hover:underline">Xem full WCOI ranking →</a></div>
   </section>
 
+  <section class="card p-6 mb-6">
+    <h2 class="text-xl font-bold text-emerald-300 mb-3">5. Tầng điều kiện thi đấu (nhiệt độ &amp; độ cao)</h2>
+    <p class="text-sm text-slate-300 mb-3 leading-relaxed">WC2026 đá tháng 6-7 ở Bắc Mỹ — nắng nóng giữa trưa và độ cao là yếu tố thật ảnh hưởng thể lực. Mỗi trận được tính bối cảnh môi trường từ <b>sân thi đấu + giờ địa phương</b>.</p>
+    <div class="bg-slate-950/60 p-4 rounded-lg text-xs text-slate-300 leading-relaxed">
+      <div class="text-amber-400 mb-2">Cách tính</div>
+      <ul class="list-disc list-inside space-y-1">
+        <li><b>Nhiệt độ cảm nhận lúc đá</b> = nhiệt độ điển hình của sân (tháng 6-7) điều chỉnh theo khung giờ (giữa trưa nóng nhất, tối mát ~−6°C) + bù độ ẩm. Sân có mái che/điều hòa → môi trường kiểm soát ~22°C.</li>
+        <li><b>Heat-stress</b>: Thấp / Trung bình / Cao / Khắc nghiệt — nóng bào mòn thể lực, lợi cho đội đá chậm kiểm soát.</li>
+        <li><b>Độ cao</b>: ≥1.200m ảnh hưởng đáng kể, ≥2.000m (Mexico City 2.240m) ảnh hưởng mạnh — lợi cho đội quen độ cao, đối thủ dễ đuối hiệp 2.</li>
+      </ul>
+      <div class="text-amber-400 mt-2">16 sân chủ nhà đều có dữ liệu khí hậu + thông số mái che. Xem chi tiết ngay trên mỗi trang trận đấu.</div>
+    </div>
+  </section>
+
   <section class="card p-6">
-    <h2 class="text-xl font-bold text-emerald-300 mb-3">5. LLM Layer — Gemini 2.5 Flash as Bayesian Updater</h2>
-    <p class="text-sm text-slate-300 mb-3 leading-relaxed">Stats baseline là điểm neo. Gemini được constraint <b>chỉ adjust ±15%</b> trừ khi có lý do qualitative rõ ràng (max ±25%).</p>
+    <h2 class="text-xl font-bold text-emerald-300 mb-3">6. Tầng AI — Chuyên gia bóng đá làm Bayesian Updater</h2>
+    <p class="text-sm text-slate-300 mb-3 leading-relaxed">Stats baseline là điểm neo. AI nhận thêm <b>điều kiện thi đấu</b> (mục 5) + <b>bối cảnh hiện tại</b> (đội hình, phong độ 2025-26, chấn thương) và được constraint <b>chỉ adjust ±15%</b> trừ khi có lý do định tính rõ ràng (max ±25%).</p>
     <div class="bg-slate-950/60 p-4 rounded-lg text-xs text-slate-300 leading-relaxed">
       <div class="text-emerald-400 mb-2">Why constraint?</div>
       <ul class="list-disc list-inside space-y-1">
-        <li>No constraint → LLM hay overconfident, predict bừa (90%, 5%, 5%)</li>
-        <li>Too tight (±5%) → LLM thành no-op, chỉ copy stats</li>
-        <li><b>±15% sweet spot</b> → LLM giữ statistical rigor + thêm qualitative (form 2025, injury, motivation, tactical)</li>
+        <li>No constraint → AI hay overconfident, predict bừa (90%, 5%, 5%)</li>
+        <li>Too tight (±5%) → AI thành no-op, chỉ copy stats</li>
+        <li><b>±15% sweet spot</b> → giữ statistical rigor + thêm qualitative (nhiệt độ/độ cao, form 2025, chấn thương, motivation, tactical)</li>
       </ul>
+      <div class="text-emerald-400 mt-2">Dự đoán được <b>sinh sẵn</b> → mọi người vào đều thấy kết luận nhất quán, không tốn API runtime. Tỉ số hiển thị dao động nhẹ quanh kịch bản khả năng cao nhất.</div>
     </div>
   </section>
 </main>
@@ -199,7 +255,7 @@
 <div id="footer"></div>
 
 <script type="module">
-import { mountLayout, api, escapeHtml, $ } from '/js/shared.js?v=12';
+import { mountLayout, api, escapeHtml, $ } from '/js/shared.js?v=13';
 mountLayout('/methodology');
 
 api('/api/methodology').then(d => {

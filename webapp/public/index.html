@@ -4,14 +4,15 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>WC2026 Predictor — Dự đoán FIFA World Cup 2026 với Elo + Poisson + AI</title>
-<meta name="description" content="Webapp dự đoán FIFA World Cup 2026 kết hợp 3 mô hình thống kê (Elo, Poisson, WCOI) + Gemini AI. Backtest 55.5% accuracy. Toàn bộ data + phương pháp công khai." />
+<meta name="description" content="Webapp dự đoán FIFA World Cup 2026 kết hợp 3 mô hình thống kê (Elo, Poisson, WCOI) + AI Chuyên gia bóng đá. Backtest 55.5% accuracy. Toàn bộ data + phương pháp công khai." />
 <meta property="og:title" content="WC2026 Predictor — Hybrid Stats + AI" />
 <meta property="og:description" content="Dự đoán 104 trận World Cup 2026 minh bạch, mã nguồn mở, dữ liệu công khai." />
 <meta property="og:type" content="website" />
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="/js/tw.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="/css/main.css" />
 <style>
   .hero-headline {
@@ -23,45 +24,45 @@
   .badge-live {
     display: inline-flex; align-items: center; gap: 8px;
     padding: 6px 14px; border-radius: 9999px;
-    background: rgba(16, 185, 129, 0.12);
-    border: 1px solid rgba(16, 185, 129, 0.35);
-    color: #6ee7b7;
+    background: rgba(19, 91, 236, 0.12);
+    border: 1px solid rgba(19, 91, 236, 0.35);
+    color: rgb(var(--brand-300));
     font-size: 12px; font-weight: 600; letter-spacing: 0.05em;
   }
   .badge-live::before {
     content: ''; width: 6px; height: 6px; border-radius: 50%;
-    background: #10b981; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6);
+    background: rgb(var(--brand-500)); box-shadow: 0 0 0 0 rgba(19, 91, 236, 0.6);
     animation: pulse-dot 2s infinite;
   }
   @keyframes pulse-dot {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); }
-    50% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+    0%, 100% { box-shadow: 0 0 0 0 rgba(19, 91, 236, 0.5); }
+    50% { box-shadow: 0 0 0 8px rgba(19, 91, 236, 0); }
   }
   .gradient-text {
-    background: linear-gradient(135deg, #34d399 0%, #60a5fa 50%, #a78bfa 100%);
+    background: linear-gradient(135deg, rgb(var(--brand-400)) 0%, rgb(var(--accent-400)) 50%, #a78bfa 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
   .btn-primary {
-    background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+    background: linear-gradient(135deg, rgb(var(--brand-500)) 0%, rgb(var(--accent-500)) 100%);
     color: white;
     font-weight: 700;
     padding: 14px 28px;
     border-radius: 14px;
     transition: transform 0.18s ease, box-shadow 0.18s ease;
-    box-shadow: 0 10px 32px rgba(16, 185, 129, 0.25);
+    box-shadow: 0 10px 32px rgba(19, 91, 236, 0.25);
     display: inline-flex; align-items: center; gap: 10px;
     font-size: 15px;
     min-height: 48px;
     text-decoration: none;
   }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(16, 185, 129, 0.35); }
-  .btn-primary:focus-visible { outline: 2px solid #6ee7b7; outline-offset: 3px; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(19, 91, 236, 0.35); }
+  .btn-primary:focus-visible { outline: 2px solid rgb(var(--brand-300)); outline-offset: 3px; }
   .btn-secondary {
-    background: rgba(30, 41, 59, 0.8);
+    background: rgb(var(--slate-800) / 0.8);
     border: 1px solid rgba(148, 163, 184, 0.25);
-    color: #e2e8f0;
+    color: rgb(var(--slate-200));
     font-weight: 600;
     padding: 14px 28px;
     border-radius: 14px;
@@ -71,11 +72,11 @@
     min-height: 48px;
     text-decoration: none;
   }
-  .btn-secondary:hover { border-color: rgba(16, 185, 129, 0.5); background: rgba(16, 185, 129, 0.08); }
-  .btn-secondary:focus-visible { outline: 2px solid #6ee7b7; outline-offset: 3px; }
+  .btn-secondary:hover { border-color: rgba(19, 91, 236, 0.5); background: rgba(19, 91, 236, 0.08); }
+  .btn-secondary:focus-visible { outline: 2px solid rgb(var(--brand-300)); outline-offset: 3px; }
 
   .feature-card {
-    background: linear-gradient(160deg, rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.55));
+    background: linear-gradient(160deg, rgb(var(--slate-900) / 0.85), rgb(var(--slate-900) / 0.55));
     border: 1px solid rgba(148, 163, 184, 0.15);
     border-radius: 18px;
     padding: 28px;
@@ -88,23 +89,23 @@
   }
   .feature-card:hover {
     transform: translateY(-4px);
-    border-color: rgba(16, 185, 129, 0.4);
-    box-shadow: 0 16px 48px rgba(16, 185, 129, 0.10);
+    border-color: rgba(19, 91, 236, 0.4);
+    box-shadow: 0 16px 48px rgba(19, 91, 236, 0.10);
   }
   .feature-card::before {
     content: ''; position: absolute; top: 0; right: 0;
     width: 200px; height: 200px;
-    background: radial-gradient(circle, rgba(16, 185, 129, 0.08), transparent 70%);
+    background: radial-gradient(circle, rgba(19, 91, 236, 0.08), transparent 70%);
     border-radius: 50%;
     transform: translate(50%, -50%);
     pointer-events: none;
   }
   .feature-number {
-    font-family: 'Outfit', system-ui;
+    font-family: 'Lexend', system-ui;
     font-size: 48px;
     font-weight: 900;
     line-height: 1;
-    background: linear-gradient(180deg, #34d399, transparent);
+    background: linear-gradient(180deg, rgb(var(--brand-400)), transparent);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -112,7 +113,7 @@
   }
 
   .step-card {
-    background: rgba(15, 23, 42, 0.6);
+    background: rgb(var(--slate-900) / 0.6);
     border: 1px solid rgba(148, 163, 184, 0.18);
     border-radius: 16px;
     padding: 24px;
@@ -122,50 +123,50 @@
     width: 40px; height: 40px;
     border-radius: 12px;
     display: inline-flex; align-items: center; justify-content: center;
-    background: linear-gradient(135deg, #10b981, #3b82f6);
+    background: linear-gradient(135deg, rgb(var(--brand-500)), rgb(var(--accent-500)));
     color: white; font-weight: 800; font-size: 18px;
     margin-bottom: 14px;
   }
 
   .stat-card {
-    background: linear-gradient(160deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.6));
-    border: 1px solid rgba(16, 185, 129, 0.18);
+    background: linear-gradient(160deg, rgb(var(--slate-900) / 0.9), rgb(var(--slate-900) / 0.6));
+    border: 1px solid rgba(19, 91, 236, 0.18);
     border-radius: 16px;
     padding: 22px;
     text-align: center;
     transition: border-color 0.2s ease;
   }
-  .stat-card:hover { border-color: rgba(16, 185, 129, 0.45); }
+  .stat-card:hover { border-color: rgba(19, 91, 236, 0.45); }
   .stat-num {
-    font-family: 'Outfit', system-ui;
+    font-family: 'Lexend', system-ui;
     font-size: clamp(1.75rem, 4vw, 2.5rem);
     font-weight: 800;
     line-height: 1;
-    color: #6ee7b7;
+    color: rgb(var(--brand-300));
   }
 
   .featured-card {
     background:
-      radial-gradient(circle at 20% 30%, rgba(16, 185, 129, 0.18), transparent 50%),
-      radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.15), transparent 50%),
-      linear-gradient(160deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.85));
-    border: 1px solid rgba(16, 185, 129, 0.3);
+      radial-gradient(circle at 20% 30%, rgba(19, 91, 236, 0.18), transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(249, 115, 22, 0.15), transparent 50%),
+      linear-gradient(160deg, rgb(var(--slate-900) / 0.95), rgb(var(--slate-900) / 0.85));
+    border: 1px solid rgba(19, 91, 236, 0.3);
     border-radius: 24px;
     overflow: hidden;
   }
 
   details.faq {
-    background: rgba(15, 23, 42, 0.6);
+    background: rgb(var(--slate-900) / 0.6);
     border: 1px solid rgba(148, 163, 184, 0.15);
     border-radius: 14px;
     padding: 18px 20px;
     transition: border-color 0.2s ease;
   }
-  details.faq[open] { border-color: rgba(16, 185, 129, 0.4); }
+  details.faq[open] { border-color: rgba(19, 91, 236, 0.4); }
   details.faq summary {
     cursor: pointer;
     font-weight: 600;
-    color: #e2e8f0;
+    color: rgb(var(--slate-200));
     list-style: none;
     display: flex; align-items: center; justify-content: space-between;
     gap: 12px;
@@ -173,30 +174,30 @@
   details.faq summary::-webkit-details-marker { display: none; }
   details.faq summary::after {
     content: '+';
-    color: #6ee7b7; font-size: 20px;
+    color: rgb(var(--brand-300)); font-size: 20px;
     transition: transform 0.2s ease;
   }
   details.faq[open] summary::after { content: '−'; }
-  details.faq[open] p { margin-top: 12px; color: #cbd5e1; line-height: 1.6; font-size: 14px; }
+  details.faq[open] p { margin-top: 12px; color: rgb(var(--slate-300)); line-height: 1.6; font-size: 14px; }
 
   .section-eyebrow {
     display: inline-block;
     font-size: 12px; font-weight: 700; letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: #6ee7b7;
+    color: rgb(var(--brand-300));
     margin-bottom: 8px;
   }
   .section-title {
-    font-family: 'Outfit', system-ui;
+    font-family: 'Lexend', system-ui;
     font-size: clamp(1.75rem, 3.5vw, 2.5rem);
     font-weight: 800;
     line-height: 1.1;
-    color: #f1f5f9;
+    color: rgb(var(--slate-100));
     margin-bottom: 12px;
     letter-spacing: -0.01em;
   }
   .section-lead {
-    color: #94a3b8;
+    color: rgb(var(--slate-400));
     font-size: 16px;
     line-height: 1.6;
     max-width: 640px;
@@ -204,10 +205,10 @@
 
   .final-cta {
     background:
-      radial-gradient(circle at 20% 50%, rgba(16, 185, 129, 0.25), transparent 60%),
-      radial-gradient(circle at 80% 50%, rgba(59, 130, 246, 0.20), transparent 60%),
-      linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.75));
-    border: 1px solid rgba(16, 185, 129, 0.35);
+      radial-gradient(circle at 20% 50%, rgba(19, 91, 236, 0.25), transparent 60%),
+      radial-gradient(circle at 80% 50%, rgba(249, 115, 22, 0.20), transparent 60%),
+      linear-gradient(135deg, rgb(var(--slate-900) / 0.95), rgb(var(--slate-900) / 0.75));
+    border: 1px solid rgba(19, 91, 236, 0.35);
     border-radius: 28px;
     padding: 48px 32px;
     text-align: center;
@@ -235,7 +236,7 @@
       <p class="mt-6 text-lg sm:text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto">
         Mô hình Hybrid <b class="text-emerald-300">Elo + Poisson + WCOI</b>, neo bằng
         <b class="text-emerald-300">47.980 trận quốc tế</b> lịch sử,
-        kết hợp <b class="text-emerald-300">Gemini AI</b>. Toàn bộ phương pháp công khai để bạn tự kiểm chứng.
+        kết hợp <b class="text-emerald-300">AI Chuyên gia bóng đá</b>. Toàn bộ phương pháp công khai để bạn tự kiểm chứng.
       </p>
       <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
         <a href="/groups" class="btn-primary" aria-label="Xem dự đoán 12 bảng đấu">
@@ -337,7 +338,7 @@
         <div class="feature-number">02</div>
         <h3 class="font-bold text-lg text-emerald-300 mt-3 mb-2">AI làm Bayesian Updater</h3>
         <p class="text-sm text-slate-300 leading-relaxed">
-          Gemini 2.5 Flash nhận stats baseline làm anchor, được constraint chỉ adjust ±15%
+          AI Chuyên gia bóng đá nhận stats baseline làm anchor, được constraint chỉ adjust ±15%
           (±25% nếu có lý do định tính). Tránh hallucinate, tận dụng tactical context.
         </p>
       </div>
@@ -403,7 +404,7 @@
       </div>
       <div class="step-card">
         <div class="step-num">3</div>
-        <h3 class="font-bold text-lg text-slate-100 mb-2">Gemini AI</h3>
+        <h3 class="font-bold text-lg text-slate-100 mb-2">AI Chuyên gia bóng đá</h3>
         <p class="text-sm text-slate-400 leading-relaxed mb-3">
           AI nhận stats baseline làm anchor, adjust ±15% dựa trên qualitative (form, chấn thương, motivation).
         </p>
@@ -545,7 +546,7 @@
 <div id="footer"></div>
 
 <script type="module">
-import { mountLayout, api, escapeHtml, $, loadTeams, fmtDateVN } from '/js/shared.js?v=12';
+import { mountLayout, api, escapeHtml, $, loadTeams, fmtDateVN } from '/js/shared.js?v=13';
 mountLayout('/');
 
 function tickCountdown() {

@@ -60,15 +60,33 @@ export function renderNav(currentPath) {
   return `
     <header class="border-b border-emerald-500/20 bg-slate-900/60 backdrop-blur sticky top-0 z-40">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4 flex-wrap">
-        <a href="/" class="flex items-center gap-2 text-white font-bold text-lg no-underline">
+        <a href="/" class="flex items-center gap-2 text-slate-100 font-bold text-lg no-underline">
           <span>WC2026 <span class="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">Predictor</span></span>
         </a>
         <nav class="flex flex-wrap items-center gap-1">
           ${links.map(l => `<a href="${l.href}" class="nav-link ${l.href === currentPath || (l.href !== '/' && currentPath.startsWith(l.href)) ? 'active' : ''}">${l.label}</a>`).join('')}
+          <button type="button" id="themeToggle" class="theme-toggle ml-1" aria-label="Đổi giao diện sáng/tối" title="Đổi giao diện sáng/tối"></button>
         </nav>
       </div>
     </header>
   `;
+}
+
+function applyThemeIcon() {
+  const btn = document.getElementById('themeToggle');
+  if (!btn) return;
+  const isDark = document.documentElement.classList.contains('dark');
+  btn.textContent = isDark ? '☀️' : '🌙';
+}
+function initThemeToggle() {
+  const btn = document.getElementById('themeToggle');
+  if (!btn) return;
+  applyThemeIcon();
+  btn.addEventListener('click', () => {
+    const isDark = document.documentElement.classList.toggle('dark');
+    try { localStorage.setItem('theme', isDark ? 'dark' : 'light'); } catch (e) {}
+    applyThemeIcon();
+  });
 }
 
 export function renderFooter() {
@@ -79,7 +97,7 @@ export function renderFooter() {
       <div class="mt-3 flex items-center justify-center gap-2 flex-wrap">
         <button type="button" data-donate-trigger
            class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition hover:scale-105 cursor-pointer border-0"
-           style="background: linear-gradient(135deg, #34d399, #10b981); color: #042f2e;">
+           style="background: linear-gradient(135deg, #4b8aff, #135bec); color: #ffffff;">
           <span>☕</span> Mời cà phê
         </button>
         <a href="/about" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs no-underline transition border border-slate-700 hover:border-emerald-500 hover:bg-emerald-500/10 text-slate-300">
@@ -94,8 +112,8 @@ export function renderFooter() {
 function renderDonateModal() {
   return `
     <div id="donateModal" class="hidden fixed inset-0 z-50 items-center justify-center p-4" role="dialog" aria-modal="true" style="background: rgba(2, 6, 23, 0.85); backdrop-filter: blur(6px);">
-      <div class="relative max-w-md w-full rounded-2xl shadow-2xl overflow-hidden" style="background: linear-gradient(160deg, rgba(15,23,42,0.98), rgba(15,23,42,0.92)); border: 1px solid rgba(16, 185, 129, 0.3);">
-        <button type="button" data-donate-close class="absolute top-3 right-4 text-slate-400 hover:text-white text-3xl leading-none z-10" aria-label="Đóng">×</button>
+      <div class="relative max-w-md w-full rounded-2xl shadow-2xl overflow-hidden" style="background: var(--card-bg); border: 1px solid rgba(19, 91, 236, 0.3);">
+        <button type="button" data-donate-close class="absolute top-3 right-4 text-slate-400 hover:text-slate-100 text-3xl leading-none z-10" aria-label="Đóng">×</button>
         <div class="p-6 sm:p-8 text-center">
           <div class="text-2xl mb-1">☕</div>
           <h3 class="text-xl font-bold text-emerald-300">Mời tác giả một ly cà phê</h3>
@@ -151,6 +169,7 @@ export function mountLayout(currentPath) {
   if (nav) nav.innerHTML = renderNav(currentPath);
   const footer = document.getElementById('footer');
   if (footer) footer.innerHTML = renderFooter();
+  initThemeToggle();
   attachDonateHandlers();
 }
 
@@ -186,7 +205,7 @@ function attachDonateHandlers() {
         await navigator.clipboard.writeText(acc);
         const original = btn.textContent;
         btn.textContent = 'Copied!';
-        btn.style.background = '#10b981';
+        btn.style.background = '#135bec';
         btn.style.color = 'white';
         setTimeout(() => { btn.textContent = original; btn.style.background = ''; btn.style.color = ''; }, 1500);
       } catch {}
@@ -223,6 +242,57 @@ export function matchLink(m, meta = {}) {
     <span class="ml-2 text-slate-100">${fH} ${escapeHtml(nH)} vs ${escapeHtml(nA)} ${fA}</span>
     <span class="ml-2 text-xs text-slate-500">${timeVN}</span>
   </a>`;
+}
+
+// === Tournament badge (kiểu status) ===
+const TOURNAMENT_LABELS = {
+  fifa_world_cup: 'World Cup',
+  fifa_world_cup_qualification: 'VL World Cup',
+  confederations_cup: 'Confederations Cup',
+  uefa_euro: 'Euro', uefa_euro_qualification: 'VL Euro',
+  uefa_nations_league: 'UEFA Nations League',
+  copa_america: 'Copa América',
+  african_cup_of_nations: 'AFCON', african_cup_of_nations_qualification: 'VL AFCON',
+  afc_asian_cup: 'Asian Cup', afc_asian_cup_qualification: 'VL Asian Cup',
+  gold_cup: 'Gold Cup',
+  concacaf_nations_league: 'CONCACAF Nations League',
+  concacaf_championship: 'CONCACAF Championship',
+  concacaf_championship_qualification: 'VL CONCACAF',
+  cfu_caribbean_cup: 'Caribbean Cup', cfu_caribbean_cup_qualification: 'VL Caribbean Cup',
+  friendly: 'Giao hữu',
+  gulf_cup: 'Gulf Cup', arab_cup: 'Arab Cup', aff_championship: 'AFF Championship',
+  oceania_nations_cup: 'Oceania Nations Cup', british_home_championship: 'British Home Champ.',
+  cecafa_cup: 'CECAFA Cup', cosafa_cup: 'COSAFA Cup', merdeka_tournament: 'Merdeka Tournament',
+  island_games: 'Island Games', asian_games: 'Asian Games', nordic_championship: 'Nordic Champ.',
+  kings_cup: "King's Cup", saff_cup: 'SAFF Cup', korea_cup: 'Korea Cup',
+  eaff_championship: 'EAFF Championship', southeast_asian_games: 'SEA Games',
+  usa_cup: 'USA Cup', lunar_new_year_cup: 'Lunar New Year Cup', gulf_cup_qualification: 'VL Gulf Cup',
+};
+const MAJOR_TOURNAMENTS = new Set([
+  'uefa_euro', 'copa_america', 'african_cup_of_nations', 'afc_asian_cup', 'gold_cup',
+  'concacaf_championship', 'oceania_nations_cup', 'confederations_cup',
+  'uefa_nations_league', 'concacaf_nations_league', 'arab_cup', 'gulf_cup', 'aff_championship',
+]);
+function prettifyTournament(t) {
+  return String(t || '').split('_').map(w => w ? w[0].toUpperCase() + w.slice(1) : '').join(' ').trim();
+}
+export function tournamentInfo(t) {
+  t = t || '';
+  let tier;
+  if (/world_cup/.test(t) && !/qualif/.test(t)) tier = 'world';
+  else if (/qualif/.test(t)) tier = 'qualifier';
+  else if (t === 'friendly') tier = 'friendly';
+  else if (MAJOR_TOURNAMENTS.has(t)) tier = 'major';
+  else if (/(cup|championship|nations|euro|copa|games|trophy|vase|league)/.test(t)) tier = 'regional';
+  else tier = 'other';
+  let label = TOURNAMENT_LABELS[t];
+  if (!label) label = tier === 'qualifier' ? 'VL ' + prettifyTournament(t.replace(/_qualification$/, '')) : prettifyTournament(t);
+  return { label, tier };
+}
+export function tournamentBadge(t) {
+  const { label, tier } = tournamentInfo(t);
+  const icon = tier === 'world' ? '🏆 ' : '';
+  return `<span class="tbadge tbadge-${tier}" title="${escapeHtml(t || '')}">${icon}${escapeHtml(label)}</span>`;
 }
 
 export function tierBadge(t) {

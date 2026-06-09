@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Match — WC2026 Predictor</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<script src="/js/tw.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="/css/main.css" />
 </head>
 <body>
@@ -22,7 +23,7 @@
 <div id="footer"></div>
 
 <script type="module">
-import { mountLayout, api, escapeHtml, $, probBar, fmtDateVN, loadTeams } from '/js/shared.js?v=12';
+import { mountLayout, api, escapeHtml, $, probBar, fmtDateVN, loadTeams, tournamentBadge } from '/js/shared.js?v=13';
 mountLayout('/match');
 
 const matchId = parseInt(window.location.pathname.split('/match/')[1] || '0', 10);
@@ -87,7 +88,7 @@ async function load() {
     <tr>
       <td class="text-xs text-slate-500">${m.date}</td>
       <td>${escapeHtml(m.home)} <span class="font-mono">${m.score_home}-${m.score_away}</span> ${escapeHtml(m.away)}</td>
-      <td class="text-xs text-slate-500">${escapeHtml(m.tournament)}</td>
+      <td class="text-xs text-slate-500">${tournamentBadge(m.tournament)}</td>
     </tr>
   `).join('');
 
@@ -101,7 +102,7 @@ async function load() {
         </div>
         <div class="text-center">
           <div class="text-xs text-slate-400 uppercase tracking-wider">Tỉ số kỳ vọng</div>
-          <div class="font-mono font-black text-2xl text-white">${s.expected_score.a} - ${s.expected_score.b}</div>
+          <div class="font-mono font-black text-2xl text-slate-100">${s.expected_score.a} - ${s.expected_score.b}</div>
         </div>
         <div class="text-right">
           <div class="text-xs text-slate-400 uppercase tracking-wider">Top 3 tỉ số</div>
@@ -152,10 +153,10 @@ async function load() {
 
     <section class="card p-5 sm:p-6 mb-6" id="aiSection">
       <div class="flex items-center justify-between mb-3 gap-3 flex-wrap">
-        <h2 class="font-bold text-lg text-emerald-300">AI Dự đoán (Gemini 2.5 Flash)</h2>
+        <h2 class="font-bold text-lg text-emerald-300">AI Dự đoán</h2>
         <button id="aiBtn" class="bg-gradient-to-r from-emerald-500 to-blue-500 hover:opacity-90 text-white font-bold rounded-lg px-4 py-2 text-sm">Tạo dự đoán AI</button>
       </div>
-      <div id="aiBody" class="text-sm text-slate-400">Click nút trên để Gemini phân tích trận này dựa trên stats baseline + form gần nhất. Cần backend có GEMINI_API_KEY.</div>
+      <div id="aiBody" class="text-sm text-slate-400">Click nút trên để xem dự đoán AI cho trận này, dựa trên stats baseline (Elo + Poisson + đối đầu) và phân tích định tính.</div>
     </section>
 
     <section class="grid md:grid-cols-2 gap-4 mb-6">
@@ -187,7 +188,7 @@ async function load() {
   $('#aiBtn').addEventListener('click', async () => {
     const btn = $('#aiBtn'), body = $('#aiBody');
     btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Đang phân tích...';
-    body.textContent = 'Gemini đang phân tích...';
+    body.textContent = 'AI đang phân tích...';
     try {
       const res = await fetch(`/api/predict/${matchId}`, { method: 'POST' });
       if (!res.ok) {
@@ -197,17 +198,30 @@ async function load() {
       }
       const r = await res.json();
       const p = r.prediction;
-      const winner = p.winner === 'Hòa' ? 'Hòa' : (p.winner === f.home ? ctx.flagA + ' ' + nameA : ctx.flagB + ' ' + nameB);
+      const sim = r.simulation; // mô phỏng (nếu có) — thay đổi mỗi lần tải
+      // Xác suất hiển thị: ưu tiên mô phỏng
+      const Pa = sim ? sim.prob_a : p.prob_a, Pd = sim ? sim.prob_draw : p.prob_draw, Pb = sim ? sim.prob_b : p.prob_b;
+      // Người thắng LUÔN theo lõi tĩnh (khớp với phần phân tích) — chỉ tỉ số & % dao động
+      const wKey = p.winner === 'Hòa' ? 'draw' : (p.winner === f.home ? 'home' : 'away');
+      const winner = wKey === 'draw' ? 'Hòa' : (wKey === 'home' ? ctx.flagA + ' ' + nameA : ctx.flagB + ' ' + nameB);
+      // Tỉ số: 1-3 tỉ số mô phỏng, hoặc tỉ số lõi
+      const scoreMain = sim ? sim.primary.label.replace('-', ' - ') : `${p.score_a} - ${p.score_b}`;
+      const scoreAlts = (sim && sim.scorelines.length > 1)
+        ? sim.scorelines.slice(1).map(s => s.label).join(' · ') : '';
       body.innerHTML = `
         <div class="flex items-center justify-between gap-3 mb-3 flex-wrap">
-          <div><div class="text-xs text-slate-400 uppercase">AI dự đoán</div><div class="font-bold text-emerald-300">${winner} · ${p.confidence}%</div></div>
-          <div class="text-center"><div class="text-xs text-slate-400 uppercase">Tỉ số</div><div class="font-mono font-black text-2xl">${p.score_a} - ${p.score_b}</div></div>
+          <div><div class="text-xs text-slate-400 uppercase">AI dự đoán${sim ? ' · mô phỏng' : ''}</div><div class="font-bold text-emerald-300">${winner} · tin cậy ${p.confidence}%</div></div>
+          <div class="text-center">
+            <div class="text-xs text-slate-400 uppercase">Tỉ số${sim ? ' khả dĩ' : ''}</div>
+            <div class="font-mono font-black text-2xl">${scoreMain}</div>
+            ${scoreAlts ? `<div class="text-[11px] text-slate-400 font-mono mt-0.5">hoặc ${scoreAlts}</div>` : ''}
+          </div>
         </div>
-        ${probBar(p.prob_a, p.prob_draw, p.prob_b)}
+        ${probBar(Pa, Pd, Pb)}
         <div class="flex justify-between text-[11px] mt-1 text-slate-400">
-          <span class="text-emerald-400 font-semibold">${escapeHtml(nameA)} ${p.prob_a}%</span>
-          <span>Hòa ${p.prob_draw}%</span>
-          <span class="text-blue-400 font-semibold">${p.prob_b}% ${escapeHtml(nameB)}</span>
+          <span class="text-emerald-400 font-semibold">${escapeHtml(nameA)} ${Pa}%</span>
+          <span>Hòa ${Pd}%</span>
+          <span class="text-blue-400 font-semibold">${Pb}% ${escapeHtml(nameB)}</span>
         </div>
         <div class="flex flex-wrap gap-1.5 mt-3">${(p.key_factors || []).map(k => `<span class="pill">${escapeHtml(k)}</span>`).join('')}</div>
         <div class="grid sm:grid-cols-3 gap-3 mt-4 text-xs">
@@ -215,7 +229,21 @@ async function load() {
           <div class="card-flat p-3"><div class="font-bold text-emerald-300 mb-1">Lịch sử</div>${escapeHtml(p.analysis_history || '')}</div>
           <div class="card-flat p-3"><div class="font-bold text-emerald-300 mb-1">Dự đoán</div>${escapeHtml(p.analysis_prediction || '')}</div>
         </div>
-        ${r.cached ? '<div class="text-xs text-slate-500 mt-2">Cached</div>' : ''}
+        ${r.env && r.env.available ? `
+        <div class="card-flat p-3 mt-3 text-xs">
+          <div class="font-bold text-amber-300 mb-1">🌡️ Điều kiện thi đấu — ${escapeHtml(r.env.city)} · ${escapeHtml(r.env.daypart)}</div>
+          <div class="flex flex-wrap gap-x-4 gap-y-1 text-slate-300">
+            <span>Nhiệt độ ~<b>${r.env.temp_felt_c}°C</b></span>
+            <span>Độ ẩm ${r.env.humidity}%</span>
+            <span>Heat-stress: <b>${escapeHtml(r.env.heat_stress)}</b></span>
+            <span>Độ cao ${r.env.altitude_m}m (${escapeHtml(r.env.altitude_level)})</span>
+            <span>Sân: ${escapeHtml(r.env.cover)}</span>
+          </div>
+          ${(r.env.notes || []).length ? `<ul class="mt-2 space-y-0.5 text-slate-400">${r.env.notes.map(n => `<li>• ${escapeHtml(n)}</li>`).join('')}</ul>` : ''}
+        </div>` : ''}
+        ${r.source === 'claude-static'
+          ? `<div class="text-xs text-slate-500 mt-2">⚡ Dự đoán sẵn bởi AI Chuyên gia bóng đá</div>`
+          : (r.cached ? '<div class="text-xs text-slate-500 mt-2">Cached</div>' : '')}
       `;
     } catch (e) {
       body.innerHTML = `<div class="text-rose-400">Lỗi: ${escapeHtml(e.message)}</div>`;

@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Khám phá data — WC2026 Predictor</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<script src="/js/tw.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="/css/main.css" />
 </head>
 <body>
@@ -58,7 +59,7 @@
 <div id="footer"></div>
 
 <script type="module">
-import { mountLayout, api, escapeHtml, $ } from '/js/shared.js?v=12';
+import { mountLayout, api, escapeHtml, $, tournamentBadge } from '/js/shared.js?v=13';
 mountLayout('/data');
 
 let offset = 0;
@@ -97,7 +98,7 @@ async function search() {
               <td>${escapeHtml(m.team1)}</td>
               <td class="text-center font-mono font-bold ${m.score1 > m.score2 ? 'text-emerald-300' : m.score1 < m.score2 ? 'text-rose-300' : 'text-slate-400'}">${m.score1}-${m.score2}</td>
               <td>${escapeHtml(m.team2)}</td>
-              <td class="text-xs text-slate-400">${escapeHtml(m.tournament)}${m.note ? ' (' + m.note + ')' : ''}</td>
+              <td class="text-xs text-slate-400">${tournamentBadge(m.tournament)}${m.note ? ' (' + m.note + ')' : ''}</td>
               <td class="text-xs text-slate-500">${escapeHtml(m.venue || '—')}</td>
             </tr>
           `).join('')}
