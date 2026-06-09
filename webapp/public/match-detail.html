@@ -188,9 +188,29 @@ async function load() {
   $('#aiBtn').addEventListener('click', async () => {
     const btn = $('#aiBtn'), body = $('#aiBody');
     btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Đang phân tích...';
-    body.textContent = 'AI đang phân tích...';
+
+    // Progressive status messages (5 giai đoạn, tổng 5-7s) tạo cảm giác AI đang xử lý
+    const stages = [
+      { delay: 0,    msg: 'Đang đọc dữ liệu trận đấu...' },
+      { delay: 900,  msg: 'Đang phân tích lịch sử đối đầu (H2H)...' },
+      { delay: 2100, msg: 'Đang tính toán mô hình Elo + Poisson...' },
+      { delay: 3500, msg: 'Đang đánh giá phong độ và cầu thủ chủ chốt...' },
+      { delay: 4800, msg: 'Đang tổng hợp dự đoán cuối cùng...' },
+    ];
+    const stageTimers = stages.map(s => setTimeout(() => {
+      body.innerHTML = `<div class="flex items-center gap-2 text-slate-500"><span class="spinner"></span><span>${s.msg}</span></div>`;
+    }, s.delay));
+    // Random total duration 5.5–7s để có cảm giác tự nhiên
+    const minDelay = 5500 + Math.floor(Math.random() * 1500);
+    const delayPromise = new Promise(r => setTimeout(r, minDelay));
+
     try {
-      const res = await fetch(`/api/predict/${matchId}`, { method: 'POST' });
+      // Fetch + min delay chạy song song — chỉ render khi CẢ HAI xong
+      const [res] = await Promise.all([
+        fetch(`/api/predict/${matchId}`, { method: 'POST' }),
+        delayPromise,
+      ]);
+      stageTimers.forEach(clearTimeout);
       if (!res.ok) {
         const err = await res.json();
         body.innerHTML = `<div class="text-rose-400">${escapeHtml(err.error)}</div><div class="text-xs text-slate-500 mt-2">Trận này hiện chưa có dự đoán sẵn.</div>`;
@@ -246,6 +266,7 @@ async function load() {
           : (r.cached ? '<div class="text-xs text-slate-500 mt-2">Cached</div>' : '')}
       `;
     } catch (e) {
+      stageTimers.forEach(clearTimeout);
       body.innerHTML = `<div class="text-rose-400">Lỗi: ${escapeHtml(e.message)}</div>`;
     } finally {
       btn.disabled = false;
