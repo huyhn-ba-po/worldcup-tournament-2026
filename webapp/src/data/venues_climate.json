@@ -1,0 +1,22 @@
+{
+  "note": "Khí hậu trung bình tháng 6-7 (climatological averages, xấp xỉ) cho 16 sân chủ nhà WC2026. temp_high_c = nhiệt độ cao ban ngày điển hình; humidity = độ ẩm %; altitude_m = độ cao; cover = roof (mái che/điều hòa) | canopy (mái che một phần, sân hở) | open (lộ thiên).",
+  "source": "Climatological averages (NOAA/Meteostat typical Jun-Jul), stadium specs công khai",
+  "venues": [
+    { "match": ["Mexico City"], "city": "Mexico City", "temp_high_c": 23, "humidity": 55, "altitude_m": 2240, "cover": "open" },
+    { "match": ["Guadalajara"], "city": "Guadalajara", "temp_high_c": 27, "humidity": 50, "altitude_m": 1566, "cover": "open" },
+    { "match": ["Monterrey"], "city": "Monterrey", "temp_high_c": 34, "humidity": 50, "altitude_m": 540, "cover": "open" },
+    { "match": ["Toronto"], "city": "Toronto", "temp_high_c": 26, "humidity": 60, "altitude_m": 76, "cover": "open" },
+    { "match": ["Vancouver"], "city": "Vancouver", "temp_high_c": 22, "humidity": 65, "altitude_m": 0, "cover": "roof" },
+    { "match": ["Los Angeles", "Inglewood"], "city": "Los Angeles", "temp_high_c": 28, "humidity": 55, "altitude_m": 30, "cover": "canopy" },
+    { "match": ["San Francisco", "Santa Clara"], "city": "San Francisco Bay", "temp_high_c": 27, "humidity": 50, "altitude_m": 9, "cover": "open" },
+    { "match": ["New York", "New Jersey", "East Rutherford"], "city": "New York/New Jersey", "temp_high_c": 29, "humidity": 60, "altitude_m": 5, "cover": "open" },
+    { "match": ["Boston", "Foxborough"], "city": "Boston", "temp_high_c": 26, "humidity": 60, "altitude_m": 90, "cover": "open" },
+    { "match": ["Houston"], "city": "Houston", "temp_high_c": 34, "humidity": 70, "altitude_m": 24, "cover": "roof" },
+    { "match": ["Dallas", "Arlington"], "city": "Dallas", "temp_high_c": 35, "humidity": 55, "altitude_m": 180, "cover": "roof" },
+    { "match": ["Philadelphia"], "city": "Philadelphia", "temp_high_c": 30, "humidity": 60, "altitude_m": 12, "cover": "open" },
+    { "match": ["Atlanta"], "city": "Atlanta", "temp_high_c": 31, "humidity": 65, "altitude_m": 320, "cover": "roof" },
+    { "match": ["Miami"], "city": "Miami", "temp_high_c": 32, "humidity": 72, "altitude_m": 2, "cover": "canopy" },
+    { "match": ["Seattle"], "city": "Seattle", "temp_high_c": 23, "humidity": 55, "altitude_m": 47, "cover": "open" },
+    { "match": ["Kansas City"], "city": "Kansas City", "temp_high_c": 31, "humidity": 60, "altitude_m": 270, "cover": "open" }
+  ]
+}

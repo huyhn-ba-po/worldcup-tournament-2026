@@ -41,7 +41,7 @@ function formatKeyPlayers(squad, teamName) {
   return lines.join('\n');
 }
 
-export function buildPredictionPrompt(fixture, h2h, recentA, recentB, stats, ctx, squadA, squadB) {
+export function buildPredictionPrompt(fixture, h2h, recentA, recentB, stats, ctx, squadA, squadB, env, current) {
   const { home: teamA, away: teamB, group, match, ground, date, time } = fixture;
   const lines = [];
   lines.push(`Bạn là chuyên gia phân tích bóng đá, đang dự đoán một trận đấu tại FIFA World Cup 2026.`);
@@ -81,8 +81,24 @@ export function buildPredictionPrompt(fixture, h2h, recentA, recentB, stats, ctx
     lines.push(``);
   }
 
+  // === Môi trường thi đấu (NEW) ===
+  if (env && env.available) {
+    lines.push(`=== 🌡️ ĐIỀU KIỆN THI ĐẤU (${env.city} · ${env.daypart}) ===`);
+    lines.push(`Nhiệt độ cảm nhận lúc đá ~${env.temp_felt_c}°C · độ ẩm ${env.humidity}% · heat-stress: ${env.heat_stress} · độ cao ${env.altitude_m}m (${env.altitude_level})`);
+    for (const n of env.notes) lines.push(`• ${n}`);
+    lines.push(``);
+  }
+
+  // === Tình hình hiện tại (NEW) ===
+  if (current && (current.a || current.b)) {
+    lines.push(`=== 📰 TÌNH HÌNH HIỆN TẠI (cập nhật ${current.as_of || 'gần giải'}) ===`);
+    if (current.a) lines.push(`${teamA}: ${current.a}`);
+    if (current.b) lines.push(`${teamB}: ${current.b}`);
+    lines.push(``);
+  }
+
   lines.push(`=== NHIỆM VỤ ===`);
-  lines.push(`1. Anchor từ stats baseline. Adjust ±15% nếu có lý do qualitative (chấn thương, suspension, motivation, tactical, form 2025-2026).`);
+  lines.push(`1. Anchor từ stats baseline. Adjust ±15% nếu có lý do qualitative (điều kiện sân bãi/nhiệt độ/độ cao, chấn thương, suspension, motivation, tactical, form 2025-2026).`);
   lines.push(`2. Đưa ra xác suất 3 kết quả (cộng = 100).`);
   lines.push(`3. Tỉ số: chọn từ top 3 Poisson hoặc liền kề.`);
   lines.push(`4. Nêu 3 yếu tố then chốt.`);

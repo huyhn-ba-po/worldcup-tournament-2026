@@ -1,8 +1,10 @@
 // API routes
-import { TEAMS_META, BACKTEST, OVERLAY, POISSON, ELO, ALL_INT, WC_MATCHES, FIXTURES_2026, SQUADS } from '../lib/dataLoader.js';
+import { TEAMS_META, BACKTEST, OVERLAY, POISSON, ELO, ALL_INT, WC_MATCHES, FIXTURES_2026, SQUADS, PREDICTIONS } from '../lib/dataLoader.js';
 import { STAGE_NAMES } from '../data/fixtures.js';
 import { computeStatsBaseline, getTeamCard, getEloLeaderboard } from '../lib/stats.js';
 import { getH2H, getRecentForm, getTeamWCHistory, searchMatches } from '../lib/h2h.js';
+import { computeMatchEnv } from '../lib/context.js';
+import { simulatePrediction } from '../lib/simulate.js';
 import { aiAvailable, generatePrediction, tryParseJSON, buildPredictionPrompt } from '../lib/ai.js';
 import { LRUCache } from 'lru-cache';
 
@@ -122,7 +124,8 @@ export default async function apiRoutes(fastify) {
       recentA = getRecentForm(fixture.home, { limit: 10, sinceYear: 2020 });
       recentB = getRecentForm(fixture.away, { limit: 10, sinceYear: 2020 });
     }
-    return { fixture, ctx, stats, h2h, recent_a: recentA, recent_b: recentB };
+    const env = computeMatchEnv(fixture);
+    return { fixture, ctx, stats, h2h, recent_a: recentA, recent_b: recentB, env };
   });
 
   fastify.get('/api/h2h/:teamA/:teamB', async (req) => {
@@ -164,11 +167,27 @@ export default async function apiRoutes(fastify) {
   }));
 
   fastify.post('/api/predict/:id', async (req, reply) => {
-    if (!aiAvailable()) return reply.code(503).send({ error: 'AI not configured (set GEMINI_API_KEY)' });
     const id = +req.params.id;
     const fixture = FIXTURES_2026.find(f => f.match === id);
     if (!fixture) return reply.code(404).send({ error: 'fixture not found' });
     if (fixture.is_placeholder) return reply.code(400).send({ error: 'cannot predict placeholder match (teams TBD)' });
+
+    // 1) Ưu tiên dự đoán tĩnh do Claude sinh sẵn — không gọi API, không tốn phí.
+    const staticPred = PREDICTIONS.predictions?.[id];
+    if (staticPred && !req.query.fresh) {
+      const stats = computeStatsBaseline(fixture.home, fixture.away, fixture.stage, fixture);
+      const env = computeMatchEnv(fixture);
+      // Mô phỏng tính mới mỗi request (trừ khi ?stable=1 → trả đúng lõi tĩnh, đồng nhất mọi người)
+      const simulation = req.query.stable ? null : simulatePrediction(stats, staticPred);
+      return {
+        fixture, stats, env, prediction: staticPred, simulation,
+        generated_at: PREDICTIONS.generated_at,
+        source: 'claude-static', model: PREDICTIONS.generated_by,
+      };
+    }
+
+    // 2) Fallback: gọi Gemini live (cần GEMINI_API_KEY). ?fresh=1 cũng đi nhánh này.
+    if (!aiAvailable()) return reply.code(503).send({ error: 'Chưa có dự đoán tĩnh cho trận này và AI live chưa cấu hình (set GEMINI_API_KEY)' });
 
     const cacheKey = `pred:${id}`;
     if (predictionCache.has(cacheKey) && !req.query.fresh) return { ...predictionCache.get(cacheKey), cached: true };
@@ -181,13 +200,14 @@ export default async function apiRoutes(fastify) {
     const recentB = getRecentForm(fixture.away, { limit: 10, sinceYear: 2020 });
     const squadA = SQUADS.teams[fixture.home];
     const squadB = SQUADS.teams[fixture.away];
-    const prompt = buildPredictionPrompt(fixture, h2h, recentA, recentB, stats, ctx, squadA, squadB);
+    const env = computeMatchEnv(fixture);
+    const prompt = buildPredictionPrompt(fixture, h2h, recentA, recentB, stats, ctx, squadA, squadB, env);
 
     try {
       const text = await generatePrediction(prompt);
       const parsed = tryParseJSON(text);
       if (!parsed) return reply.code(502).send({ error: 'AI returned invalid JSON', raw: text.slice(0, 500) });
-      const result = { fixture, stats, prediction: parsed, generated_at: new Date().toISOString() };
+      const result = { fixture, stats, env, prediction: parsed, generated_at: new Date().toISOString(), source: 'gemini-live' };
       predictionCache.set(cacheKey, result);
       return result;
     } catch (err) {

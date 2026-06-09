@@ -19,6 +19,12 @@ export const ALL_INT = loadJSON('all_internationals.json');
 export const TEAMS_META = loadJSON('teams_meta.json');
 export const WC2026_CLEAN = loadJSON('wc2026_clean.json');
 export const SQUADS = loadJSON('squads.json');
+export const VENUES_CLIMATE = loadJSON('venues_climate.json');
+
+// Dự đoán tĩnh do Claude sinh sẵn (không gọi API runtime). Thiếu file → rỗng.
+let _predictions = { predictions: {} };
+try { _predictions = loadJSON('predictions.json'); } catch { /* chưa có file — bỏ qua */ }
+export const PREDICTIONS = _predictions;
 
 export { FIXTURES_2026 } from '../data/fixtures.js';
 
