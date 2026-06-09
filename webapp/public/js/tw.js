@@ -1,15 +1,5 @@
-/* Cấu hình Tailwind CDN: trỏ palette vào biến CSS (đổi theo theme) + font Lexend.
-   Đồng thời áp theme đã lưu (light/dark) ngay lập tức để tránh nháy màu. */
+/* Cấu hình Tailwind CDN: trỏ palette vào biến CSS + font Lexend. Light-only. */
 (function () {
-  // 1) Áp theme sớm nhất có thể. Mặc định SÁNG; chỉ thêm class 'dark' khi chọn tối.
-  try {
-    var qp = new URLSearchParams(location.search).get('theme');
-    if (qp === 'light' || qp === 'dark') { try { localStorage.setItem('theme', qp); } catch (e) {} }
-    var theme = qp || localStorage.getItem('theme');
-    if (theme === 'dark') document.documentElement.classList.add('dark');
-  } catch (e) {}
-
-  // 2) Remap màu Tailwind → biến CSS (hỗ trợ opacity qua <alpha-value>)
   function ramp(name, shades) {
     const o = {};
     for (const s of shades) o[s] = `rgb(var(--${name}-${s}) / <alpha-value>)`;
@@ -17,7 +7,7 @@
   }
   const slate = ramp('slate', [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]);
   const brand = ramp('brand', [200, 300, 400, 500, 600, 700]);   // thay emerald
-  const accent = ramp('accent', [300, 400, 500]);                // thay blue (cam)
+  const accent = ramp('accent', [300, 400, 500]);                // thay blue
 
   window.tailwind = window.tailwind || {};
   window.tailwind.config = {
@@ -28,8 +18,9 @@
         },
         colors: {
           slate,
-          emerald: brand,  // mọi class *-emerald-* → xanh #135bec
-          blue: accent,    // mọi class *-blue-* → cam (tương phản team A/B)
+          emerald: brand,  // mọi class *-emerald-* → xanh thép dịu
+          blue: accent,    // mọi class *-blue-* → cam đất nhẹ
+          amber: { 200: '#b89a4a', 300: '#a07b2f', 400: '#8c6a28', 500: '#75571f', 600: '#634a1a' }, // vàng trầm dịu mắt
           brand, accent,
         },
       },

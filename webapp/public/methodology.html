@@ -13,14 +13,14 @@
   .pipeline { position: relative; padding: 2rem 0; }
   .pipe-row { display: grid; gap: 1rem; margin-bottom: 1.5rem; }
   .pipe-node {
-    background: linear-gradient(160deg, rgb(var(--slate-900) / 0.96), rgb(var(--slate-900) / 0.78));
-    border: 1px solid rgba(19,91,236,0.35);
+    background: var(--card-bg);
+    border: 1px solid rgb(var(--brand-500) / 0.35);
     border-radius: 14px;
     padding: 14px 16px;
     text-align: center;
     position: relative;
   }
-  .pipe-node.blue { border-color: rgba(249,115,22,0.35); }
+  .pipe-node.blue { border-color: rgb(var(--accent-500) / 0.35); }
   .pipe-node.amber { border-color: rgba(245,158,11,0.35); }
   .pipe-node.large { padding: 18px 20px; }
   .pipe-node .h {
@@ -31,13 +31,13 @@
     font-weight: 700;
   }
   .pipe-node.blue .h { color: rgb(var(--accent-300)); }
-  .pipe-node.amber .h { color: #fcd34d; }
+  .pipe-node.amber .h { color: #a07b2f; }
   .pipe-node .label { font-size: 14px; color: rgb(var(--slate-200)); margin-top: 4px; font-weight: 500; }
   .pipe-node .sub { font-size: 11px; color: rgb(var(--slate-400)); margin-top: 4px; }
   .pipe-arrow {
     width: 2px;
     height: 28px;
-    background: linear-gradient(180deg, rgba(19,91,236,0.5), rgba(19,91,236,0.15));
+    background: rgb(var(--brand-500) / 0.35);
     margin: 0 auto;
     position: relative;
   }
@@ -45,7 +45,7 @@
     content: ''; position: absolute; bottom: -1px; left: -4px;
     width: 0; height: 0;
     border-left: 5px solid transparent; border-right: 5px solid transparent;
-    border-top: 8px solid rgba(19,91,236,0.5);
+    border-top: 8px solid rgb(var(--brand-500) / 0.5);
   }
   .pipe-divider {
     display: flex; align-items: center; justify-content: center; gap: 6px;
@@ -53,13 +53,13 @@
   }
   .pipe-divider .line {
     flex: 1; height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(19,91,236,0.4), transparent);
+    background: rgb(var(--slate-700));
   }
   .pipe-divider .label {
     font-size: 11px; color: rgb(var(--brand-300));
-    background: rgba(19,91,236,0.1);
+    background: rgb(var(--brand-500) / 0.1);
     padding: 4px 12px; border-radius: 9999px;
-    border: 1px solid rgba(19,91,236,0.3);
+    border: 1px solid rgb(var(--brand-500) / 0.3);
   }
 </style>
 </head>
@@ -71,7 +71,7 @@
   <p class="text-slate-400 text-sm mb-6">Hybrid Stats + AI — minh bạch hoàn toàn, mọi công thức + data + backtest đều công khai.</p>
 
   <!-- Plain-language intro -->
-  <section class="card p-6 mb-8" style="border-color: rgba(19,91,236,0.4); background: linear-gradient(160deg, rgba(19,91,236,0.07), rgb(var(--slate-900) / 0.85));">
+  <section class="card p-6 mb-8" style="border-color: rgb(var(--brand-500) / 0.4); background: rgb(var(--brand-500) / 0.05);">
     <h2 class="text-xl font-bold text-emerald-300 mb-3">🎯 Giải thích đơn giản (cho mọi người)</h2>
     <p class="text-sm text-slate-200 mb-3 leading-relaxed">Hãy tưởng tượng dự đoán mỗi trận giống như <b>hỏi ý kiến một hội đồng chuyên gia</b>:</p>
     <ul class="text-sm text-slate-300 space-y-2 leading-relaxed">
@@ -115,7 +115,7 @@
         </div>
         <div class="pipe-node amber">
           <div class="h">WC Overlay</div>
-          <div class="sub" style="font-style:italic;color:#fcd34d;">Điều chỉnh theo lịch sử World Cup</div>
+          <div class="sub" style="font-style:italic;color:#a07b2f;">Điều chỉnh theo lịch sử World Cup</div>
           <div class="label mt-1">1.069 trận WC</div>
           <div class="sub">WCOI · Conf×Stage matrix · Stage params</div>
           <div class="sub mt-1 font-mono text-amber-300">→ adjustments</div>
@@ -161,7 +161,7 @@
       <div class="pipe-arrow"></div>
 
       <!-- Output -->
-      <div class="pipe-node large mx-auto" style="max-width: 480px; border-color: rgba(19,91,236,0.6); background: linear-gradient(160deg, rgba(19,91,236,0.08), rgb(var(--slate-900) / 0.85));">
+      <div class="pipe-node large mx-auto" style="max-width: 480px; border-color: rgb(var(--brand-500) / 0.6); background: rgb(var(--brand-500) / 0.06);">
         <div class="h">Kết quả cuối</div>
         <div class="label">Xác suất 3 chiều · Tỉ số · Confidence · Phân tích VN</div>
       </div>
@@ -255,7 +255,7 @@
 <div id="footer"></div>
 
 <script type="module">
-import { mountLayout, api, escapeHtml, $ } from '/js/shared.js?v=13';
+import { mountLayout, api, escapeHtml, $ } from '/js/shared.js?v=14';
 mountLayout('/methodology');
 
 api('/api/methodology').then(d => {

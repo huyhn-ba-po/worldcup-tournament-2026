@@ -61,32 +61,14 @@ export function renderNav(currentPath) {
     <header class="border-b border-emerald-500/20 bg-slate-900/60 backdrop-blur sticky top-0 z-40">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4 flex-wrap">
         <a href="/" class="flex items-center gap-2 text-slate-100 font-bold text-lg no-underline">
-          <span>WC2026 <span class="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">Predictor</span></span>
+          <span>WC2026 <span class="text-emerald-500">Predictor</span></span>
         </a>
         <nav class="flex flex-wrap items-center gap-1">
           ${links.map(l => `<a href="${l.href}" class="nav-link ${l.href === currentPath || (l.href !== '/' && currentPath.startsWith(l.href)) ? 'active' : ''}">${l.label}</a>`).join('')}
-          <button type="button" id="themeToggle" class="theme-toggle ml-1" aria-label="Đổi giao diện sáng/tối" title="Đổi giao diện sáng/tối"></button>
         </nav>
       </div>
     </header>
   `;
-}
-
-function applyThemeIcon() {
-  const btn = document.getElementById('themeToggle');
-  if (!btn) return;
-  const isDark = document.documentElement.classList.contains('dark');
-  btn.textContent = isDark ? '☀️' : '🌙';
-}
-function initThemeToggle() {
-  const btn = document.getElementById('themeToggle');
-  if (!btn) return;
-  applyThemeIcon();
-  btn.addEventListener('click', () => {
-    const isDark = document.documentElement.classList.toggle('dark');
-    try { localStorage.setItem('theme', isDark ? 'dark' : 'light'); } catch (e) {}
-    applyThemeIcon();
-  });
 }
 
 export function renderFooter() {
@@ -97,7 +79,7 @@ export function renderFooter() {
       <div class="mt-3 flex items-center justify-center gap-2 flex-wrap">
         <button type="button" data-donate-trigger
            class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition hover:scale-105 cursor-pointer border-0"
-           style="background: linear-gradient(135deg, #4b8aff, #135bec); color: #ffffff;">
+           style="background: rgb(var(--brand-500)); color: #ffffff;">
           <span>☕</span> Mời cà phê
         </button>
         <a href="/about" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs no-underline transition border border-slate-700 hover:border-emerald-500 hover:bg-emerald-500/10 text-slate-300">
@@ -164,13 +146,64 @@ function closeDonate() {
   document.body.style.overflow = '';
 }
 
+// === Cờ quốc gia: thay emoji cờ bằng ảnh flagcdn (Windows không vẽ được emoji cờ) ===
+const RI_RE = /[\u{1F1E6}-\u{1F1FF}]/u;            // 1 ký hiệu regional indicator
+const RI_PAIR = /[\u{1F1E6}-\u{1F1FF}]{2}/u;       // cặp = 1 lá cờ
+function flagCode(pair) {
+  const cps = [...pair].map(c => c.codePointAt(0));
+  if (cps.length !== 2) return null;
+  return cps.map(c => String.fromCharCode(c - 0x1F1E6 + 97)).join(''); // ISO 2 chữ, lowercase
+}
+function flaggifyNode(node) {
+  const walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT, {
+    acceptNode: (n) => RI_RE.test(n.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT,
+  });
+  const targets = [];
+  let t; while ((t = walker.nextNode())) targets.push(t);
+  for (const tn of targets) {
+    const parts = tn.nodeValue.split(/([\u{1F1E6}-\u{1F1FF}]{2})/u);
+    if (parts.length === 1) continue;
+    const frag = document.createDocumentFragment();
+    for (const part of parts) {
+      if (part && RI_PAIR.test(part) && part.length <= 4) {
+        const code = flagCode(part);
+        if (code) {
+          const img = document.createElement('img');
+          img.src = `https://flagcdn.com/h80/${code}.png`;
+          img.className = 'flag-img'; img.alt = part; img.loading = 'lazy';
+          img.onerror = function () { this.replaceWith(document.createTextNode(part)); };
+          frag.appendChild(img);
+          continue;
+        }
+      }
+      if (part) frag.appendChild(document.createTextNode(part));
+    }
+    tn.replaceWith(frag);
+  }
+}
+let _flagObs;
+function initFlags() {
+  if (typeof MutationObserver === 'undefined') return;
+  flaggifyNode(document.body);
+  if (_flagObs) return;
+  _flagObs = new MutationObserver((muts) => {
+    _flagObs.disconnect();
+    for (const m of muts) for (const n of m.addedNodes) {
+      if (n.nodeType === 1) flaggifyNode(n);
+      else if (n.nodeType === 3 && n.parentNode && RI_RE.test(n.nodeValue)) flaggifyNode(n.parentNode);
+    }
+    _flagObs.observe(document.body, { childList: true, subtree: true });
+  });
+  _flagObs.observe(document.body, { childList: true, subtree: true });
+}
+
 export function mountLayout(currentPath) {
   const nav = document.getElementById('nav');
   if (nav) nav.innerHTML = renderNav(currentPath);
   const footer = document.getElementById('footer');
   if (footer) footer.innerHTML = renderFooter();
-  initThemeToggle();
   attachDonateHandlers();
+  initFlags();
 }
 
 function attachDonateHandlers() {
@@ -205,7 +238,7 @@ function attachDonateHandlers() {
         await navigator.clipboard.writeText(acc);
         const original = btn.textContent;
         btn.textContent = 'Copied!';
-        btn.style.background = '#135bec';
+        btn.style.background = '#005BAA';
         btn.style.color = 'white';
         setTimeout(() => { btn.textContent = original; btn.style.background = ''; btn.style.color = ''; }, 1500);
       } catch {}

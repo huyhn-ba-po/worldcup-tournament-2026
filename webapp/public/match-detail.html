@@ -23,7 +23,7 @@
 <div id="footer"></div>
 
 <script type="module">
-import { mountLayout, api, escapeHtml, $, probBar, fmtDateVN, loadTeams, tournamentBadge } from '/js/shared.js?v=13';
+import { mountLayout, api, escapeHtml, $, probBar, fmtDateVN, loadTeams, tournamentBadge } from '/js/shared.js?v=14';
 mountLayout('/match');
 
 const matchId = parseInt(window.location.pathname.split('/match/')[1] || '0', 10);
@@ -154,7 +154,7 @@ async function load() {
     <section class="card p-5 sm:p-6 mb-6" id="aiSection">
       <div class="flex items-center justify-between mb-3 gap-3 flex-wrap">
         <h2 class="font-bold text-lg text-emerald-300">AI Dự đoán</h2>
-        <button id="aiBtn" class="bg-gradient-to-r from-emerald-500 to-blue-500 hover:opacity-90 text-white font-bold rounded-lg px-4 py-2 text-sm">Tạo dự đoán AI</button>
+        <button id="aiBtn" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-lg px-4 py-2 text-sm">Tạo dự đoán AI</button>
       </div>
       <div id="aiBody" class="text-sm text-slate-400">Click nút trên để xem dự đoán AI cho trận này, dựa trên stats baseline (Elo + Poisson + đối đầu) và phân tích định tính.</div>
     </section>
@@ -193,7 +193,7 @@ async function load() {
       const res = await fetch(`/api/predict/${matchId}`, { method: 'POST' });
       if (!res.ok) {
         const err = await res.json();
-        body.innerHTML = `<div class="text-rose-400">${escapeHtml(err.error)}</div>${err.error.includes('GEMINI') ? '<div class="text-xs text-slate-500 mt-2">Set GEMINI_API_KEY trong webapp/.env và restart server</div>' : ''}`;
+        body.innerHTML = `<div class="text-rose-400">${escapeHtml(err.error)}</div><div class="text-xs text-slate-500 mt-2">Trận này hiện chưa có dự đoán sẵn.</div>`;
         return;
       }
       const r = await res.json();

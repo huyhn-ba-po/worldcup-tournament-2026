@@ -187,7 +187,7 @@ export default async function apiRoutes(fastify) {
     }
 
     // 2) Fallback: gọi Gemini live (cần GEMINI_API_KEY). ?fresh=1 cũng đi nhánh này.
-    if (!aiAvailable()) return reply.code(503).send({ error: 'Chưa có dự đoán tĩnh cho trận này và AI live chưa cấu hình (set GEMINI_API_KEY)' });
+    if (!aiAvailable()) return reply.code(503).send({ error: 'Trận này hiện chưa có dự đoán sẵn.' });
 
     const cacheKey = `pred:${id}`;
     if (predictionCache.has(cacheKey) && !req.query.fresh) return { ...predictionCache.get(cacheKey), cached: true };

@@ -20,7 +20,7 @@
 <div id="footer"></div>
 
 <script type="module">
-import { mountLayout, api, escapeHtml, $, tierBadge, fmtDateVN, loadTeams, tournamentBadge } from '/js/shared.js?v=13';
+import { mountLayout, api, escapeHtml, $, tierBadge, fmtDateVN, loadTeams, tournamentBadge } from '/js/shared.js?v=14';
 mountLayout('/team');
 
 function renderSquad(squad) {
@@ -60,7 +60,7 @@ function renderSquad(squad) {
     <p class="text-xs text-amber-300/80 mb-4">⚠️ Đội hình hiện tại từ qualifiers/friendlies. Squad WC2026 26-man chính thức sẽ công bố cuối tháng 5/2026.</p>
 
     ${squad.key_players?.length ? `
-      <div class="mb-5 p-4 rounded-xl bg-gradient-to-r from-emerald-500/5 to-blue-500/5 border border-emerald-500/20">
+      <div class="mb-5 p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/20">
         <div class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">⭐ Cầu thủ chủ chốt (top 7 theo caps + goals)</div>
         <div class="space-y-1">${squad.key_players.map(renderPlayer).join('')}</div>
       </div>
