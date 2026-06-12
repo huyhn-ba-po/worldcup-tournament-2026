@@ -151,88 +151,102 @@ async function load() {
     </section>
   `;
 
-  $('#aiBtn').addEventListener('click', async () => {
-    const btn = $('#aiBtn'), body = $('#aiBody');
-    btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Đang phân tích...';
+  const aiBtn = $('#aiBtn'), aiBody = $('#aiBody');
 
-    // Progressive status messages (5 giai đoạn, tổng 5-7s) tạo cảm giác AI đang xử lý
-    const stages = [
-      { delay: 0,    msg: 'Đang đọc dữ liệu trận đấu...' },
-      { delay: 900,  msg: 'Đang phân tích lịch sử đối đầu (H2H)...' },
-      { delay: 2100, msg: 'Đang tính toán mô hình Elo + Poisson...' },
-      { delay: 3500, msg: 'Đang đánh giá phong độ và cầu thủ chủ chốt...' },
-      { delay: 4800, msg: 'Đang tổng hợp dự đoán cuối cùng...' },
-    ];
-    const stageTimers = stages.map(s => setTimeout(() => {
-      body.innerHTML = `<div class="flex items-center gap-2 text-slate-500"><span class="spinner"></span><span>${s.msg}</span></div>`;
-    }, s.delay));
-    // Random total duration 5.5–7s để có cảm giác tự nhiên
-    const minDelay = 5500 + Math.floor(Math.random() * 1500);
-    const delayPromise = new Promise(r => setTimeout(r, minDelay));
-
-    try {
-      // Fetch + min delay chạy song song — chỉ render khi CẢ HAI xong
-      const [res] = await Promise.all([
-        fetch(`/api/predict/${matchId}`, { method: 'POST' }),
-        delayPromise,
-      ]);
-      stageTimers.forEach(clearTimeout);
-      if (!res.ok) {
-        const err = await res.json();
-        body.innerHTML = `<div class="text-rose-400">${escapeHtml(err.error)}</div><div class="text-xs text-slate-500 mt-2">Trận này hiện chưa có dự đoán sẵn.</div>`;
-        return;
-      }
-      const r = await res.json();
-      const p = r.prediction;
-      // Dùng thẳng dự đoán gốc (khớp phần phân tích) — 1 tỉ số cố định, không mô phỏng
-      const Pa = p.prob_a, Pd = p.prob_draw, Pb = p.prob_b;
-      const wKey = p.winner === 'Hòa' ? 'draw' : (p.winner === f.home ? 'home' : 'away');
-      const winner = wKey === 'draw' ? 'Hòa' : (wKey === 'home' ? ctx.flagA + ' ' + nameA : ctx.flagB + ' ' + nameB);
-      const scoreMain = `${p.score_a} - ${p.score_b}`;
-      body.innerHTML = `
-        <div class="flex items-center justify-between gap-3 mb-3 flex-wrap">
-          <div><div class="text-xs text-slate-400 uppercase">AI dự đoán</div><div class="font-bold text-emerald-300">${winner} · tin cậy ${p.confidence}%</div></div>
-          <div class="text-center">
-            <div class="text-xs text-slate-400 uppercase">Tỉ số</div>
-            <div class="font-mono font-black text-2xl">${scoreMain}</div>
-          </div>
-        </div>
-        ${probBar(Pa, Pd, Pb)}
-        <div class="flex justify-between text-[11px] mt-1 text-slate-400">
-          <span class="text-emerald-400 font-semibold">${escapeHtml(nameA)} ${Pa}%</span>
-          <span>Hòa ${Pd}%</span>
-          <span class="text-blue-400 font-semibold">${Pb}% ${escapeHtml(nameB)}</span>
-        </div>
-        <div class="flex flex-wrap gap-1.5 mt-3">${(p.key_factors || []).map(k => `<span class="pill">${escapeHtml(k)}</span>`).join('')}</div>
-        <div class="grid sm:grid-cols-3 gap-3 mt-4 text-xs">
-          <div class="card-flat p-3"><div class="font-bold text-emerald-300 mb-1">Phong độ</div>${escapeHtml(p.analysis_form || '')}</div>
-          <div class="card-flat p-3"><div class="font-bold text-emerald-300 mb-1">Lịch sử</div>${escapeHtml(p.analysis_history || '')}</div>
-          <div class="card-flat p-3"><div class="font-bold text-emerald-300 mb-1">Dự đoán</div>${escapeHtml(p.analysis_prediction || '')}</div>
-        </div>
-        ${r.env && r.env.available ? `
-        <div class="card-flat p-3 mt-3 text-xs">
-          <div class="font-bold text-amber-300 mb-1">🌡️ Điều kiện thi đấu — ${escapeHtml(r.env.city)} · ${escapeHtml(r.env.daypart)}</div>
-          <div class="flex flex-wrap gap-x-4 gap-y-1 text-slate-300">
-            <span>Nhiệt độ ~<b>${r.env.temp_felt_c}°C</b></span>
-            <span>Độ ẩm ${r.env.humidity}%</span>
-            <span>Heat-stress: <b>${escapeHtml(r.env.heat_stress)}</b></span>
-            <span>Độ cao ${r.env.altitude_m}m (${escapeHtml(r.env.altitude_level)})</span>
-            <span>Sân: ${escapeHtml(r.env.cover)}</span>
-          </div>
-          ${(r.env.notes || []).length ? `<ul class="mt-2 space-y-0.5 text-slate-400">${r.env.notes.map(n => `<li>• ${escapeHtml(n)}</li>`).join('')}</ul>` : ''}
-        </div>` : ''}
-        ${r.source === 'claude-static'
-          ? `<div class="text-xs text-slate-500 mt-2">⚡ Dự đoán sẵn bởi AI Chuyên gia bóng đá</div>`
-          : (r.cached ? '<div class="text-xs text-slate-500 mt-2">Cached</div>' : '')}
-      `;
-    } catch (e) {
-      stageTimers.forEach(clearTimeout);
-      body.innerHTML = `<div class="text-rose-400">Lỗi: ${escapeHtml(e.message)}</div>`;
-    } finally {
-      btn.disabled = false;
-      btn.innerHTML = 'Dự đoán lại';
+  // Render dự đoán AI (dùng chung). result != null → trận đã đá: thêm banner kết quả thật + chấm X/2.
+  function predictionHTML(r, result) {
+    const p = r.prediction;
+    const Pa = p.prob_a, Pd = p.prob_draw, Pb = p.prob_b;
+    const wKey = p.winner === 'Hòa' ? 'draw' : (p.winner === f.home ? 'home' : 'away');
+    const winner = wKey === 'draw' ? 'Hòa' : (wKey === 'home' ? ctx.flagA + ' ' + nameA : ctx.flagB + ' ' + nameB);
+    let banner = '';
+    if (result) {
+      const aw = result.home > result.away ? 'home' : (result.home < result.away ? 'away' : 'draw');
+      const okKeo = aw === wKey, okTs = (p.score_a === result.home && p.score_b === result.away);
+      const n = (okKeo ? 1 : 0) + (okTs ? 1 : 0);
+      const cls = n === 2 ? 'pill' : (n === 1 ? 'pill pill-amber' : 'pill pill-rose');
+      banner = `<div class="card-flat p-4 mb-4 flex items-center justify-between gap-3 flex-wrap" style="border-color: rgb(var(--brand-500) / 0.35)">
+        <div><div class="text-xs text-slate-400 uppercase tracking-wider">Kết quả thật</div>
+          <div class="font-mono font-black text-2xl text-slate-100 mt-0.5">${ctx.flagA} ${result.home} - ${result.away} ${ctx.flagB}</div></div>
+        <div class="text-right"><span class="${cls}">AI đúng ${n}/2</span>
+          <div class="text-xs text-slate-500 mt-1.5">Kèo ${okKeo ? '✅' : '❌'} · Tỉ số ${okTs ? '✅' : '❌'}</div></div>
+      </div>`;
     }
-  });
+    return banner + `
+      <div class="flex items-center justify-between gap-3 mb-3 flex-wrap">
+        <div><div class="text-xs text-slate-400 uppercase">AI dự đoán</div><div class="font-bold text-emerald-300">${winner} · tin cậy ${p.confidence}%</div></div>
+        <div class="text-center"><div class="text-xs text-slate-400 uppercase">Tỉ số</div><div class="font-mono font-black text-2xl">${p.score_a} - ${p.score_b}</div></div>
+      </div>
+      ${probBar(Pa, Pd, Pb)}
+      <div class="flex justify-between text-[11px] mt-1 text-slate-400">
+        <span class="text-emerald-400 font-semibold">${escapeHtml(nameA)} ${Pa}%</span>
+        <span>Hòa ${Pd}%</span>
+        <span class="text-blue-400 font-semibold">${Pb}% ${escapeHtml(nameB)}</span>
+      </div>
+      <div class="flex flex-wrap gap-1.5 mt-3">${(p.key_factors || []).map(k => `<span class="pill">${escapeHtml(k)}</span>`).join('')}</div>
+      <div class="grid sm:grid-cols-3 gap-3 mt-4 text-xs">
+        <div class="card-flat p-3"><div class="font-bold text-emerald-300 mb-1">Phong độ</div>${escapeHtml(p.analysis_form || '')}</div>
+        <div class="card-flat p-3"><div class="font-bold text-emerald-300 mb-1">Lịch sử</div>${escapeHtml(p.analysis_history || '')}</div>
+        <div class="card-flat p-3"><div class="font-bold text-emerald-300 mb-1">Dự đoán</div>${escapeHtml(p.analysis_prediction || '')}</div>
+      </div>
+      ${r.env && r.env.available ? `
+      <div class="card-flat p-3 mt-3 text-xs">
+        <div class="font-bold text-amber-300 mb-1">🌡️ Điều kiện thi đấu — ${escapeHtml(r.env.city)} · ${escapeHtml(r.env.daypart)}</div>
+        <div class="flex flex-wrap gap-x-4 gap-y-1 text-slate-300">
+          <span>Nhiệt độ ~<b>${r.env.temp_felt_c}°C</b></span>
+          <span>Độ ẩm ${r.env.humidity}%</span>
+          <span>Heat-stress: <b>${escapeHtml(r.env.heat_stress)}</b></span>
+          <span>Độ cao ${r.env.altitude_m}m (${escapeHtml(r.env.altitude_level)})</span>
+          <span>Sân: ${escapeHtml(r.env.cover)}</span>
+        </div>
+        ${(r.env.notes || []).length ? `<ul class="mt-2 space-y-0.5 text-slate-400">${r.env.notes.map(n => `<li>• ${escapeHtml(n)}</li>`).join('')}</ul>` : ''}
+      </div>` : ''}
+      ${r.source === 'claude-static' ? `<div class="text-xs text-slate-500 mt-2">⚡ Dự đoán sẵn bởi AI Chuyên gia bóng đá</div>` : ''}
+    `;
+  }
+
+  if (d.result) {
+    // Trận ĐÃ ĐÁ → hiện luôn dự đoán AI + so kết quả thật, bỏ nút
+    if (aiBtn) aiBtn.remove();
+    aiBody.innerHTML = '<div class="flex items-center gap-2 text-slate-500"><span class="spinner"></span><span>Đang tải dự đoán AI...</span></div>';
+    fetch(`/api/predict/${matchId}`, { method: 'POST' })
+      .then(res => res.ok ? res.json() : Promise.reject(new Error('predict failed')))
+      .then(r => { aiBody.innerHTML = predictionHTML(r, d.result); })
+      .catch(() => { aiBody.innerHTML = '<div class="text-rose-400 text-sm">Không tải được dự đoán AI.</div>'; });
+  } else {
+    // Trận CHƯA ĐÁ → giữ nút + hiệu ứng loading
+    aiBtn.addEventListener('click', async () => {
+      aiBtn.disabled = true; aiBtn.innerHTML = '<span class="spinner"></span> Đang phân tích...';
+      const stages = [
+        { delay: 0,    msg: 'Đang đọc dữ liệu trận đấu...' },
+        { delay: 900,  msg: 'Đang phân tích lịch sử đối đầu (H2H)...' },
+        { delay: 2100, msg: 'Đang tính toán mô hình Elo + Poisson...' },
+        { delay: 3500, msg: 'Đang đánh giá phong độ và cầu thủ chủ chốt...' },
+        { delay: 4800, msg: 'Đang tổng hợp dự đoán cuối cùng...' },
+      ];
+      const stageTimers = stages.map(s => setTimeout(() => {
+        aiBody.innerHTML = `<div class="flex items-center gap-2 text-slate-500"><span class="spinner"></span><span>${s.msg}</span></div>`;
+      }, s.delay));
+      const minDelay = 5500 + Math.floor(Math.random() * 1500);
+      const delayPromise = new Promise(r => setTimeout(r, minDelay));
+      try {
+        const [res] = await Promise.all([fetch(`/api/predict/${matchId}`, { method: 'POST' }), delayPromise]);
+        stageTimers.forEach(clearTimeout);
+        if (!res.ok) {
+          const err = await res.json();
+          aiBody.innerHTML = `<div class="text-rose-400">${escapeHtml(err.error)}</div><div class="text-xs text-slate-500 mt-2">Trận này hiện chưa có dự đoán sẵn.</div>`;
+          return;
+        }
+        const r = await res.json();
+        aiBody.innerHTML = predictionHTML(r, null);
+      } catch (e) {
+        stageTimers.forEach(clearTimeout);
+        aiBody.innerHTML = `<div class="text-rose-400">Lỗi: ${escapeHtml(e.message)}</div>`;
+      } finally {
+        aiBtn.disabled = false; aiBtn.innerHTML = 'Dự đoán lại';
+      }
+    });
+  }
 }
 
 load().catch(e => {

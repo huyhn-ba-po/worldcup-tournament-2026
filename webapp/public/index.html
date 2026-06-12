@@ -247,36 +247,31 @@
     </div>
   </section>
 
-  <!-- COUNTDOWN + OPENER -->
+  <!-- TRẬN SẮP ĐÁ (động — tự đổi theo ngày hiện tại) -->
   <section class="max-w-7xl mx-auto px-4 sm:px-6 mb-16 sm:mb-20">
-    <div class="featured-card p-6 sm:p-8">
-      <div class="grid md:grid-cols-2 gap-6 items-center">
-        <div>
-          <span class="badge-live">Trận khai mạc</span>
-          <h2 class="text-2xl sm:text-3xl font-bold mt-3 mb-1">Mexico <span class="text-slate-500">vs</span> Nam Phi</h2>
-          <p class="text-sm text-slate-400">Estadio Azteca · Mexico City · 02:00 sáng 12/6/2026 (giờ VN)</p>
-          <div class="mt-5 grid grid-cols-4 gap-3" id="countdownGrid"></div>
-          <div class="mt-5 flex flex-wrap gap-2">
-            <a href="/match/1" class="btn-primary text-sm" style="padding: 10px 18px; min-height: 44px;">
-              Xem AI đoán trận này
-            </a>
-          </div>
-        </div>
-        <div class="hidden md:block">
-          <div class="flex items-center justify-around gap-4">
-            <div class="text-center">
-              <div class="text-7xl">🇲🇽</div>
-              <div class="mt-2 font-bold text-slate-100">Mexico</div>
-            </div>
-            <div class="text-slate-500 text-3xl font-light">vs</div>
-            <div class="text-center">
-              <div class="text-7xl">🇿🇦</div>
-              <div class="mt-2 font-bold text-slate-100">Nam Phi</div>
-            </div>
-          </div>
-        </div>
+    <div class="flex items-end justify-between mb-5 gap-3 flex-wrap">
+      <div>
+        <span class="section-eyebrow">Sắp diễn ra</span>
+        <h2 class="section-title">Trận sắp đá</h2>
       </div>
+      <a href="/groups" class="text-sm text-emerald-400 hover:underline whitespace-nowrap">Lịch đầy đủ →</a>
     </div>
+    <div id="nextMatch" class="featured-card p-6 sm:p-8 mb-4">
+      <div class="text-center text-slate-500 py-8">Đang tải trận sắp đá…</div>
+    </div>
+    <div id="upcomingGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+  </section>
+
+  <!-- KẾT QUẢ GẦN ĐÂY (trận đã đá xong) -->
+  <section id="resultsSection" class="max-w-7xl mx-auto px-4 sm:px-6 mb-16 sm:mb-20 hidden">
+    <div class="flex items-end justify-between mb-5 gap-3 flex-wrap">
+      <div>
+        <span class="section-eyebrow">Đã đá xong</span>
+        <h2 class="section-title">Kết quả gần đây</h2>
+      </div>
+      <a href="/groups" class="text-sm text-emerald-400 hover:underline whitespace-nowrap">Tất cả trận →</a>
+    </div>
+    <div id="resultsGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
   </section>
 
   <!-- METRICS -->
@@ -497,28 +492,53 @@
 import { mountLayout, api, escapeHtml, $, loadTeams, fmtDateVN } from '/js/shared.js?v=17';
 mountLayout('/');
 
-function tickCountdown() {
-  const target = new Date('2026-06-11T19:00:00Z');
-  const diff = target - new Date();
-  const grid = $('#countdownGrid');
-  if (!grid) return;
-  if (diff <= 0) {
-    grid.innerHTML = '<div class="col-span-full text-center text-emerald-300 font-bold py-4">Đang diễn ra</div>';
-    return;
-  }
-  const d = Math.floor(diff / 86400000);
-  const h = Math.floor((diff % 86400000) / 3600000);
-  const m = Math.floor((diff % 3600000) / 60000);
-  const s = Math.floor((diff % 60000) / 1000);
-  const cell = (n, l) => `<div class="bg-slate-950/60 rounded-xl border border-slate-800 p-3 text-center">
-    <div class="font-mono font-black text-2xl sm:text-3xl text-emerald-300 leading-none">${String(n).padStart(2,'0')}</div>
-    <div class="text-[10px] uppercase tracking-wider text-slate-500 mt-1.5">${l}</div>
-  </div>`;
-  grid.innerHTML = cell(d, 'Ngày') + cell(h, 'Giờ') + cell(m, 'Phút') + cell(s, 'Giây');
+// ===== Helpers trận sắp đá =====
+function kickoffUTC(m) {
+  const mt = (m.time || '').match(/(\d{1,2}):(\d{2})\s+UTC([+-]\d+)/);
+  if (!mt) return null;
+  const off = parseInt(mt[3], 10), sign = off >= 0 ? '+' : '-', oh = String(Math.abs(off)).padStart(2, '0');
+  return new Date(`${m.date}T${mt[1].padStart(2, '0')}:${mt[2]}:00${sign}${oh}:00`);
 }
-tickCountdown(); setInterval(tickCountdown, 1000);
+function ymd(d) { return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; }
+function dayLabel(dateVn) {
+  const now = new Date();
+  if (dateVn === ymd(now)) return 'Hôm nay';
+  if (dateVn === ymd(new Date(now.getTime() + 86400000))) return 'Ngày mai';
+  return fmtDateVN(dateVn);
+}
+function teamsOf(m, meta) {
+  return {
+    a: m.is_placeholder ? (m.home_slot || 'TBD') : (meta[m.home]?.name_vi || m.home),
+    b: m.is_placeholder ? (m.away_slot || 'TBD') : (meta[m.away]?.name_vi || m.away),
+    fa: m.is_placeholder ? '🏳️' : (meta[m.home]?.flag || '🏳️'),
+    fb: m.is_placeholder ? '🏳️' : (meta[m.away]?.flag || '🏳️'),
+  };
+}
 
-Promise.all([api('/api/leaderboard'), api('/api/matches?stage=group'), loadTeams()]).then(([lb, mx, meta]) => {
+// ===== Đếm ngược trận kế tiếp =====
+let nextKick = null;
+function tickNext() {
+  const el = $('#nextCountdown');
+  if (!el || !nextKick) return;
+  const diff = nextKick - new Date();
+  if (diff <= 0) { el.innerHTML = '<div class="col-span-full text-center text-emerald-300 font-bold py-2">Đang diễn ra</div>'; return; }
+  const d = Math.floor(diff / 86400000), h = Math.floor((diff % 86400000) / 3600000), mn = Math.floor((diff % 3600000) / 60000), s = Math.floor((diff % 60000) / 1000);
+  const cell = (n, l) => `<div class="rounded-xl border border-slate-700 p-2.5 text-center" style="background: var(--card-flat-bg)">
+    <div class="font-mono font-black text-xl sm:text-2xl text-emerald-300 leading-none">${String(n).padStart(2, '0')}</div>
+    <div class="text-[10px] uppercase tracking-wider text-slate-500 mt-1">${l}</div></div>`;
+  el.innerHTML = cell(d, 'Ngày') + cell(h, 'Giờ') + cell(mn, 'Phút') + cell(s, 'Giây');
+}
+setInterval(tickNext, 1000);
+
+Promise.all([api('/api/matches'), api('/api/leaderboard'), loadTeams()]).then(([mx, lb, meta]) => {
+  const now = Date.now();
+  const SN = mx.stage_names || {};
+  const stageLabel = (m) => m.stage === 'group' ? ('Bảng ' + m.group) : (SN[m.stage] || 'Vòng loại trực tiếp');
+  const up = mx.matches.map(m => ({ m, k: kickoffUTC(m) }))
+    .filter(x => x.k && x.k.getTime() > now - 2.5 * 3600000)
+    .sort((a, b) => a.k - b.k);
+
+  // 5 đội mạnh nhất
   $('#topElo').innerHTML = lb.elo.slice(0, 5).map((t, i) => `
     <a href="/team/${encodeURIComponent(t.name)}" class="flex items-center justify-between gap-3 p-2 rounded-lg hover:bg-emerald-500/5 no-underline transition">
       <div class="flex items-center gap-3 min-w-0">
@@ -530,10 +550,47 @@ Promise.all([api('/api/leaderboard'), api('/api/matches?stage=group'), loadTeams
         </div>
       </div>
       <span class="font-mono font-bold text-emerald-300">${t.rating}</span>
-    </a>
-  `).join('');
+    </a>`).join('');
 
-  $('#upcoming').innerHTML = mx.matches.slice(0, 5).map(m => {
+  // Trận sắp đá (động theo ngày)
+  if (!up.length) {
+    $('#nextMatch').innerHTML = '<div class="text-center text-slate-400 py-10">World Cup 2026 đã khép lại. Hẹn gặp ở kỳ sau! 🏆</div>';
+    $('#upcomingGrid').innerHTML = '';
+  } else {
+    const nm = up[0].m; nextKick = up[0].k;
+    const t0 = teamsOf(nm, meta);
+    $('#nextMatch').innerHTML = `
+      <div class="grid md:grid-cols-2 gap-6 items-center">
+        <div>
+          <span class="badge-live">${dayLabel(nm.date_vn)} · ${escapeHtml(nm.time_vn || '')} giờ VN</span>
+          <h3 class="text-2xl sm:text-3xl font-bold mt-3 mb-1">${escapeHtml(t0.a)} <span class="text-slate-500">vs</span> ${escapeHtml(t0.b)}</h3>
+          <p class="text-sm text-slate-400">${escapeHtml(nm.ground || '')} · ${escapeHtml(stageLabel(nm))}</p>
+          <div class="mt-5 grid grid-cols-4 gap-2" id="nextCountdown"></div>
+          <a href="/match/${nm.match}" class="btn-primary text-sm mt-5" style="padding: 10px 18px; min-height: 44px;">Xem AI đoán trận này</a>
+        </div>
+        <div class="hidden md:flex items-center justify-around gap-4">
+          <div class="text-center"><div class="text-7xl">${t0.fa}</div><div class="mt-2 font-bold text-slate-100">${escapeHtml(t0.a)}</div></div>
+          <div class="text-slate-500 text-3xl font-light">vs</div>
+          <div class="text-center"><div class="text-7xl">${t0.fb}</div><div class="mt-2 font-bold text-slate-100">${escapeHtml(t0.b)}</div></div>
+        </div>
+      </div>`;
+    tickNext();
+    $('#upcomingGrid').innerHTML = up.slice(1, 7).map(({ m }) => {
+      const t = teamsOf(m, meta);
+      return `<a href="/match/${m.match}" class="card p-4 no-underline block">
+        <div class="text-xs text-emerald-400 font-semibold mb-2">${dayLabel(m.date_vn)} · ${escapeHtml(m.time_vn || '')} <span class="text-slate-500 font-normal">giờ VN</span></div>
+        <div class="flex items-center gap-2 text-sm font-semibold text-slate-100">
+          <span>${t.fa}</span><span class="truncate">${escapeHtml(t.a)}</span>
+          <span class="text-slate-400 text-xs px-1 font-normal">vs</span>
+          <span class="truncate flex-1 text-right">${escapeHtml(t.b)}</span><span>${t.fb}</span>
+        </div>
+        <div class="text-xs text-slate-500 mt-2">${escapeHtml(stageLabel(m))} · <span class="text-emerald-400">Xem dự đoán →</span></div>
+      </a>`;
+    }).join('');
+  }
+
+  // 5 trận khai cuộc (cố định — 5 trận mở màn giải)
+  $('#upcoming').innerHTML = mx.matches.filter(m => m.stage === 'group').slice(0, 5).map(m => {
     const mA = meta[m.home] || {}, mB = meta[m.away] || {};
     return `<a href="/match/${m.match}" class="block p-2 rounded-lg hover:bg-emerald-500/5 no-underline transition">
       <div class="flex items-center gap-2 text-sm">
@@ -543,9 +600,46 @@ Promise.all([api('/api/leaderboard'), api('/api/matches?stage=group'), loadTeams
       <div class="text-xs text-slate-500 mt-1 ml-7">${m.time_vn} ${fmtDateVN(m.date_vn)} (giờ VN)</div>
     </a>`;
   }).join('');
+
+  // Kết quả gần đây (trận đã có tỉ số thật trong results.json)
+  const finished = mx.matches.filter(m => m.result)
+    .sort((a, b) => kickoffUTC(b) - kickoffUTC(a)).slice(0, 6);
+  if (finished.length) {
+    $('#resultsSection').classList.remove('hidden');
+    $('#resultsGrid').innerHTML = finished.map(m => {
+      const t = teamsOf(m, meta), r = m.result;
+      let badge = '', okOutcome = false, okExact = false;
+      if (m.ai) {
+        const aw = r.home > r.away ? 'home' : (r.home < r.away ? 'away' : 'draw');
+        const pw = m.ai.winner === 'Hòa' ? 'draw' : (m.ai.winner === m.home ? 'home' : 'away');
+        okOutcome = aw === pw;
+        okExact = m.ai.score_a === r.home && m.ai.score_b === r.away;
+        const n = (okOutcome ? 1 : 0) + (okExact ? 1 : 0);
+        const cls = n === 2 ? 'pill' : (n === 1 ? 'pill pill-amber' : 'pill pill-rose');
+        badge = `<span class="${cls}">AI đúng ${n}/2</span>`;
+      }
+      return `<div class="card p-4">
+        <div class="flex items-center justify-between mb-2 gap-2">
+          <span class="text-xs text-slate-500">${dayLabel(m.date_vn)} · ${escapeHtml(stageLabel(m))}</span>
+          ${badge}
+        </div>
+        <div class="flex items-center justify-between gap-2">
+          <div class="flex items-center gap-2 text-sm font-semibold text-slate-100 min-w-0">
+            <span>${t.fa}</span><span class="truncate">${escapeHtml(t.a)}</span>
+          </div>
+          <div class="font-mono font-black text-lg text-emerald-300 whitespace-nowrap px-2">${r.home} - ${r.away}</div>
+          <div class="flex items-center gap-2 text-sm font-semibold text-slate-100 min-w-0 justify-end">
+            <span class="truncate">${escapeHtml(t.b)}</span><span>${t.fb}</span>
+          </div>
+        </div>
+        ${m.ai ? `<div class="text-xs text-slate-500 mt-2">AI đoán ${m.ai.score_a}-${m.ai.score_b} · Kèo ${okOutcome ? '✅' : '❌'} · Tỉ số ${okExact ? '✅' : '❌'} · <a href="/match/${m.match}" class="text-emerald-400">chi tiết →</a></div>`
+               : `<a href="/match/${m.match}" class="text-xs text-emerald-400 mt-2 inline-block">Chi tiết →</a>`}
+      </div>`;
+    }).join('');
+  }
 }).catch(err => {
   console.error(err);
-  $('#topElo').innerHTML = '<div class="text-rose-400 text-sm">Lỗi tải data</div>';
+  $('#nextMatch').innerHTML = '<div class="text-rose-400 text-sm text-center py-6">Lỗi tải dữ liệu trận đấu</div>';
 });
 </script>
 </body>

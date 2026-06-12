@@ -89,7 +89,7 @@ export function renderFooter() {
 function renderDonateModal() {
   return `
     <div id="donateModal" class="hidden fixed inset-0 z-50 items-center justify-center p-4" role="dialog" aria-modal="true" style="background: rgba(2, 6, 23, 0.85); backdrop-filter: blur(6px);">
-      <div class="relative max-w-md w-full rounded-2xl shadow-2xl overflow-hidden" style="background: var(--card-bg); border: 1px solid rgba(19, 91, 236, 0.3);">
+      <div class="relative max-w-md w-full rounded-2xl shadow-2xl overflow-hidden" style="background: var(--card-bg); border: 1px solid rgb(var(--brand-500) / 0.3);">
         <button type="button" data-donate-close class="absolute top-3 right-4 text-slate-400 hover:text-slate-100 text-3xl leading-none z-10" aria-label="Đóng">×</button>
         <div class="p-6 sm:p-8 text-center">
           <div class="text-2xl mb-1">☕</div>

@@ -67,13 +67,28 @@ Promise.all([api('/api/teams'), api('/api/matches?stage=group')]).then(([ts, mx]
           <div class="space-y-1">
             ${matches.map(m => {
               const mA = meta[m.home] || {}, mB = meta[m.away] || {};
+              const nA = escapeHtml(mA.name_vi || m.home), nB = escapeHtml(mB.name_vi || m.away);
+              const fA = mA.flag || '🏳️', fB = mB.flag || '🏳️';
+              const r = m.result;
+              let aiTag = '';
+              if (r && m.ai) {
+                const aw = r.home > r.away ? 'home' : (r.home < r.away ? 'away' : 'draw');
+                const pw = m.ai.winner === 'Hòa' ? 'draw' : (m.ai.winner === m.home ? 'home' : 'away');
+                const n = (aw === pw ? 1 : 0) + ((m.ai.score_a === r.home && m.ai.score_b === r.away) ? 1 : 0);
+                const cls = n === 2 ? 'bg-emerald-500/15 text-emerald-300' : (n === 1 ? 'bg-amber-500/15 text-amber-400' : 'bg-rose-500/15 text-rose-400');
+                aiTag = `<span class="text-[9px] px-1 rounded ${cls} whitespace-nowrap">AI ${n}/2</span>`;
+              }
+              const teamsLine = r
+                ? `${fA} ${nA} <b class="font-mono text-emerald-300">${r.home}-${r.away}</b> ${nB} ${fB}`
+                : `${fA} ${nA} <span class="text-slate-400">vs</span> ${nB} ${fB}`;
               return `
                 <a href="/match/${m.match}" class="match-row block rounded-md border border-slate-700/40 p-2 text-xs hover:border-emerald-500/40 transition no-underline">
                   <div class="flex items-center gap-2">
                     <span class="font-mono bg-slate-800 text-emerald-300 rounded px-1 py-0.5 text-[10px]">M${m.match}</span>
-                    <span class="text-slate-200 truncate">${mA.flag || '🏳️'} ${escapeHtml(mA.name_vi || m.home)} vs ${escapeHtml(mB.name_vi || m.away)} ${mB.flag || '🏳️'}</span>
+                    <span class="text-slate-200 truncate flex-1">${teamsLine}</span>
+                    ${aiTag}
                   </div>
-                  <div class="text-[10px] text-slate-500 mt-0.5">${m.time_vn || '--:--'} ${fmtDateVN(m.date_vn)} · ${m.ground}</div>
+                  <div class="text-[10px] text-slate-500 mt-0.5">${r ? '<span class="text-slate-400">Kết thúc</span>' : (m.time_vn || '--:--') + ' ' + fmtDateVN(m.date_vn)} · ${m.ground}</div>
                 </a>
               `;
             }).join('')}

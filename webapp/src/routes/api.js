@@ -1,5 +1,5 @@
 // API routes
-import { TEAMS_META, BACKTEST, OVERLAY, POISSON, ELO, ALL_INT, WC_MATCHES, FIXTURES_2026, SQUADS, PREDICTIONS } from '../lib/dataLoader.js';
+import { TEAMS_META, BACKTEST, OVERLAY, POISSON, ELO, ALL_INT, WC_MATCHES, FIXTURES_2026, SQUADS, PREDICTIONS, getResults } from '../lib/dataLoader.js';
 import { STAGE_NAMES } from '../data/fixtures.js';
 import { computeStatsBaseline, getTeamCard, getEloLeaderboard } from '../lib/stats.js';
 import { getH2H, getRecentForm, getTeamWCHistory, searchMatches } from '../lib/h2h.js';
@@ -95,6 +95,14 @@ export default async function apiRoutes(fastify) {
     const { stage } = req.query;
     let list = FIXTURES_2026;
     if (stage) list = list.filter(f => f.stage === stage);
+    // Gắn tỉ số thật (results.json — đọc sống) + dự đoán AI (winner/score) để client so sánh
+    const RES = getResults();
+    list = list.map(f => {
+      const result = RES.results?.[f.match] || null;
+      const ap = PREDICTIONS.predictions?.[f.match];
+      const ai = ap ? { winner: ap.winner, score_a: ap.score_a, score_b: ap.score_b } : null;
+      return { ...f, result, ai };
+    });
     return { matches: list, stage_names: STAGE_NAMES };
   });
 
@@ -125,7 +133,8 @@ export default async function apiRoutes(fastify) {
       recentB = getRecentForm(fixture.away, { limit: 10, sinceYear: 2020 });
     }
     const env = computeMatchEnv(fixture);
-    return { fixture, ctx, stats, h2h, recent_a: recentA, recent_b: recentB, env };
+    const result = getResults().results?.[id] || null;
+    return { fixture, ctx, stats, h2h, recent_a: recentA, recent_b: recentB, env, result };
   });
 
   fastify.get('/api/h2h/:teamA/:teamB', async (req) => {

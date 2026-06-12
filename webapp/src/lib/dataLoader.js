@@ -26,6 +26,13 @@ let _predictions = { predictions: {} };
 try { _predictions = loadJSON('predictions.json'); } catch { /* chưa có file — bỏ qua */ }
 export const PREDICTIONS = _predictions;
 
+// Tỉ số thật các trận đã đá. Đọc "sống" mỗi lần gọi để script cập nhật xong
+// là thấy ngay, không cần restart server. Thiếu file → rỗng.
+export function getResults() {
+  try { return loadJSON('results.json'); } catch { return { results: {} }; }
+}
+export const RESULTS = getResults(); // ảnh chụp lúc boot (giữ tương thích)
+
 export { FIXTURES_2026 } from '../data/fixtures.js';
 
 console.log(`[data] Loaded: ${ALL_INT.matches.length} all-int matches, ${WC_MATCHES.matches.length} WC matches, ${Object.keys(ELO.wc2026).length} WC2026 teams`);
