@@ -184,23 +184,14 @@ async function load() {
       }
       const r = await res.json();
       const p = r.prediction;
-      const sim = r.simulation; // mô phỏng (nếu có) — thay đổi mỗi lần tải
-      // Xác suất hiển thị: ưu tiên mô phỏng
-      const Pa = sim ? sim.prob_a : p.prob_a, Pd = sim ? sim.prob_draw : p.prob_draw, Pb = sim ? sim.prob_b : p.prob_b;
-      // Người thắng LUÔN theo lõi tĩnh (khớp với phần phân tích) — chỉ tỉ số & % dao động
+      // Dùng thẳng dự đoán gốc (khớp phần phân tích) — 1 tỉ số cố định, không mô phỏng
+      const Pa = p.prob_a, Pd = p.prob_draw, Pb = p.prob_b;
       const wKey = p.winner === 'Hòa' ? 'draw' : (p.winner === f.home ? 'home' : 'away');
       const winner = wKey === 'draw' ? 'Hòa' : (wKey === 'home' ? ctx.flagA + ' ' + nameA : ctx.flagB + ' ' + nameB);
-      // Tỉ số: random 1 tỉ số từ scorelines mô phỏng (mỗi click 1 kết quả khác nhau)
-      let scoreMain;
-      if (sim && sim.scorelines?.length) {
-        const pick = sim.scorelines[Math.floor(Math.random() * sim.scorelines.length)];
-        scoreMain = pick.label.replace('-', ' - ');
-      } else {
-        scoreMain = sim ? sim.primary.label.replace('-', ' - ') : `${p.score_a} - ${p.score_b}`;
-      }
+      const scoreMain = `${p.score_a} - ${p.score_b}`;
       body.innerHTML = `
         <div class="flex items-center justify-between gap-3 mb-3 flex-wrap">
-          <div><div class="text-xs text-slate-400 uppercase">AI dự đoán${sim ? ' · mô phỏng' : ''}</div><div class="font-bold text-emerald-300">${winner} · tin cậy ${p.confidence}%</div></div>
+          <div><div class="text-xs text-slate-400 uppercase">AI dự đoán</div><div class="font-bold text-emerald-300">${winner} · tin cậy ${p.confidence}%</div></div>
           <div class="text-center">
             <div class="text-xs text-slate-400 uppercase">Tỉ số</div>
             <div class="font-mono font-black text-2xl">${scoreMain}</div>
