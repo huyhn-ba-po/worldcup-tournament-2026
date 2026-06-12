@@ -1,73 +1,486 @@
 {
   "groups": {
-    "A": ["Mexico", "South Africa", "South Korea", "Czech Republic"],
-    "B": ["Canada", "Bosnia & Herzegovina", "Qatar", "Switzerland"],
-    "C": ["Brazil", "Morocco", "Haiti", "Scotland"],
-    "D": ["United States", "Paraguay", "Australia", "Turkey"],
-    "E": ["Germany", "Curaçao", "Ivory Coast", "Ecuador"],
-    "F": ["Netherlands", "Japan", "Sweden", "Tunisia"],
-    "G": ["Belgium", "Egypt", "Iran", "New Zealand"],
-    "H": ["Spain", "Cape Verde", "Saudi Arabia", "Uruguay"],
-    "I": ["France", "Senegal", "Iraq", "Norway"],
-    "J": ["Argentina", "Algeria", "Austria", "Jordan"],
-    "K": ["Portugal", "DR Congo", "Uzbekistan", "Colombia"],
-    "L": ["England", "Croatia", "Ghana", "Panama"]
+    "A": [
+      "Mexico",
+      "South Africa",
+      "South Korea",
+      "Czech Republic"
+    ],
+    "B": [
+      "Canada",
+      "Bosnia & Herzegovina",
+      "Qatar",
+      "Switzerland"
+    ],
+    "C": [
+      "Brazil",
+      "Morocco",
+      "Haiti",
+      "Scotland"
+    ],
+    "D": [
+      "United States",
+      "Paraguay",
+      "Australia",
+      "Turkey"
+    ],
+    "E": [
+      "Germany",
+      "Curaçao",
+      "Ivory Coast",
+      "Ecuador"
+    ],
+    "F": [
+      "Netherlands",
+      "Japan",
+      "Sweden",
+      "Tunisia"
+    ],
+    "G": [
+      "Belgium",
+      "Egypt",
+      "Iran",
+      "New Zealand"
+    ],
+    "H": [
+      "Spain",
+      "Cape Verde",
+      "Saudi Arabia",
+      "Uruguay"
+    ],
+    "I": [
+      "France",
+      "Senegal",
+      "Iraq",
+      "Norway"
+    ],
+    "J": [
+      "Argentina",
+      "Algeria",
+      "Austria",
+      "Jordan"
+    ],
+    "K": [
+      "Portugal",
+      "DR Congo",
+      "Uzbekistan",
+      "Colombia"
+    ],
+    "L": [
+      "England",
+      "Croatia",
+      "Ghana",
+      "Panama"
+    ]
   },
   "team_meta": {
-    "Mexico":              { "name_vi": "Mexico",        "flag":"🇲🇽", "conf":"CONCACAF", "titles":0, "host":true,  "rank_tier":2 },
-    "Canada":              { "name_vi": "Canada",        "flag":"🇨🇦", "conf":"CONCACAF", "titles":0, "host":true,  "rank_tier":3 },
-    "United States":       { "name_vi": "Mỹ",            "flag":"🇺🇸", "conf":"CONCACAF", "titles":0, "host":true,  "rank_tier":2 },
-    "Panama":              { "name_vi": "Panama",        "flag":"🇵🇦", "conf":"CONCACAF", "titles":0, "host":false, "rank_tier":4 },
-    "Haiti":               { "name_vi": "Haiti",         "flag":"🇭🇹", "conf":"CONCACAF", "titles":0, "host":false, "rank_tier":4 },
-    "Curaçao":             { "name_vi": "Curaçao",       "flag":"🇨🇼", "conf":"CONCACAF", "titles":0, "host":false, "rank_tier":4 },
-    "Argentina":           { "name_vi": "Argentina",     "flag":"🇦🇷", "conf":"CONMEBOL", "titles":3, "host":false, "rank_tier":1 },
-    "Brazil":              { "name_vi": "Brazil",        "flag":"🇧🇷", "conf":"CONMEBOL", "titles":5, "host":false, "rank_tier":1 },
-    "Uruguay":             { "name_vi": "Uruguay",       "flag":"🇺🇾", "conf":"CONMEBOL", "titles":2, "host":false, "rank_tier":2 },
-    "Colombia":            { "name_vi": "Colombia",      "flag":"🇨🇴", "conf":"CONMEBOL", "titles":0, "host":false, "rank_tier":2 },
-    "Ecuador":             { "name_vi": "Ecuador",       "flag":"🇪🇨", "conf":"CONMEBOL", "titles":0, "host":false, "rank_tier":2 },
-    "Paraguay":            { "name_vi": "Paraguay",      "flag":"🇵🇾", "conf":"CONMEBOL", "titles":0, "host":false, "rank_tier":3 },
-    "France":              { "name_vi": "Pháp",          "flag":"🇫🇷", "conf":"UEFA",     "titles":2, "host":false, "rank_tier":1 },
-    "Spain":               { "name_vi": "Tây Ban Nha",   "flag":"🇪🇸", "conf":"UEFA",     "titles":1, "host":false, "rank_tier":1 },
-    "England":             { "name_vi": "Anh",           "flag":"🇬🇧", "conf":"UEFA",  "titles":1, "host":false, "rank_tier":1 },
-    "Portugal":            { "name_vi": "Bồ Đào Nha",    "flag":"🇵🇹", "conf":"UEFA",     "titles":0, "host":false, "rank_tier":1 },
-    "Netherlands":         { "name_vi": "Hà Lan",        "flag":"🇳🇱", "conf":"UEFA",     "titles":0, "host":false, "rank_tier":1 },
-    "Belgium":             { "name_vi": "Bỉ",            "flag":"🇧🇪", "conf":"UEFA",     "titles":0, "host":false, "rank_tier":1 },
-    "Germany":             { "name_vi": "Đức",           "flag":"🇩🇪", "conf":"UEFA",     "titles":4, "host":false, "rank_tier":1 },
-    "Croatia":             { "name_vi": "Croatia",       "flag":"🇭🇷", "conf":"UEFA",     "titles":0, "host":false, "rank_tier":2 },
-    "Switzerland":         { "name_vi": "Thụy Sĩ",       "flag":"🇨🇭", "conf":"UEFA",     "titles":0, "host":false, "rank_tier":2 },
-    "Austria":             { "name_vi": "Áo",            "flag":"🇦🇹", "conf":"UEFA",     "titles":0, "host":false, "rank_tier":2 },
-    "Turkey":              { "name_vi": "Thổ Nhĩ Kỳ",    "flag":"🇹🇷", "conf":"UEFA",     "titles":0, "host":false, "rank_tier":3 },
-    "Scotland":            { "name_vi": "Scotland",      "flag":"🏴", "conf":"UEFA",  "titles":0, "host":false, "rank_tier":3 },
-    "Czech Republic":      { "name_vi": "Séc",           "flag":"🇨🇿", "conf":"UEFA",     "titles":0, "host":false, "rank_tier":3 },
-    "Bosnia & Herzegovina":{ "name_vi": "Bosnia & Herzegovina", "flag":"🇧🇦", "conf":"UEFA", "titles":0, "host":false, "rank_tier":3 },
-    "Sweden":              { "name_vi": "Thụy Điển",     "flag":"🇸🇪", "conf":"UEFA",     "titles":0, "host":false, "rank_tier":2 },
-    "Norway":              { "name_vi": "Na Uy",         "flag":"🇳🇴", "conf":"UEFA",     "titles":0, "host":false, "rank_tier":2 },
-    "Senegal":             { "name_vi": "Senegal",       "flag":"🇸🇳", "conf":"CAF",      "titles":0, "host":false, "rank_tier":2 },
-    "Morocco":             { "name_vi": "Maroc",         "flag":"🇲🇦", "conf":"CAF",      "titles":0, "host":false, "rank_tier":2 },
-    "Egypt":               { "name_vi": "Ai Cập",        "flag":"🇪🇬", "conf":"CAF",      "titles":0, "host":false, "rank_tier":3 },
-    "Tunisia":             { "name_vi": "Tunisia",       "flag":"🇹🇳", "conf":"CAF",      "titles":0, "host":false, "rank_tier":3 },
-    "Ivory Coast":         { "name_vi": "Bờ Biển Ngà",   "flag":"🇨🇮", "conf":"CAF",      "titles":0, "host":false, "rank_tier":3 },
-    "Algeria":             { "name_vi": "Algeria",       "flag":"🇩🇿", "conf":"CAF",      "titles":0, "host":false, "rank_tier":3 },
-    "Ghana":               { "name_vi": "Ghana",         "flag":"🇬🇭", "conf":"CAF",      "titles":0, "host":false, "rank_tier":3 },
-    "South Africa":        { "name_vi": "Nam Phi",       "flag":"🇿🇦", "conf":"CAF",      "titles":0, "host":false, "rank_tier":4 },
-    "Cape Verde":          { "name_vi": "Cape Verde",    "flag":"🇨🇻", "conf":"CAF",      "titles":0, "host":false, "rank_tier":4 },
-    "DR Congo":            { "name_vi": "CHDC Congo",    "flag":"🇨🇩", "conf":"CAF",      "titles":0, "host":false, "rank_tier":3 },
-    "Japan":               { "name_vi": "Nhật Bản",      "flag":"🇯🇵", "conf":"AFC",      "titles":0, "host":false, "rank_tier":2 },
-    "South Korea":         { "name_vi": "Hàn Quốc",      "flag":"🇰🇷", "conf":"AFC",      "titles":0, "host":false, "rank_tier":2 },
-    "Iran":                { "name_vi": "Iran",          "flag":"🇮🇷", "conf":"AFC",      "titles":0, "host":false, "rank_tier":2 },
-    "Australia":           { "name_vi": "Úc",            "flag":"🇦🇺", "conf":"AFC",      "titles":0, "host":false, "rank_tier":2 },
-    "Saudi Arabia":        { "name_vi": "Ả Rập Xê Út",   "flag":"🇸🇦", "conf":"AFC",      "titles":0, "host":false, "rank_tier":3 },
-    "Qatar":               { "name_vi": "Qatar",         "flag":"🇶🇦", "conf":"AFC",      "titles":0, "host":false, "rank_tier":3 },
-    "Uzbekistan":          { "name_vi": "Uzbekistan",    "flag":"🇺🇿", "conf":"AFC",      "titles":0, "host":false, "rank_tier":4 },
-    "Jordan":              { "name_vi": "Jordan",        "flag":"🇯🇴", "conf":"AFC",      "titles":0, "host":false, "rank_tier":4 },
-    "Iraq":                { "name_vi": "Iraq",          "flag":"🇮🇶", "conf":"AFC",      "titles":0, "host":false, "rank_tier":4 },
-    "New Zealand":         { "name_vi": "New Zealand",   "flag":"🇳🇿", "conf":"OFC",      "titles":0, "host":false, "rank_tier":4 }
+    "Mexico": {
+      "name_vi": "Mexico",
+      "flag": "🇲🇽",
+      "conf": "CONCACAF",
+      "titles": 0,
+      "host": true,
+      "rank_tier": 2
+    },
+    "Canada": {
+      "name_vi": "Canada",
+      "flag": "🇨🇦",
+      "conf": "CONCACAF",
+      "titles": 0,
+      "host": true,
+      "rank_tier": 3
+    },
+    "United States": {
+      "name_vi": "Mỹ",
+      "flag": "🇺🇸",
+      "conf": "CONCACAF",
+      "titles": 0,
+      "host": true,
+      "rank_tier": 2
+    },
+    "Panama": {
+      "name_vi": "Panama",
+      "flag": "🇵🇦",
+      "conf": "CONCACAF",
+      "titles": 0,
+      "host": false,
+      "rank_tier": 4
+    },
+    "Haiti": {
+      "name_vi": "Haiti",
+      "flag": "🇭🇹",
+      "conf": "CONCACAF",
+      "titles": 0,
+      "host": false,
+      "rank_tier": 4
+    },
+    "Curaçao": {
+      "name_vi": "Curaçao",
+      "flag": "🇨🇼",
+      "conf": "CONCACAF",
+      "titles": 0,
+      "host": false,
+      "rank_tier": 4
+    },
+    "Argentina": {
+      "name_vi": "Argentina",
+      "flag": "🇦🇷",
+      "conf": "CONMEBOL",
+      "titles": 3,
+      "host": false,
+      "rank_tier": 1
+    },
+    "Brazil": {
+      "name_vi": "Brazil",
+      "flag": "🇧🇷",
+      "conf": "CONMEBOL",
+      "titles": 5,
+      "host": false,
+      "rank_tier": 1
+    },
+    "Uruguay": {
+      "name_vi": "Uruguay",
+      "flag": "🇺🇾",
+      "conf": "CONMEBOL",
+      "titles": 2,
+      "host": false,
+      "rank_tier": 2
+    },
+    "Colombia": {
+      "name_vi": "Colombia",
+      "flag": "🇨🇴",
+      "conf": "CONMEBOL",
+      "titles": 0,
+      "host": false,
+      "rank_tier": 2
+    },
+    "Ecuador": {
+      "name_vi": "Ecuador",
+      "flag": "🇪🇨",
+      "conf": "CONMEBOL",
+      "titles": 0,
+      "host": false,
+      "rank_tier": 2
+    },
+    "Paraguay": {
+      "name_vi": "Paraguay",
+      "flag": "🇵🇾",
+      "conf": "CONMEBOL",
+      "titles": 0,
+      "host": false,
+      "rank_tier": 3
+    },
+    "France": {
+      "name_vi": "Pháp",
+      "flag": "🇫🇷",
+      "conf": "UEFA",
+      "titles": 2,
+      "host": false,
+      "rank_tier": 1
+    },
+    "Spain": {
+      "name_vi": "Tây Ban Nha",
+      "flag": "🇪🇸",
+      "conf": "UEFA",
+      "titles": 1,
+      "host": false,
+      "rank_tier": 1
+    },
+    "England": {
+      "name_vi": "Anh",
+      "flag": "🇬🇧",
+      "conf": "UEFA",
+      "titles": 1,
+      "host": false,
+      "rank_tier": 1
+    },
+    "Portugal": {
+      "name_vi": "Bồ Đào Nha",
+      "flag": "🇵🇹",
+      "conf": "UEFA",
+      "titles": 0,
+      "host": false,
+      "rank_tier": 1
+    },
+    "Netherlands": {
+      "name_vi": "Hà Lan",
+      "flag": "🇳🇱",
+      "conf": "UEFA",
+      "titles": 0,
+      "host": false,
+      "rank_tier": 1
+    },
+    "Belgium": {
+      "name_vi": "Bỉ",
+      "flag": "🇧🇪",
+      "conf": "UEFA",
+      "titles": 0,
+      "host": false,
+      "rank_tier": 1
+    },
+    "Germany": {
+      "name_vi": "Đức",
+      "flag": "🇩🇪",
+      "conf": "UEFA",
+      "titles": 4,
+      "host": false,
+      "rank_tier": 1
+    },
+    "Croatia": {
+      "name_vi": "Croatia",
+      "flag": "🇭🇷",
+      "conf": "UEFA",
+      "titles": 0,
+      "host": false,
+      "rank_tier": 2
+    },
+    "Switzerland": {
+      "name_vi": "Thụy Sĩ",
+      "flag": "🇨🇭",
+      "conf": "UEFA",
+      "titles": 0,
+      "host": false,
+      "rank_tier": 2
+    },
+    "Austria": {
+      "name_vi": "Áo",
+      "flag": "🇦🇹",
+      "conf": "UEFA",
+      "titles": 0,
+      "host": false,
+      "rank_tier": 2
+    },
+    "Turkey": {
+      "name_vi": "Thổ Nhĩ Kỳ",
+      "flag": "🇹🇷",
+      "conf": "UEFA",
+      "titles": 0,
+      "host": false,
+      "rank_tier": 3
+    },
+    "Scotland": {
+      "name_vi": "Scotland",
+      "flag": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+      "conf": "UEFA",
+      "titles": 0,
+      "host": false,
+      "rank_tier": 3
+    },
+    "Czech Republic": {
+      "name_vi": "Séc",
+      "flag": "🇨🇿",
+      "conf": "UEFA",
+      "titles": 0,
+      "host": false,
+      "rank_tier": 3
+    },
+    "Bosnia & Herzegovina": {
+      "name_vi": "Bosnia & Herzegovina",
+      "flag": "🇧🇦",
+      "conf": "UEFA",
+      "titles": 0,
+      "host": false,
+      "rank_tier": 3
+    },
+    "Sweden": {
+      "name_vi": "Thụy Điển",
+      "flag": "🇸🇪",
+      "conf": "UEFA",
+      "titles": 0,
+      "host": false,
+      "rank_tier": 2
+    },
+    "Norway": {
+      "name_vi": "Na Uy",
+      "flag": "🇳🇴",
+      "conf": "UEFA",
+      "titles": 0,
+      "host": false,
+      "rank_tier": 2
+    },
+    "Senegal": {
+      "name_vi": "Senegal",
+      "flag": "🇸🇳",
+      "conf": "CAF",
+      "titles": 0,
+      "host": false,
+      "rank_tier": 2
+    },
+    "Morocco": {
+      "name_vi": "Maroc",
+      "flag": "🇲🇦",
+      "conf": "CAF",
+      "titles": 0,
+      "host": false,
+      "rank_tier": 2
+    },
+    "Egypt": {
+      "name_vi": "Ai Cập",
+      "flag": "🇪🇬",
+      "conf": "CAF",
+      "titles": 0,
+      "host": false,
+      "rank_tier": 3
+    },
+    "Tunisia": {
+      "name_vi": "Tunisia",
+      "flag": "🇹🇳",
+      "conf": "CAF",
+      "titles": 0,
+      "host": false,
+      "rank_tier": 3
+    },
+    "Ivory Coast": {
+      "name_vi": "Bờ Biển Ngà",
+      "flag": "🇨🇮",
+      "conf": "CAF",
+      "titles": 0,
+      "host": false,
+      "rank_tier": 3
+    },
+    "Algeria": {
+      "name_vi": "Algeria",
+      "flag": "🇩🇿",
+      "conf": "CAF",
+      "titles": 0,
+      "host": false,
+      "rank_tier": 3
+    },
+    "Ghana": {
+      "name_vi": "Ghana",
+      "flag": "🇬🇭",
+      "conf": "CAF",
+      "titles": 0,
+      "host": false,
+      "rank_tier": 3
+    },
+    "South Africa": {
+      "name_vi": "Nam Phi",
+      "flag": "🇿🇦",
+      "conf": "CAF",
+      "titles": 0,
+      "host": false,
+      "rank_tier": 4
+    },
+    "Cape Verde": {
+      "name_vi": "Cape Verde",
+      "flag": "🇨🇻",
+      "conf": "CAF",
+      "titles": 0,
+      "host": false,
+      "rank_tier": 4
+    },
+    "DR Congo": {
+      "name_vi": "CHDC Congo",
+      "flag": "🇨🇩",
+      "conf": "CAF",
+      "titles": 0,
+      "host": false,
+      "rank_tier": 3
+    },
+    "Japan": {
+      "name_vi": "Nhật Bản",
+      "flag": "🇯🇵",
+      "conf": "AFC",
+      "titles": 0,
+      "host": false,
+      "rank_tier": 2
+    },
+    "South Korea": {
+      "name_vi": "Hàn Quốc",
+      "flag": "🇰🇷",
+      "conf": "AFC",
+      "titles": 0,
+      "host": false,
+      "rank_tier": 2
+    },
+    "Iran": {
+      "name_vi": "Iran",
+      "flag": "🇮🇷",
+      "conf": "AFC",
+      "titles": 0,
+      "host": false,
+      "rank_tier": 2
+    },
+    "Australia": {
+      "name_vi": "Úc",
+      "flag": "🇦🇺",
+      "conf": "AFC",
+      "titles": 0,
+      "host": false,
+      "rank_tier": 2
+    },
+    "Saudi Arabia": {
+      "name_vi": "Ả Rập Xê Út",
+      "flag": "🇸🇦",
+      "conf": "AFC",
+      "titles": 0,
+      "host": false,
+      "rank_tier": 3
+    },
+    "Qatar": {
+      "name_vi": "Qatar",
+      "flag": "🇶🇦",
+      "conf": "AFC",
+      "titles": 0,
+      "host": false,
+      "rank_tier": 3
+    },
+    "Uzbekistan": {
+      "name_vi": "Uzbekistan",
+      "flag": "🇺🇿",
+      "conf": "AFC",
+      "titles": 0,
+      "host": false,
+      "rank_tier": 4
+    },
+    "Jordan": {
+      "name_vi": "Jordan",
+      "flag": "🇯🇴",
+      "conf": "AFC",
+      "titles": 0,
+      "host": false,
+      "rank_tier": 4
+    },
+    "Iraq": {
+      "name_vi": "Iraq",
+      "flag": "🇮🇶",
+      "conf": "AFC",
+      "titles": 0,
+      "host": false,
+      "rank_tier": 4
+    },
+    "New Zealand": {
+      "name_vi": "New Zealand",
+      "flag": "🇳🇿",
+      "conf": "OFC",
+      "titles": 0,
+      "host": false,
+      "rank_tier": 4
+    }
   },
   "modern_to_historical": {
-    "Germany":        ["Germany", "West Germany"],
-    "Russia":         ["Russia", "Soviet Union"],
-    "Czech Republic": ["Czech Republic", "Czechoslovakia"],
-    "Serbia":         ["Serbia", "FR Yugoslavia", "Yugoslavia", "Serbia and Montenegro"],
-    "DR Congo":       ["DR Congo", "Zaire"]
+    "Germany": [
+      "Germany",
+      "West Germany"
+    ],
+    "Russia": [
+      "Russia",
+      "Soviet Union"
+    ],
+    "Czech Republic": [
+      "Czech Republic",
+      "Czechoslovakia"
+    ],
+    "Serbia": [
+      "Serbia",
+      "FR Yugoslavia",
+      "Yugoslavia",
+      "Serbia and Montenegro"
+    ],
+    "DR Congo": [
+      "DR Congo",
+      "Zaire"
+    ]
   }
 }

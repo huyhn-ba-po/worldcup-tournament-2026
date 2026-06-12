@@ -142,25 +142,32 @@ function closeDonate() {
 }
 
 // === Cờ quốc gia: thay emoji cờ bằng ảnh flagcdn (Windows không vẽ được emoji cờ) ===
-const RI_RE = /[\u{1F1E6}-\u{1F1FF}]/u;            // 1 ký hiệu regional indicator
-const RI_PAIR = /[\u{1F1E6}-\u{1F1FF}]{2}/u;       // cặp = 1 lá cờ
-function flagCode(pair) {
-  const cps = [...pair].map(c => c.codePointAt(0));
-  if (cps.length !== 2) return null;
-  return cps.map(c => String.fromCharCode(c - 0x1F1E6 + 97)).join(''); // ISO 2 chữ, lowercase
+// Hỗ trợ 2 loại: cờ quốc gia (2 regional indicator, vd 🇲🇽) + cờ vùng tag-sequence (vd 🏴 Scotland)
+const FLAG_DETECT = /[\u{1F1E6}-\u{1F1FF}]|\u{1F3F4}/u;
+const FLAG_SPLIT = /([\u{1F1E6}-\u{1F1FF}]{2}|\u{1F3F4}[\u{E0061}-\u{E007A}]+\u{E007F})/u;
+const FLAG_FULL = /^(?:[\u{1F1E6}-\u{1F1FF}]{2}|\u{1F3F4}[\u{E0061}-\u{E007A}]+\u{E007F})$/u;
+function flagCode(emoji) {
+  const cps = [...emoji].map(c => c.codePointAt(0));
+  const ri = cps.filter(c => c >= 0x1F1E6 && c <= 0x1F1FF);
+  if (ri.length === 2) return ri.map(c => String.fromCharCode(c - 0x1F1E6 + 97)).join(''); // vd "mx"
+  if (cps[0] === 0x1F3F4) { // cờ vùng: 🏴 + tag chars → vd "gbsct" → "gb-sct"
+    const letters = cps.filter(c => c >= 0xE0061 && c <= 0xE007A).map(c => String.fromCharCode(c - 0xE0061 + 97)).join('');
+    if (letters.length >= 4) return letters.slice(0, 2) + '-' + letters.slice(2);
+  }
+  return null;
 }
 function flaggifyNode(node) {
   const walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT, {
-    acceptNode: (n) => RI_RE.test(n.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT,
+    acceptNode: (n) => FLAG_DETECT.test(n.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT,
   });
   const targets = [];
   let t; while ((t = walker.nextNode())) targets.push(t);
   for (const tn of targets) {
-    const parts = tn.nodeValue.split(/([\u{1F1E6}-\u{1F1FF}]{2})/u);
+    const parts = tn.nodeValue.split(FLAG_SPLIT);
     if (parts.length === 1) continue;
     const frag = document.createDocumentFragment();
     for (const part of parts) {
-      if (part && RI_PAIR.test(part) && part.length <= 4) {
+      if (part && FLAG_FULL.test(part)) {
         const code = flagCode(part);
         if (code) {
           const img = document.createElement('img');
@@ -185,7 +192,7 @@ function initFlags() {
     _flagObs.disconnect();
     for (const m of muts) for (const n of m.addedNodes) {
       if (n.nodeType === 1) flaggifyNode(n);
-      else if (n.nodeType === 3 && n.parentNode && RI_RE.test(n.nodeValue)) flaggifyNode(n.parentNode);
+      else if (n.nodeType === 3 && n.parentNode && FLAG_DETECT.test(n.nodeValue)) flaggifyNode(n.parentNode);
     }
     _flagObs.observe(document.body, { childList: true, subtree: true });
   });

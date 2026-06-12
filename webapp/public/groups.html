@@ -26,7 +26,7 @@
 <div id="footer"></div>
 
 <script type="module">
-import { mountLayout, api, escapeHtml, $, teamLink, tierBadge, fmtDateVN } from '/js/shared.js?v=17';
+import { mountLayout, api, escapeHtml, $, teamLink, tierBadge, fmtDateVN } from '/js/shared.js?v=18';
 mountLayout('/groups');
 
 Promise.all([api('/api/teams'), api('/api/matches?stage=group')]).then(([ts, mx]) => {
