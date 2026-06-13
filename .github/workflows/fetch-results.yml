@@ -1,0 +1,53 @@
+name: Auto-fetch WC2026 results
+
+# Tự lấy tỉ số trận đã đá từ football-data.org rồi commit results.json về repo.
+# Chạy 2 lần/ngày (giờ Việt Nam):
+#   - 11:00 VN (UTC 04:00) — sau khi các trận đêm Mỹ kết thúc (~01:00-10:00 VN)
+#   - 23:00 VN (UTC 16:00) — sau các trận sớm chiều/tối Mỹ
+# Có thể trigger thủ công qua tab Actions → "Auto-fetch WC2026 results" → "Run workflow".
+
+on:
+  schedule:
+    - cron: '0 4,16 * * *'
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Setup Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: webapp/package-lock.json
+
+      - name: Install deps (no dev)
+        working-directory: webapp
+        run: npm ci --omit=dev
+
+      - name: Fetch results from football-data.org
+        working-directory: webapp
+        env:
+          FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}
+        run: node scripts/fetch_results.js
+
+      - name: Commit + push nếu results.json thay đổi
+        run: |
+          if [[ -z "$(git status --porcelain webapp/src/data/results.json)" ]]; then
+            echo "→ Không có tỉ số mới, bỏ qua commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add webapp/src/data/results.json
+          git commit -m "chore(results): auto-update tỉ số WC2026 ($(TZ='Asia/Ho_Chi_Minh' date '+%Y-%m-%d %H:%M VN')) [skip ci]"
+          git push
+          echo "✅ Đã push results.json mới."
