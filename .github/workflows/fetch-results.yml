@@ -11,6 +11,10 @@ on:
     - cron: '0 4,16 * * *'
   workflow_dispatch:
 
+env:
+  # Cho phép actions chạy trên Node 24 (default từ 16/6/2026).
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+
 jobs:
   fetch:
     runs-on: ubuntu-latest
@@ -18,16 +22,27 @@ jobs:
       contents: write
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           persist-credentials: true
 
-      - name: Setup Node 20
-        uses: actions/setup-node@v4
+      - name: Setup Node 22 LTS
+        uses: actions/setup-node@v5
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
           cache-dependency-path: webapp/package-lock.json
+
+      - name: Verify FOOTBALL_DATA_API_KEY có set không
+        run: |
+          if [[ -z "${{ secrets.FOOTBALL_DATA_API_KEY }}" ]]; then
+            echo "❌ Secret FOOTBALL_DATA_API_KEY chưa được set trong repo settings."
+            echo "   → Vào Settings → Secrets and variables → Actions → New repository secret."
+            exit 1
+          fi
+          echo "✅ Secret đã set (length: ${#FOOTBALL_DATA_API_KEY})"
+        env:
+          FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}
 
       - name: Install deps (no dev)
         working-directory: webapp
