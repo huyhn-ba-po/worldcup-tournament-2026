@@ -31,7 +31,7 @@ const ALIAS = {
   usa: 'United States', unitedstates: 'United States', unitedstatesofamerica: 'United States',
   cotedivoire: 'Ivory Coast', ivorycoast: 'Ivory Coast',
   czechia: 'Czech Republic', czechrepublic: 'Czech Republic',
-  caboverde: 'Cape Verde', capeverde: 'Cape Verde',
+  caboverde: 'Cape Verde', capeverde: 'Cape Verde', capeverdeislands: 'Cape Verde',
   drcongo: 'DR Congo', democraticrepublicofthecongo: 'DR Congo', congodr: 'DR Congo',
   curacao: 'Curaçao',
   bosniaandherzegovina: 'Bosnia & Herzegovina', bosniaherzegovina: 'Bosnia & Herzegovina',
