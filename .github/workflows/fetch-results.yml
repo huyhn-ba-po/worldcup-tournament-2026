@@ -1,14 +1,15 @@
 name: Auto-fetch WC2026 results
 
 # Tự lấy tỉ số trận đã đá từ football-data.org rồi commit results.json về repo.
-# Chạy 2 lần/ngày (giờ Việt Nam):
-#   - 11:00 VN (UTC 04:00) — sau khi các trận đêm Mỹ kết thúc (~01:00-10:00 VN)
-#   - 23:00 VN (UTC 16:00) — sau các trận sớm chiều/tối Mỹ
+# Chạy mỗi 2 tiếng (12 lần/ngày) để trận đá xong có tỉ số trên web chậm nhất ~2h sau.
+# WC2026 trải nhiều múi giờ Mỹ → trận có thể kết thúc bất cứ lúc nào trong ngày.
 # Có thể trigger thủ công qua tab Actions → "Auto-fetch WC2026 results" → "Run workflow".
+#
+# Free tier football-data.org: 10 req/phút (không có daily cap) → 12 req/ngày ổn.
 
 on:
   schedule:
-    - cron: '0 4,16 * * *'
+    - cron: '0 */2 * * *'
   workflow_dispatch:
 
 env:
