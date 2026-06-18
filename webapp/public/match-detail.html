@@ -93,6 +93,7 @@ async function load() {
   `).join('');
 
   $('#root').innerHTML = headerHTML + `
+    ${d.locked ? '' : `
     <section class="card p-5 sm:p-6 mb-6">
       <h2 class="font-bold text-lg text-emerald-300 mb-3">Stats Baseline</h2>
       <div class="flex items-center justify-between gap-3 mb-3 flex-wrap">
@@ -115,7 +116,7 @@ async function load() {
         <span>Hòa ${s.prob_d}%</span>
         <span class="text-blue-400 font-semibold">${s.prob_b}% ${escapeHtml(nameB)}</span>
       </div>
-    </section>
+    </section>`}
 
     <section class="card p-5 sm:p-6 mb-6" id="aiSection">
       <div class="flex items-center justify-between mb-3 gap-3 flex-wrap">
@@ -205,7 +206,16 @@ async function load() {
     `;
   }
 
-  if (d.result) {
+  if (d.locked) {
+    // Trận BỊ KHÓA (chưa tới lượt) → không hiện dự đoán
+    if (aiBtn) aiBtn.remove();
+    aiBody.innerHTML = `
+      <div class="text-center py-6">
+        <div class="text-4xl mb-2">🔒</div>
+        <div class="font-bold text-slate-200">Dự đoán đang khóa</div>
+        <div class="text-sm text-slate-400 mt-1">Sẽ mở sau khi lượt đấu trước của bảng kết thúc.</div>
+      </div>`;
+  } else if (d.result) {
     // Trận ĐÃ ĐÁ → hiện luôn dự đoán AI + so kết quả thật, bỏ nút
     if (aiBtn) aiBtn.remove();
     aiBody.innerHTML = '<div class="flex items-center gap-2 text-slate-500"><span class="spinner"></span><span>Đang tải dự đoán AI...</span></div>';

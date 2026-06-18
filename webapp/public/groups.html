@@ -77,6 +77,8 @@ Promise.all([api('/api/teams'), api('/api/matches?stage=group')]).then(([ts, mx]
                 const n = (aw === pw ? 1 : 0) + ((m.ai.score_a === r.home && m.ai.score_b === r.away) ? 1 : 0);
                 const cls = n === 2 ? 'bg-emerald-500/15 text-emerald-300' : (n === 1 ? 'bg-amber-500/15 text-amber-400' : 'bg-rose-500/15 text-rose-400');
                 aiTag = `<span class="text-[9px] px-1 rounded ${cls} whitespace-nowrap">AI ${n}/2</span>`;
+              } else if (m.locked) {
+                aiTag = `<span class="text-[9px] px-1 rounded bg-slate-500/15 text-slate-400 whitespace-nowrap">🔒 khóa</span>`;
               }
               const teamsLine = r
                 ? `${fA} ${nA} <b class="font-mono text-emerald-300">${r.home}-${r.away}</b> ${nB} ${fB}`

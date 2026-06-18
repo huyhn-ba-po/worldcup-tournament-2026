@@ -5,6 +5,7 @@ import { computeStatsBaseline, getTeamCard, getEloLeaderboard } from '../lib/sta
 import { getH2H, getRecentForm, getTeamWCHistory, searchMatches } from '../lib/h2h.js';
 import { computeMatchEnv } from '../lib/context.js';
 import { simulatePrediction } from '../lib/simulate.js';
+import { matchdayOf, isLocked } from '../lib/rounds.js';
 import { aiAvailable, generatePrediction, tryParseJSON, buildPredictionPrompt } from '../lib/ai.js';
 import { LRUCache } from 'lru-cache';
 
@@ -95,13 +96,15 @@ export default async function apiRoutes(fastify) {
     const { stage } = req.query;
     let list = FIXTURES_2026;
     if (stage) list = list.filter(f => f.stage === stage);
-    // Gắn tỉ số thật (results.json — đọc sống) + dự đoán AI (winner/score) để client so sánh
+    // Gắn tỉ số thật (results.json — đọc sống) + dự đoán AI + lượt đấu + khóa
     const RES = getResults();
     list = list.map(f => {
       const result = RES.results?.[f.match] || null;
+      const locked = isLocked(f);
       const ap = PREDICTIONS.predictions?.[f.match];
-      const ai = ap ? { winner: ap.winner, score_a: ap.score_a, score_b: ap.score_b } : null;
-      return { ...f, result, ai };
+      // Ẩn dự đoán AI nếu trận đang bị khóa (chưa tới lượt) để không lộ trước
+      const ai = (ap && !locked) ? { winner: ap.winner, score_a: ap.score_a, score_b: ap.score_b } : null;
+      return { ...f, result, ai, matchday: matchdayOf(f.match), locked };
     });
     return { matches: list, stage_names: STAGE_NAMES };
   });
@@ -134,7 +137,8 @@ export default async function apiRoutes(fastify) {
     }
     const env = computeMatchEnv(fixture);
     const result = getResults().results?.[id] || null;
-    return { fixture, ctx, stats, h2h, recent_a: recentA, recent_b: recentB, env, result };
+    const locked = isLocked(fixture);
+    return { fixture, ctx, stats, h2h, recent_a: recentA, recent_b: recentB, env, result, locked, matchday: matchdayOf(id) };
   });
 
   fastify.get('/api/h2h/:teamA/:teamB', async (req) => {
@@ -180,6 +184,9 @@ export default async function apiRoutes(fastify) {
     const fixture = FIXTURES_2026.find(f => f.match === id);
     if (!fixture) return reply.code(404).send({ error: 'fixture not found' });
     if (fixture.is_placeholder) return reply.code(400).send({ error: 'cannot predict placeholder match (teams TBD)' });
+
+    // 0) Khóa theo lượt: chưa tới lượt thì không trả dự đoán (tránh lộ trước)
+    if (isLocked(fixture)) return reply.code(423).send({ locked: true, error: 'Dự đoán lượt này sẽ mở sau khi lượt trước kết thúc.' });
 
     // 1) Ưu tiên dự đoán tĩnh do Claude sinh sẵn — không gọi API, không tốn phí.
     const staticPred = PREDICTIONS.predictions?.[id];

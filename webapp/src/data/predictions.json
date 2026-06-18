@@ -10,9 +10,13 @@
   },
   "predictions": {
     "1": {
-      "prob_a": 58, "prob_draw": 22, "prob_b": 20,
-      "score_a": 2, "score_b": 0,
-      "winner": "Mexico", "confidence": 62,
+      "prob_a": 58,
+      "prob_draw": 22,
+      "prob_b": 20,
+      "score_a": 2,
+      "score_b": 0,
+      "winner": "Mexico",
+      "confidence": 62,
       "key_factors": [
         "Độ cao 2.240m + Azteca cháy vé: lợi thế chủ nhà cực lớn",
         "Nam Phi lần đầu dự World Cup sau 16 năm, đội hình ít kinh nghiệm",
@@ -23,9 +27,13 @@
       "analysis_prediction": "Yếu tố quyết định là môi trường: trận đá giữa trưa ở độ cao 2.240m trên chảo lửa Azteca cháy vé — Nam Phi (quen độ cao thấp) dễ đuối sức hiệp 2. Tôi nâng cửa thắng Mexico lên 58% so với baseline 55% và dự đoán El Tri thắng 2-0, mở màn thuận lợi nhờ Raúl Jiménez và sức ép khán đài."
     },
     "2": {
-      "prob_a": 50, "prob_draw": 24, "prob_b": 26,
-      "score_a": 2, "score_b": 1,
-      "winner": "South Korea", "confidence": 52,
+      "prob_a": 50,
+      "prob_draw": 24,
+      "prob_b": 26,
+      "score_a": 2,
+      "score_b": 1,
+      "winner": "South Korea",
+      "confidence": 52,
       "key_factors": [
         "Phong độ Hàn Quốc rực sáng (7 thắng/10) + Son Heung-min dẫn dắt",
         "Séc nguy hiểm ở bóng bổng (đội hình cao to, Schick sung sức)",
@@ -35,36 +43,864 @@
       "analysis_history": "Sáu lần đối đầu chia đều 2-2-2, tổng bàn nghiêng về Séc (10-6), lần gần nhất Hàn Quốc thắng 2-1 (2016). WCOI của Séc nhỉnh hơn, phản ánh truyền thống World Cup dày dặn của UEFA.",
       "analysis_prediction": "Trận đá buổi tối ở Guadalajara (mát, độ cao vừa phải ảnh hưởng cả hai) nên yếu tố môi trường gần như trung tính, đưa cuộc đấu về tương quan lực lượng. Tôi nâng cửa thắng Hàn Quốc lên 50% nhờ phong độ và chất lượng đội hình vượt trội; cảnh giác bóng bổng của Séc, dự đoán Hàn Quốc thắng 2-1."
     },
-    "25": {
-      "prob_a": 43, "prob_draw": 29, "prob_b": 28,
-      "score_a": 1, "score_b": 0,
-      "winner": "Czech Republic", "confidence": 46,
+    "3": {
+      "prob_a": 62,
+      "prob_draw": 18,
+      "prob_b": 20,
+      "score_a": 2,
+      "score_b": 0,
+      "winner": "Canada",
+      "confidence": 60,
       "key_factors": [
-        "Sân Atlanta có mái che/điều hòa — loại bỏ nắng nóng, về thuần đẳng cấp",
-        "Séc nhỉnh hơn về cá nhân & bóng bổng (Schick, đội hình cao to)",
-        "Nam Phi lì lợm nhưng bế tắc trên hàng công, thiếu kinh nghiệm"
+        "Canada chủ nhà, phong độ tốt (70%)",
+        "Bosnia khủng hoảng phong độ (0 thắng/10 trận)",
+        "Chênh lệch kỳ vọng bàn thắng lớn"
       ],
-      "analysis_form": "Séc nhập cuộc với phong độ ổn (4 thắng, 3 hòa, 3 thua) và vừa có trận khởi động thắng lợi. Nam Phi bất bại nhưng hòa tới 7/10 trận, phụ thuộc vào Lyle Foster đang khan bàn thắng ở cấp CLB — đây hứa hẹn trận đấu chặt, ít cơ hội.",
-      "analysis_history": "Hai đội mới gặp đúng một lần năm 1997 (hòa 2-2), gần như không có dữ liệu đối đầu. WCOI âm nhẹ ở cả hai cho thấy cặp đấu khó lường, dễ phân định bằng một khoảnh khắc cố định.",
-      "analysis_prediction": "Điểm mấu chốt: Atlanta có mái che điều hòa nên không còn nắng nóng hay độ cao để Nam Phi bám víu — trận đấu trở về thuần đẳng cấp, nơi chiều cao và Schick cho Séc lợi thế ở bóng chết. Tôi nhích cửa thắng Séc lên 43% và dự đoán Séc thắng tối thiểu 1-0, dù kịch bản hòa vẫn rất mở."
+      "analysis_form": "Canada đá sân nhà Toronto với phong độ ổn định (5 thắng, 4 hòa). Bosnia & Herzegovina trái lại sa sút nghiêm trọng, không thắng trận nào trong 10 lần gần nhất (2 hòa, 8 thua).",
+      "analysis_history": "Hai đội chưa từng gặp nhau ở cấp độ A. Mô hình kỳ vọng Canada ghi tới hơn 3 bàn nhờ chênh lệch đẳng cấp và lợi thế sân nhà rõ rệt.",
+      "analysis_prediction": "Với sức ép khán đài và đối thủ mất phương hướng, Canada được dự đoán thắng dễ 2-0, mở màn chiến dịch World Cup trên sân nhà thuận lợi."
+    },
+    "4": {
+      "prob_a": 59,
+      "prob_draw": 17,
+      "prob_b": 24,
+      "score_a": 2,
+      "score_b": 0,
+      "winner": "United States",
+      "confidence": 58,
+      "key_factors": [
+        "Mỹ chủ nhà (Los Angeles), kỳ vọng bàn thắng rất cao",
+        "Paraguay phòng ngự nhưng thiếu hỏa lực",
+        "Thời tiết mát, thuận lợi cho lối chơi tốc độ của Mỹ"
+      ],
+      "analysis_form": "Mỹ đá sân nhà với hàng công kỳ vọng tới 2.5 bàn, dù phong độ chỉ ở mức 50%. Paraguay chắc chắn (55%) nhưng ghi bàn khó khăn.",
+      "analysis_history": "8 lần đối đầu Mỹ thắng 4, hòa 2, thua 2. Lợi thế sân nhà và lực lượng trẻ tài năng nghiêng cán cân về phía chủ nhà.",
+      "analysis_prediction": "Mỹ được dự đoán thắng 2-0, khởi đầu thuận lợi trước khán giả nhà tại Los Angeles."
+    },
+    "5": {
+      "prob_a": 30,
+      "prob_draw": 23,
+      "prob_b": 47,
+      "score_a": 1,
+      "score_b": 2,
+      "winner": "Switzerland",
+      "confidence": 42,
+      "key_factors": [
+        "Thụy Sĩ nhỉnh hơn về đẳng cấp & Elo",
+        "Phong độ cả hai đều phập phù",
+        "Qatar giàu thể lực, khó chịu"
+      ],
+      "analysis_form": "Thụy Sĩ vào giải với phong độ kém thuyết phục (1 thắng, 5 hòa, 4 thua) nhưng vẫn được đánh giá cao nhờ nền tảng và kinh nghiệm. Qatar nhỉnh hơn về thành tích gần đây (45%) song thiếu chiều sâu khi gặp đối thủ châu Âu.",
+      "analysis_history": "Hai đội mới gặp nhau một lần (2018, Qatar thắng). Mô hình vẫn đặt Thụy Sĩ cửa trên nhờ chỉ số sức mạnh dài hạn.",
+      "analysis_prediction": "Đây là trận khó lường, nhưng tôi bám baseline đặt niềm tin vào đẳng cấp Thụy Sĩ: dự đoán thắng sát nút 2-1 trong một trận giàu bàn thắng."
+    },
+    "6": {
+      "prob_a": 47,
+      "prob_draw": 27,
+      "prob_b": 26,
+      "score_a": 2,
+      "score_b": 1,
+      "winner": "Brazil",
+      "confidence": 42,
+      "key_factors": [
+        "Brazil đẳng cấp cao nhưng Morocco đang có phong độ xuất sắc (85%)",
+        "Morocco là á quân tinh thần World Cup 2022",
+        "Trận cân não, ít bàn theo kỳ vọng"
+      ],
+      "analysis_form": "Brazil (65%) vẫn là Brazil về tên tuổi, nhưng Morocco đang bay cao với 8 thắng/10 trận và ký ức hạng tư World Cup 2022 còn nguyên vẹn.",
+      "analysis_history": "3 lần gặp Brazil thắng 2, thua 1 (gồm thất bại giao hữu 2023). Morocco không hề ngán Selecao.",
+      "analysis_prediction": "Đây là trận hay nhất vòng mở màn bảng C. Tôi nghiêng rất nhẹ về đẳng cấp Brazil: dự đoán thắng 2-1, nhưng Morocco hoàn toàn có thể gây sốc."
+    },
+    "7": {
+      "prob_a": 33,
+      "prob_draw": 24,
+      "prob_b": 43,
+      "score_a": 1,
+      "score_b": 2,
+      "winner": "Scotland",
+      "confidence": 42,
+      "key_factors": [
+        "Scotland đẳng cấp châu Âu cao hơn",
+        "Phong độ 85% của Haiti đến từ đối thủ yếu (CONCACAF)",
+        "Scotland cần khởi đầu tốt"
+      ],
+      "analysis_form": "Haiti có phong độ ấn tượng trên giấy tờ (85%) nhưng phần lớn trước các đối thủ yếu. Scotland (35%) trồi sụt song có nền tảng và kinh nghiệm châu Âu vượt trội.",
+      "analysis_history": "Hai đội chưa từng gặp nhau. Mô hình đặt Scotland cửa trên nhờ chỉ số sức mạnh dài hạn.",
+      "analysis_prediction": "Tôi tin vào đẳng cấp Scotland: dự đoán thắng 2-1, dù Haiti giàu thể lực có thể khiến trận đấu giàu bàn thắng."
+    },
+    "8": {
+      "prob_a": 41,
+      "prob_draw": 25,
+      "prob_b": 34,
+      "score_a": 2,
+      "score_b": 1,
+      "winner": "Australia",
+      "confidence": 38,
+      "key_factors": [
+        "Australia phong độ tốt (70%)",
+        "Thổ Nhĩ Kỳ chất lượng cá nhân cao hơn (Calhanoglu, Güler)",
+        "Trận cân bằng, khó lường"
+      ],
+      "analysis_form": "Australia bất bại gần như cả 10 trận (70%), trong khi Thổ Nhĩ Kỳ (60%) sở hữu dàn sao chơi bóng ở châu Âu nhỉnh hơn về kỹ thuật.",
+      "analysis_history": "Hai lần gặp trước Thổ Nhĩ Kỳ đều thắng, nhưng đó là chuyện của 2 thập kỷ trước. Đây là trận 50-50 thực sự.",
+      "analysis_prediction": "Tôi nghiêng nhẹ về Australia nhờ phong độ và sự lì lợm: dự đoán thắng 2-1, dù chất lượng Thổ Nhĩ Kỳ luôn tiềm ẩn bất ngờ."
+    },
+    "9": {
+      "prob_a": 70,
+      "prob_draw": 18,
+      "prob_b": 12,
+      "score_a": 3,
+      "score_b": 0,
+      "winner": "Germany",
+      "confidence": 62,
+      "key_factors": [
+        "Đức vượt trội toàn diện",
+        "Curaçao lần đầu dự World Cup, chênh lệch lớn",
+        "Sân Houston mái che — Đức đá kỹ thuật thoải mái"
+      ],
+      "analysis_form": "Đức (75%) là một trong những ứng viên hàng đầu, áp đảo hoàn toàn tân binh Curaçao dù đảo quốc Caribe có phong độ tốt trước đối thủ yếu.",
+      "analysis_history": "Hai đội chưa từng gặp nhau. Sự chênh lệch về đẳng cấp gần như tuyệt đối.",
+      "analysis_prediction": "Đức được dự đoán thắng đậm 3-0 trong môi trường mái che lý tưởng, khẳng định tham vọng vô địch."
+    },
+    "10": {
+      "prob_a": 39,
+      "prob_draw": 26,
+      "prob_b": 35,
+      "score_a": 2,
+      "score_b": 1,
+      "winner": "Netherlands",
+      "confidence": 36,
+      "key_factors": [
+        "Hà Lan chiều sâu đội hình tốt hơn",
+        "Nhật Bản phong độ xuất sắc (85%), từng thắng Đức & TBN 2022",
+        "Sân Dallas mái che — kỹ thuật lên ngôi"
+      ],
+      "analysis_form": "Hà Lan (55%) phập phù nhưng giàu tài năng, trong khi Nhật Bản (85%) đang là một trong những đội châu Á đáng sợ nhất với khả năng hạ gục ông lớn.",
+      "analysis_history": "3 lần gặp Hà Lan thắng 2, hòa 1. Mô hình thậm chí kỳ vọng Nhật ghi nhiều bàn hơn (2.04 so với 1.11).",
+      "analysis_prediction": "Trận này rất cân bằng. Tôi nghiêng cực nhẹ về chiều sâu Hà Lan: dự đoán thắng 2-1, song Nhật Bản hoàn toàn có thể tạo bất ngờ."
+    },
+    "11": {
+      "prob_a": 34,
+      "prob_draw": 24,
+      "prob_b": 42,
+      "score_a": 0,
+      "score_b": 1,
+      "winner": "Ecuador",
+      "confidence": 40,
+      "key_factors": [
+        "Ecuador phòng ngự chắc chắn, kỷ luật",
+        "Bờ Biển Ngà phong độ tốt (80%) nhưng hàng thủ Ecuador khó xuyên phá",
+        "Trận ít bàn thắng"
+      ],
+      "analysis_form": "Bờ Biển Ngà (80%) sung sức nhưng Ecuador (60%) nổi tiếng với hệ thống phòng ngự kỷ luật và những trận đấu ít bàn.",
+      "analysis_history": "Hai đội chưa từng gặp nhau. Mô hình đặt Ecuador cửa trên nhờ nền tảng phòng ngự.",
+      "analysis_prediction": "Tôi nghiêng về Ecuador trong một trận chặt chẽ: dự đoán thắng 1-0 nhờ sự chắc chắn nơi hàng thủ."
+    },
+    "12": {
+      "prob_a": 42,
+      "prob_draw": 28,
+      "prob_b": 30,
+      "score_a": 1,
+      "score_b": 0,
+      "winner": "Sweden",
+      "confidence": 40,
+      "key_factors": [
+        "Thụy Điển sở hữu dàn tiền đạo chất lượng (Isak, Gyökeres)",
+        "Tunisia chắc chắn, hòa nhiều",
+        "Monterrey ấm (~28°C) — trận đá chậm"
+      ],
+      "analysis_form": "Thụy Điển (65%) với hàng công đẳng cấp Premier League được kỳ vọng tạo khác biệt trước một Tunisia (60%) thiên về hòa (6 hòa/10 trận).",
+      "analysis_history": "4 lần gặp Thụy Điển nhỉnh hơn (2 thắng). Mô hình đánh giá đây là trận cân bằng, ít bàn.",
+      "analysis_prediction": "Tôi nâng nhẹ cửa thắng Thụy Điển nhờ chất lượng dứt điểm: dự đoán thắng tối thiểu 1-0 trong trận chặt chẽ."
+    },
+    "13": {
+      "prob_a": 72,
+      "prob_draw": 19,
+      "prob_b": 9,
+      "score_a": 3,
+      "score_b": 0,
+      "winner": "Spain",
+      "confidence": 65,
+      "key_factors": [
+        "Tây Ban Nha phong độ hoàn hảo (95%), ĐKVĐ châu Âu",
+        "Cabo Verde lần đầu dự World Cup",
+        "Chênh lệch đẳng cấp gần như tuyệt đối"
+      ],
+      "analysis_form": "Tây Ban Nha thắng 9/10 trận gần nhất, sở hữu lối chơi kiểm soát thượng thừa. Cabo Verde là câu chuyện cổ tích nhưng quá chênh lệch về trình độ.",
+      "analysis_history": "Hai đội chưa từng gặp nhau. Mọi chỉ số đều một chiều về phía La Roja.",
+      "analysis_prediction": "Tây Ban Nha được dự đoán thắng đậm 3-0, khởi đầu chiến dịch với tư cách ứng viên vô địch số một."
+    },
+    "14": {
+      "prob_a": 44,
+      "prob_draw": 28,
+      "prob_b": 28,
+      "score_a": 2,
+      "score_b": 1,
+      "winner": "Belgium",
+      "confidence": 36,
+      "key_factors": [
+        "Bỉ vẫn nhiều tài năng dù phong độ sa sút (30%)",
+        "Ai Cập nguy hiểm với Salah (phong độ 75%)",
+        "Trận khó lường"
+      ],
+      "analysis_form": "Bỉ đang khủng hoảng phong độ (2 thắng/10) khi thế hệ vàng dần khép lại, trong khi Ai Cập (75%) với Salah đang sung sức và tự tin.",
+      "analysis_history": "4 lần gặp Bỉ thắng 3, nhưng phong độ hiện tại thu hẹp khoảng cách đáng kể.",
+      "analysis_prediction": "Tôi nghiêng nhẹ về cá nhân chất lượng của Bỉ: dự đoán thắng 2-1, song cảnh giác cao độ với Salah — kịch bản hòa rất khả dĩ."
+    },
+    "15": {
+      "prob_a": 22,
+      "prob_draw": 23,
+      "prob_b": 55,
+      "score_a": 0,
+      "score_b": 1,
+      "winner": "Uruguay",
+      "confidence": 48,
+      "key_factors": [
+        "Uruguay đẳng cấp & kinh nghiệm vượt trội",
+        "Saudi Arabia khó tạo bất ngờ",
+        "Uruguay đá thực dụng, ít bàn"
+      ],
+      "analysis_form": "Uruguay (45%, nhiều hòa) tuy phong độ chưa cao nhưng vượt trội Saudi Arabia về bản lĩnh và chất lượng. La Celeste thường thắng tối thiểu.",
+      "analysis_history": "3 lần gặp chia đều, nhưng đẳng cấp World Cup của Uruguay là khác biệt lớn.",
+      "analysis_prediction": "Uruguay được dự đoán thắng 1-0, giành 3 điểm theo cách thực dụng quen thuộc."
+    },
+    "16": {
+      "prob_a": 42,
+      "prob_draw": 28,
+      "prob_b": 30,
+      "score_a": 1,
+      "score_b": 0,
+      "winner": "Iran",
+      "confidence": 38,
+      "key_factors": [
+        "Iran phòng ngự kỷ luật bậc nhất châu Á (phong độ 90%)",
+        "Phong độ New Zealand bị thổi phồng bởi đối thủ OFC yếu",
+        "Trận ít bàn"
+      ],
+      "analysis_form": "Iran (90%) sở hữu hàng thủ cực kỳ chắc chắn và kinh nghiệm World Cup. Phong độ 85% của New Zealand đến chủ yếu từ các đối thủ yếu khu vực châu Đại Dương.",
+      "analysis_history": "2 lần gặp Iran chưa thua (1 thắng, 1 hòa). Tôi điều chỉnh ngược baseline (vốn đánh giá cao New Zealand) vì cho rằng Elo của New Zealand bị thổi phồng.",
+      "analysis_prediction": "Tôi tin Iran nhỉnh hơn thực chất: dự đoán thắng tối thiểu 1-0 nhờ sự chắc chắn nơi hàng thủ, dù đây là nhận định trái với mô hình thống kê."
+    },
+    "17": {
+      "prob_a": 50,
+      "prob_draw": 26,
+      "prob_b": 24,
+      "score_a": 2,
+      "score_b": 1,
+      "winner": "France",
+      "confidence": 40,
+      "key_factors": [
+        "Pháp chiều sâu đội hình hàng đầu thế giới",
+        "Senegal cực mạnh (85%), nhà vô địch AFCON",
+        "Nắng nóng New York (~30°C) cản nhịp độ"
+      ],
+      "analysis_form": "Pháp (65%) với Mbappé dẫn dắt vẫn là ứng viên vô địch, nhưng Senegal (85%) đang ở phong độ đỉnh cao và đầy thể lực — một trong những trận hay nhất vòng bảng.",
+      "analysis_history": "2 lần gặp Pháp đều thắng, nhưng Senegal hiện tại mạnh hơn nhiều so với quá khứ.",
+      "analysis_prediction": "Tôi nghiêng nhẹ về chiều sâu của Pháp: dự đoán thắng 2-1, song Senegal hoàn toàn đủ sức gây bất ngờ, nhất là trong cái nóng."
+    },
+    "18": {
+      "prob_a": 28,
+      "prob_draw": 25,
+      "prob_b": 47,
+      "score_a": 1,
+      "score_b": 2,
+      "winner": "Norway",
+      "confidence": 46,
+      "key_factors": [
+        "Na Uy với Haaland & Ødegaard vượt trội",
+        "Iraq giàu thể lực nhưng kém đẳng cấp",
+        "Na Uy lần đầu dự World Cup sau nhiều năm, quyết tâm cao"
+      ],
+      "analysis_form": "Na Uy (60%) sở hữu hai ngôi sao đẳng cấp thế giới là Haaland và Ødegaard, tạo khác biệt lớn so với Iraq (60%).",
+      "analysis_history": "Hai đội chưa từng gặp nhau. Mô hình đặt Na Uy cửa trên nhờ chất lượng cá nhân.",
+      "analysis_prediction": "Na Uy được dự đoán thắng 2-1, với Haaland là chìa khóa mở toang hàng thủ Iraq."
+    },
+    "19": {
+      "prob_a": 62,
+      "prob_draw": 20,
+      "prob_b": 18,
+      "score_a": 2,
+      "score_b": 0,
+      "winner": "Argentina",
+      "confidence": 56,
+      "key_factors": [
+        "Argentina ĐKVĐ thế giới, đẳng cấp vượt trội",
+        "Algeria khó chịu nhưng kém một bậc",
+        "Messi & đồng đội quyết tâm bảo vệ ngôi vương"
+      ],
+      "analysis_form": "Argentina (70%) là nhà đương kim vô địch với bộ khung dày dạn, áp đảo Algeria (70%) về kinh nghiệm và chất lượng dù mô hình kỳ vọng bàn thắng khá cân.",
+      "analysis_history": "Lần gặp duy nhất (2007) Argentina thắng. Đẳng cấp World Cup của Albiceleste là khác biệt lớn.",
+      "analysis_prediction": "Argentina được dự đoán thắng 2-0, khởi đầu hành trình bảo vệ ngôi vương đầy thuyết phục."
+    },
+    "20": {
+      "prob_a": 46,
+      "prob_draw": 24,
+      "prob_b": 30,
+      "score_a": 2,
+      "score_b": 1,
+      "winner": "Austria",
+      "confidence": 40,
+      "key_factors": [
+        "Áo chất lượng cá nhân tốt (Arnautović, Sabitzer)",
+        "Jordan bất ngờ thú vị (á quân Asian Cup)",
+        "Trận khó lường"
+      ],
+      "analysis_form": "Áo (60%) nhỉnh hơn về đẳng cấp châu Âu, nhưng Jordan (70%) đang là hiện tượng sau khi vào chung kết Asian Cup, không dễ bị bắt nạt.",
+      "analysis_history": "Hai đội chưa từng gặp nhau. Mô hình thậm chí kỳ vọng Jordan ghi nhiều bàn hơn.",
+      "analysis_prediction": "Tôi nghiêng về Áo nhờ chất lượng cá nhân: dự đoán thắng 2-1, song Jordan đủ sức khiến trận đấu giàu bàn thắng."
+    },
+    "21": {
+      "prob_a": 63,
+      "prob_draw": 22,
+      "prob_b": 15,
+      "score_a": 2,
+      "score_b": 0,
+      "winner": "Portugal",
+      "confidence": 54,
+      "key_factors": [
+        "Bồ Đào Nha đẳng cấp & chiều sâu vượt trội",
+        "DR Congo giàu thể lực nhưng kém một bậc",
+        "Sân Houston mái che — Bồ kiểm soát kỹ thuật"
+      ],
+      "analysis_form": "Bồ Đào Nha (70%) với dàn sao đồng đều áp đảo DR Congo (75%) về chất lượng, dù đại diện châu Phi có phong độ tốt và thể lực dồi dào.",
+      "analysis_history": "Hai đội chưa từng gặp nhau. Mô hình đặt Bồ Đào Nha cửa trên rõ rệt.",
+      "analysis_prediction": "Bồ Đào Nha được dự đoán thắng 2-0, khởi đầu thuận lợi trong môi trường mái che lý tưởng."
+    },
+    "22": {
+      "prob_a": 56,
+      "prob_draw": 23,
+      "prob_b": 21,
+      "score_a": 2,
+      "score_b": 0,
+      "winner": "England",
+      "confidence": 50,
+      "key_factors": [
+        "Anh đội hình mạnh, phong độ tốt (75%)",
+        "Croatia lão tướng, sa sút so với đỉnh cao",
+        "Sân Dallas mái che — Anh đá kỹ thuật"
+      ],
+      "analysis_form": "Anh (75%) với dàn sao trẻ tài năng được đánh giá cao hơn một Croatia (50%) đang ở giai đoạn chuyển giao, phụ thuộc vào Modrić tuổi cao.",
+      "analysis_history": "11 lần gặp Anh thắng 6, gồm chiến thắng ở World Cup 2018 (bán kết Croatia thắng) và Euro 2020. Tương quan nghiêng về Anh.",
+      "analysis_prediction": "Anh được dự đoán thắng 2-0, khởi đầu thuyết phục trong môi trường mái che lý tưởng tại Dallas."
+    },
+    "23": {
+      "prob_a": 33,
+      "prob_draw": 24,
+      "prob_b": 43,
+      "score_a": 1,
+      "score_b": 1,
+      "winner": "Hòa",
+      "confidence": 32,
+      "key_factors": [
+        "Trận cân bằng giữa hai đội tầm trung",
+        "Panama kỷ luật (CONCACAF)",
+        "Ghana tài năng nhưng phong độ kém (40%)"
+      ],
+      "analysis_form": "Ghana (40%) đang sa sút phong độ trong khi Panama (45%) chắc chắn và giàu thể lực. Đây là trận 50-50 giữa hai đội tầm trung.",
+      "analysis_history": "Hai đội chưa từng gặp nhau. Mô hình nghiêng nhẹ về Panama nhưng xác suất rất cân.",
+      "analysis_prediction": "Tôi dự đoán một trận hòa 1-1 — kết quả phản ánh sự cân bằng và thận trọng của cả hai trong trận mở màn."
+    },
+    "24": {
+      "prob_a": 22,
+      "prob_draw": 22,
+      "prob_b": 56,
+      "score_a": 1,
+      "score_b": 2,
+      "winner": "Colombia",
+      "confidence": 50,
+      "key_factors": [
+        "Colombia đẳng cấp Nam Mỹ vượt trội",
+        "Độ cao Mexico City (2.240m) — Colombia quen sân Bogotá, lợi thế lớn",
+        "Uzbekistan lần đầu dự World Cup, chưa quen độ cao"
+      ],
+      "analysis_form": "Colombia (50%) tuy phong độ chưa cao vẫn hơn hẳn Uzbekistan (80%) về đẳng cấp. Quan trọng hơn, Colombia quen thi đấu ở độ cao Bogotá nên thích nghi tốt với Mexico City 2.240m.",
+      "analysis_history": "Hai đội chưa từng gặp nhau. Yếu tố độ cao là lợi thế lớn và đặc thù cho Colombia.",
+      "analysis_prediction": "Tôi nâng cửa thắng Colombia nhờ lợi thế độ cao quen thuộc: dự đoán thắng 2-1 khi Uzbekistan đuối sức về cuối."
+    },
+    "25": {
+      "prob_a": 45,
+      "prob_draw": 27,
+      "prob_b": 28,
+      "score_a": 2,
+      "score_b": 1,
+      "winner": "Czech Republic",
+      "confidence": 47,
+      "key_factors": [
+        "Cả hai thua lượt 1 — trận phải thắng",
+        "Séc nhỉnh hơn về cá nhân (Schick, Souček)",
+        "Nam Phi tịt ngòi (thua Mexico 0-2)"
+      ],
+      "analysis_form": "Séc thua Hàn Quốc 1-2 nhưng vẫn ghi bàn; Nam Phi thua Mexico 0-2 và bế tắc hàng công. Cả hai 0 điểm, buộc phải thắng.",
+      "analysis_history": "Séc có chất lượng cá nhân vượt trội, trong khi Nam Phi thiếu mũi nhọn.",
+      "analysis_prediction": "Áp lực + đẳng cấp nghiêng về Séc: dự đoán thắng 2-1."
+    },
+    "26": {
+      "prob_a": 58,
+      "prob_draw": 22,
+      "prob_b": 20,
+      "score_a": 2,
+      "score_b": 1,
+      "winner": "Switzerland",
+      "confidence": 48,
+      "key_factors": [
+        "Thụy Sĩ chất lượng hơn, cần 3 điểm",
+        "Cả bảng cùng 1 điểm sau loạt hòa",
+        "Bosnia phụ thuộc Džeko"
+      ],
+      "analysis_form": "Lượt 1 cả bốn đội bảng B đều hòa 1-1. Thụy Sĩ cần thắng để bứt lên.",
+      "analysis_history": "Thụy Sĩ ổn định và kỷ luật hơn Bosnia.",
+      "analysis_prediction": "Đẳng cấp giúp Thụy Sĩ thắng 2-1."
+    },
+    "27": {
+      "prob_a": 56,
+      "prob_draw": 23,
+      "prob_b": 21,
+      "score_a": 2,
+      "score_b": 1,
+      "winner": "Canada",
+      "confidence": 46,
+      "key_factors": [
+        "Canada chủ nhà, cần 3 điểm",
+        "Ngôi sao Alphonso Davies chưa chắc ra sân",
+        "Qatar khó chịu nhưng kém đẳng cấp"
+      ],
+      "analysis_form": "Canada bị Bosnia cầm hòa 1-1; Qatar hòa Thụy Sĩ 1-1. Davies (trụ cột) dính chấn thương, tình trạng day-to-day.",
+      "analysis_history": "Canada hơn Qatar về thể lực và được khán giả nhà tiếp sức.",
+      "analysis_prediction": "Dù thiếu Davies, Canada vẫn thắng 2-1 trên sân nhà."
     },
     "28": {
-      "prob_a": 48, "prob_draw": 26, "prob_b": 26,
-      "score_a": 1, "score_b": 0,
-      "winner": "Mexico", "confidence": 46,
+      "prob_a": 40,
+      "prob_draw": 32,
+      "prob_b": 28,
+      "score_a": 1,
+      "score_b": 1,
+      "winner": "Hòa",
+      "confidence": 40,
       "key_factors": [
-        "Sân nhà Guadalajara + độ cao 1.566m tiếp sức Mexico",
-        "Hàn Quốc đá cả 3 trận ở Mexico nên đã thích nghi, thu hẹp lợi thế chủ nhà",
-        "Lịch sử đối đầu nghiêng hẳn Mexico (8-2-3)"
+        "Cả hai cùng 3 điểm, gần chắc đi tiếp",
+        "Kỳ vọng bàn thắng ngang nhau (1.07-1.08)",
+        "Trận căng, dễ cầm chân nhau"
       ],
-      "analysis_form": "Mexico dựa vào lợi thế chủ nhà nhưng phong độ chỉ trung bình (50%), trong khi Hàn Quốc bay cao với 85% số trận thắng và hàng công sắc bén do Son Heung-min dẫn dắt. Việc Hàn Quốc đóng quân ở Mexico cả vòng bảng giúp họ thích nghi độ cao tốt hơn nhiều đối thủ khách thông thường.",
-      "analysis_history": "Cặp đấu giàu lịch sử: 13 lần gặp nhau Mexico thắng 8, hòa 2, thua 3 và áp đảo bàn thắng (26-13). Lần gần nhất 2020 Mexico thắng 3-2 — các cuộc đối đầu thường nhiều bàn.",
-      "analysis_prediction": "Baseline cho Mexico tới 56% nhờ Elo, chủ nhà và ma trận liên đoàn, nhưng tôi hạ xuống 48% vì Hàn Quốc hiện mạnh hơn quá khứ và đã quen độ cao. Mexico vẫn được ưu tiên nhẹ nhờ sân nhà và khán đài: thắng sát nút 1-0 trong trận cân não."
+      "analysis_form": "Cả hai toàn thắng lượt 1 (Mexico 2-0, Hàn Quốc 2-1) và đang dẫn đầu bảng A.",
+      "analysis_history": "Hai đội ngang sức ở thời điểm hiện tại; một trận hòa gần như đưa cả hai vào vòng trong.",
+      "analysis_prediction": "Trận cân não giữa hai đội cùng 3 điểm: dự đoán hòa 1-1."
+    },
+    "29": {
+      "prob_a": 54,
+      "prob_draw": 24,
+      "prob_b": 22,
+      "score_a": 2,
+      "score_b": 1,
+      "winner": "United States",
+      "confidence": 47,
+      "key_factors": [
+        "Đại chiến nhì bảng — cả hai thắng lượt 1",
+        "Mỹ thắng 4-1, đang bay cao + sân nhà",
+        "Mỹ mất tiền vệ Cardoso"
+      ],
+      "analysis_form": "Mỹ đè bẹp Paraguay 4-1, Úc thắng Thổ Nhĩ Kỳ 2-0. Mỹ mất Johnny Cardoso ở tuyến giữa nhưng vẫn sung sức.",
+      "analysis_history": "Lịch sử cân bằng, nhưng Mỹ đang hưng phấn và chơi trên sân nhà.",
+      "analysis_prediction": "Mỹ tận dụng phong độ + khán đài: dự đoán thắng 2-1."
+    },
+    "30": {
+      "prob_a": 28,
+      "prob_draw": 28,
+      "prob_b": 44,
+      "score_a": 0,
+      "score_b": 1,
+      "winner": "Morocco",
+      "confidence": 42,
+      "key_factors": [
+        "Maroc đẳng cấp cao (cầm hòa Brazil), Hakimi kịp bình phục",
+        "Scotland mất tiền vệ Billy Gilmour",
+        "Maroc cần thắng để bám đuổi"
+      ],
+      "analysis_form": "Scotland gây bất ngờ thắng Haiti 1-0 và dẫn đầu; Maroc cầm hòa Brazil 1-1. Scotland mất Gilmour ở tuyến giữa.",
+      "analysis_history": "Maroc — hạng tư World Cup 2022 — vượt trội về chất lượng.",
+      "analysis_prediction": "Đẳng cấp Maroc lên tiếng: dự đoán thắng 1-0."
+    },
+    "31": {
+      "prob_a": 64,
+      "prob_draw": 20,
+      "prob_b": 16,
+      "score_a": 2,
+      "score_b": 0,
+      "winner": "Brazil",
+      "confidence": 50,
+      "key_factors": [
+        "Brazil quyết thắng sau cú sảy chân hòa Maroc",
+        "Thiếu Rodrygo, Estêvão, Neymar nghi ngờ — bớt sắc bén",
+        "Haiti yếu nhất bảng"
+      ],
+      "analysis_form": "Brazil bị Maroc cầm hòa 1-1 nên phải thắng; tuy nhiên hàng công sứt mẻ (Rodrygo, Estêvão chấn thương, Neymar nghi ngờ). Haiti đã thua Scotland.",
+      "analysis_history": "Brazil thắng cả 3 lần gặp Haiti, không thủng lưới.",
+      "analysis_prediction": "Dù thiếu vắng, Brazil vẫn thắng — dự đoán 2-0 (bớt đậm so với kỳ vọng)."
+    },
+    "32": {
+      "prob_a": 47,
+      "prob_draw": 27,
+      "prob_b": 26,
+      "score_a": 2,
+      "score_b": 1,
+      "winner": "Turkey",
+      "confidence": 44,
+      "key_factors": [
+        "Cả hai thua lượt 1 — phải thắng",
+        "Thổ Nhĩ Kỳ chất lượng hơn, Güler kịp bình phục",
+        "Paraguay thua đậm 1-4"
+      ],
+      "analysis_form": "Thổ Nhĩ Kỳ thua Úc 0-2, Paraguay thua Mỹ 1-4. Cả hai 0 điểm. Arda Güler đã hồi phục chấn thương.",
+      "analysis_history": "Thổ Nhĩ Kỳ có tuyến giữa đẳng cấp hơn (Calhanoglu, Güler).",
+      "analysis_prediction": "Thổ Nhĩ Kỳ nhỉnh hơn: dự đoán thắng 2-1."
+    },
+    "33": {
+      "prob_a": 34,
+      "prob_draw": 30,
+      "prob_b": 36,
+      "score_a": 2,
+      "score_b": 2,
+      "winner": "Hòa",
+      "confidence": 36,
+      "key_factors": [
+        "Hà Lan tổn thất NẶNG: Xavi Simons (ACL), Timber, de Ligt nghỉ",
+        "Thụy Điển thắng 5-1, đang nóng máy",
+        "Hàng thủ Hà Lan lung lay → trận nhiều bàn"
+      ],
+      "analysis_form": "Hà Lan hòa Nhật 2-2 rồi mất hàng loạt trụ cột (Xavi Simons rách dây chằng, Timber, de Ligt). Thụy Điển vùi dập Tunisia 5-1 và đầy hỏa lực.",
+      "analysis_history": "Hà Lan nhỉnh hơn trên giấy nhưng khủng hoảng nhân sự san bằng cách biệt.",
+      "analysis_prediction": "Hà Lan sứt mẻ gặp Thụy Điển sung sức: dự đoán hòa 2-2 nhiều bàn."
+    },
+    "34": {
+      "prob_a": 52,
+      "prob_draw": 25,
+      "prob_b": 23,
+      "score_a": 2,
+      "score_b": 1,
+      "winner": "Germany",
+      "confidence": 43,
+      "key_factors": [
+        "Đại chiến nhì bảng — cả hai toàn thắng",
+        "Đức mất ter Stegen (thủ môn) + Gnabry — mỏng hơn",
+        "Bờ Biển Ngà giàu thể lực"
+      ],
+      "analysis_form": "Đức nghiền nát Curaçao 7-1, Bờ Biển Ngà thắng Ecuador 1-0. Nhưng Đức tổn thất: ter Stegen (thủ môn) và Gnabry nghỉ.",
+      "analysis_history": "Đức vẫn là ứng viên vô địch, nhỉnh hơn về chất lượng.",
+      "analysis_prediction": "Đức thắng sát hơn dự kiến vì thiếu trụ cột: dự đoán 2-1."
+    },
+    "35": {
+      "prob_a": 60,
+      "prob_draw": 21,
+      "prob_b": 19,
+      "score_a": 2,
+      "score_b": 0,
+      "winner": "Ecuador",
+      "confidence": 50,
+      "key_factors": [
+        "Ecuador phải thắng sau trận thua",
+        "Curaçao thủng 7 bàn, phòng ngự sụp đổ",
+        "Ecuador phòng ngự chắc"
+      ],
+      "analysis_form": "Ecuador thua Bờ Biển Ngà 0-1; Curaçao bị Đức vùi dập 1-7. Ecuador buộc phải thắng.",
+      "analysis_history": "Hàng thủ kỷ luật của Ecuador gặp đúng Curaçao vừa lủng 7 bàn.",
+      "analysis_prediction": "Ecuador thắng 2-0 để cứu vãn chiến dịch."
+    },
+    "36": {
+      "prob_a": 22,
+      "prob_draw": 26,
+      "prob_b": 52,
+      "score_a": 0,
+      "score_b": 2,
+      "winner": "Japan",
+      "confidence": 46,
+      "key_factors": [
+        "Nhật vượt trội dù mất Mitoma, Minamino",
+        "Tunisia thủng 5 bàn lượt 1",
+        "Nhật cần 3 điểm"
+      ],
+      "analysis_form": "Tunisia thua Thụy Điển 1-5 (phòng ngự tan nát), Nhật hòa Hà Lan 2-2. Nhật mất Mitoma và Minamino nhưng vẫn quá mạnh so với Tunisia.",
+      "analysis_history": "Nhật thắng 4/5 lần gặp Tunisia.",
+      "analysis_prediction": "Nhật khai thác hàng thủ mỏng của Tunisia: dự đoán thắng 2-0."
+    },
+    "37": {
+      "prob_a": 64,
+      "prob_draw": 21,
+      "prob_b": 15,
+      "score_a": 2,
+      "score_b": 0,
+      "winner": "Spain",
+      "confidence": 52,
+      "key_factors": [
+        "TBN quyết thắng sau cú sảy chân hòa 0-0",
+        "Vẫn vượt trội dù Yamal nghi ngờ, Fermín nghỉ",
+        "Ả Rập Xê Út kém đẳng cấp"
+      ],
+      "analysis_form": "Tây Ban Nha bị Cape Verde cầm hòa 0-0 bất ngờ; Ả Rập hòa Uruguay 1-1. TBN thiếu Fermín López, Yamal chưa chắc 100%.",
+      "analysis_history": "TBN thắng cả 3 lần gặp Ả Rập, không thủng lưới.",
+      "analysis_prediction": "Tây Ban Nha lấy lại phong độ: dự đoán thắng 2-0."
+    },
+    "38": {
+      "prob_a": 38,
+      "prob_draw": 32,
+      "prob_b": 30,
+      "score_a": 1,
+      "score_b": 1,
+      "winner": "Hòa",
+      "confidence": 38,
+      "key_factors": [
+        "Cả hai hòa lượt 1, ngang điểm",
+        "Iran phòng ngự cực lì",
+        "Bỉ bế tắc trước hàng thủ chắc"
+      ],
+      "analysis_form": "Bỉ hòa Ai Cập 1-1, Iran hòa New Zealand 2-2. Cả hai mới 1 điểm.",
+      "analysis_history": "Bỉ hơn về cá nhân nhưng hàng thủ Iran luôn khó xuyên phá.",
+      "analysis_prediction": "Trận chặt chẽ, khó phân thắng bại: dự đoán hòa 1-1."
+    },
+    "39": {
+      "prob_a": 48,
+      "prob_draw": 30,
+      "prob_b": 22,
+      "score_a": 1,
+      "score_b": 1,
+      "winner": "Hòa",
+      "confidence": 36,
+      "key_factors": [
+        "Cape Verde phòng ngự tốt (hòa TBN 0-0)",
+        "Uruguay mất trung vệ José Giménez",
+        "Trận ít bàn, dễ chia điểm"
+      ],
+      "analysis_form": "Uruguay hòa Ả Rập 1-1; Cape Verde gây sốc cầm hòa Tây Ban Nha 0-0. Uruguay mất Giménez ở hàng thủ.",
+      "analysis_history": "Uruguay nhỉnh hơn về bản lĩnh, nhưng Cape Verde phòng ngự kỷ luật.",
+      "analysis_prediction": "Cape Verde lì lợm khiến Uruguay khó: dự đoán hòa 1-1."
+    },
+    "40": {
+      "prob_a": 33,
+      "prob_draw": 34,
+      "prob_b": 33,
+      "score_a": 1,
+      "score_b": 1,
+      "winner": "Hòa",
+      "confidence": 34,
+      "key_factors": [
+        "Cả hai hòa lượt 1, cân bằng",
+        "Ai Cập có Salah nhưng chưa bùng nổ",
+        "Trận giằng co"
+      ],
+      "analysis_form": "New Zealand hòa Iran 2-2 (ghi 2 bàn), Ai Cập hòa Bỉ 1-1. Cả hai cùng 1 điểm.",
+      "analysis_history": "Ai Cập nhỉnh hơn về đẳng cấp tấn công nhưng New Zealand khó chịu.",
+      "analysis_prediction": "Trận cân bằng giữa hai đội ngang điểm: dự đoán hòa 1-1."
+    },
+    "41": {
+      "prob_a": 45,
+      "prob_draw": 30,
+      "prob_b": 25,
+      "score_a": 1,
+      "score_b": 1,
+      "winner": "Hòa",
+      "confidence": 38,
+      "key_factors": [
+        "Argentina lo ngại: Messi mệt, Romero/Molina chấn thương",
+        "Áo thắng 3-1, tự tin",
+        "Cả hai đã 3 điểm — có thể đá thận trọng"
+      ],
+      "analysis_form": "Argentina thắng Algeria 3-0, Áo thắng Jordan 3-1. Nhưng Argentina có nhiều mối lo: Messi quá tải, Romero và Molina dính chấn thương.",
+      "analysis_history": "Argentina mạnh hơn nhưng nhân sự sứt mẻ + cả hai đã có 3 điểm.",
+      "analysis_prediction": "Argentina có thể xoay tua, Áo đang hưng phấn: dự đoán hòa 1-1."
+    },
+    "42": {
+      "prob_a": 64,
+      "prob_draw": 20,
+      "prob_b": 16,
+      "score_a": 2,
+      "score_b": 0,
+      "winner": "France",
+      "confidence": 52,
+      "key_factors": [
+        "Pháp thắng 3-1, đang bay cao",
+        "Iraq thủng 4 bàn, yếu nhất bảng",
+        "Pháp có thể xoay tua nhưng vẫn quá mạnh"
+      ],
+      "analysis_form": "Pháp thắng Senegal 3-1; Iraq thua Na Uy 1-4. Pháp dự kiến xoay tua nhẹ nhưng chiều sâu vẫn vượt trội.",
+      "analysis_history": "Đẳng cấp Pháp áp đảo hoàn toàn.",
+      "analysis_prediction": "Pháp thắng 2-0 dù xoay tua."
+    },
+    "43": {
+      "prob_a": 42,
+      "prob_draw": 28,
+      "prob_b": 30,
+      "score_a": 2,
+      "score_b": 1,
+      "winner": "Norway",
+      "confidence": 40,
+      "key_factors": [
+        "Na Uy thắng 4-1 với Haaland nóng máy",
+        "Senegal thua Pháp, cần điểm",
+        "Phong độ đảo chiều baseline"
+      ],
+      "analysis_form": "Na Uy thắng Iraq 4-1 (Haaland rực sáng) và dẫn đầu; Senegal thua Pháp 1-3. Na Uy đang đầy tự tin.",
+      "analysis_history": "Số liệu lịch sử ưu ái Senegal nhưng phong độ lượt 1 nghiêng hẳn Na Uy.",
+      "analysis_prediction": "Na Uy và Haaland đang bay cao: dự đoán thắng 2-1."
+    },
+    "44": {
+      "prob_a": 32,
+      "prob_draw": 29,
+      "prob_b": 39,
+      "score_a": 1,
+      "score_b": 2,
+      "winner": "Algeria",
+      "confidence": 36,
+      "key_factors": [
+        "Cả hai thua lượt 1 — phải thắng",
+        "Algeria chất lượng hơn (Mahrez)",
+        "Trận căng thẳng, mở"
+      ],
+      "analysis_form": "Jordan thua Áo 1-3, Algeria thua Argentina 0-3. Cả hai 0 điểm, sống còn.",
+      "analysis_history": "Algeria nhỉnh hơn về cá nhân với Mahrez.",
+      "analysis_prediction": "Algeria nhỉnh hơn trong trận phải thắng: dự đoán thắng 2-1."
+    },
+    "45": {
+      "prob_a": 58,
+      "prob_draw": 22,
+      "prob_b": 20,
+      "score_a": 2,
+      "score_b": 0,
+      "winner": "Portugal",
+      "confidence": 48,
+      "key_factors": [
+        "Bồ Đào Nha quyết thắng sau trận hòa hụt",
+        "Ronaldo & chiều sâu đội hình",
+        "Uzbekistan lần đầu dự World Cup"
+      ],
+      "analysis_form": "Bồ Đào Nha bị CHDC Congo cầm hòa 1-1 nên cần 3 điểm. Uzbekistan đá lượt 1 muộn.",
+      "analysis_history": "Bồ Đào Nha vượt trội về chiều sâu và kinh nghiệm.",
+      "analysis_prediction": "Bồ Đào Nha lấy lại phong độ: dự đoán thắng 2-0."
+    },
+    "46": {
+      "prob_a": 66,
+      "prob_draw": 21,
+      "prob_b": 13,
+      "score_a": 2,
+      "score_b": 0,
+      "winner": "England",
+      "confidence": 54,
+      "key_factors": [
+        "Anh hỏa lực mạnh (thắng 4-2)",
+        "Đại chiến nhì bảng",
+        "Ghana mất Kudus (chấn thương)"
+      ],
+      "analysis_form": "Anh thắng Croatia 4-2, Ghana thắng Panama 1-0. Ghana mất ngôi sao Mohammed Kudus.",
+      "analysis_history": "Anh vượt trội về chất lượng, hàng công đang bùng nổ.",
+      "analysis_prediction": "Anh áp đảo: dự đoán thắng 2-0."
+    },
+    "47": {
+      "prob_a": 26,
+      "prob_draw": 26,
+      "prob_b": 48,
+      "score_a": 1,
+      "score_b": 2,
+      "winner": "Croatia",
+      "confidence": 42,
+      "key_factors": [
+        "Cả hai thua lượt 1 — phải thắng",
+        "Croatia đẳng cấp hơn, Modrić kịp bình phục",
+        "Croatia thua nhưng vẫn ghi 2 bàn"
+      ],
+      "analysis_form": "Panama thua Ghana 0-1, Croatia thua Anh 2-4 (vẫn ghi 2 bàn). Modrić đã hồi phục chấn thương gò má.",
+      "analysis_history": "Croatia — á quân World Cup 2018 — hơn hẳn Panama về kỹ thuật.",
+      "analysis_prediction": "Croatia lấy lại phong độ: dự đoán thắng 2-1."
+    },
+    "48": {
+      "prob_a": 46,
+      "prob_draw": 30,
+      "prob_b": 24,
+      "score_a": 1,
+      "score_b": 1,
+      "winner": "Hòa",
+      "confidence": 36,
+      "key_factors": [
+        "CHDC Congo cầm hòa Bồ Đào Nha 1-1 — rất lì",
+        "Colombia chất lượng nhưng khó xuyên phá",
+        "Trận dễ chia điểm"
+      ],
+      "analysis_form": "CHDC Congo gây ấn tượng khi cầm hòa Bồ Đào Nha 1-1. Colombia (đá lượt 1 muộn) gặp đối thủ phòng ngự chắc.",
+      "analysis_history": "Colombia hơn về đẳng cấp (James, Díaz) nhưng Congo vừa chứng minh sự lì lợm.",
+      "analysis_prediction": "Congo khó chịu khiến Colombia bị cầm chân: dự đoán hòa 1-1."
+    },
+    "49": {
+      "prob_a": 33,
+      "prob_draw": 24,
+      "prob_b": 43,
+      "score_a": 1,
+      "score_b": 2,
+      "winner": "Canada",
+      "confidence": 44,
+      "key_factors": [
+        "Canada phong độ & động lực tốt hơn",
+        "Thụy Sĩ cần điểm nhưng đang phập phù",
+        "Kỳ vọng bàn thắng nghiêng về Canada"
+      ],
+      "analysis_form": "Canada (70%) đang sung sức hơn hẳn Thụy Sĩ (35%) ở thời điểm hiện tại, dù Thụy Sĩ nhỉnh hơn về danh tiếng.",
+      "analysis_history": "Lần gặp xa xưa (2002) Canada thắng. Mô hình kỳ vọng Canada ghi nhiều bàn hơn (1.75 so với 0.95).",
+      "analysis_prediction": "Tôi nghiêng về Canada nhờ phong độ và sự tự tin: dự đoán thắng 2-1 trong trận quyết định ngôi nhất bảng."
+    },
+    "50": {
+      "prob_a": 32,
+      "prob_draw": 22,
+      "prob_b": 46,
+      "score_a": 1,
+      "score_b": 2,
+      "winner": "Qatar",
+      "confidence": 44,
+      "key_factors": [
+        "Qatar nhỉnh hơn về phong độ & kỳ vọng bàn thắng",
+        "Bosnia không thắng suốt 10 trận",
+        "Trận cuối, Bosnia có thể đã hết mục tiêu"
+      ],
+      "analysis_form": "Qatar (45%) vượt trội so với một Bosnia bế tắc hoàn toàn (10%). Thể lực và sự gắn kết giúp Qatar kiểm soát trận đấu.",
+      "analysis_history": "Hai lần gặp trước chia điểm, nhưng phong độ hiện tại đẩy cán cân về phía Qatar.",
+      "analysis_prediction": "Qatar được dự đoán thắng 2-1, khép lại vòng bảng với hy vọng kiếm điểm an ủi."
+    },
+    "51": {
+      "prob_a": 19,
+      "prob_draw": 22,
+      "prob_b": 59,
+      "score_a": 0,
+      "score_b": 2,
+      "winner": "Brazil",
+      "confidence": 57,
+      "key_factors": [
+        "Brazil áp đảo lịch sử đối đầu (8 thắng/10)",
+        "Scotland yếu hơn rõ rệt",
+        "Nắng nóng Miami (~29°C) buộc Brazil đá chậm, kiểm soát"
+      ],
+      "analysis_form": "Brazil (65%) vượt xa Scotland (35%) về mọi mặt. Cái nóng ẩm Miami thực ra hợp với lối chơi cầm bóng thong thả của Selecao.",
+      "analysis_history": "10 lần gặp Scotland chỉ hòa 2, thua 8, chưa từng thắng Brazil. Áp lực tâm lý đè nặng đội bóng áo xanh.",
+      "analysis_prediction": "Brazil được dự đoán thắng 2-0, gần như chắc suất đi tiếp với ngôi đầu bảng C."
+    },
+    "52": {
+      "prob_a": 60,
+      "prob_draw": 22,
+      "prob_b": 18,
+      "score_a": 2,
+      "score_b": 0,
+      "winner": "Morocco",
+      "confidence": 52,
+      "key_factors": [
+        "Morocco đẳng cấp & phong độ vượt trội",
+        "Haiti đã đuối sức cuối vòng bảng",
+        "Morocco cần thắng để chắc vé"
+      ],
+      "analysis_form": "Morocco (85%) với hàng thủ kỷ luật và tuyến giữa chất lượng hơn hẳn Haiti. Đây là cơ hội để đại diện châu Phi giành 3 điểm quan trọng.",
+      "analysis_history": "Hai đội chưa từng gặp nhau. Mô hình kỳ vọng Morocco kiểm soát và thắng cách biệt.",
+      "analysis_prediction": "Morocco được dự đoán thắng 2-0, hướng tới vòng knockout với vị thế thuận lợi."
     },
     "53": {
-      "prob_a": 23, "prob_draw": 23, "prob_b": 54,
-      "score_a": 0, "score_b": 2,
-      "winner": "Mexico", "confidence": 57,
+      "prob_a": 23,
+      "prob_draw": 23,
+      "prob_b": 54,
+      "score_a": 0,
+      "score_b": 2,
+      "winner": "Mexico",
+      "confidence": 57,
       "key_factors": [
         "Độ cao 2.240m Mexico City bào mòn thể lực đội Séc (gốc châu Âu)",
         "Chênh lệch Elo & sức mạnh nghiêng về Mexico, lại được khán đài tiếp sức",
@@ -75,9 +911,13 @@
       "analysis_prediction": "Đây là trận yếu tố môi trường lấn át mạnh nhất bảng: độ cao khắc nghiệt cộng khán đài khiến tôi nâng cửa thắng Mexico lên 54% (baseline 49%). Dự đoán Mexico thắng 2-0, tăng tốc khi đối thủ kiệt sức ở nửa sau hiệp hai."
     },
     "54": {
-      "prob_a": 23, "prob_draw": 25, "prob_b": 52,
-      "score_a": 1, "score_b": 2,
-      "winner": "South Korea", "confidence": 54,
+      "prob_a": 23,
+      "prob_draw": 25,
+      "prob_b": 52,
+      "score_a": 1,
+      "score_b": 2,
+      "winner": "South Korea",
+      "confidence": 54,
       "key_factors": [
         "Đẳng cấp & phong độ Hàn Quốc vượt trội, Son Heung-min dẫn dắt",
         "Monterrey nóng (~28°C buổi tối) bào mòn nhẹ thể lực cả hai về cuối",
@@ -87,467 +927,312 @@
       "analysis_history": "Hai đội chưa từng gặp nhau, trận đấu sẽ định đoạt bởi tương quan lực lượng hiện tại. WCOI của Nam Phi nhỉnh hơn đôi chút, gợi ý họ thường thi đấu trên sức ở World Cup — yếu tố cần dè chừng.",
       "analysis_prediction": "Trận đá buổi tối ở Monterrey vẫn ấm (~28°C), bào mòn thể lực nhẹ về cuối nhưng không đủ đảo cán cân. Tôi giữ Hàn Quốc ở cửa thắng 52% sát baseline; Nam Phi đủ sức ghi bàn nhưng Hàn Quốc lợi hại hơn: dự đoán Hàn Quốc thắng 2-1."
     },
-    "3": {
-      "prob_a": 62, "prob_draw": 18, "prob_b": 20, "score_a": 2, "score_b": 0, "winner": "Canada", "confidence": 60,
-      "key_factors": ["Canada chủ nhà, phong độ tốt (70%)", "Bosnia khủng hoảng phong độ (0 thắng/10 trận)", "Chênh lệch kỳ vọng bàn thắng lớn"],
-      "analysis_form": "Canada đá sân nhà Toronto với phong độ ổn định (5 thắng, 4 hòa). Bosnia & Herzegovina trái lại sa sút nghiêm trọng, không thắng trận nào trong 10 lần gần nhất (2 hòa, 8 thua).",
-      "analysis_history": "Hai đội chưa từng gặp nhau ở cấp độ A. Mô hình kỳ vọng Canada ghi tới hơn 3 bàn nhờ chênh lệch đẳng cấp và lợi thế sân nhà rõ rệt.",
-      "analysis_prediction": "Với sức ép khán đài và đối thủ mất phương hướng, Canada được dự đoán thắng dễ 2-0, mở màn chiến dịch World Cup trên sân nhà thuận lợi."
-    },
-    "5": {
-      "prob_a": 30, "prob_draw": 23, "prob_b": 47, "score_a": 1, "score_b": 2, "winner": "Switzerland", "confidence": 42,
-      "key_factors": ["Thụy Sĩ nhỉnh hơn về đẳng cấp & Elo", "Phong độ cả hai đều phập phù", "Qatar giàu thể lực, khó chịu"],
-      "analysis_form": "Thụy Sĩ vào giải với phong độ kém thuyết phục (1 thắng, 5 hòa, 4 thua) nhưng vẫn được đánh giá cao nhờ nền tảng và kinh nghiệm. Qatar nhỉnh hơn về thành tích gần đây (45%) song thiếu chiều sâu khi gặp đối thủ châu Âu.",
-      "analysis_history": "Hai đội mới gặp nhau một lần (2018, Qatar thắng). Mô hình vẫn đặt Thụy Sĩ cửa trên nhờ chỉ số sức mạnh dài hạn.",
-      "analysis_prediction": "Đây là trận khó lường, nhưng tôi bám baseline đặt niềm tin vào đẳng cấp Thụy Sĩ: dự đoán thắng sát nút 2-1 trong một trận giàu bàn thắng."
-    },
-    "26": {
-      "prob_a": 62, "prob_draw": 20, "prob_b": 18, "score_a": 2, "score_b": 0, "winner": "Switzerland", "confidence": 54,
-      "key_factors": ["Thụy Sĩ vượt trội về chất lượng", "Bosnia không thắng suốt 10 trận", "Áp lực phải có điểm dồn lên Thụy Sĩ"],
-      "analysis_form": "Thụy Sĩ dù phong độ trồi sụt vẫn hơn hẳn một Bosnia đang khủng hoảng. Sự chắc chắn trong khâu tổ chức là điểm tựa của đoàn quân áo đỏ.",
-      "analysis_history": "Lần gần nhất gặp nhau (2016) Bosnia thắng, nhưng tương quan hiện tại đã đổi chiều hoàn toàn theo hướng có lợi cho Thụy Sĩ.",
-      "analysis_prediction": "Thụy Sĩ được dự đoán kiểm soát thế trận và thắng 2-0, tận dụng sự sa sút của đối thủ để lấy trọn 3 điểm."
-    },
-    "27": {
-      "prob_a": 64, "prob_draw": 19, "prob_b": 17, "score_a": 2, "score_b": 0, "winner": "Canada", "confidence": 58,
-      "key_factors": ["Canada chủ nhà (Vancouver), phong độ tốt", "Thời tiết mát mẻ lý tưởng", "Qatar khó tạo đột biến trước hàng thủ Canada"],
-      "analysis_form": "Canada duy trì phong độ cao (70%) và lợi thế sân nhà tại Vancouver mát mẻ. Qatar có thể lực nhưng thiếu sắc bén trước các đối thủ mạnh.",
-      "analysis_history": "Lần gặp gần nhất (2022) Canada thắng. Mô hình tiếp tục đặt chủ nhà ở cửa trên rõ rệt.",
-      "analysis_prediction": "Canada được dự đoán thắng 2-0, củng cố ngôi đầu bảng B trước sự cổ vũ của khán giả nhà."
-    },
-    "49": {
-      "prob_a": 33, "prob_draw": 24, "prob_b": 43, "score_a": 1, "score_b": 2, "winner": "Canada", "confidence": 44,
-      "key_factors": ["Canada phong độ & động lực tốt hơn", "Thụy Sĩ cần điểm nhưng đang phập phù", "Kỳ vọng bàn thắng nghiêng về Canada"],
-      "analysis_form": "Canada (70%) đang sung sức hơn hẳn Thụy Sĩ (35%) ở thời điểm hiện tại, dù Thụy Sĩ nhỉnh hơn về danh tiếng.",
-      "analysis_history": "Lần gặp xa xưa (2002) Canada thắng. Mô hình kỳ vọng Canada ghi nhiều bàn hơn (1.75 so với 0.95).",
-      "analysis_prediction": "Tôi nghiêng về Canada nhờ phong độ và sự tự tin: dự đoán thắng 2-1 trong trận quyết định ngôi nhất bảng."
-    },
-    "50": {
-      "prob_a": 32, "prob_draw": 22, "prob_b": 46, "score_a": 1, "score_b": 2, "winner": "Qatar", "confidence": 44,
-      "key_factors": ["Qatar nhỉnh hơn về phong độ & kỳ vọng bàn thắng", "Bosnia không thắng suốt 10 trận", "Trận cuối, Bosnia có thể đã hết mục tiêu"],
-      "analysis_form": "Qatar (45%) vượt trội so với một Bosnia bế tắc hoàn toàn (10%). Thể lực và sự gắn kết giúp Qatar kiểm soát trận đấu.",
-      "analysis_history": "Hai lần gặp trước chia điểm, nhưng phong độ hiện tại đẩy cán cân về phía Qatar.",
-      "analysis_prediction": "Qatar được dự đoán thắng 2-1, khép lại vòng bảng với hy vọng kiếm điểm an ủi."
-    },
-    "4": {
-      "prob_a": 59, "prob_draw": 17, "prob_b": 24, "score_a": 2, "score_b": 0, "winner": "United States", "confidence": 58,
-      "key_factors": ["Mỹ chủ nhà (Los Angeles), kỳ vọng bàn thắng rất cao", "Paraguay phòng ngự nhưng thiếu hỏa lực", "Thời tiết mát, thuận lợi cho lối chơi tốc độ của Mỹ"],
-      "analysis_form": "Mỹ đá sân nhà với hàng công kỳ vọng tới 2.5 bàn, dù phong độ chỉ ở mức 50%. Paraguay chắc chắn (55%) nhưng ghi bàn khó khăn.",
-      "analysis_history": "8 lần đối đầu Mỹ thắng 4, hòa 2, thua 2. Lợi thế sân nhà và lực lượng trẻ tài năng nghiêng cán cân về phía chủ nhà.",
-      "analysis_prediction": "Mỹ được dự đoán thắng 2-0, khởi đầu thuận lợi trước khán giả nhà tại Los Angeles."
-    },
-    "8": {
-      "prob_a": 41, "prob_draw": 25, "prob_b": 34, "score_a": 2, "score_b": 1, "winner": "Australia", "confidence": 38,
-      "key_factors": ["Australia phong độ tốt (70%)", "Thổ Nhĩ Kỳ chất lượng cá nhân cao hơn (Calhanoglu, Güler)", "Trận cân bằng, khó lường"],
-      "analysis_form": "Australia bất bại gần như cả 10 trận (70%), trong khi Thổ Nhĩ Kỳ (60%) sở hữu dàn sao chơi bóng ở châu Âu nhỉnh hơn về kỹ thuật.",
-      "analysis_history": "Hai lần gặp trước Thổ Nhĩ Kỳ đều thắng, nhưng đó là chuyện của 2 thập kỷ trước. Đây là trận 50-50 thực sự.",
-      "analysis_prediction": "Tôi nghiêng nhẹ về Australia nhờ phong độ và sự lì lợm: dự đoán thắng 2-1, dù chất lượng Thổ Nhĩ Kỳ luôn tiềm ẩn bất ngờ."
-    },
-    "29": {
-      "prob_a": 56, "prob_draw": 22, "prob_b": 22, "score_a": 2, "score_b": 1, "winner": "United States", "confidence": 50,
-      "key_factors": ["Mỹ chủ nhà (Seattle)", "Australia phong độ cao nhưng đẳng cấp thấp hơn", "Sức ép khán đài hỗ trợ chủ nhà"],
-      "analysis_form": "Mỹ tận dụng lợi thế sân nhà để áp đặt thế trận. Australia tuy phong độ tốt (70%) nhưng kém Mỹ về chiều sâu lực lượng.",
-      "analysis_history": "3 lần gặp gần đây chia đều thắng-hòa-thua. Lợi thế sân nhà là yếu tố quyết định.",
-      "analysis_prediction": "Mỹ được dự đoán thắng 2-1 trong trận cầu giàu bàn thắng, tiến gần tới tấm vé đi tiếp."
-    },
-    "32": {
-      "prob_a": 46, "prob_draw": 27, "prob_b": 27, "score_a": 2, "score_b": 0, "winner": "Turkey", "confidence": 46,
-      "key_factors": ["Thổ Nhĩ Kỳ chất lượng cá nhân vượt trội", "Paraguay phòng ngự nhưng ít cơ hội", "Tuyến giữa Thổ Nhĩ Kỳ kiểm soát thế trận"],
-      "analysis_form": "Thổ Nhĩ Kỳ (60%) với Calhanoglu và Güler đủ sức chi phối trận đấu trước một Paraguay thiên về phòng ngự.",
-      "analysis_history": "Hai đội chưa từng gặp nhau. Mô hình kỳ vọng Thổ Nhĩ Kỳ áp đảo về cơ hội (1.63 so với 0.75).",
-      "analysis_prediction": "Tôi nâng nhẹ cửa thắng Thổ Nhĩ Kỳ: dự đoán thắng 2-0 nhờ sự khác biệt ở tuyến giữa."
-    },
-    "59": {
-      "prob_a": 30, "prob_draw": 24, "prob_b": 46, "score_a": 1, "score_b": 2, "winner": "United States", "confidence": 42,
-      "key_factors": ["Mỹ chủ nhà, kỳ vọng bàn thắng cao", "Thổ Nhĩ Kỳ chất lượng nhưng phải làm khách", "Trận có thể quyết định ngôi đầu bảng D"],
-      "analysis_form": "Mỹ với lợi thế sân nhà và hàng công kỳ vọng gần 1.9 bàn được đặt cửa trên, dù Thổ Nhĩ Kỳ (60%) là đối thủ khó chịu.",
-      "analysis_history": "4 lần gặp Thổ Nhĩ Kỳ nhỉnh hơn (2 thắng), nhưng bối cảnh sân nhà lần này thuộc về Mỹ.",
-      "analysis_prediction": "Tôi giữ Mỹ ở cửa trên nhờ sân nhà, nhưng hạ nhẹ xuống 46% vì chất lượng Thổ Nhĩ Kỳ: dự đoán Mỹ thắng 2-1."
-    },
-    "60": {
-      "prob_a": 33, "prob_draw": 23, "prob_b": 44, "score_a": 1, "score_b": 2, "winner": "Australia", "confidence": 44,
-      "key_factors": ["Australia phong độ & kỳ vọng bàn thắng vượt trội", "Paraguay bế tắc trên hàng công (0.48 bàn kỳ vọng)", "Australia cần điểm để đi tiếp"],
-      "analysis_form": "Australia (70%) sung sức hơn hẳn Paraguay vốn ghi bàn rất khó khăn. Mô hình kỳ vọng Australia áp đảo (1.88 so với 0.48).",
-      "analysis_history": "5 lần gặp Paraguay chưa từng thắng (3 hòa, 2 thua). Lịch sử nghiêng về Australia.",
-      "analysis_prediction": "Australia được dự đoán thắng 2-1, vượt qua Paraguay để giành vé đi tiếp."
-    },
-    "6": {
-      "prob_a": 47, "prob_draw": 27, "prob_b": 26, "score_a": 2, "score_b": 1, "winner": "Brazil", "confidence": 42,
-      "key_factors": ["Brazil đẳng cấp cao nhưng Morocco đang có phong độ xuất sắc (85%)", "Morocco là á quân tinh thần World Cup 2022", "Trận cân não, ít bàn theo kỳ vọng"],
-      "analysis_form": "Brazil (65%) vẫn là Brazil về tên tuổi, nhưng Morocco đang bay cao với 8 thắng/10 trận và ký ức hạng tư World Cup 2022 còn nguyên vẹn.",
-      "analysis_history": "3 lần gặp Brazil thắng 2, thua 1 (gồm thất bại giao hữu 2023). Morocco không hề ngán Selecao.",
-      "analysis_prediction": "Đây là trận hay nhất vòng mở màn bảng C. Tôi nghiêng rất nhẹ về đẳng cấp Brazil: dự đoán thắng 2-1, nhưng Morocco hoàn toàn có thể gây sốc."
-    },
-    "7": {
-      "prob_a": 33, "prob_draw": 24, "prob_b": 43, "score_a": 1, "score_b": 2, "winner": "Scotland", "confidence": 42,
-      "key_factors": ["Scotland đẳng cấp châu Âu cao hơn", "Phong độ 85% của Haiti đến từ đối thủ yếu (CONCACAF)", "Scotland cần khởi đầu tốt"],
-      "analysis_form": "Haiti có phong độ ấn tượng trên giấy tờ (85%) nhưng phần lớn trước các đối thủ yếu. Scotland (35%) trồi sụt song có nền tảng và kinh nghiệm châu Âu vượt trội.",
-      "analysis_history": "Hai đội chưa từng gặp nhau. Mô hình đặt Scotland cửa trên nhờ chỉ số sức mạnh dài hạn.",
-      "analysis_prediction": "Tôi tin vào đẳng cấp Scotland: dự đoán thắng 2-1, dù Haiti giàu thể lực có thể khiến trận đấu giàu bàn thắng."
-    },
-    "30": {
-      "prob_a": 27, "prob_draw": 26, "prob_b": 47, "score_a": 1, "score_b": 2, "winner": "Morocco", "confidence": 48,
-      "key_factors": ["Morocco vượt trội về phong độ & đẳng cấp", "Scotland phòng ngự nhưng thiếu hỏa lực", "Morocco hướng tới ngôi đầu bảng"],
-      "analysis_form": "Morocco (85%) áp đảo Scotland (35%) cả về phong độ lẫn chất lượng đội hình. Đoàn quân Bắc Phi tự tin sau kỳ World Cup lịch sử.",
-      "analysis_history": "Lần duy nhất gặp nhau (1998) Morocco thắng. Mọi chỉ số đều ủng hộ đại diện châu Phi.",
-      "analysis_prediction": "Morocco được dự đoán thắng 2-1, củng cố vị thế ứng viên đi sâu của bảng C."
-    },
-    "31": {
-      "prob_a": 66, "prob_draw": 19, "prob_b": 15, "score_a": 3, "score_b": 0, "winner": "Brazil", "confidence": 60,
-      "key_factors": ["Brazil vượt trội toàn diện", "Haiti chênh lệch lớn về đẳng cấp", "Kỳ vọng bàn thắng nghiêng hẳn Brazil"],
-      "analysis_form": "Brazil thừa sức áp đặt thế trận trước Haiti dù phong độ Selecao chỉ ở mức 65%. Chất lượng cá nhân là khác biệt quá lớn.",
-      "analysis_history": "3 lần gặp Brazil thắng cả 3, không thủng lưới. Lịch sử và đẳng cấp đều một chiều.",
-      "analysis_prediction": "Brazil được dự đoán thắng đậm 3-0, phô diễn sức mạnh tấn công trước đối thủ yếu nhất bảng."
-    },
-    "51": {
-      "prob_a": 19, "prob_draw": 22, "prob_b": 59, "score_a": 0, "score_b": 2, "winner": "Brazil", "confidence": 57,
-      "key_factors": ["Brazil áp đảo lịch sử đối đầu (8 thắng/10)", "Scotland yếu hơn rõ rệt", "Nắng nóng Miami (~29°C) buộc Brazil đá chậm, kiểm soát"],
-      "analysis_form": "Brazil (65%) vượt xa Scotland (35%) về mọi mặt. Cái nóng ẩm Miami thực ra hợp với lối chơi cầm bóng thong thả của Selecao.",
-      "analysis_history": "10 lần gặp Scotland chỉ hòa 2, thua 8, chưa từng thắng Brazil. Áp lực tâm lý đè nặng đội bóng áo xanh.",
-      "analysis_prediction": "Brazil được dự đoán thắng 2-0, gần như chắc suất đi tiếp với ngôi đầu bảng C."
-    },
-    "52": {
-      "prob_a": 60, "prob_draw": 22, "prob_b": 18, "score_a": 2, "score_b": 0, "winner": "Morocco", "confidence": 52,
-      "key_factors": ["Morocco đẳng cấp & phong độ vượt trội", "Haiti đã đuối sức cuối vòng bảng", "Morocco cần thắng để chắc vé"],
-      "analysis_form": "Morocco (85%) với hàng thủ kỷ luật và tuyến giữa chất lượng hơn hẳn Haiti. Đây là cơ hội để đại diện châu Phi giành 3 điểm quan trọng.",
-      "analysis_history": "Hai đội chưa từng gặp nhau. Mô hình kỳ vọng Morocco kiểm soát và thắng cách biệt.",
-      "analysis_prediction": "Morocco được dự đoán thắng 2-0, hướng tới vòng knockout với vị thế thuận lợi."
-    },
-    "9": {
-      "prob_a": 70, "prob_draw": 18, "prob_b": 12, "score_a": 3, "score_b": 0, "winner": "Germany", "confidence": 62,
-      "key_factors": ["Đức vượt trội toàn diện", "Curaçao lần đầu dự World Cup, chênh lệch lớn", "Sân Houston mái che — Đức đá kỹ thuật thoải mái"],
-      "analysis_form": "Đức (75%) là một trong những ứng viên hàng đầu, áp đảo hoàn toàn tân binh Curaçao dù đảo quốc Caribe có phong độ tốt trước đối thủ yếu.",
-      "analysis_history": "Hai đội chưa từng gặp nhau. Sự chênh lệch về đẳng cấp gần như tuyệt đối.",
-      "analysis_prediction": "Đức được dự đoán thắng đậm 3-0 trong môi trường mái che lý tưởng, khẳng định tham vọng vô địch."
-    },
-    "11": {
-      "prob_a": 34, "prob_draw": 24, "prob_b": 42, "score_a": 0, "score_b": 1, "winner": "Ecuador", "confidence": 40,
-      "key_factors": ["Ecuador phòng ngự chắc chắn, kỷ luật", "Bờ Biển Ngà phong độ tốt (80%) nhưng hàng thủ Ecuador khó xuyên phá", "Trận ít bàn thắng"],
-      "analysis_form": "Bờ Biển Ngà (80%) sung sức nhưng Ecuador (60%) nổi tiếng với hệ thống phòng ngự kỷ luật và những trận đấu ít bàn.",
-      "analysis_history": "Hai đội chưa từng gặp nhau. Mô hình đặt Ecuador cửa trên nhờ nền tảng phòng ngự.",
-      "analysis_prediction": "Tôi nghiêng về Ecuador trong một trận chặt chẽ: dự đoán thắng 1-0 nhờ sự chắc chắn nơi hàng thủ."
-    },
-    "34": {
-      "prob_a": 57, "prob_draw": 23, "prob_b": 20, "score_a": 2, "score_b": 1, "winner": "Germany", "confidence": 50,
-      "key_factors": ["Đức đẳng cấp cao hơn", "Bờ Biển Ngà giàu thể lực, khó chịu", "Đức kiểm soát thế trận"],
-      "analysis_form": "Đức (75%) hơn Bờ Biển Ngà về chất lượng cá nhân và kinh nghiệm, dù đại diện châu Phi đang có phong độ ấn tượng (80%).",
-      "analysis_history": "Lần gặp duy nhất (2009) hòa. Mô hình nghiêng về Đức nhờ sức mạnh tổng thể.",
-      "analysis_prediction": "Đức được dự đoán thắng 2-1, vượt qua thử thách thể lực từ Bờ Biển Ngà để tiến gần ngôi đầu bảng E."
-    },
-    "35": {
-      "prob_a": 56, "prob_draw": 21, "prob_b": 23, "score_a": 1, "score_b": 0, "winner": "Ecuador", "confidence": 48,
-      "key_factors": ["Ecuador chắc chắn, ít mắc sai lầm", "Curaçao khó ghi bàn trước hàng thủ Ecuador", "Trận đá tối, mát"],
-      "analysis_form": "Ecuador (60%) với lối chơi kỷ luật được đặt cửa trên trước Curaçao, dù tân binh Caribe phong độ tốt (75%).",
-      "analysis_history": "Hai đội chưa từng gặp nhau. Sức mạnh phòng ngự là điểm tựa của Ecuador.",
-      "analysis_prediction": "Ecuador được dự đoán thắng tối thiểu 1-0, giành 3 điểm quan trọng nhờ sự chắc chắn."
-    },
     "55": {
-      "prob_a": 24, "prob_draw": 23, "prob_b": 53, "score_a": 1, "score_b": 2, "winner": "Ivory Coast", "confidence": 48,
-      "key_factors": ["Bờ Biển Ngà đẳng cấp & thể lực vượt trội", "Nắng nóng Philadelphia (~31°C, giữa trưa) — lợi cho đội châu Phi quen nóng", "Curaçao đuối khi nhịp độ cao"],
+      "prob_a": 24,
+      "prob_draw": 23,
+      "prob_b": 53,
+      "score_a": 1,
+      "score_b": 2,
+      "winner": "Ivory Coast",
+      "confidence": 48,
+      "key_factors": [
+        "Bờ Biển Ngà đẳng cấp & thể lực vượt trội",
+        "Nắng nóng Philadelphia (~31°C, giữa trưa) — lợi cho đội châu Phi quen nóng",
+        "Curaçao đuối khi nhịp độ cao"
+      ],
       "analysis_form": "Bờ Biển Ngà (80%) mạnh hơn rõ rệt và cái nóng giữa trưa Philadelphia (~31°C, heat-stress cao) càng có lợi cho thể trạng quen khí hậu nóng của họ.",
       "analysis_history": "Hai đội chưa từng gặp nhau. Mô hình kỳ vọng Bờ Biển Ngà kiểm soát thế trận.",
       "analysis_prediction": "Yếu tố nhiệt độ củng cố lợi thế cho Bờ Biển Ngà: dự đoán thắng 2-1 khi Curaçao hụt hơi trong cái nóng."
     },
     "56": {
-      "prob_a": 27, "prob_draw": 24, "prob_b": 49, "score_a": 1, "score_b": 2, "winner": "Germany", "confidence": 46,
-      "key_factors": ["Đức đẳng cấp vượt trội", "Ecuador phòng ngự chắc nhưng khó cầm Đức cả trận", "Nắng nóng New York (~30°C) buộc Đức kiểm soát nhịp"],
+      "prob_a": 27,
+      "prob_draw": 24,
+      "prob_b": 49,
+      "score_a": 1,
+      "score_b": 2,
+      "winner": "Germany",
+      "confidence": 46,
+      "key_factors": [
+        "Đức đẳng cấp vượt trội",
+        "Ecuador phòng ngự chắc nhưng khó cầm Đức cả trận",
+        "Nắng nóng New York (~30°C) buộc Đức kiểm soát nhịp"
+      ],
       "analysis_form": "Đức (75%) hơn Ecuador (60%) về tấn công, dù hàng thủ Ecuador luôn là thử thách. Cái nóng giữa trưa buộc cả hai tiết kiệm sức.",
       "analysis_history": "Hai lần gặp gần đây Ecuador đều thắng (2013) — lời cảnh báo Đức không nên chủ quan.",
       "analysis_prediction": "Tôi vẫn đặt Đức cửa trên nhờ chất lượng: dự đoán thắng 2-1, nhưng Ecuador đủ sức ghi bàn và gây khó."
     },
-    "10": {
-      "prob_a": 39, "prob_draw": 26, "prob_b": 35, "score_a": 2, "score_b": 1, "winner": "Netherlands", "confidence": 36,
-      "key_factors": ["Hà Lan chiều sâu đội hình tốt hơn", "Nhật Bản phong độ xuất sắc (85%), từng thắng Đức & TBN 2022", "Sân Dallas mái che — kỹ thuật lên ngôi"],
-      "analysis_form": "Hà Lan (55%) phập phù nhưng giàu tài năng, trong khi Nhật Bản (85%) đang là một trong những đội châu Á đáng sợ nhất với khả năng hạ gục ông lớn.",
-      "analysis_history": "3 lần gặp Hà Lan thắng 2, hòa 1. Mô hình thậm chí kỳ vọng Nhật ghi nhiều bàn hơn (2.04 so với 1.11).",
-      "analysis_prediction": "Trận này rất cân bằng. Tôi nghiêng cực nhẹ về chiều sâu Hà Lan: dự đoán thắng 2-1, song Nhật Bản hoàn toàn có thể tạo bất ngờ."
-    },
-    "12": {
-      "prob_a": 42, "prob_draw": 28, "prob_b": 30, "score_a": 1, "score_b": 0, "winner": "Sweden", "confidence": 40,
-      "key_factors": ["Thụy Điển sở hữu dàn tiền đạo chất lượng (Isak, Gyökeres)", "Tunisia chắc chắn, hòa nhiều", "Monterrey ấm (~28°C) — trận đá chậm"],
-      "analysis_form": "Thụy Điển (65%) với hàng công đẳng cấp Premier League được kỳ vọng tạo khác biệt trước một Tunisia (60%) thiên về hòa (6 hòa/10 trận).",
-      "analysis_history": "4 lần gặp Thụy Điển nhỉnh hơn (2 thắng). Mô hình đánh giá đây là trận cân bằng, ít bàn.",
-      "analysis_prediction": "Tôi nâng nhẹ cửa thắng Thụy Điển nhờ chất lượng dứt điểm: dự đoán thắng tối thiểu 1-0 trong trận chặt chẽ."
-    },
-    "33": {
-      "prob_a": 54, "prob_draw": 23, "prob_b": 23, "score_a": 2, "score_b": 1, "winner": "Netherlands", "confidence": 48,
-      "key_factors": ["Hà Lan đẳng cấp nhỉnh hơn", "Thụy Điển nguy hiểm với hàng công sắc bén", "Sân Houston mái che"],
-      "analysis_form": "Hà Lan (55%) và Thụy Điển (65%) đều có vũ khí tấn công tốt, nhưng chiều sâu và kinh nghiệm của Oranje được đánh giá cao hơn.",
-      "analysis_history": "22 lần đối đầu cực kỳ cân bằng (8-6-8). Đây luôn là cặp đấu giàu duyên nợ.",
-      "analysis_prediction": "Tôi đặt Hà Lan cửa trên nhờ đẳng cấp: dự đoán thắng 2-1 trong trận cầu cởi mở, nhiều bàn thắng."
-    },
-    "36": {
-      "prob_a": 22, "prob_draw": 25, "prob_b": 53, "score_a": 1, "score_b": 2, "winner": "Japan", "confidence": 50,
-      "key_factors": ["Nhật Bản vượt trội về phong độ & chất lượng", "Tunisia phòng ngự nhưng khó cầm hòa", "Nhật kiểm soát thế trận"],
-      "analysis_form": "Nhật Bản (85%) áp đảo Tunisia (60%) về tốc độ và khả năng phối hợp. Đại diện châu Á tự tin hướng tới ngôi đầu bảng F.",
-      "analysis_history": "5 lần gặp Nhật thắng 4. Lịch sử và phong độ đều nghiêng hẳn về Samurai Xanh.",
-      "analysis_prediction": "Nhật Bản được dự đoán thắng 2-1, tận dụng sự vượt trội để giành vé đi tiếp sớm."
-    },
     "57": {
-      "prob_a": 54, "prob_draw": 21, "prob_b": 25, "score_a": 2, "score_b": 1, "winner": "Japan", "confidence": 50,
-      "key_factors": ["Nhật Bản phong độ & kỳ vọng bàn thắng cao", "Thụy Điển nguy hiểm nhưng kém ổn định", "Nhật chơi pressing nhịp độ cao"],
+      "prob_a": 54,
+      "prob_draw": 21,
+      "prob_b": 25,
+      "score_a": 2,
+      "score_b": 1,
+      "winner": "Japan",
+      "confidence": 50,
+      "key_factors": [
+        "Nhật Bản phong độ & kỳ vọng bàn thắng cao",
+        "Thụy Điển nguy hiểm nhưng kém ổn định",
+        "Nhật chơi pressing nhịp độ cao"
+      ],
       "analysis_form": "Nhật Bản (85%) với hàng công kỳ vọng tới 2.16 bàn được đặt cửa trên trước Thụy Điển (65%) dù đối thủ có cá nhân tốt.",
       "analysis_history": "4 lần gặp Nhật chưa thắng (3 hòa, 1 thua) nhưng phong độ hiện tại đảo ngược tương quan.",
       "analysis_prediction": "Nhật Bản được dự đoán thắng 2-1, khẳng định vị thế ứng viên đi sâu của giải."
     },
     "58": {
-      "prob_a": 24, "prob_draw": 24, "prob_b": 52, "score_a": 1, "score_b": 2, "winner": "Netherlands", "confidence": 48,
-      "key_factors": ["Hà Lan đẳng cấp vượt trội", "Tunisia khó tạo đột biến", "Kansas City ấm (~29°C) nhưng đá chiều muộn"],
+      "prob_a": 24,
+      "prob_draw": 24,
+      "prob_b": 52,
+      "score_a": 1,
+      "score_b": 2,
+      "winner": "Netherlands",
+      "confidence": 48,
+      "key_factors": [
+        "Hà Lan đẳng cấp vượt trội",
+        "Tunisia khó tạo đột biến",
+        "Kansas City ấm (~29°C) nhưng đá chiều muộn"
+      ],
       "analysis_form": "Hà Lan (55%) hơn hẳn Tunisia (60% nhưng nhiều hòa) về chất lượng tấn công và khả năng quyết định trận đấu.",
       "analysis_history": "3 lần gặp Hà Lan chưa thua (2 hòa, 1 thắng). Mô hình đặt Oranje cửa trên rõ rệt.",
       "analysis_prediction": "Hà Lan được dự đoán thắng 2-1, khép lại vòng bảng với ngôi đầu trong tầm tay."
     },
-    "13": {
-      "prob_a": 72, "prob_draw": 19, "prob_b": 9, "score_a": 3, "score_b": 0, "winner": "Spain", "confidence": 65,
-      "key_factors": ["Tây Ban Nha phong độ hoàn hảo (95%), ĐKVĐ châu Âu", "Cabo Verde lần đầu dự World Cup", "Chênh lệch đẳng cấp gần như tuyệt đối"],
-      "analysis_form": "Tây Ban Nha thắng 9/10 trận gần nhất, sở hữu lối chơi kiểm soát thượng thừa. Cabo Verde là câu chuyện cổ tích nhưng quá chênh lệch về trình độ.",
-      "analysis_history": "Hai đội chưa từng gặp nhau. Mọi chỉ số đều một chiều về phía La Roja.",
-      "analysis_prediction": "Tây Ban Nha được dự đoán thắng đậm 3-0, khởi đầu chiến dịch với tư cách ứng viên vô địch số một."
+    "59": {
+      "prob_a": 30,
+      "prob_draw": 24,
+      "prob_b": 46,
+      "score_a": 1,
+      "score_b": 2,
+      "winner": "United States",
+      "confidence": 42,
+      "key_factors": [
+        "Mỹ chủ nhà, kỳ vọng bàn thắng cao",
+        "Thổ Nhĩ Kỳ chất lượng nhưng phải làm khách",
+        "Trận có thể quyết định ngôi đầu bảng D"
+      ],
+      "analysis_form": "Mỹ với lợi thế sân nhà và hàng công kỳ vọng gần 1.9 bàn được đặt cửa trên, dù Thổ Nhĩ Kỳ (60%) là đối thủ khó chịu.",
+      "analysis_history": "4 lần gặp Thổ Nhĩ Kỳ nhỉnh hơn (2 thắng), nhưng bối cảnh sân nhà lần này thuộc về Mỹ.",
+      "analysis_prediction": "Tôi giữ Mỹ ở cửa trên nhờ sân nhà, nhưng hạ nhẹ xuống 46% vì chất lượng Thổ Nhĩ Kỳ: dự đoán Mỹ thắng 2-1."
     },
-    "15": {
-      "prob_a": 22, "prob_draw": 23, "prob_b": 55, "score_a": 0, "score_b": 1, "winner": "Uruguay", "confidence": 48,
-      "key_factors": ["Uruguay đẳng cấp & kinh nghiệm vượt trội", "Saudi Arabia khó tạo bất ngờ", "Uruguay đá thực dụng, ít bàn"],
-      "analysis_form": "Uruguay (45%, nhiều hòa) tuy phong độ chưa cao nhưng vượt trội Saudi Arabia về bản lĩnh và chất lượng. La Celeste thường thắng tối thiểu.",
-      "analysis_history": "3 lần gặp chia đều, nhưng đẳng cấp World Cup của Uruguay là khác biệt lớn.",
-      "analysis_prediction": "Uruguay được dự đoán thắng 1-0, giành 3 điểm theo cách thực dụng quen thuộc."
-    },
-    "37": {
-      "prob_a": 67, "prob_draw": 19, "prob_b": 14, "score_a": 2, "score_b": 0, "winner": "Spain", "confidence": 60,
-      "key_factors": ["Tây Ban Nha vượt trội toàn diện", "Saudi Arabia chênh lệch lớn về trình độ", "TBN kiểm soát bóng áp đảo"],
-      "analysis_form": "Tây Ban Nha (95%) tiếp tục là cỗ máy vận hành trơn tru, áp đảo hoàn toàn Saudi Arabia (45%).",
-      "analysis_history": "3 lần gặp TBN thắng cả 3, không thủng lưới. Lịch sử và đẳng cấp đều một chiều.",
-      "analysis_prediction": "Tây Ban Nha được dự đoán thắng 2-0, gần như chắc suất đi tiếp với ngôi đầu bảng H."
-    },
-    "39": {
-      "prob_a": 60, "prob_draw": 24, "prob_b": 16, "score_a": 2, "score_b": 0, "winner": "Uruguay", "confidence": 50,
-      "key_factors": ["Uruguay đẳng cấp & kinh nghiệm vượt trội", "Cabo Verde khó cầm cự cả trận", "Uruguay cần thắng để chắc vé"],
-      "analysis_form": "Uruguay (45%) dù phong độ chưa cao vẫn hơn hẳn tân binh Cabo Verde về bản lĩnh sân chơi lớn và chiều sâu đội hình.",
-      "analysis_history": "Hai đội chưa từng gặp nhau. Mô hình đặt Uruguay cửa trên rõ rệt.",
-      "analysis_prediction": "Uruguay được dự đoán thắng 2-0, củng cố cơ hội đi tiếp tại bảng H."
-    },
-    "63": {
-      "prob_a": 30, "prob_draw": 31, "prob_b": 39, "score_a": 1, "score_b": 1, "winner": "Hòa", "confidence": 34,
-      "key_factors": ["Trận cân bằng, xác suất hòa cao", "Cả hai cùng cần điểm ở lượt cuối", "Saudi Arabia nhỉnh hơn đôi chút"],
-      "analysis_form": "Cabo Verde (55%) và Saudi Arabia (45%) khá cân tài, đây hứa hẹn trận đấu căng thẳng nơi cả hai đều thận trọng.",
-      "analysis_history": "Hai đội chưa từng gặp nhau. Mô hình cho thấy thế cân bằng với xác suất hòa rất cao (31%).",
-      "analysis_prediction": "Tôi dự đoán một trận hòa 1-1 — kết quả phản ánh sự cân bằng và áp lực phải có điểm của cả hai đội."
-    },
-    "64": {
-      "prob_a": 24, "prob_draw": 23, "prob_b": 53, "score_a": 1, "score_b": 2, "winner": "Spain", "confidence": 48,
-      "key_factors": ["Tây Ban Nha đẳng cấp vượt trội", "Độ cao Guadalajara (1.566m) hỗ trợ nhẹ Uruguay (quen Nam Mỹ)", "TBN kiểm soát bóng giảm tác động thể lực"],
-      "analysis_form": "Tây Ban Nha (95%) áp đảo Uruguay (45%) về phong độ. Độ cao Guadalajara có thể giúp Uruguay đôi chút nhưng lối chơi cầm bóng của TBN hạn chế hao tổn thể lực.",
-      "analysis_history": "10 lần gặp cực cân bằng (5 hòa, 5 thắng Uruguay) — nhưng đó là Uruguay thời hoàng kim, còn hiện tại TBN vượt trội.",
-      "analysis_prediction": "Tôi đặt Tây Ban Nha cửa trên: dự đoán thắng 2-1, dù Uruguay đủ bản lĩnh để ghi bàn."
-    },
-    "14": {
-      "prob_a": 44, "prob_draw": 28, "prob_b": 28, "score_a": 2, "score_b": 1, "winner": "Belgium", "confidence": 36,
-      "key_factors": ["Bỉ vẫn nhiều tài năng dù phong độ sa sút (30%)", "Ai Cập nguy hiểm với Salah (phong độ 75%)", "Trận khó lường"],
-      "analysis_form": "Bỉ đang khủng hoảng phong độ (2 thắng/10) khi thế hệ vàng dần khép lại, trong khi Ai Cập (75%) với Salah đang sung sức và tự tin.",
-      "analysis_history": "4 lần gặp Bỉ thắng 3, nhưng phong độ hiện tại thu hẹp khoảng cách đáng kể.",
-      "analysis_prediction": "Tôi nghiêng nhẹ về cá nhân chất lượng của Bỉ: dự đoán thắng 2-1, song cảnh giác cao độ với Salah — kịch bản hòa rất khả dĩ."
-    },
-    "16": {
-      "prob_a": 42, "prob_draw": 28, "prob_b": 30, "score_a": 1, "score_b": 0, "winner": "Iran", "confidence": 38,
-      "key_factors": ["Iran phòng ngự kỷ luật bậc nhất châu Á (phong độ 90%)", "Phong độ New Zealand bị thổi phồng bởi đối thủ OFC yếu", "Trận ít bàn"],
-      "analysis_form": "Iran (90%) sở hữu hàng thủ cực kỳ chắc chắn và kinh nghiệm World Cup. Phong độ 85% của New Zealand đến chủ yếu từ các đối thủ yếu khu vực châu Đại Dương.",
-      "analysis_history": "2 lần gặp Iran chưa thua (1 thắng, 1 hòa). Tôi điều chỉnh ngược baseline (vốn đánh giá cao New Zealand) vì cho rằng Elo của New Zealand bị thổi phồng.",
-      "analysis_prediction": "Tôi tin Iran nhỉnh hơn thực chất: dự đoán thắng tối thiểu 1-0 nhờ sự chắc chắn nơi hàng thủ, dù đây là nhận định trái với mô hình thống kê."
-    },
-    "38": {
-      "prob_a": 41, "prob_draw": 28, "prob_b": 31, "score_a": 1, "score_b": 0, "winner": "Belgium", "confidence": 36,
-      "key_factors": ["Bỉ chất lượng cá nhân nhỉnh hơn", "Hàng thủ Iran cực khó xuyên phá", "Trận ít bàn thắng"],
-      "analysis_form": "Bỉ dù sa sút vẫn hơn Iran về tài năng tấn công, nhưng hàng thủ kỷ luật của Iran (90%) là bức tường khó vượt qua.",
-      "analysis_history": "Hai đội chưa từng gặp nhau. Mô hình đánh giá đây là trận cân bằng, ít cơ hội.",
-      "analysis_prediction": "Tôi nghiêng nhẹ về Bỉ nhờ đẳng cấp cá nhân: dự đoán thắng tối thiểu 1-0 trong trận bế tắc, dù Iran đủ sức cầm hòa."
-    },
-    "40": {
-      "prob_a": 34, "prob_draw": 30, "prob_b": 36, "score_a": 0, "score_b": 1, "winner": "Egypt", "confidence": 36,
-      "key_factors": ["Ai Cập đẳng cấp & Salah vượt trội", "Phong độ New Zealand bị thổi phồng", "Trận căng thẳng, ít bàn"],
-      "analysis_form": "Ai Cập (75%) với Salah là đội bóng chất lượng hơn, dù New Zealand (85%) có phong độ tốt nhờ đối thủ yếu khu vực.",
-      "analysis_history": "3 lần gặp New Zealand nhỉnh hơn về lịch sử, nhưng tôi điều chỉnh ngược baseline vì tin Ai Cập mạnh hơn thực chất.",
-      "analysis_prediction": "Tôi nghiêng về Ai Cập nhờ Salah và đẳng cấp: dự đoán thắng tối thiểu 1-0, dù trận đấu có thể rất căng."
-    },
-    "65": {
-      "prob_a": 30, "prob_draw": 31, "prob_b": 39, "score_a": 0, "score_b": 1, "winner": "Iran", "confidence": 34,
-      "key_factors": ["Iran phòng ngự chắc chắn, nhỉnh hơn", "Cả hai đá thực dụng, ít bàn", "Seattle mát (~17°C) — thuận lợi đá phòng ngự"],
-      "analysis_form": "Iran (90%) và Ai Cập (75%) đều ưu tiên sự chắc chắn, hứa hẹn trận đấu căng thẳng, ít cơ hội rõ rệt.",
-      "analysis_history": "Lần gặp duy nhất (2000) hòa. Mô hình cho thấy thế cân bằng với xác suất hòa cao.",
-      "analysis_prediction": "Tôi nghiêng cực nhẹ về Iran nhờ hàng thủ tốt hơn: dự đoán thắng 1-0, dù kịch bản hòa hoàn toàn khả dĩ."
-    },
-    "66": {
-      "prob_a": 32, "prob_draw": 24, "prob_b": 44, "score_a": 1, "score_b": 2, "winner": "Belgium", "confidence": 38,
-      "key_factors": ["Bỉ chất lượng cá nhân vượt trội", "Phong độ New Zealand bị thổi phồng bởi đối thủ yếu", "Bỉ cần thắng để đi tiếp"],
-      "analysis_form": "Bỉ dù phong độ kém (30%) vẫn sở hữu dàn cầu thủ đẳng cấp châu Âu vượt xa New Zealand. Tôi điều chỉnh ngược baseline (vốn đánh giá cao New Zealand).",
-      "analysis_history": "Hai đội chưa từng gặp nhau. Sự chênh lệch về chất lượng cá nhân là yếu tố quyết định.",
-      "analysis_prediction": "Tôi tin vào đẳng cấp Bỉ ở trận cuối quyết định: dự đoán thắng 2-1, vượt qua New Zealand để giành vé."
-    },
-    "17": {
-      "prob_a": 50, "prob_draw": 26, "prob_b": 24, "score_a": 2, "score_b": 1, "winner": "France", "confidence": 40,
-      "key_factors": ["Pháp chiều sâu đội hình hàng đầu thế giới", "Senegal cực mạnh (85%), nhà vô địch AFCON", "Nắng nóng New York (~30°C) cản nhịp độ"],
-      "analysis_form": "Pháp (65%) với Mbappé dẫn dắt vẫn là ứng viên vô địch, nhưng Senegal (85%) đang ở phong độ đỉnh cao và đầy thể lực — một trong những trận hay nhất vòng bảng.",
-      "analysis_history": "2 lần gặp Pháp đều thắng, nhưng Senegal hiện tại mạnh hơn nhiều so với quá khứ.",
-      "analysis_prediction": "Tôi nghiêng nhẹ về chiều sâu của Pháp: dự đoán thắng 2-1, song Senegal hoàn toàn đủ sức gây bất ngờ, nhất là trong cái nóng."
-    },
-    "18": {
-      "prob_a": 28, "prob_draw": 25, "prob_b": 47, "score_a": 1, "score_b": 2, "winner": "Norway", "confidence": 46,
-      "key_factors": ["Na Uy với Haaland & Ødegaard vượt trội", "Iraq giàu thể lực nhưng kém đẳng cấp", "Na Uy lần đầu dự World Cup sau nhiều năm, quyết tâm cao"],
-      "analysis_form": "Na Uy (60%) sở hữu hai ngôi sao đẳng cấp thế giới là Haaland và Ødegaard, tạo khác biệt lớn so với Iraq (60%).",
-      "analysis_history": "Hai đội chưa từng gặp nhau. Mô hình đặt Na Uy cửa trên nhờ chất lượng cá nhân.",
-      "analysis_prediction": "Na Uy được dự đoán thắng 2-1, với Haaland là chìa khóa mở toang hàng thủ Iraq."
-    },
-    "42": {
-      "prob_a": 64, "prob_draw": 19, "prob_b": 17, "score_a": 2, "score_b": 0, "winner": "France", "confidence": 56,
-      "key_factors": ["Pháp vượt trội toàn diện", "Iraq chênh lệch lớn về đẳng cấp", "Pháp kiểm soát thế trận"],
-      "analysis_form": "Pháp (65%) với chiều sâu đội hình khủng khiếp áp đảo hoàn toàn Iraq. Đây là cơ hội để Les Bleus phô diễn sức mạnh.",
-      "analysis_history": "Hai đội chưa từng gặp nhau. Mọi chỉ số đều nghiêng hẳn về Pháp.",
-      "analysis_prediction": "Pháp được dự đoán thắng 2-0, tiến gần tới ngôi đầu bảng I một cách thuyết phục."
-    },
-    "43": {
-      "prob_a": 35, "prob_draw": 29, "prob_b": 36, "score_a": 1, "score_b": 2, "winner": "Senegal", "confidence": 36,
-      "key_factors": ["Senegal phong độ đỉnh cao (85%)", "Na Uy nguy hiểm với Haaland", "Trận cân bằng, quyết định ngôi nhì bảng"],
-      "analysis_form": "Senegal (85%) đang bay cao và giàu thể lực, trong khi Na Uy (60%) phụ thuộc nhiều vào khoảnh khắc của Haaland.",
-      "analysis_history": "Lần gặp duy nhất (2006) Senegal thắng. Mô hình đánh giá đây là trận 50-50.",
-      "analysis_prediction": "Tôi nghiêng cực nhẹ về phong độ và thể lực của Senegal: dự đoán thắng 2-1 trong trận giàu kịch tính."
+    "60": {
+      "prob_a": 33,
+      "prob_draw": 23,
+      "prob_b": 44,
+      "score_a": 1,
+      "score_b": 2,
+      "winner": "Australia",
+      "confidence": 44,
+      "key_factors": [
+        "Australia phong độ & kỳ vọng bàn thắng vượt trội",
+        "Paraguay bế tắc trên hàng công (0.48 bàn kỳ vọng)",
+        "Australia cần điểm để đi tiếp"
+      ],
+      "analysis_form": "Australia (70%) sung sức hơn hẳn Paraguay vốn ghi bàn rất khó khăn. Mô hình kỳ vọng Australia áp đảo (1.88 so với 0.48).",
+      "analysis_history": "5 lần gặp Paraguay chưa từng thắng (3 hòa, 2 thua). Lịch sử nghiêng về Australia.",
+      "analysis_prediction": "Australia được dự đoán thắng 2-1, vượt qua Paraguay để giành vé đi tiếp."
     },
     "61": {
-      "prob_a": 25, "prob_draw": 22, "prob_b": 53, "score_a": 1, "score_b": 2, "winner": "France", "confidence": 48,
-      "key_factors": ["Pháp đẳng cấp vượt trội", "Na Uy nguy hiểm với Haaland nhưng thiếu chiều sâu", "Pháp hướng tới ngôi đầu bảng"],
+      "prob_a": 25,
+      "prob_draw": 22,
+      "prob_b": 53,
+      "score_a": 1,
+      "score_b": 2,
+      "winner": "France",
+      "confidence": 48,
+      "key_factors": [
+        "Pháp đẳng cấp vượt trội",
+        "Na Uy nguy hiểm với Haaland nhưng thiếu chiều sâu",
+        "Pháp hướng tới ngôi đầu bảng"
+      ],
       "analysis_form": "Pháp (65%) với chiều sâu vượt trội được đặt cửa trên, dù Na Uy (60%) luôn tiềm ẩn nguy hiểm từ Haaland.",
       "analysis_history": "16 lần gặp lịch sử khá cân bằng (Na Uy 5 thắng), nhưng Pháp hiện tại ở đẳng cấp cao hơn hẳn.",
       "analysis_prediction": "Tôi đặt Pháp cửa trên nhờ chất lượng đồng đều: dự đoán thắng 2-1, dù Haaland đủ sức ghi bàn danh dự."
     },
     "62": {
-      "prob_a": 50, "prob_draw": 27, "prob_b": 23, "score_a": 2, "score_b": 0, "winner": "Senegal", "confidence": 46,
-      "key_factors": ["Senegal đẳng cấp & phong độ vượt trội", "Iraq khó tạo đột biến", "Senegal cần thắng để chắc vé"],
+      "prob_a": 50,
+      "prob_draw": 27,
+      "prob_b": 23,
+      "score_a": 2,
+      "score_b": 0,
+      "winner": "Senegal",
+      "confidence": 46,
+      "key_factors": [
+        "Senegal đẳng cấp & phong độ vượt trội",
+        "Iraq khó tạo đột biến",
+        "Senegal cần thắng để chắc vé"
+      ],
       "analysis_form": "Senegal (85%) hơn hẳn Iraq (60%) về chất lượng và thể lực, hướng tới một chiến thắng để đảm bảo tấm vé đi tiếp.",
       "analysis_history": "Hai đội chưa từng gặp nhau. Mô hình kỳ vọng Senegal kiểm soát thế trận.",
       "analysis_prediction": "Senegal được dự đoán thắng 2-0, khẳng định vị thế ứng viên đi sâu của bảng I."
     },
-    "19": {
-      "prob_a": 62, "prob_draw": 20, "prob_b": 18, "score_a": 2, "score_b": 0, "winner": "Argentina", "confidence": 56,
-      "key_factors": ["Argentina ĐKVĐ thế giới, đẳng cấp vượt trội", "Algeria khó chịu nhưng kém một bậc", "Messi & đồng đội quyết tâm bảo vệ ngôi vương"],
-      "analysis_form": "Argentina (70%) là nhà đương kim vô địch với bộ khung dày dạn, áp đảo Algeria (70%) về kinh nghiệm và chất lượng dù mô hình kỳ vọng bàn thắng khá cân.",
-      "analysis_history": "Lần gặp duy nhất (2007) Argentina thắng. Đẳng cấp World Cup của Albiceleste là khác biệt lớn.",
-      "analysis_prediction": "Argentina được dự đoán thắng 2-0, khởi đầu hành trình bảo vệ ngôi vương đầy thuyết phục."
+    "63": {
+      "prob_a": 30,
+      "prob_draw": 31,
+      "prob_b": 39,
+      "score_a": 1,
+      "score_b": 1,
+      "winner": "Hòa",
+      "confidence": 34,
+      "key_factors": [
+        "Trận cân bằng, xác suất hòa cao",
+        "Cả hai cùng cần điểm ở lượt cuối",
+        "Saudi Arabia nhỉnh hơn đôi chút"
+      ],
+      "analysis_form": "Cabo Verde (55%) và Saudi Arabia (45%) khá cân tài, đây hứa hẹn trận đấu căng thẳng nơi cả hai đều thận trọng.",
+      "analysis_history": "Hai đội chưa từng gặp nhau. Mô hình cho thấy thế cân bằng với xác suất hòa rất cao (31%).",
+      "analysis_prediction": "Tôi dự đoán một trận hòa 1-1 — kết quả phản ánh sự cân bằng và áp lực phải có điểm của cả hai đội."
     },
-    "20": {
-      "prob_a": 46, "prob_draw": 24, "prob_b": 30, "score_a": 2, "score_b": 1, "winner": "Austria", "confidence": 40,
-      "key_factors": ["Áo chất lượng cá nhân tốt (Arnautović, Sabitzer)", "Jordan bất ngờ thú vị (á quân Asian Cup)", "Trận khó lường"],
-      "analysis_form": "Áo (60%) nhỉnh hơn về đẳng cấp châu Âu, nhưng Jordan (70%) đang là hiện tượng sau khi vào chung kết Asian Cup, không dễ bị bắt nạt.",
-      "analysis_history": "Hai đội chưa từng gặp nhau. Mô hình thậm chí kỳ vọng Jordan ghi nhiều bàn hơn.",
-      "analysis_prediction": "Tôi nghiêng về Áo nhờ chất lượng cá nhân: dự đoán thắng 2-1, song Jordan đủ sức khiến trận đấu giàu bàn thắng."
+    "64": {
+      "prob_a": 24,
+      "prob_draw": 23,
+      "prob_b": 53,
+      "score_a": 1,
+      "score_b": 2,
+      "winner": "Spain",
+      "confidence": 48,
+      "key_factors": [
+        "Tây Ban Nha đẳng cấp vượt trội",
+        "Độ cao Guadalajara (1.566m) hỗ trợ nhẹ Uruguay (quen Nam Mỹ)",
+        "TBN kiểm soát bóng giảm tác động thể lực"
+      ],
+      "analysis_form": "Tây Ban Nha (95%) áp đảo Uruguay (45%) về phong độ. Độ cao Guadalajara có thể giúp Uruguay đôi chút nhưng lối chơi cầm bóng của TBN hạn chế hao tổn thể lực.",
+      "analysis_history": "10 lần gặp cực cân bằng (5 hòa, 5 thắng Uruguay) — nhưng đó là Uruguay thời hoàng kim, còn hiện tại TBN vượt trội.",
+      "analysis_prediction": "Tôi đặt Tây Ban Nha cửa trên: dự đoán thắng 2-1, dù Uruguay đủ bản lĩnh để ghi bàn."
     },
-    "41": {
-      "prob_a": 58, "prob_draw": 21, "prob_b": 21, "score_a": 2, "score_b": 0, "winner": "Argentina", "confidence": 50,
-      "key_factors": ["Argentina đẳng cấp ĐKVĐ", "Áo khó cản dàn sao Argentina", "Argentina kiểm soát thế trận"],
-      "analysis_form": "Argentina (70%) với đội hình ngôi sao vượt trội Áo (60%) về mọi tuyến, hướng tới chiến thắng để sớm đoạt vé.",
-      "analysis_history": "2 lần gặp gần đây Argentina chưa thua. Đẳng cấp là yếu tố quyết định.",
-      "analysis_prediction": "Argentina được dự đoán thắng 2-0, củng cố ngôi đầu bảng J một cách chắc chắn."
+    "65": {
+      "prob_a": 30,
+      "prob_draw": 31,
+      "prob_b": 39,
+      "score_a": 0,
+      "score_b": 1,
+      "winner": "Iran",
+      "confidence": 34,
+      "key_factors": [
+        "Iran phòng ngự chắc chắn, nhỉnh hơn",
+        "Cả hai đá thực dụng, ít bàn",
+        "Seattle mát (~17°C) — thuận lợi đá phòng ngự"
+      ],
+      "analysis_form": "Iran (90%) và Ai Cập (75%) đều ưu tiên sự chắc chắn, hứa hẹn trận đấu căng thẳng, ít cơ hội rõ rệt.",
+      "analysis_history": "Lần gặp duy nhất (2000) hòa. Mô hình cho thấy thế cân bằng với xác suất hòa cao.",
+      "analysis_prediction": "Tôi nghiêng cực nhẹ về Iran nhờ hàng thủ tốt hơn: dự đoán thắng 1-0, dù kịch bản hòa hoàn toàn khả dĩ."
     },
-    "44": {
-      "prob_a": 35, "prob_draw": 30, "prob_b": 35, "score_a": 1, "score_b": 1, "winner": "Hòa", "confidence": 32,
-      "key_factors": ["Trận cân bằng tuyệt đối", "Cả hai cùng phong độ tốt (70%)", "Xác suất hòa cao"],
-      "analysis_form": "Jordan (70%) và Algeria (70%) ngang tài ngang sức, cùng giàu khát khao kiếm điểm, hứa hẹn trận đấu căng thẳng và thận trọng.",
-      "analysis_history": "2 lần gặp chia điểm (1 hòa, 1 thắng Algeria). Mô hình cho thấy thế cân bằng hoàn toàn.",
-      "analysis_prediction": "Tôi dự đoán một trận hòa 1-1 — kết quả phản ánh sự cân bằng và tính chất quan trọng của trận đấu."
-    },
-    "71": {
-      "prob_a": 36, "prob_draw": 27, "prob_b": 37, "score_a": 1, "score_b": 2, "winner": "Austria", "confidence": 34,
-      "key_factors": ["Áo chất lượng cá nhân nhỉnh hơn", "Algeria nguy hiểm, kỳ vọng bàn thắng cao", "Trận quyết định suất đi tiếp"],
-      "analysis_form": "Áo (60%) và Algeria (70%) đều có vũ khí tấn công, nhưng kinh nghiệm châu Âu của Áo được đánh giá nhỉnh hơn ở thời khắc quyết định.",
-      "analysis_history": "Lần gặp duy nhất (1982) Áo thắng. Mô hình đánh giá đây là trận cân bằng.",
-      "analysis_prediction": "Tôi nghiêng cực nhẹ về Áo: dự đoán thắng 2-1 trong trận cầu căng thẳng tranh vé đi tiếp."
-    },
-    "72": {
-      "prob_a": 16, "prob_draw": 21, "prob_b": 63, "score_a": 0, "score_b": 2, "winner": "Argentina", "confidence": 60,
-      "key_factors": ["Argentina đẳng cấp ĐKVĐ áp đảo", "Jordan chênh lệch lớn về trình độ", "Argentina hướng tới ngôi đầu tuyệt đối"],
-      "analysis_form": "Argentina (70%) vượt trội hoàn toàn Jordan (70% nhưng đẳng cấp thấp hơn) về mọi mặt. Albiceleste sẽ kiểm soát thế trận dễ dàng.",
-      "analysis_history": "Hai đội chưa từng gặp nhau. Sự chênh lệch về trình độ là gần như tuyệt đối.",
-      "analysis_prediction": "Argentina được dự đoán thắng 2-0, khép lại vòng bảng với thành tích toàn thắng."
-    },
-    "21": {
-      "prob_a": 63, "prob_draw": 22, "prob_b": 15, "score_a": 2, "score_b": 0, "winner": "Portugal", "confidence": 54,
-      "key_factors": ["Bồ Đào Nha đẳng cấp & chiều sâu vượt trội", "DR Congo giàu thể lực nhưng kém một bậc", "Sân Houston mái che — Bồ kiểm soát kỹ thuật"],
-      "analysis_form": "Bồ Đào Nha (70%) với dàn sao đồng đều áp đảo DR Congo (75%) về chất lượng, dù đại diện châu Phi có phong độ tốt và thể lực dồi dào.",
-      "analysis_history": "Hai đội chưa từng gặp nhau. Mô hình đặt Bồ Đào Nha cửa trên rõ rệt.",
-      "analysis_prediction": "Bồ Đào Nha được dự đoán thắng 2-0, khởi đầu thuận lợi trong môi trường mái che lý tưởng."
-    },
-    "24": {
-      "prob_a": 22, "prob_draw": 22, "prob_b": 56, "score_a": 1, "score_b": 2, "winner": "Colombia", "confidence": 50,
-      "key_factors": ["Colombia đẳng cấp Nam Mỹ vượt trội", "Độ cao Mexico City (2.240m) — Colombia quen sân Bogotá, lợi thế lớn", "Uzbekistan lần đầu dự World Cup, chưa quen độ cao"],
-      "analysis_form": "Colombia (50%) tuy phong độ chưa cao vẫn hơn hẳn Uzbekistan (80%) về đẳng cấp. Quan trọng hơn, Colombia quen thi đấu ở độ cao Bogotá nên thích nghi tốt với Mexico City 2.240m.",
-      "analysis_history": "Hai đội chưa từng gặp nhau. Yếu tố độ cao là lợi thế lớn và đặc thù cho Colombia.",
-      "analysis_prediction": "Tôi nâng cửa thắng Colombia nhờ lợi thế độ cao quen thuộc: dự đoán thắng 2-1 khi Uzbekistan đuối sức về cuối."
-    },
-    "45": {
-      "prob_a": 60, "prob_draw": 22, "prob_b": 18, "score_a": 2, "score_b": 0, "winner": "Portugal", "confidence": 52,
-      "key_factors": ["Bồ Đào Nha đẳng cấp vượt trội", "Uzbekistan khó cản dàn sao Bồ", "Sân Houston mái che"],
-      "analysis_form": "Bồ Đào Nha (70%) với chiều sâu đội hình hàng đầu áp đảo Uzbekistan (80%) dù tân binh châu Á có phong độ tốt.",
-      "analysis_history": "Hai đội chưa từng gặp nhau. Mô hình đặt Bồ Đào Nha cửa trên rõ rệt.",
-      "analysis_prediction": "Bồ Đào Nha được dự đoán thắng 2-0, tiến gần tới ngôi đầu bảng K."
-    },
-    "48": {
-      "prob_a": 60, "prob_draw": 22, "prob_b": 18, "score_a": 2, "score_b": 0, "winner": "Colombia", "confidence": 50,
-      "key_factors": ["Colombia đẳng cấp Nam Mỹ vượt trội", "Độ cao Guadalajara (1.566m) hỗ trợ Colombia", "DR Congo khó tạo đột biến"],
-      "analysis_form": "Colombia (50%) với James Rodríguez và dàn cầu thủ chất lượng hơn hẳn DR Congo (75%). Độ cao Guadalajara tiếp tục là lợi thế cho Colombia.",
-      "analysis_history": "Hai đội chưa từng gặp nhau. Mô hình đặt Colombia cửa trên rõ rệt.",
-      "analysis_prediction": "Colombia được dự đoán thắng 2-0, củng cố cơ hội đi tiếp tại bảng K."
-    },
-    "69": {
-      "prob_a": 30, "prob_draw": 29, "prob_b": 41, "score_a": 1, "score_b": 1, "winner": "Hòa", "confidence": 34,
-      "key_factors": ["Bồ Đào Nha nhỉnh hơn về đẳng cấp", "Colombia chất lượng (James) đủ sức cầm hòa", "Trận quyết định ngôi nhất bảng, hai bên thận trọng"],
-      "analysis_form": "Bồ Đào Nha (70%) nhỉnh hơn Colombia (50%) về phong độ, nhưng Colombia đủ chất lượng để chơi sòng phẳng trong trận quyết định ngôi đầu.",
-      "analysis_history": "Hai đội chưa từng gặp nhau. Mô hình cho thấy thế trận cân bằng với xác suất hòa cao.",
-      "analysis_prediction": "Tôi dự đoán một trận hòa 1-1 giàu toan tính — khi cả hai nhiều khả năng đã chắc vé và muốn tránh rủi ro."
-    },
-    "70": {
-      "prob_a": 30, "prob_draw": 30, "prob_b": 40, "score_a": 1, "score_b": 1, "winner": "Hòa", "confidence": 32,
-      "key_factors": ["Trận cân bằng, xác suất hòa cao", "Uzbekistan nhỉnh hơn đôi chút về phong độ", "Cả hai cùng cần điểm"],
-      "analysis_form": "DR Congo (75%) và Uzbekistan (80%) khá cân tài, hứa hẹn một trận đấu căng thẳng nơi cả hai đều thận trọng tính toán.",
-      "analysis_history": "Hai đội chưa từng gặp nhau. Mô hình cho thấy thế cân bằng với xác suất hòa rất cao.",
-      "analysis_prediction": "Tôi dự đoán một trận hòa 1-1, phản ánh sự cân bằng và tầm quan trọng của cuộc đối đầu ở lượt cuối."
-    },
-    "22": {
-      "prob_a": 56, "prob_draw": 23, "prob_b": 21, "score_a": 2, "score_b": 0, "winner": "England", "confidence": 50,
-      "key_factors": ["Anh đội hình mạnh, phong độ tốt (75%)", "Croatia lão tướng, sa sút so với đỉnh cao", "Sân Dallas mái che — Anh đá kỹ thuật"],
-      "analysis_form": "Anh (75%) với dàn sao trẻ tài năng được đánh giá cao hơn một Croatia (50%) đang ở giai đoạn chuyển giao, phụ thuộc vào Modrić tuổi cao.",
-      "analysis_history": "11 lần gặp Anh thắng 6, gồm chiến thắng ở World Cup 2018 (bán kết Croatia thắng) và Euro 2020. Tương quan nghiêng về Anh.",
-      "analysis_prediction": "Anh được dự đoán thắng 2-0, khởi đầu thuyết phục trong môi trường mái che lý tưởng tại Dallas."
-    },
-    "23": {
-      "prob_a": 33, "prob_draw": 24, "prob_b": 43, "score_a": 1, "score_b": 1, "winner": "Hòa", "confidence": 32,
-      "key_factors": ["Trận cân bằng giữa hai đội tầm trung", "Panama kỷ luật (CONCACAF)", "Ghana tài năng nhưng phong độ kém (40%)"],
-      "analysis_form": "Ghana (40%) đang sa sút phong độ trong khi Panama (45%) chắc chắn và giàu thể lực. Đây là trận 50-50 giữa hai đội tầm trung.",
-      "analysis_history": "Hai đội chưa từng gặp nhau. Mô hình nghiêng nhẹ về Panama nhưng xác suất rất cân.",
-      "analysis_prediction": "Tôi dự đoán một trận hòa 1-1 — kết quả phản ánh sự cân bằng và thận trọng của cả hai trong trận mở màn."
-    },
-    "46": {
-      "prob_a": 66, "prob_draw": 21, "prob_b": 13, "score_a": 2, "score_b": 0, "winner": "England", "confidence": 56,
-      "key_factors": ["Anh vượt trội toàn diện", "Ghana sa sút phong độ (40%)", "Anh kiểm soát thế trận"],
-      "analysis_form": "Anh (75%) áp đảo Ghana (40%) về chất lượng và phong độ. Đây là cơ hội để Tam Sư củng cố ngôi đầu bảng L.",
-      "analysis_history": "Lần gặp duy nhất (2011) hòa, nhưng tương quan hiện tại nghiêng hẳn về Anh.",
-      "analysis_prediction": "Anh được dự đoán thắng 2-0, tiến gần tới tấm vé đi tiếp một cách chắc chắn."
-    },
-    "47": {
-      "prob_a": 25, "prob_draw": 25, "prob_b": 50, "score_a": 1, "score_b": 2, "winner": "Croatia", "confidence": 44,
-      "key_factors": ["Croatia đẳng cấp & kinh nghiệm vượt trội", "Panama giàu thể lực nhưng kém kỹ thuật", "Croatia cần điểm sau trận thua Anh"],
-      "analysis_form": "Croatia (50%) dù không còn ở đỉnh cao vẫn hơn hẳn Panama (45%) về kỹ thuật và khả năng kiểm soát bóng với Modrić làm nhạc trưởng.",
-      "analysis_history": "Hai đội chưa từng gặp nhau. Mô hình đặt Croatia cửa trên nhờ đẳng cấp.",
-      "analysis_prediction": "Croatia được dự đoán thắng 2-1, tận dụng kinh nghiệm để vượt qua một Panama lì lợm."
+    "66": {
+      "prob_a": 32,
+      "prob_draw": 24,
+      "prob_b": 44,
+      "score_a": 1,
+      "score_b": 2,
+      "winner": "Belgium",
+      "confidence": 38,
+      "key_factors": [
+        "Bỉ chất lượng cá nhân vượt trội",
+        "Phong độ New Zealand bị thổi phồng bởi đối thủ yếu",
+        "Bỉ cần thắng để đi tiếp"
+      ],
+      "analysis_form": "Bỉ dù phong độ kém (30%) vẫn sở hữu dàn cầu thủ đẳng cấp châu Âu vượt xa New Zealand. Tôi điều chỉnh ngược baseline (vốn đánh giá cao New Zealand).",
+      "analysis_history": "Hai đội chưa từng gặp nhau. Sự chênh lệch về chất lượng cá nhân là yếu tố quyết định.",
+      "analysis_prediction": "Tôi tin vào đẳng cấp Bỉ ở trận cuối quyết định: dự đoán thắng 2-1, vượt qua New Zealand để giành vé."
     },
     "67": {
-      "prob_a": 13, "prob_draw": 19, "prob_b": 68, "score_a": 0, "score_b": 2, "winner": "England", "confidence": 60,
-      "key_factors": ["Anh đẳng cấp áp đảo", "Panama chênh lệch lớn về trình độ", "Anh hướng tới ngôi đầu tuyệt đối"],
+      "prob_a": 13,
+      "prob_draw": 19,
+      "prob_b": 68,
+      "score_a": 0,
+      "score_b": 2,
+      "winner": "England",
+      "confidence": 60,
+      "key_factors": [
+        "Anh đẳng cấp áp đảo",
+        "Panama chênh lệch lớn về trình độ",
+        "Anh hướng tới ngôi đầu tuyệt đối"
+      ],
       "analysis_form": "Anh (75%) vượt trội hoàn toàn Panama (45%) về mọi mặt. Tam Sư sẽ kiểm soát thế trận dễ dàng.",
       "analysis_history": "Lần gặp duy nhất (2018) Anh thắng đậm 6-1. Sự chênh lệch là rất lớn.",
       "analysis_prediction": "Anh được dự đoán thắng 2-0, khép lại vòng bảng với ngôi đầu chắc chắn."
     },
     "68": {
-      "prob_a": 55, "prob_draw": 23, "prob_b": 22, "score_a": 2, "score_b": 1, "winner": "Croatia", "confidence": 46,
-      "key_factors": ["Croatia đẳng cấp & kinh nghiệm nhỉnh hơn", "Ghana phong độ kém (40%)", "Croatia cần thắng để đi tiếp"],
+      "prob_a": 55,
+      "prob_draw": 23,
+      "prob_b": 22,
+      "score_a": 2,
+      "score_b": 1,
+      "winner": "Croatia",
+      "confidence": 46,
+      "key_factors": [
+        "Croatia đẳng cấp & kinh nghiệm nhỉnh hơn",
+        "Ghana phong độ kém (40%)",
+        "Croatia cần thắng để đi tiếp"
+      ],
       "analysis_form": "Croatia (50%) với kinh nghiệm và kỹ thuật vượt trội Ghana (40%) đang sa sút. Đây là trận quyết định suất đi tiếp của đại diện châu Âu.",
       "analysis_history": "Hai đội chưa từng gặp nhau. Mô hình đặt Croatia cửa trên rõ rệt.",
       "analysis_prediction": "Croatia được dự đoán thắng 2-1, giành tấm vé vào vòng knockout nhờ bản lĩnh."
+    },
+    "69": {
+      "prob_a": 30,
+      "prob_draw": 29,
+      "prob_b": 41,
+      "score_a": 1,
+      "score_b": 1,
+      "winner": "Hòa",
+      "confidence": 34,
+      "key_factors": [
+        "Bồ Đào Nha nhỉnh hơn về đẳng cấp",
+        "Colombia chất lượng (James) đủ sức cầm hòa",
+        "Trận quyết định ngôi nhất bảng, hai bên thận trọng"
+      ],
+      "analysis_form": "Bồ Đào Nha (70%) nhỉnh hơn Colombia (50%) về phong độ, nhưng Colombia đủ chất lượng để chơi sòng phẳng trong trận quyết định ngôi đầu.",
+      "analysis_history": "Hai đội chưa từng gặp nhau. Mô hình cho thấy thế trận cân bằng với xác suất hòa cao.",
+      "analysis_prediction": "Tôi dự đoán một trận hòa 1-1 giàu toan tính — khi cả hai nhiều khả năng đã chắc vé và muốn tránh rủi ro."
+    },
+    "70": {
+      "prob_a": 30,
+      "prob_draw": 30,
+      "prob_b": 40,
+      "score_a": 1,
+      "score_b": 1,
+      "winner": "Hòa",
+      "confidence": 32,
+      "key_factors": [
+        "Trận cân bằng, xác suất hòa cao",
+        "Uzbekistan nhỉnh hơn đôi chút về phong độ",
+        "Cả hai cùng cần điểm"
+      ],
+      "analysis_form": "DR Congo (75%) và Uzbekistan (80%) khá cân tài, hứa hẹn một trận đấu căng thẳng nơi cả hai đều thận trọng tính toán.",
+      "analysis_history": "Hai đội chưa từng gặp nhau. Mô hình cho thấy thế cân bằng với xác suất hòa rất cao.",
+      "analysis_prediction": "Tôi dự đoán một trận hòa 1-1, phản ánh sự cân bằng và tầm quan trọng của cuộc đối đầu ở lượt cuối."
+    },
+    "71": {
+      "prob_a": 36,
+      "prob_draw": 27,
+      "prob_b": 37,
+      "score_a": 1,
+      "score_b": 2,
+      "winner": "Austria",
+      "confidence": 34,
+      "key_factors": [
+        "Áo chất lượng cá nhân nhỉnh hơn",
+        "Algeria nguy hiểm, kỳ vọng bàn thắng cao",
+        "Trận quyết định suất đi tiếp"
+      ],
+      "analysis_form": "Áo (60%) và Algeria (70%) đều có vũ khí tấn công, nhưng kinh nghiệm châu Âu của Áo được đánh giá nhỉnh hơn ở thời khắc quyết định.",
+      "analysis_history": "Lần gặp duy nhất (1982) Áo thắng. Mô hình đánh giá đây là trận cân bằng.",
+      "analysis_prediction": "Tôi nghiêng cực nhẹ về Áo: dự đoán thắng 2-1 trong trận cầu căng thẳng tranh vé đi tiếp."
+    },
+    "72": {
+      "prob_a": 16,
+      "prob_draw": 21,
+      "prob_b": 63,
+      "score_a": 0,
+      "score_b": 2,
+      "winner": "Argentina",
+      "confidence": 60,
+      "key_factors": [
+        "Argentina đẳng cấp ĐKVĐ áp đảo",
+        "Jordan chênh lệch lớn về trình độ",
+        "Argentina hướng tới ngôi đầu tuyệt đối"
+      ],
+      "analysis_form": "Argentina (70%) vượt trội hoàn toàn Jordan (70% nhưng đẳng cấp thấp hơn) về mọi mặt. Albiceleste sẽ kiểm soát thế trận dễ dàng.",
+      "analysis_history": "Hai đội chưa từng gặp nhau. Sự chênh lệch về trình độ là gần như tuyệt đối.",
+      "analysis_prediction": "Argentina được dự đoán thắng 2-0, khép lại vòng bảng với thành tích toàn thắng."
     }
-  }
+  },
+  "note": "Stats baseline (Elo SỐNG cập nhật theo kết quả) + Claude điều chỉnh theo kết quả lượt 1 + cục diện bảng + chấn thương (ESPN/FIFA) + cân hòa thực tế. Cập nhật 2026-06-18."
 }
