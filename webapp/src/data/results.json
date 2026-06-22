@@ -1,5 +1,5 @@
 {
-  "note": "Tỉ số THỰC TẾ tự lấy từ football-data.org (cập nhật 2026-06-21T23:06:03.459Z). Chạy lại: node scripts/fetch_results.js",
+  "note": "Tỉ số THỰC TẾ tự lấy từ football-data.org (cập nhật 2026-06-22T03:35:26.455Z). Chạy lại: node scripts/fetch_results.js",
   "results": {
     "1": {
       "home": 2,
@@ -152,6 +152,14 @@
     "38": {
       "home": 0,
       "away": 0
+    },
+    "39": {
+      "home": 2,
+      "away": 2
+    },
+    "40": {
+      "home": 1,
+      "away": 3
     }
   }
 }
