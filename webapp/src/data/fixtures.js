@@ -10,6 +10,16 @@ const __dir = dirname(fileURLToPath(import.meta.url));
 // Overlay đội thật cho knockout (do scripts/resolve_bracket.js sinh sau khi đủ kết quả). Thiếu file → rỗng.
 let RESOLVED_KO = {};
 try { RESOLVED_KO = JSON.parse(readFileSync(join(__dir, 'knockout_resolved.json'), 'utf8')).matches || {}; } catch { /* chưa có */ }
+// Overlay GIỜ THẬT (UTC) cho knockout (do scripts/sync_ko_schedule.js sinh từ football-data.org). Thiếu → rỗng.
+let KO_SCHEDULE = {};
+try { KO_SCHEDULE = JSON.parse(readFileSync(join(__dir, 'knockout_schedule.json'), 'utf8')).matches || {}; } catch { /* chưa có */ }
+// ISO UTC → giờ Việt Nam (GMT+7)
+function vnFromUTC(iso) {
+  const t = Date.parse(iso); if (Number.isNaN(t)) return null;
+  const vn = new Date(t + 7 * 3600 * 1000);
+  const p = n => String(n).padStart(2, '0');
+  return { date: `${vn.getUTCFullYear()}-${p(vn.getUTCMonth() + 1)}-${p(vn.getUTCDate())}`, time: `${p(vn.getUTCHours())}:${p(vn.getUTCMinutes())}` };
+}
 
 // Convert "HH:MM UTC±X" + date → giờ Việt Nam (GMT+7)
 function toVietnamTime(date, time) {
@@ -154,7 +164,8 @@ const KO_FIXTURES = [
 
 // Combine + augment với time_vn
 export const FIXTURES_2026 = [...GROUP_FIXTURES, ...KO_FIXTURES].map((f) => {
-  const vn = toVietnamTime(f.date, f.time);
+  // Giờ VN: ưu tiên UTC thật (knockout_schedule), nếu không có thì tính từ giờ local hardcode.
+  const vn = (KO_SCHEDULE[f.match] && vnFromUTC(KO_SCHEDULE[f.match])) || toVietnamTime(f.date, f.time);
   const r = RESOLVED_KO[f.match];
   const resolved = !!(r && r.home && r.away);
   return {
@@ -163,6 +174,7 @@ export const FIXTURES_2026 = [...GROUP_FIXTURES, ...KO_FIXTURES].map((f) => {
     away: (resolved ? r.away : f.away) || f.away_slot,
     resolved,                              // KO đã biết đội thật?
     is_placeholder: !!f.home_slot && !resolved,
+    utc: KO_SCHEDULE[f.match] || null,     // giờ thật UTC (nếu đã sync)
     time_vn: vn?.time,
     date_vn: vn?.date,
   };
