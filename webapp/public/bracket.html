@@ -74,15 +74,22 @@ api('/api/matches').then(({ matches, stage_names }) => {
       <div class="bracket-col">
         <div class="text-xs uppercase tracking-wider text-emerald-400 font-bold mb-3">${stage_names[s] || s} · ${ms.length} trận</div>
         <div class="space-y-3">
-          ${ms.map(m => `
+          ${ms.map(m => {
+            const fin = m.result;
+            const homeTxt = m.is_placeholder ? escapeHtml(m.home_slot) : `${m.home_flag} ${escapeHtml(m.home_vi)}`;
+            const awayTxt = m.is_placeholder ? escapeHtml(m.away_slot) : `${m.away_flag} ${escapeHtml(m.away_vi)}`;
+            const homeWin = fin && fin.home > fin.away, awayWin = fin && fin.away > fin.home;
+            const hl = (w) => w ? 'font-bold text-emerald-300' : '';
+            return `
             <a href="/match/${m.match}" class="ko-match">
-              <div class="text-[10px] font-mono text-slate-500">M${m.match}</div>
-              <div class="slot truncate">${escapeHtml(m.home || m.home_slot)}</div>
+              <div class="text-[10px] font-mono text-slate-500">M${m.match}${fin ? ` · <span class="text-slate-300">${fin.home}-${fin.away}</span>` : ''}</div>
+              <div class="slot truncate ${hl(homeWin)}">${homeTxt}</div>
               <div class="text-center text-slate-500 text-xs">vs</div>
-              <div class="slot truncate">${escapeHtml(m.away || m.away_slot)}</div>
+              <div class="slot truncate ${hl(awayWin)}">${awayTxt}</div>
               <div class="meta">${m.time_vn || '--:--'} ${fmtDateVN(m.date_vn)} · ${escapeHtml(m.ground)}</div>
             </a>
-          `).join('')}
+          `;
+          }).join('')}
         </div>
       </div>
     `;

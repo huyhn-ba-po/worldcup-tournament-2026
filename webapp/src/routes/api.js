@@ -98,13 +98,18 @@ export default async function apiRoutes(fastify) {
     if (stage) list = list.filter(f => f.stage === stage);
     // Gắn tỉ số thật (results.json — đọc sống) + dự đoán AI + lượt đấu + khóa
     const RES = getResults();
+    const meta = TEAMS_META.team_meta;
     list = list.map(f => {
       const result = RES.results?.[f.match] || null;
       const locked = isLocked(f);
       const ap = PREDICTIONS.predictions?.[f.match];
       // Ẩn dự đoán AI nếu trận đang bị khóa (chưa tới lượt) để không lộ trước
       const ai = (ap && !locked) ? { winner: ap.winner, score_a: ap.score_a, score_b: ap.score_b } : null;
-      return { ...f, result, ai, matchday: matchdayOf(f.match), locked };
+      return {
+        ...f, result, ai, matchday: matchdayOf(f.match), locked,
+        home_flag: meta[f.home]?.flag || '', away_flag: meta[f.away]?.flag || '',
+        home_vi: meta[f.home]?.name_vi || f.home, away_vi: meta[f.away]?.name_vi || f.away,
+      };
     });
     return { matches: list, stage_names: STAGE_NAMES };
   });
