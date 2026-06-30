@@ -271,6 +271,7 @@
       </div>
       <a href="/groups" class="text-sm text-emerald-400 hover:underline whitespace-nowrap">Tất cả trận →</a>
     </div>
+    <div id="aiAccuracy" class="grid grid-cols-2 gap-3 mb-5 max-w-lg"></div>
     <div id="resultsGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
   </section>
 
@@ -601,6 +602,26 @@ Promise.all([api('/api/matches'), api('/api/leaderboard'), loadTeams()]).then(([
       <div class="text-xs text-slate-500 mt-1 ml-7">${m.time_vn} ${fmtDateVN(m.date_vn)} (giờ VN)</div>
     </a>`;
   }).join('');
+
+  // Độ chính xác AI (toàn bộ trận đã đá có dự đoán): Kèo (T/H/B) + Tỉ số chính xác
+  const scored = mx.matches.filter(m => m.result && m.ai);
+  let keoOK = 0, exactOK = 0;
+  for (const m of scored) {
+    const r = m.result;
+    const aw = r.home > r.away ? 'home' : (r.home < r.away ? 'away' : 'draw');
+    const pw = m.ai.winner === 'Hòa' ? 'draw' : (m.ai.winner === m.home ? 'home' : 'away');
+    if (aw === pw) keoOK++;
+    if (m.ai.score_a === r.home && m.ai.score_b === r.away) exactOK++;
+  }
+  const NS = scored.length;
+  if (NS) {
+    const pct = (x) => Math.round(x / NS * 100);
+    const accCard = (val, ok, label) => `<div class="card p-4 text-center">
+      <div class="text-3xl sm:text-4xl font-black text-emerald-300 leading-none">${val}%</div>
+      <div class="text-xs uppercase tracking-wider text-slate-400 mt-1.5">${label}</div>
+      <div class="text-[11px] text-slate-500 mt-0.5">${ok}/${NS} trận</div></div>`;
+    $('#aiAccuracy').innerHTML = accCard(pct(keoOK), keoOK, 'AI đúng kèo (T/H/B)') + accCard(pct(exactOK), exactOK, 'AI đúng tỉ số');
+  }
 
   // Kết quả gần đây (trận đã có tỉ số thật trong results.json)
   const finished = mx.matches.filter(m => m.result)
