@@ -1232,7 +1232,279 @@
       "analysis_form": "Argentina toàn thắng (3-0, 2-0) và sạch lưới; Jordan thua cả hai, đã bị loại.",
       "analysis_history": "Đẳng cấp Argentina áp đảo dù không tung đội hình mạnh nhất.",
       "analysis_prediction": "Đội hình hai Argentina vẫn thắng 2-1."
+    },
+    "73": {
+      "prob_a": 28,
+      "prob_draw": 27,
+      "prob_b": 45,
+      "score_a": 1,
+      "score_b": 2,
+      "winner": "Canada",
+      "confidence": 46,
+      "key_factors": [
+        "Canada nhỉnh hơn về Elo và hàng công (David, Larin)",
+        "Nam Phi phòng ngự tốt nhưng thiếu mũi nhọn",
+        "Knockout — Canada giàu thể lực hơn"
+      ],
+      "analysis_form": "Canada (5-4-1) ổn định hơn Nam Phi (3-7-0, hòa nhiều). Cả hai đi tiếp ấn tượng từ vòng bảng.",
+      "analysis_history": "Nam Phi từng thắng lần gặp hiếm hoi, nhưng Canada hiện tại mạnh hơn rõ.",
+      "analysis_prediction": "Canada tận dụng chất lượng cá nhân để thắng 2-1."
+    },
+    "74": {
+      "prob_a": 56,
+      "prob_draw": 22,
+      "prob_b": 22,
+      "score_a": 2,
+      "score_b": 1,
+      "winner": "Germany",
+      "confidence": 50,
+      "key_factors": [
+        "Đức vượt trội Elo (1963 vs 1799) và chiều sâu",
+        "Thụy Điển có Isak–Gyökeres đủ sức gây khó",
+        "Đức từng tổn thất ter Stegen/Gnabry nhưng lực lượng vẫn dày"
+      ],
+      "analysis_form": "Đức (6-3-1) và Thụy Điển (6-1-3) đều vào phom tốt; Đức nhất bảng E thuyết phục.",
+      "analysis_history": "Đối đầu Đức nhỉnh (16-9-12) và là ứng viên vô địch.",
+      "analysis_prediction": "Đức thắng nhưng phải lội ngược dòng các pha bóng của Thụy Điển: 2-1."
+    },
+    "75": {
+      "prob_a": 34,
+      "prob_draw": 29,
+      "prob_b": 37,
+      "score_a": 1,
+      "score_b": 2,
+      "winner": "Morocco",
+      "confidence": 42,
+      "key_factors": [
+        "Maroc đang cực nóng (8-1-1), kỳ vọng bàn cao hơn",
+        "Hà Lan sứt mẻ tuyến sau (Xavi Simons ACL, Timber, de Ligt)",
+        "Maroc — bán kết 2022 — bản lĩnh knockout"
+      ],
+      "analysis_form": "Maroc thắng như chẻ tre (8-1-1); Hà Lan (4-3-3) chệch choạc và mất nhiều trụ cột phòng ngự.",
+      "analysis_history": "Lịch sử nghiêng nhẹ Hà Lan (2-0-1) nhưng phong độ + nhân sự đảo chiều cán cân.",
+      "analysis_prediction": "Maroc tạo bất ngờ trước Hà Lan đang khủng hoảng: thắng 2-1."
+    },
+    "76": {
+      "prob_a": 40,
+      "prob_draw": 29,
+      "prob_b": 31,
+      "score_a": 2,
+      "score_b": 1,
+      "winner": "Brazil",
+      "confidence": 42,
+      "key_factors": [
+        "Brazil áp đảo đối đầu (11-2-0), đẳng cấp knockout",
+        "Nhật phong độ rực rỡ (8-1-1), pressing khó chịu",
+        "Trận căng — Brazil hơn ở khoảnh khắc cá nhân"
+      ],
+      "analysis_form": "Nhật bay cao (8-1-1) còn Brazil chập chờn (4-5-1) và từng thiếu vài mũi công.",
+      "analysis_history": "Brazil thắng cả 11 lần gặp Nhật — bóng ma tâm lý cho Nhật.",
+      "analysis_prediction": "Nhật chơi hay nhưng Brazil tận dụng cá nhân để thắng sát 2-1."
+    },
+    "77": {
+      "prob_a": 64,
+      "prob_draw": 20,
+      "prob_b": 16,
+      "score_a": 2,
+      "score_b": 0,
+      "winner": "France",
+      "confidence": 54,
+      "key_factors": [
+        "Pháp vượt trội mọi tuyến (Elo 2075, Mbappé)",
+        "Paraguay phòng ngự nhưng nghèo bàn thắng",
+        "Chiều sâu đội hình Pháp áp đảo"
+      ],
+      "analysis_form": "Pháp (5-3-2) toàn diện; Paraguay (4-3-3) vào tới đây nhờ phòng ngự kỷ luật.",
+      "analysis_history": "Pháp thắng đa số đối đầu và là ứng viên vô địch.",
+      "analysis_prediction": "Pháp kiểm soát và thắng thoải mái 2-0."
+    },
+    "78": {
+      "prob_a": 31,
+      "prob_draw": 31,
+      "prob_b": 38,
+      "score_a": 1,
+      "score_b": 2,
+      "winner": "Norway",
+      "confidence": 40,
+      "key_factors": [
+        "Na Uy có Haaland đang săn bàn cực nhạy",
+        "Bờ Biển Ngà sung sức (7-2-1), giàu thể lực",
+        "Trận cân bằng, định đoạt bởi ngôi sao"
+      ],
+      "analysis_form": "Cả hai đều mạnh: BBN (7-2-1), Na Uy (5-2-3) với Haaland nổ súng đều.",
+      "analysis_history": "Chưa từng gặp nhau — trận mở.",
+      "analysis_prediction": "Haaland tạo khác biệt giúp Na Uy thắng 2-1."
+    },
+    "79": {
+      "prob_a": 40,
+      "prob_draw": 28,
+      "prob_b": 32,
+      "score_a": 1,
+      "score_b": 0,
+      "winner": "Mexico",
+      "confidence": 42,
+      "key_factors": [
+        "Mexico áp đảo đối đầu (14-7-4)",
+        "Kỳ vọng bàn nghiêng Mexico (1.28 vs 0.69)",
+        "Ecuador phòng ngự lì → trận ít bàn"
+      ],
+      "analysis_form": "Hai đội ngang ngửa (Mexico 4-2-4, Ecuador 4-4-2 chắc chắn).",
+      "analysis_history": "Mexico thắng áp đảo lịch sử đối đầu.",
+      "analysis_prediction": "Trận chặt chẽ, Mexico ghi bàn quyết định: thắng tối thiểu 1-0."
+    },
+    "80": {
+      "prob_a": 62,
+      "prob_draw": 26,
+      "prob_b": 12,
+      "score_a": 2,
+      "score_b": 0,
+      "winner": "England",
+      "confidence": 52,
+      "key_factors": [
+        "Anh vượt trội (Elo 2011, Kane) và đang bùng nổ",
+        "CHDC Congo lì lợm nhưng kém đẳng cấp",
+        "Hàng công Anh quá mạnh so với đối thủ"
+      ],
+      "analysis_form": "Anh (7-1-2) thi đấu thuyết phục; Congo (6-3-1) bất ngờ vào vòng trong.",
+      "analysis_history": "Chưa từng gặp — nhưng chênh lệch trình độ rõ.",
+      "analysis_prediction": "Anh áp đảo và thắng 2-0."
+    },
+    "81": {
+      "prob_a": 58,
+      "prob_draw": 21,
+      "prob_b": 21,
+      "score_a": 2,
+      "score_b": 0,
+      "winner": "United States",
+      "confidence": 52,
+      "key_factors": [
+        "Mỹ chơi sân nhà, Elo cao hơn hẳn (1881 vs 1620)",
+        "Bosnia phong độ thảm họa (0-2-8)",
+        "Kỳ vọng bàn nghiêng mạnh Mỹ (2.62)"
+      ],
+      "analysis_form": "Mỹ (4-2-4) sung sức trên sân nhà; Bosnia (0-2-8) khủng hoảng dù có Džeko.",
+      "analysis_history": "Mỹ thắng các lần gặp gần đây.",
+      "analysis_prediction": "Mỹ tận dụng khán đài để thắng 2-0."
+    },
+    "82": {
+      "prob_a": 46,
+      "prob_draw": 29,
+      "prob_b": 25,
+      "score_a": 2,
+      "score_b": 1,
+      "winner": "Belgium",
+      "confidence": 40,
+      "key_factors": [
+        "Bỉ hơn về cá nhân (Lukaku, De Bruyne)",
+        "Algeria đang nóng (6-2-2, Mahrez) — nguy hiểm",
+        "Bỉ phong độ kém (2-2-6) nên trận khó hơn dự kiến"
+      ],
+      "analysis_form": "Algeria (6-2-2) bay cao trong khi Bỉ (2-2-6) chệch choạc — cảnh báo bất ngờ.",
+      "analysis_history": "Bỉ nhỉnh đối đầu nhưng đẳng cấp cá nhân là điểm tựa.",
+      "analysis_prediction": "Bỉ phải vất vả nhưng cá nhân lên tiếng: thắng 2-1."
+    },
+    "83": {
+      "prob_a": 50,
+      "prob_draw": 26,
+      "prob_b": 24,
+      "score_a": 2,
+      "score_b": 1,
+      "winner": "Portugal",
+      "confidence": 44,
+      "key_factors": [
+        "Bồ Đào Nha chiều sâu hơn (Ronaldo, Bruno, Bernardo)",
+        "Croatia lão tướng giàu kinh nghiệm knockout (Modrić)",
+        "Bồ nhỉnh đối đầu (7-2-1)"
+      ],
+      "analysis_form": "Bồ (5-4-1) ổn định hơn Croatia (3-4-3) đã sa sút phong độ.",
+      "analysis_history": "Bồ Đào Nha thắng đa số đối đầu.",
+      "analysis_prediction": "Bồ Đào Nha vượt qua Croatia già nua: thắng 2-1."
+    },
+    "84": {
+      "prob_a": 62,
+      "prob_draw": 21,
+      "prob_b": 17,
+      "score_a": 2,
+      "score_b": 0,
+      "winner": "Spain",
+      "confidence": 54,
+      "key_factors": [
+        "Tây Ban Nha toàn thắng vòng bảng (9-1-0), Elo cao nhất giải",
+        "Áo khỏe nhưng kém đẳng cấp kiểm soát",
+        "TBN cầm bóng áp đặt"
+      ],
+      "analysis_form": "TBN (9-1-0) là đội vào phom nhất giải; Áo (5-2-3) chắc chắn nhưng dưới cơ.",
+      "analysis_history": "TBN nhỉnh đối đầu (9-3-4).",
+      "analysis_prediction": "Tây Ban Nha kiểm soát và thắng 2-0."
+    },
+    "85": {
+      "prob_a": 32,
+      "prob_draw": 30,
+      "prob_b": 38,
+      "score_a": 1,
+      "score_b": 2,
+      "winner": "Senegal",
+      "confidence": 42,
+      "key_factors": [
+        "Senegal nóng máy (7-3-0), kỳ vọng bàn cao (1.45 vs 0.69)",
+        "Thụy Sĩ phong độ tệ (1-5-4)",
+        "Mané–Sarr tạo đột biến"
+      ],
+      "analysis_form": "Senegal (7-3-0) vượt trội phong độ; Thụy Sĩ (1-5-4) bế tắc hàng công.",
+      "analysis_history": "Chưa từng gặp — nhưng Senegal đang ở thế thượng phong.",
+      "analysis_prediction": "Senegal lấn lướt và thắng 2-1."
+    },
+    "86": {
+      "prob_a": 60,
+      "prob_draw": 25,
+      "prob_b": 15,
+      "score_a": 2,
+      "score_b": 0,
+      "winner": "Argentina",
+      "confidence": 54,
+      "key_factors": [
+        "Argentina đẳng cấp ĐKVĐ (Elo 2113, Messi)",
+        "Cape Verde lần đầu dự World Cup, dưới cơ",
+        "Argentina phòng ngự chắc, đủ kiên nhẫn"
+      ],
+      "analysis_form": "Argentina (6-2-2) bản lĩnh; Cape Verde (5-1-4) viết cổ tích nhưng hết duyên ở đây.",
+      "analysis_history": "Chưa từng gặp — chênh lệch trình độ lớn.",
+      "analysis_prediction": "Argentina thắng kiểm soát 2-0."
+    },
+    "87": {
+      "prob_a": 52,
+      "prob_draw": 28,
+      "prob_b": 20,
+      "score_a": 1,
+      "score_b": 0,
+      "winner": "Colombia",
+      "confidence": 44,
+      "key_factors": [
+        "Colombia hơn đẳng cấp (James, Díaz)",
+        "Ghana phòng ngự thấp → trận ít bàn (top 0-0)",
+        "Colombia cần kiên nhẫn khoan phá"
+      ],
+      "analysis_form": "Colombia (4-2-4) nhỉnh hơn Ghana (2-4-4) về chất lượng.",
+      "analysis_history": "Chưa từng gặp — Colombia trên cơ.",
+      "analysis_prediction": "Trận bế tắc nhưng Colombia chọc thủng được: thắng 1-0."
+    },
+    "88": {
+      "prob_a": 33,
+      "prob_draw": 33,
+      "prob_b": 34,
+      "score_a": 1,
+      "score_b": 1,
+      "winner": "Egypt",
+      "confidence": 36,
+      "key_factors": [
+        "Hai đội ngang nhau tuyệt đối (Elo 1801 vs 1800)",
+        "Ai Cập có Salah — quân bài luân lưu/đột biến",
+        "Trận ít bàn, nhiều khả năng phải đá 11m"
+      ],
+      "analysis_form": "Úc (5-4-1) và Ai Cập (6-3-1) đều khó chịu, kỳ vọng bàn gần như bằng nhau.",
+      "analysis_history": "Đối đầu sít sao (Úc 0-1-1).",
+      "analysis_prediction": "Cân não 90 phút hòa 1-1; Salah giúp Ai Cập thắng trên chấm luân lưu."
     }
   },
-  "note": "Stats baseline (Elo SỐNG sau 48 trận) + Claude điều chỉnh theo cục diện đi tiếp (top 2 + 8 hạng 3) + động lực phải-thắng/đã-qua-vòng + chấn thương carry-over (~18/06). Cập nhật lượt 3 2026-06-24."
+  "note": "Dự đoán VÒNG 1/16 (R32) — Elo SỐNG sau vòng bảng + phong độ + ngôi sao + bối cảnh knockout (thắng là đi tiếp, không có trận thủ tục). Cập nhật 2026-06-30."
 }
