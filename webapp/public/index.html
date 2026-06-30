@@ -232,18 +232,17 @@
         Xem AI đoán rồi so với linh cảm của bạn xem ai đúng.
       </p>
       <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-        <a href="/match/1" class="btn-primary" aria-label="Xem AI dự đoán trận khai mạc">
-          <span>Xem AI đoán trận khai mạc</span>
+        <a href="/match/1" id="heroCta" class="btn-primary" aria-label="Xem AI dự đoán trận sắp đá">
+          <span id="heroCtaText">Xem AI đoán trận sắp đá</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
         <a href="/groups" class="btn-secondary" aria-label="Xem lịch 104 trận">
           <span>Lịch đầy đủ 104 trận</span>
         </a>
       </div>
-      <p class="mt-5 text-xs text-slate-500">
-        AI từng đoán đúng <b class="text-emerald-400">~5/10 trận</b> ở 2 kỳ World Cup gần nhất.
-        Không phải lúc nào cũng đúng — phần thú vị của bóng đá là vậy.
-      </p>
+      <div id="heroAccuracy" class="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm">
+        <p class="text-xs text-slate-500">AI từng đoán đúng <b class="text-emerald-400">~5/10 trận</b> ở 2 kỳ World Cup gần nhất — phần thú vị của bóng đá là vậy.</p>
+      </div>
     </div>
   </section>
 
@@ -621,6 +620,18 @@ Promise.all([api('/api/matches'), api('/api/leaderboard'), loadTeams()]).then(([
       <div class="text-xs uppercase tracking-wider text-slate-400 mt-1.5">${label}</div>
       <div class="text-[11px] text-slate-500 mt-0.5">${ok}/${NS} trận</div></div>`;
     $('#aiAccuracy').innerHTML = accCard(pct(keoOK), keoOK, 'AI đúng kèo (T/H/B)') + accCard(pct(exactOK), exactOK, 'AI đúng tỉ số');
+    // Hero: tỉ lệ AI đúng trực tiếp (thay câu ~5/10 tĩnh)
+    $('#heroAccuracy').innerHTML =
+      `<span class="text-slate-400">AI đang đúng kèo <b class="text-emerald-300 text-lg">${pct(keoOK)}%</b></span>
+       <span class="text-slate-400">đúng tỉ số <b class="text-emerald-300 text-lg">${pct(exactOK)}%</b></span>
+       <span class="text-xs text-slate-500">trên ${NS} trận đã đá</span>`;
+  }
+
+  // Hero CTA → trận sắp đá gần nhất (thay link trận khai mạc đã cũ)
+  if (up.length) {
+    const nm = up[0].m, t = teamsOf(nm, meta);
+    $('#heroCta').href = `/match/${nm.match}`;
+    $('#heroCtaText').textContent = `Xem AI đoán: ${t.a} vs ${t.b}`;
   }
 
   // Kết quả gần đây (trận đã có tỉ số thật trong results.json)
