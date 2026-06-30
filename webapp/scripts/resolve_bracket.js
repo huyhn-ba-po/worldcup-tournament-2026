@@ -158,6 +158,12 @@ const out = {
 };
 writeFileSync(join(__dirname, '..', '_bracket_resolved.json'), JSON.stringify(out, null, 2), 'utf8');
 
+// File committed cho app overlay đội thật lên fixtures KO (chỉ các trận đã biết đủ 2 đội).
+const resolvedTeams = {};
+for (const r of resolved) if (r.home && r.away) resolvedTeams[r.match] = { home: r.home, away: r.away };
+writeFileSync(join(__dirname, '..', 'src', 'data', 'knockout_resolved.json'),
+  JSON.stringify({ group_stage_complete: groupComplete, matches: resolvedTeams }, null, 2), 'utf8');
+
 // ===== 5) In =====
 console.log(`Vòng bảng đủ kết quả: ${groupComplete ? 'CÓ' : 'CHƯA (chưa thể dựng R32)'}`);
 if (!groupComplete) {

@@ -2,6 +2,14 @@
 // match number: chronological theo UTC kickoff
 // time field: giờ địa phương (UTC offset)
 // time_vn field: giờ Việt Nam (GMT+7) — đã tính sẵn
+import { readFileSync } from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+const __dir = dirname(fileURLToPath(import.meta.url));
+// Overlay đội thật cho knockout (do scripts/resolve_bracket.js sinh sau khi đủ kết quả). Thiếu file → rỗng.
+let RESOLVED_KO = {};
+try { RESOLVED_KO = JSON.parse(readFileSync(join(__dir, 'knockout_resolved.json'), 'utf8')).matches || {}; } catch { /* chưa có */ }
 
 // Convert "HH:MM UTC±X" + date → giờ Việt Nam (GMT+7)
 function toVietnamTime(date, time) {
@@ -147,11 +155,14 @@ const KO_FIXTURES = [
 // Combine + augment với time_vn
 export const FIXTURES_2026 = [...GROUP_FIXTURES, ...KO_FIXTURES].map((f) => {
   const vn = toVietnamTime(f.date, f.time);
+  const r = RESOLVED_KO[f.match];
+  const resolved = !!(r && r.home && r.away);
   return {
     ...f,
-    home: f.home || f.home_slot,
-    away: f.away || f.away_slot,
-    is_placeholder: !!f.home_slot,
+    home: (resolved ? r.home : f.home) || f.home_slot,
+    away: (resolved ? r.away : f.away) || f.away_slot,
+    resolved,                              // KO đã biết đội thật?
+    is_placeholder: !!f.home_slot && !resolved,
     time_vn: vn?.time,
     date_vn: vn?.date,
   };
