@@ -494,6 +494,7 @@ mountLayout('/');
 
 // ===== Helpers trận sắp đá =====
 function kickoffUTC(m) {
+  if (m.utc) return new Date(m.utc);               // giờ thật UTC (knockout đã sync) — ưu tiên
   const mt = (m.time || '').match(/(\d{1,2}):(\d{2})\s+UTC([+-]\d+)/);
   if (!mt) return null;
   const off = parseInt(mt[3], 10), sign = off >= 0 ? '+' : '-', oh = String(Math.abs(off)).padStart(2, '0');
@@ -535,7 +536,7 @@ Promise.all([api('/api/matches'), api('/api/leaderboard'), loadTeams()]).then(([
   const SN = mx.stage_names || {};
   const stageLabel = (m) => m.stage === 'group' ? ('Bảng ' + m.group) : (SN[m.stage] || 'Vòng loại trực tiếp');
   const up = mx.matches.map(m => ({ m, k: kickoffUTC(m) }))
-    .filter(x => x.k && x.k.getTime() > now - 2.5 * 3600000)
+    .filter(x => x.k && !x.m.result && x.k.getTime() > now - 2.5 * 3600000)  // bỏ trận đã có kết quả
     .sort((a, b) => a.k - b.k);
 
   // 5 đội mạnh nhất
