@@ -7,7 +7,7 @@
     },
     "74": {
       "home": "Germany",
-      "away": "Sweden"
+      "away": "Paraguay"
     },
     "75": {
       "home": "Netherlands",
@@ -19,7 +19,7 @@
     },
     "77": {
       "home": "France",
-      "away": "Paraguay"
+      "away": "Sweden"
     },
     "78": {
       "home": "Ivory Coast",
@@ -39,7 +39,7 @@
     },
     "82": {
       "home": "Belgium",
-      "away": "Algeria"
+      "away": "Senegal"
     },
     "83": {
       "home": "Portugal",
@@ -51,7 +51,7 @@
     },
     "85": {
       "home": "Switzerland",
-      "away": "Senegal"
+      "away": "Algeria"
     },
     "86": {
       "home": "Argentina",
@@ -63,6 +63,34 @@
     },
     "88": {
       "home": "Australia",
+      "away": "Egypt"
+    },
+    "89": {
+      "home": "Germany",
+      "away": "France"
+    },
+    "90": {
+      "home": "Canada",
+      "away": "Morocco"
+    },
+    "91": {
+      "home": "Brazil",
+      "away": "Norway"
+    },
+    "92": {
+      "home": "Mexico",
+      "away": "England"
+    },
+    "93": {
+      "home": "Portugal",
+      "away": "Spain"
+    },
+    "94": {
+      "home": "United States",
+      "away": "Belgium"
+    },
+    "95": {
+      "home": "Argentina",
       "away": "Egypt"
     }
   }

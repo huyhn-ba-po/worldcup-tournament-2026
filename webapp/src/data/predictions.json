@@ -1251,21 +1251,21 @@
       "analysis_prediction": "Canada tận dụng chất lượng cá nhân để thắng 2-1."
     },
     "74": {
-      "prob_a": 56,
-      "prob_draw": 22,
-      "prob_b": 22,
+      "prob_a": 62,
+      "prob_draw": 19,
+      "prob_b": 19,
       "score_a": 2,
-      "score_b": 1,
+      "score_b": 0,
       "winner": "Germany",
       "confidence": 50,
       "key_factors": [
-        "Đức vượt trội Elo (1963 vs 1799) và chiều sâu",
-        "Thụy Điển có Isak–Gyökeres đủ sức gây khó",
-        "Đức từng tổn thất ter Stegen/Gnabry nhưng lực lượng vẫn dày"
+        "Đức vượt trội Elo (1963 vs 1749) và chiều sâu đội hình",
+        "Kỳ vọng bàn nghiêng hẳn Đức (2.42 vs 0.62)",
+        "Paraguay phòng ngự nhưng nghèo bàn thắng"
       ],
-      "analysis_form": "Đức (6-3-1) và Thụy Điển (6-1-3) đều vào phom tốt; Đức nhất bảng E thuyết phục.",
-      "analysis_history": "Đối đầu Đức nhỉnh (16-9-12) và là ứng viên vô địch.",
-      "analysis_prediction": "Đức thắng nhưng phải lội ngược dòng các pha bóng của Thụy Điển: 2-1."
+      "analysis_form": "Đức (6-3-1) vào phom tốt; Paraguay (4-3-3) tới đây nhờ phòng ngự kỷ luật.",
+      "analysis_history": "Đối đầu cân nhưng Đức là ứng viên vô địch, hơn hẳn đẳng cấp.",
+      "analysis_prediction": "Đức kiểm soát và thắng 2-0 (dù knockout luôn tiềm ẩn bất ngờ)."
     },
     "75": {
       "prob_a": 34,
@@ -1302,21 +1302,21 @@
       "analysis_prediction": "Nhật chơi hay nhưng Brazil tận dụng cá nhân để thắng sát 2-1."
     },
     "77": {
-      "prob_a": 64,
-      "prob_draw": 20,
-      "prob_b": 16,
+      "prob_a": 59,
+      "prob_draw": 22,
+      "prob_b": 19,
       "score_a": 2,
-      "score_b": 0,
+      "score_b": 1,
       "winner": "France",
-      "confidence": 54,
+      "confidence": 48,
       "key_factors": [
-        "Pháp vượt trội mọi tuyến (Elo 2075, Mbappé)",
-        "Paraguay phòng ngự nhưng nghèo bàn thắng",
-        "Chiều sâu đội hình Pháp áp đảo"
+        "Pháp vượt trội cá nhân (Mbappé) và chiều sâu",
+        "Thụy Điển có Isak–Gyökeres đủ sức ghi bàn",
+        "Pháp nhỉnh đối đầu (12-5-6)"
       ],
-      "analysis_form": "Pháp (5-3-2) toàn diện; Paraguay (4-3-3) vào tới đây nhờ phòng ngự kỷ luật.",
+      "analysis_form": "Pháp (5-3-2) toàn diện; Thụy Điển (6-1-3) sắc bén nhưng phòng ngự dễ tổn thương.",
       "analysis_history": "Pháp thắng đa số đối đầu và là ứng viên vô địch.",
-      "analysis_prediction": "Pháp kiểm soát và thắng thoải mái 2-0."
+      "analysis_prediction": "Pháp thắng nhưng để lọt lưới: dự đoán 2-1."
     },
     "78": {
       "prob_a": 31,
@@ -1387,21 +1387,21 @@
       "analysis_prediction": "Mỹ tận dụng khán đài để thắng 2-0."
     },
     "82": {
-      "prob_a": 46,
-      "prob_draw": 29,
-      "prob_b": 25,
-      "score_a": 2,
-      "score_b": 1,
-      "winner": "Belgium",
-      "confidence": 40,
+      "prob_a": 36,
+      "prob_draw": 30,
+      "prob_b": 34,
+      "score_a": 1,
+      "score_b": 2,
+      "winner": "Senegal",
+      "confidence": 38,
       "key_factors": [
-        "Bỉ hơn về cá nhân (Lukaku, De Bruyne)",
-        "Algeria đang nóng (6-2-2, Mahrez) — nguy hiểm",
-        "Bỉ phong độ kém (2-2-6) nên trận khó hơn dự kiến"
+        "Senegal nóng máy (7-3-0), kỳ vọng bàn nhỉnh hơn",
+        "Bỉ phong độ tệ (2-2-6) dù còn Lukaku–De Bruyne",
+        "Mané–Sarr tạo đột biến — nguy cơ bất ngờ cao"
       ],
-      "analysis_form": "Algeria (6-2-2) bay cao trong khi Bỉ (2-2-6) chệch choạc — cảnh báo bất ngờ.",
-      "analysis_history": "Bỉ nhỉnh đối đầu nhưng đẳng cấp cá nhân là điểm tựa.",
-      "analysis_prediction": "Bỉ phải vất vả nhưng cá nhân lên tiếng: thắng 2-1."
+      "analysis_form": "Senegal (7-3-0) bay cao trong khi Bỉ (2-2-6) sa sút đáng báo động.",
+      "analysis_history": "Chưa từng gặp — nhưng phong độ nghiêng hẳn Senegal.",
+      "analysis_prediction": "Senegal lấn lướt một Bỉ thiếu ổn định: thắng 2-1 (Bỉ vẫn đủ sức lật ngược nhờ cá nhân)."
     },
     "83": {
       "prob_a": 50,
@@ -1438,21 +1438,21 @@
       "analysis_prediction": "Tây Ban Nha kiểm soát và thắng 2-0."
     },
     "85": {
-      "prob_a": 32,
-      "prob_draw": 30,
+      "prob_a": 33,
+      "prob_draw": 29,
       "prob_b": 38,
       "score_a": 1,
       "score_b": 2,
-      "winner": "Senegal",
-      "confidence": 42,
+      "winner": "Algeria",
+      "confidence": 40,
       "key_factors": [
-        "Senegal nóng máy (7-3-0), kỳ vọng bàn cao (1.45 vs 0.69)",
-        "Thụy Sĩ phong độ tệ (1-5-4)",
-        "Mané–Sarr tạo đột biến"
+        "Algeria phong độ tốt (6-2-2) với Mahrez",
+        "Thụy Sĩ bế tắc (1-5-4), kỳ vọng bàn thua kém (1.1 vs 1.86)",
+        "Algeria sắc bén hơn ở hàng công"
       ],
-      "analysis_form": "Senegal (7-3-0) vượt trội phong độ; Thụy Sĩ (1-5-4) bế tắc hàng công.",
-      "analysis_history": "Chưa từng gặp — nhưng Senegal đang ở thế thượng phong.",
-      "analysis_prediction": "Senegal lấn lướt và thắng 2-1."
+      "analysis_form": "Algeria (6-2-2) đang lên; Thụy Sĩ (1-5-4) khủng hoảng hàng công.",
+      "analysis_history": "Lịch sử ưu ái Thụy Sĩ (2-0-0) nhưng phong độ hiện tại nghiêng Algeria.",
+      "analysis_prediction": "Algeria tận dụng phong độ + Mahrez để thắng 2-1."
     },
     "86": {
       "prob_a": 60,
@@ -1506,5 +1506,5 @@
       "analysis_prediction": "Cân não 90 phút hòa 1-1; Salah giúp Ai Cập thắng trên chấm luân lưu."
     }
   },
-  "note": "Dự đoán VÒNG 1/16 (R32) — Elo SỐNG sau vòng bảng + phong độ + ngôi sao + bối cảnh knockout (thắng là đi tiếp, không có trận thủ tục). Cập nhật 2026-06-30."
+  "note": "Dự đoán VÒNG 1/16 (R32) WC2026 — Elo SỐNG + phong độ + ngôi sao + bối cảnh knockout. Sửa 4 cặp hạng-3 theo phân bổ Annex C chính thức. Cập nhật 2026-06-30."
 }

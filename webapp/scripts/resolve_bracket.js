@@ -56,13 +56,28 @@ const thirdSlots = FIXTURES_2026
   .map(f => ({ match: f.match, candidates: f.away_slot.replace(/^3rd\(|\)$/g, '').split('/') }))
   .sort((a, b) => a.match - b.match);
 
+// Bảng phân bổ hạng 3 CHÍNH THỨC (Annex C) theo TỔ HỢP 8 nhóm hạng 3 đi tiếp.
+// key = 8 nhóm (sắp chữ cái) → { matchId: group nguồn }. Đã xác minh từ cặp R32 thật (football-data.org).
+// Tổ hợp khác (giả định) chưa có trong bảng → rơi xuống thuật toán matching quay lui (heuristic, có thể khác Annex C).
+const ANNEX_C = {
+  'B,D,E,F,I,J,K,L': { 74: 'D', 77: 'F', 79: 'E', 80: 'K', 81: 'B', 82: 'I', 85: 'J', 87: 'L' },
+};
+
 function assignThirds() {
+  const byGroup = Object.fromEntries(best8.map(t => [t.g, t.team]));
+  const key = best8Groups.slice().sort().join(',');
+  // 1) Có trong bảng Annex C đã xác minh → dùng phân bổ chính thức
+  if (ANNEX_C[key]) {
+    const out = {};
+    for (const [m, g] of Object.entries(ANNEX_C[key])) out[m] = byGroup[g];
+    return { ok: Object.values(out).every(Boolean), out, source: 'annex_c' };
+  }
+  // 2) Fallback: matching quay lui theo tập ứng viên (heuristic)
   const used = new Set(), out = {};
-  const pool = best8.slice(); // {g, team,...}
   function bt(i) {
     if (i === thirdSlots.length) return true;
     const slot = thirdSlots[i];
-    for (const t of pool) {
+    for (const t of best8) {
       if (used.has(t.g) || !slot.candidates.includes(t.g)) continue;
       used.add(t.g); out[slot.match] = t.team;
       if (bt(i + 1)) return true;
@@ -71,7 +86,7 @@ function assignThirds() {
     return false;
   }
   const ok = bt(0);
-  return { ok, out };
+  return { ok, out, source: 'heuristic' };
 }
 
 // ===== 3) Giải slot → đội =====
