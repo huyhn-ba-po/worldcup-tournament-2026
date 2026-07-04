@@ -34,7 +34,7 @@
 
 <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
   <h1 class="text-3xl sm:text-4xl font-black mb-2">Vòng loại trực tiếp WC2026</h1>
-  <p class="text-slate-400 text-sm mb-6">32 trận từ Vòng 1/16 đến Chung kết 19/7 · Đội cụ thể sẽ xác định sau khi vòng bảng kết thúc · Giờ Việt Nam (GMT+7).</p>
+  <p class="text-slate-400 text-sm mb-6">32 trận từ Vòng 1/16 đến Chung kết 19/7 · Mỗi trận kèm dự đoán AI (đội đi tiếp + tỉ số) · Giờ Việt Nam (GMT+7).</p>
 
   <div class="overflow-x-auto scrollbar pb-4">
     <div class="grid grid-flow-col gap-4 sm:gap-6 min-w-max" id="bracketGrid">
@@ -80,6 +80,23 @@ api('/api/matches').then(({ matches, stage_names }) => {
             const awayTxt = m.is_placeholder ? escapeHtml(m.away_slot) : `${m.away_flag} ${escapeHtml(m.away_vi)}`;
             const homeWin = fin && fin.home > fin.away, awayWin = fin && fin.away > fin.home;
             const hl = (w) => w ? 'font-bold text-emerald-300' : '';
+            // Dự đoán AI (giống trang vòng bảng): đội đi tiếp + tỉ số; đã đá thì chấm điểm AI n/2
+            let aiLine = '';
+            if (!m.is_placeholder && m.ai) {
+              const isDraw = m.ai.winner === 'Hòa';
+              const winVi = m.ai.winner === m.home ? m.home_vi : (m.ai.winner === m.away ? m.away_vi : m.ai.winner);
+              const winFlag = m.ai.winner === m.home ? m.home_flag : (m.ai.winner === m.away ? m.away_flag : '');
+              const pen = m.ai.score_a === m.ai.score_b ? ' <span class="text-slate-500">(luân lưu)</span>' : '';
+              if (fin) {
+                const aw = fin.home > fin.away ? 'home' : (fin.home < fin.away ? 'away' : 'draw');
+                const pw = isDraw ? 'draw' : (m.ai.winner === m.home ? 'home' : 'away');
+                const n = (aw === pw ? 1 : 0) + ((m.ai.score_a === fin.home && m.ai.score_b === fin.away) ? 1 : 0);
+                const cls = n === 2 ? 'bg-emerald-500/15 text-emerald-300' : (n === 1 ? 'bg-amber-500/15 text-amber-400' : 'bg-rose-500/15 text-rose-400');
+                aiLine = `<div class="meta mt-1.5"><span class="px-1 rounded ${cls}">AI ${n}/2</span> <span class="text-slate-500">đoán ${winFlag} ${escapeHtml(winVi)} ${m.ai.score_a}-${m.ai.score_b}</span></div>`;
+              } else {
+                aiLine = `<div class="meta mt-1.5"><span class="text-emerald-400 font-semibold">AI đoán:</span> ${winFlag} <span class="text-slate-200">${escapeHtml(winVi)}</span> đi tiếp · ${m.ai.score_a}-${m.ai.score_b}${pen}</div>`;
+              }
+            }
             return `
             <a href="/match/${m.match}" class="ko-match">
               <div class="text-[10px] font-mono text-slate-500">M${m.match}${fin ? ` · <span class="text-slate-300">${fin.home}-${fin.away}</span>` : ''}</div>
@@ -87,6 +104,7 @@ api('/api/matches').then(({ matches, stage_names }) => {
               <div class="text-center text-slate-500 text-xs">vs</div>
               <div class="slot truncate ${hl(awayWin)}">${awayTxt}</div>
               <div class="meta">${m.time_vn || '--:--'} ${fmtDateVN(m.date_vn)} · ${escapeHtml(m.ground)}</div>
+              ${aiLine}
             </a>
           `;
           }).join('')}
