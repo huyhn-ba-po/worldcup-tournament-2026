@@ -1504,7 +1504,143 @@
       "analysis_form": "Úc (5-4-1) và Ai Cập (6-3-1) đều khó chịu, kỳ vọng bàn gần như bằng nhau.",
       "analysis_history": "Đối đầu sít sao (Úc 0-1-1).",
       "analysis_prediction": "Cân não 90 phút hòa 1-1; Salah giúp Ai Cập thắng trên chấm luân lưu."
+    },
+    "89": {
+      "prob_a": 14,
+      "prob_draw": 18,
+      "prob_b": 68,
+      "score_a": 0,
+      "score_b": 2,
+      "winner": "France",
+      "confidence": 71,
+      "key_factors": [
+        "Pháp toàn thắng vòng bảng (3-1, 3-0, 4-1), hàng công Mbappé đang cực nóng",
+        "Elo chênh +326 nghiêng hẳn về Pháp — đẳng cấp vượt trội",
+        "Paraguay lì lợm, phòng ngự khối thấp nhưng thiếu hỏa lực để lật kèo"
+      ],
+      "analysis_form": "Pháp vào knockout với 3 trận toàn thắng, ghi 10 bàn. Paraguay lết vào bằng lối chơi thực dụng (thắng Đức loạt luân lưu, hòa Úc).",
+      "analysis_history": "Hai đội từng chạm trán ở các kỳ World Cup trước, Pháp thường trên cơ về chất lượng đội hình.",
+      "analysis_prediction": "Mbappé và Dembélé đủ sức xuyên phá khối phòng ngự Paraguay. Pháp thắng 2-0, kiểm soát thế trận."
+    },
+    "90": {
+      "prob_a": 31,
+      "prob_draw": 27,
+      "prob_b": 42,
+      "score_a": 1,
+      "score_b": 2,
+      "winner": "Morocco",
+      "confidence": 51,
+      "key_factors": [
+        "Maroc bất bại vòng bảng, hạ Hà Lan 4-3 mãn nhãn — hàng công El Kaabi + Hakimi sắc bén",
+        "Canada đá sân nhà Vancouver, có David & Larin, nhưng phòng ngự đã thủng 2 trước Thụy Sĩ",
+        "Trận cân bằng, Maroc nhỉnh hơn về Elo và phong độ tấn công"
+      ],
+      "analysis_form": "Maroc thắng 3 hòa 1, ghi bàn đều đặn. Canada mạnh mẽ ở sân nhà (vùi dập Qatar 6-0) nhưng thiếu ổn định.",
+      "analysis_history": "Hai đội gặp nhau tại World Cup 1994 và các giải giao hữu; lịch sử không nghiêng rõ về bên nào.",
+      "analysis_prediction": "Lợi thế sân nhà giúp Canada bám đuổi, nhưng chất lượng cá nhân của Maroc lên tiếng. Maroc thắng 2-1, có thể phải chờ hiệp 2."
+    },
+    "91": {
+      "prob_a": 52,
+      "prob_draw": 24,
+      "prob_b": 24,
+      "score_a": 2,
+      "score_b": 1,
+      "winner": "Brazil",
+      "confidence": 55,
+      "key_factors": [
+        "Brazil Elo 2018, chiều sâu đội hình vượt trội (Neymar, Casemiro, Marquinhos)",
+        "Na Uy có Haaland — mối đe dọa số 1, đủ sức trừng phạt mọi sai lầm",
+        "Brazil chỉ hòa Maroc ở lượt cuối, hàng thủ đôi lúc lơi lỏng"
+      ],
+      "analysis_form": "Brazil nhất bảng nhẹ nhàng (chỉ hòa Maroc khi đã chắc suất). Na Uy thắng 3, chỉ thua Pháp, Haaland ghi bàn liên tục.",
+      "analysis_history": "Ký ức 1998 (Na Uy từng gây bất ngờ) nhắc Brazil không được chủ quan.",
+      "analysis_prediction": "Brazil kiểm soát bóng và ghi bàn trước, Haaland rút ngắn nhưng không đủ. Brazil thắng 2-1."
+    },
+    "92": {
+      "prob_a": 26,
+      "prob_draw": 30,
+      "prob_b": 44,
+      "score_a": 1,
+      "score_b": 2,
+      "winner": "England",
+      "confidence": 49,
+      "key_factors": [
+        "Anh nhỉnh Elo (2011) và hỏa lực Kane, thắng Croatia 4-2 thuyết phục",
+        "Mexico phòng ngự thép — 4 trận vòng bảng đều sạch lưới (2-0,1-0,3-0,2-0)",
+        "\"Lời nguyền vòng 1/8\" của Mexico + sức ép cổ động viên tại Atlanta là ẩn số lớn"
+      ],
+      "analysis_form": "Mexico toàn thắng, không thủng lưới bàn nào — kỷ luật phòng ngự tuyệt vời. Anh mạnh về tấn công nhưng từng bị Ghana cầm hòa 0-0.",
+      "analysis_history": "Mexico nhiều lần dừng bước ở vòng 1/8 (quinto partido); Anh có bề dày kinh nghiệm knockout hơn.",
+      "analysis_prediction": "Trận đấu chặt chẽ, ít bàn. Kane tạo khác biệt ở khoảnh khắc quyết định. Anh thắng 2-1, nhưng rất sát nút — dễ phải cần hiệp phụ."
+    },
+    "93": {
+      "prob_a": 32,
+      "prob_draw": 30,
+      "prob_b": 38,
+      "score_a": 1,
+      "score_b": 1,
+      "winner": "Spain",
+      "confidence": 50,
+      "key_factors": [
+        "Derby bán đảo Iberia — Tây Ban Nha kiểm soát bóng tốt hơn, Elo cao hơn (2101)",
+        "Bồ Đào Nha dựa vào Ronaldo & Bruno Fernandes nhưng hàng thủ rò rỉ (hòa Colombia, DR Congo)",
+        "Trận cầu căng thẳng, giàu duyên nợ — dễ bất phân trong 90 phút"
+      ],
+      "analysis_form": "Tây Ban Nha nhất bảng ấn tượng (thắng Uruguay, Áo). Bồ Đào Nha đi tiếp nhưng để hòa 2 trận, phòng ngự chưa chắc.",
+      "analysis_history": "Những cuộc đối đầu Bồ–Tây Ban Nha thường nghẹt thở và cân tài (điển hình 3-3 tại World Cup 2018).",
+      "analysis_prediction": "Thế trận ngang ngửa, hòa 1-1 sau 120 phút. Tây Ban Nha nhỉnh hơn về bản lĩnh loạt luân lưu và đi tiếp."
+    },
+    "94": {
+      "prob_a": 43,
+      "prob_draw": 29,
+      "prob_b": 28,
+      "score_a": 2,
+      "score_b": 1,
+      "winner": "United States",
+      "confidence": 55,
+      "key_factors": [
+        "Mỹ đá sân nhà Miami, Elo nhỉnh (1881), Pulisic dẫn dắt hàng công",
+        "Senegal vào vòng knockout với tư cách hạng 3, thua 3 trong 4 trận vòng bảng",
+        "Mané vẫn là hiểm họa, nhưng Senegal phòng ngự lỏng lẻo (thủng 3 bàn/trận nhiều lần)"
+      ],
+      "analysis_form": "Mỹ thắng 3 (đè Paraguay 4-1), chỉ thua Thổ Nhĩ Kỳ. Senegal chật vật, thắng đậm Iraq nhưng thua Pháp/Na Uy/Bỉ.",
+      "analysis_history": "Hai đội hầu như chưa có lịch sử đối đầu đáng kể — trận đấu mở.",
+      "analysis_prediction": "Sức ép sân nhà và phong độ tốt hơn giúp Mỹ vượt lên. Mỹ thắng 2-1, Mané ghi bàn danh dự."
+    },
+    "95": {
+      "prob_a": 58,
+      "prob_draw": 24,
+      "prob_b": 18,
+      "score_a": 2,
+      "score_b": 0,
+      "winner": "Argentina",
+      "confidence": 66,
+      "key_factors": [
+        "Argentina toàn thắng vòng bảng, Elo 2113 — ứng viên vô địch, có Messi & Lautaro",
+        "Ai Cập phụ thuộc lớn vào Salah, đi tiếp nhờ 2 trận hòa (Bỉ, Iran)",
+        "Chênh lệch đẳng cấp và chiều sâu quá lớn (Elo +313)"
+      ],
+      "analysis_form": "Argentina thắng cả 4 trận, phòng ngự chắc và tấn công đa dạng. Ai Cập vào knockout với thành tích khiêm tốn hơn nhiều.",
+      "analysis_history": "Argentina từng gặp Ai Cập ở Olympic 1928; lịch sử và hiện tại đều nghiêng mạnh về Argentina.",
+      "analysis_prediction": "Argentina áp đặt thế trận, khóa chặt Salah. Argentina thắng 2-0, kiểm soát trọn vẹn."
+    },
+    "96": {
+      "prob_a": 26,
+      "prob_draw": 25,
+      "prob_b": 49,
+      "score_a": 1,
+      "score_b": 2,
+      "winner": "Colombia",
+      "confidence": 58,
+      "key_factors": [
+        "Colombia bất bại vòng bảng (thắng 3, hòa Bồ Đào Nha), Elo 1998 vượt trội",
+        "James Rodríguez & Luis Díaz tạo đột biến, tuyến giữa nhỉnh hơn hẳn",
+        "Algeria là hạng 3 yếu (thua Argentina 0-3, Thụy Sĩ 0-2), chủ yếu dựa Mahrez"
+      ],
+      "analysis_form": "Colombia đá chắc chắn, cầm hòa được Bồ Đào Nha và thắng các trận còn lại. Algeria chật vật, hàng thủ đã thủng nhiều.",
+      "analysis_history": "Hai đội hiếm khi gặp nhau; phong độ hiện tại nghiêng rõ về Colombia.",
+      "analysis_prediction": "Colombia kiểm soát và tận dụng cơ hội tốt hơn. Colombia thắng 2-1, dù Mahrez có thể rút ngắn tỉ số."
     }
   },
-  "note": "Dự đoán VÒNG 1/16 (R32) WC2026 — Elo SỐNG + phong độ + ngôi sao + bối cảnh knockout. Sửa 4 cặp hạng-3 theo phân bổ Annex C chính thức. Cập nhật 2026-06-30."
+  "note": "Dự đoán vòng 1/8 (Round of 16, trận 89–96) — Hybrid Stat + LLM. Sinh 2026-07-04."
 }

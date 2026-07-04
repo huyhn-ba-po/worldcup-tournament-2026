@@ -5,5 +5,5 @@ node_modules/
 scripts/.wiki_cache/
 _prediction_inputs*.json
 _bracket_resolved.json
-_ko_preds.json
+_ko_preds*.json
 _sim_results.json
