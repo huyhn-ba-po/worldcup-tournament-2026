@@ -87,14 +87,30 @@
     },
     "94": {
       "home": "United States",
-      "away": "Senegal"
+      "away": "Belgium"
     },
     "95": {
       "home": "Argentina",
       "away": "Egypt"
     },
     "96": {
-      "home": "Algeria",
+      "home": "Switzerland",
+      "away": "Colombia"
+    },
+    "97": {
+      "home": "France",
+      "away": "Morocco"
+    },
+    "98": {
+      "home": "Spain",
+      "away": "United States"
+    },
+    "99": {
+      "home": "Brazil",
+      "away": "England"
+    },
+    "100": {
+      "home": "Argentina",
       "away": "Colombia"
     }
   }

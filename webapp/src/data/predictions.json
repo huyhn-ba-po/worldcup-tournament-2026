@@ -1591,21 +1591,21 @@
       "analysis_prediction": "Thế trận ngang ngửa, hòa 1-1 sau 120 phút. Tây Ban Nha nhỉnh hơn về bản lĩnh loạt luân lưu và đi tiếp."
     },
     "94": {
-      "prob_a": 43,
+      "prob_a": 33,
       "prob_draw": 29,
-      "prob_b": 28,
-      "score_a": 2,
-      "score_b": 1,
-      "winner": "United States",
-      "confidence": 55,
+      "prob_b": 38,
+      "score_a": 1,
+      "score_b": 2,
+      "winner": "Belgium",
+      "confidence": 47,
       "key_factors": [
-        "Mỹ đá sân nhà Miami, Elo nhỉnh (1881), Pulisic dẫn dắt hàng công",
-        "Senegal vào vòng knockout với tư cách hạng 3, thua 3 trong 4 trận vòng bảng",
-        "Mané vẫn là hiểm họa, nhưng Senegal phòng ngự lỏng lẻo (thủng 3 bàn/trận nhiều lần)"
+        "Bỉ nhỉnh Elo (1903) và chất lượng ngôi sao vượt trội (De Bruyne, Lukaku)",
+        "Mỹ đá sân nhà Miami, phong độ tốt (đè Paraguay 4-1), Pulisic dẫn dắt",
+        "Bỉ vòng bảng ì ạch (hòa Ai Cập, Iran), thắng Senegal 3-2 chật vật → dễ bị bắt bài"
       ],
-      "analysis_form": "Mỹ thắng 3 (đè Paraguay 4-1), chỉ thua Thổ Nhĩ Kỳ. Senegal chật vật, thắng đậm Iraq nhưng thua Pháp/Na Uy/Bỉ.",
-      "analysis_history": "Hai đội hầu như chưa có lịch sử đối đầu đáng kể — trận đấu mở.",
-      "analysis_prediction": "Sức ép sân nhà và phong độ tốt hơn giúp Mỹ vượt lên. Mỹ thắng 2-1, Mané ghi bàn danh dự."
+      "analysis_form": "Mỹ thắng 3, chỉ thua Thổ Nhĩ Kỳ, giàu năng lượng và tự tin ở sân nhà. Bỉ khởi đầu chậm (2 trận hòa) nhưng đã ghi 3 bàn khi hạ Senegal.",
+      "analysis_history": "Ký ức World Cup 2014 (Bỉ loại Mỹ ở hiệp phụ) là lời cảnh báo; đẳng cấp cá nhân Bỉ thường lên tiếng ở knockout.",
+      "analysis_prediction": "Trận rất cân, gần 50/50. Sức ép sân nhà giúp Mỹ đôi công sòng phẳng, nhưng bản lĩnh và khoảnh khắc của De Bruyne/Lukaku nghiêng cán cân. Bỉ thắng 2-1 — sẵn sàng đi tới hiệp phụ nếu Mỹ gỡ hòa."
     },
     "95": {
       "prob_a": 58,
@@ -1625,22 +1625,22 @@
       "analysis_prediction": "Argentina áp đặt thế trận, khóa chặt Salah. Argentina thắng 2-0, kiểm soát trọn vẹn."
     },
     "96": {
-      "prob_a": 26,
-      "prob_draw": 25,
-      "prob_b": 49,
+      "prob_a": 28,
+      "prob_draw": 26,
+      "prob_b": 46,
       "score_a": 1,
       "score_b": 2,
       "winner": "Colombia",
-      "confidence": 58,
+      "confidence": 55,
       "key_factors": [
-        "Colombia bất bại vòng bảng (thắng 3, hòa Bồ Đào Nha), Elo 1998 vượt trội",
-        "James Rodríguez & Luis Díaz tạo đột biến, tuyến giữa nhỉnh hơn hẳn",
-        "Algeria là hạng 3 yếu (thua Argentina 0-3, Thụy Sĩ 0-2), chủ yếu dựa Mahrez"
+        "Colombia bất bại vòng bảng (cầm hòa Bồ Đào Nha 0-0), Elo 1998 cao hơn 134 điểm",
+        "James Rodríguez & Luis Díaz tạo đột biến — tuyến giữa và tấn công nhỉnh hơn",
+        "Thụy Sĩ kỷ luật, chắc chắn (thắng Algeria 2-0) nhưng thiếu chiều sâu tấn công"
       ],
-      "analysis_form": "Colombia đá chắc chắn, cầm hòa được Bồ Đào Nha và thắng các trận còn lại. Algeria chật vật, hàng thủ đã thủng nhiều.",
-      "analysis_history": "Hai đội hiếm khi gặp nhau; phong độ hiện tại nghiêng rõ về Colombia.",
-      "analysis_prediction": "Colombia kiểm soát và tận dụng cơ hội tốt hơn. Colombia thắng 2-1, dù Mahrez có thể rút ngắn tỉ số."
+      "analysis_form": "Cả hai đều vào knockout thuyết phục: Thụy Sĩ thắng 3 hòa 1, Colombia bất bại. Colombia nhỉnh về chất lượng cá nhân và khả năng ghi bàn.",
+      "analysis_history": "Những lần gặp nhau trong quá khứ khá cân bằng; hiện tại Colombia được đánh giá cao hơn.",
+      "analysis_prediction": "Thụy Sĩ tổ chức phòng ngự tốt và gây khó, nhưng Colombia đủ sắc bén để xuyên phá. Colombia thắng 2-1 — có thể phải chờ tới cuối trận."
     }
   },
-  "note": "Dự đoán vòng 1/8 (Round of 16, trận 89–96) — Hybrid Stat + LLM. Sinh 2026-07-04."
+  "note": "Dự đoán vòng 1/8 (R16, trận 89–96) — Hybrid Stat + LLM. Sửa cặp 94, 96 theo kết quả R32 thật. 2026-07-04."
 }
