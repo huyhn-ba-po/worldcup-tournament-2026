@@ -1640,7 +1640,58 @@
       "analysis_form": "Cả hai đều vào knockout thuyết phục: Thụy Sĩ thắng 3 hòa 1, Colombia bất bại. Colombia nhỉnh về chất lượng cá nhân và khả năng ghi bàn.",
       "analysis_history": "Những lần gặp nhau trong quá khứ khá cân bằng; hiện tại Colombia được đánh giá cao hơn.",
       "analysis_prediction": "Thụy Sĩ tổ chức phòng ngự tốt và gây khó, nhưng Colombia đủ sắc bén để xuyên phá. Colombia thắng 2-1 — có thể phải chờ tới cuối trận."
+    },
+    "97": {
+      "prob_a": 48,
+      "prob_draw": 28,
+      "prob_b": 24,
+      "score_a": 2,
+      "score_b": 1,
+      "winner": "France",
+      "confidence": 52,
+      "key_factors": [
+        "Pháp toàn thắng 5 trận, Elo 2075, Mbappé & Dembélé duy trì phong độ cao",
+        "Maroc là ẩn số nguy hiểm nhất còn lại (hạ Hà Lan 4-3, vùi Canada 3-0), Hakimi + El Kaabi sắc bén",
+        "Chênh Elo +184 nghiêng về Pháp, nhưng Maroc từng vào bán kết 2022 — đủ bản lĩnh knockout"
+      ],
+      "analysis_form": "Pháp thắng cả 5 trận, ghi bàn đều. Maroc bất bại tại giải, tấn công biến hóa và giàu thể lực.",
+      "analysis_history": "Hai đội gặp nhau ở bán kết World Cup 2022 (Pháp thắng 2-0); Pháp thường nhỉnh hơn nhưng Maroc ngày càng khó chơi.",
+      "analysis_prediction": "Maroc gây sức ép và có bàn, nhưng chiều sâu cùng đẳng cấp của Mbappé giúp Pháp vượt qua. Pháp thắng 2-1, có thể phải chờ hiệp hai bung sức."
+    },
+    "98": {
+      "prob_a": 52,
+      "prob_draw": 23,
+      "prob_b": 25,
+      "score_a": 2,
+      "score_b": 1,
+      "winner": "Spain",
+      "confidence": 55,
+      "key_factors": [
+        "Tây Ban Nha ứng viên vô địch, Elo 2101, kiểm soát bóng vượt trội (đã hạ Bồ Đào Nha, Uruguay)",
+        "Bỉ đang bùng nổ đúng lúc — thắng Mỹ 4-1, De Bruyne & Lukaku hồi sinh",
+        "Bỉ khởi đầu chậm ở vòng bảng, dễ bị TBN áp đặt thế trận và bóp nghẹt tuyến giữa"
+      ],
+      "analysis_form": "TBN thắng 5, chỉ để hòa Cape Verde ở trận thủ tục — hàng thủ cực chắc. Bỉ tăng tốc mạnh mẽ ở knockout sau vòng bảng ì ạch.",
+      "analysis_history": "Những lần đối đầu gần đây khá cân, nhưng lứa TBN hiện tại được đánh giá nhỉnh hơn về lối chơi tập thể.",
+      "analysis_prediction": "TBN cầm nhịp và ghi bàn từ thế trận kiểm soát; Bỉ phản đòn nhờ De Bruyne–Lukaku nhưng không đủ. TBN thắng 2-1."
+    },
+    "99": {
+      "prob_a": 31,
+      "prob_draw": 21,
+      "prob_b": 48,
+      "score_a": 1,
+      "score_b": 2,
+      "winner": "England",
+      "confidence": 47,
+      "key_factors": [
+        "Anh nhỉnh Elo rõ (2011), chiều sâu đội hình tốt, Kane dẫn dắt hàng công",
+        "Na Uy vừa tạo địa chấn loại Brazil 2-1 — Haaland đang cực nóng, momentum lớn",
+        "Anh từng bị Ghana cầm hòa; nếu lơi lỏng sẽ trả giá trước một Haaland khát bàn"
+      ],
+      "analysis_form": "Anh ổn định (thắng Mexico 3-2, Croatia 4-2). Na Uy bùng nổ ở knockout, hạ cả Brazil dù từng thua đậm Pháp 1-4.",
+      "analysis_history": "Đối đầu lịch sử nghiêng về Anh; nhưng phong độ và Haaland khiến Na Uy là đối thủ khó lường.",
+      "analysis_prediction": "Anh nhập cuộc chắc chắn và tận dụng chiều sâu để vượt lên; Haaland ghi bàn nhưng Na Uy khó lật kèo lần nữa. Anh thắng 2-1 — cảnh giác kịch bản hiệp phụ."
     }
   },
-  "note": "Dự đoán vòng 1/8 (R16, trận 89–96) — Hybrid Stat + LLM. Sửa cặp 94, 96 theo kết quả R32 thật. 2026-07-04."
+  "note": "Dự đoán Tứ kết (QF) — trận 97, 98, 99 (đã chốt đội từ kết quả R16 thật). #100 chờ 95/96. Hybrid Stat + LLM, 2026-07-07."
 }
