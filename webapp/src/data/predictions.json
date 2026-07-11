@@ -1691,7 +1691,24 @@
       "analysis_form": "Anh ổn định (thắng Mexico 3-2, Croatia 4-2). Na Uy bùng nổ ở knockout, hạ cả Brazil dù từng thua đậm Pháp 1-4.",
       "analysis_history": "Đối đầu lịch sử nghiêng về Anh; nhưng phong độ và Haaland khiến Na Uy là đối thủ khó lường.",
       "analysis_prediction": "Anh nhập cuộc chắc chắn và tận dụng chiều sâu để vượt lên; Haaland ghi bàn nhưng Na Uy khó lật kèo lần nữa. Anh thắng 2-1 — cảnh giác kịch bản hiệp phụ."
+    },
+    "100": {
+      "prob_a": 56,
+      "prob_draw": 23,
+      "prob_b": 21,
+      "score_a": 2,
+      "score_b": 1,
+      "winner": "Argentina",
+      "confidence": 57,
+      "key_factors": [
+        "Argentina Elo 2113 — ứng viên vô địch, toàn thắng 5 trận, có Messi & Lautaro",
+        "Thụy Sĩ đang thăng hoa (hạ Colombia 4-3 mãn nhãn) nhưng hàng thủ hớ hênh, thủng 3 bàn",
+        "Chênh Elo +249 nghiêng mạnh về Argentina; Argentina 2 trận gần nhất đều thắng 3-2 — vẫn dứt điểm tốt dù để lọt lưới"
+      ],
+      "analysis_form": "Argentina thắng cả 5 nhưng gần đây sát nút (3-2 Cape Verde, 3-2 Ai Cập). Thụy Sĩ bất bại, tấn công bùng nổ ở knockout song phòng ngự thiếu chắc chắn.",
+      "analysis_history": "Hai đội từng gặp ở World Cup 2014 (Argentina thắng 1-0 hiệp phụ); Argentina luôn nhỉnh hơn về đẳng cấp cá nhân.",
+      "analysis_prediction": "Thụy Sĩ chơi cởi mở và có bàn, nhưng chất lượng của Messi–Lautaro tạo khác biệt. Argentina thắng 2-1 — một trận cầu nhiều bàn thắng."
     }
   },
-  "note": "Dự đoán Tứ kết (QF) — trận 97, 98, 99 (đã chốt đội từ kết quả R16 thật). #100 chờ 95/96. Hybrid Stat + LLM, 2026-07-07."
+  "note": "Dự đoán Tứ kết #100 Argentina–Thụy Sĩ (chốt đội từ R16 thật: Argentina 3-2 Ai Cập, Thụy Sĩ 4-3 Colombia). 2026-07-11."
 }
