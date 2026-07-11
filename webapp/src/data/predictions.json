@@ -1708,7 +1708,24 @@
       "analysis_form": "Argentina thắng cả 5 nhưng gần đây sát nút (3-2 Cape Verde, 3-2 Ai Cập). Thụy Sĩ bất bại, tấn công bùng nổ ở knockout song phòng ngự thiếu chắc chắn.",
       "analysis_history": "Hai đội từng gặp ở World Cup 2014 (Argentina thắng 1-0 hiệp phụ); Argentina luôn nhỉnh hơn về đẳng cấp cá nhân.",
       "analysis_prediction": "Thụy Sĩ chơi cởi mở và có bàn, nhưng chất lượng của Messi–Lautaro tạo khác biệt. Argentina thắng 2-1 — một trận cầu nhiều bàn thắng."
+    },
+    "101": {
+      "prob_a": 35,
+      "prob_draw": 28,
+      "prob_b": 37,
+      "score_a": 1,
+      "score_b": 2,
+      "winner": "Spain",
+      "confidence": 46,
+      "key_factors": [
+        "Hai ứng viên vô địch, Elo gần như ngang nhau (TBN 2101 – Pháp 2075) → trận 50/50 nhất giải",
+        "TBN kiểm soát bóng và phòng ngự chắc nhất (hàng loạt trận sạch lưới), nhỉnh về thế trận",
+        "Pháp có hỏa lực đáng sợ hơn (Mbappé, Dembélé) — chỉ một khoảnh khắc phản công là đủ định đoạt"
+      ],
+      "analysis_form": "Cả hai toàn thắng tới bán kết (TBN chỉ hòa Cape Verde ở trận thủ tục). Pháp ghi bàn ào ạt (4-1 Na Uy), TBN thắng chắt chiu nhưng cực kỷ luật.",
+      "analysis_history": "Những lần đối đầu gần đây rất cân (Nations League 2021 TBN–Pháp 1-2); đây luôn là kèo khó lường.",
+      "analysis_prediction": "Thế trận giằng co, TBN cầm nhịp còn Pháp rình phản công. Nhỉnh rất nhẹ cho khả năng kiểm soát của TBN — TBN thắng 2-1, hoàn toàn có thể phải phân định ở hiệp phụ hoặc luân lưu."
     }
   },
-  "note": "Dự đoán Tứ kết #100 Argentina–Thụy Sĩ (chốt đội từ R16 thật: Argentina 3-2 Ai Cập, Thụy Sĩ 4-3 Colombia). 2026-07-11."
+  "note": "Dự đoán Bán kết #101 Pháp–Tây Ban Nha (chốt từ QF thật: Pháp 2-0 Maroc, TBN 2-1 Bỉ). 2026-07-11."
 }
