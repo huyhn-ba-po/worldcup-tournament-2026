@@ -1725,7 +1725,24 @@
       "analysis_form": "Cả hai toàn thắng tới bán kết (TBN chỉ hòa Cape Verde ở trận thủ tục). Pháp ghi bàn ào ạt (4-1 Na Uy), TBN thắng chắt chiu nhưng cực kỷ luật.",
       "analysis_history": "Những lần đối đầu gần đây rất cân (Nations League 2021 TBN–Pháp 1-2); đây luôn là kèo khó lường.",
       "analysis_prediction": "Thế trận giằng co, TBN cầm nhịp còn Pháp rình phản công. Nhỉnh rất nhẹ cho khả năng kiểm soát của TBN — TBN thắng 2-1, hoàn toàn có thể phải phân định ở hiệp phụ hoặc luân lưu."
+    },
+    "102": {
+      "prob_a": 33,
+      "prob_draw": 27,
+      "prob_b": 40,
+      "score_a": 1,
+      "score_b": 2,
+      "winner": "Argentina",
+      "confidence": 45,
+      "key_factors": [
+        "Elo sống Argentina 2113 vs Anh 2011 (chênh +102) — Argentina toàn thắng 6 trận, vừa hạ Thụy Sĩ 3-1 thuyết phục",
+        "Messi–Lautaro đang sắc bén; Argentina bản lĩnh knockout, ứng viên số 1 còn lại của giải",
+        "Anh chắc chắn, có Kane, nhưng thắng vất vả (2-1 Na Uy) và từng bế tắc (0-0 Ghana) — kèo thấp bàn (baseline 1-0/0-0/1-1)"
+      ],
+      "analysis_form": "Argentina thắng cả 6, gần đây 3-1 Thụy Sĩ, 3-2 Ai Cập/Cape Verde. Anh thắng 5 hòa 1, vừa vượt Na Uy 2-1 nhưng hàng công trồi sụt.",
+      "analysis_history": "Đại kình địch World Cup: 1986 Maradona ('Bàn tay của Chúa' + solo), 1998 (Argentina thắng luân lưu), 2002 (Beckham penalty cho Anh). Các lần gặp luôn nghẹt thở.",
+      "analysis_prediction": "Trận chặt chẽ ít bàn; đẳng cấp Messi–Lautaro và bản lĩnh giúp Argentina vượt qua để gặp Tây Ban Nha ở chung kết. Dự đoán Argentina thắng 2-1 (cảnh giác hiệp phụ/luân lưu)."
     }
   },
-  "note": "Dự đoán Bán kết #101 Pháp–Tây Ban Nha (chốt từ QF thật: Pháp 2-0 Maroc, TBN 2-1 Bỉ). 2026-07-11."
+  "note": "Dự đoán Bán kết #102 Anh–Argentina (cả hai vào SF bằng kết quả thật; đối thủ CK là Tây Ban Nha sau khi thắng Pháp 2-0). 2026-07-15."
 }
