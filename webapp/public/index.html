@@ -223,17 +223,17 @@
   <!-- HERO -->
   <section class="max-w-7xl mx-auto px-4 sm:px-6 pt-10 sm:pt-16 pb-16 sm:pb-20">
     <div class="text-center max-w-4xl mx-auto">
-      <span class="badge-live">WORLD CUP 2026 · 11/6 → 19/7</span>
+      <span class="badge-live">WORLD CUP 2026 · ĐÃ KẾT THÚC · 🇪🇸 TÂY BAN NHA VÔ ĐỊCH</span>
       <h1 class="hero-headline mt-5">
-        World Cup 2026 đang đến — <span class="gradient-text">AI đoán hộ bạn</span>
+        World Cup 2026 khép lại — <span class="gradient-text">AI đã gọi tên nhà vô địch</span>
       </h1>
       <p class="mt-6 text-lg sm:text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto">
-        Mỗi trong <b class="text-emerald-300">104 trận</b> đều có dự đoán AI: ai thắng, tỉ số bao nhiêu, lý do là gì.
-        Xem AI đoán rồi so với linh cảm của bạn xem ai đúng.
+        🇪🇸 <b class="text-emerald-300">Tây Ban Nha</b> lên ngôi, thắng Argentina <b class="text-emerald-300">1-0</b> ở chung kết — và AI đã
+        <b class="text-emerald-300">dự đoán trúng nhà vô địch</b>. Cả 104 trận đều có dự đoán; xem lại AI đúng tới đâu.
       </p>
       <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-        <a href="/match/1" id="heroCta" class="btn-primary" aria-label="Xem AI dự đoán trận sắp đá">
-          <span id="heroCtaText">Xem AI đoán trận sắp đá</span>
+        <a href="/bracket" id="heroCta" class="btn-primary" aria-label="Xem sơ đồ knockout và nhà vô địch">
+          <span id="heroCtaText">Xem bracket &amp; nhà vô địch</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
         <a href="/groups" class="btn-secondary" aria-label="Xem lịch 104 trận">
@@ -250,8 +250,8 @@
   <section class="max-w-7xl mx-auto px-4 sm:px-6 mb-16 sm:mb-20">
     <div class="flex items-end justify-between mb-5 gap-3 flex-wrap">
       <div>
-        <span class="section-eyebrow">Sắp diễn ra</span>
-        <h2 class="section-title">Trận sắp đá</h2>
+        <span class="section-eyebrow">Chung kết · 20/07</span>
+        <h2 class="section-title">Nhà vô địch WC2026</h2>
       </div>
       <a href="/groups" class="text-sm text-emerald-400 hover:underline whitespace-nowrap">Lịch đầy đủ →</a>
     </div>
@@ -297,9 +297,9 @@
         <div class="text-xs text-slate-500 mt-1">AI học từ năm 1872 đến nay</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num">~5/10</div>
-        <div class="text-xs text-slate-400 uppercase tracking-wider mt-2">AI đoán đúng</div>
-        <div class="text-xs text-slate-500 mt-1">Trên 2 kỳ World Cup trước</div>
+        <div class="stat-num">66%</div>
+        <div class="text-xs text-slate-400 uppercase tracking-wider mt-2">AI đúng kèo mùa này</div>
+        <div class="text-xs text-slate-500 mt-1">69/104 trận · trúng nhà vô địch</div>
       </div>
     </div>
   </section>
@@ -553,9 +553,39 @@ Promise.all([api('/api/matches'), api('/api/leaderboard'), loadTeams()]).then(([
       <span class="font-mono font-bold text-emerald-300">${t.rating}</span>
     </a>`).join('');
 
-  // Trận sắp đá (động theo ngày)
+  // Trận sắp đá (động theo ngày) — hết trận thì hiện SPOTLIGHT nhà vô địch
   if (!up.length) {
-    $('#nextMatch').innerHTML = '<div class="text-center text-slate-400 py-10">World Cup 2026 đã khép lại. Hẹn gặp ở kỳ sau! 🏆</div>';
+    const fin = mx.matches.find(m => m.match === 104 && m.result)
+      || mx.matches.filter(m => m.result).sort((a, b) => kickoffUTC(b) - kickoffUTC(a))[0];
+    if (fin && fin.result) {
+      const t = teamsOf(fin, meta), r = fin.result, homeWin = r.home >= r.away;
+      const champ = homeWin ? { n: t.a, f: t.fa } : { n: t.b, f: t.fb };
+      const runner = homeWin ? { n: t.b, f: t.fb } : { n: t.a, f: t.fa };
+      const aw = r.home > r.away ? 'home' : (r.home < r.away ? 'away' : 'draw');
+      const pw = fin.ai ? (fin.ai.winner === 'Hòa' ? 'draw' : (fin.ai.winner === fin.home ? 'home' : 'away')) : null;
+      const aiOK = pw && aw === pw;
+      $('#nextMatch').innerHTML = `
+        <div class="grid md:grid-cols-2 gap-6 items-center">
+          <div>
+            <span class="badge-live">🏆 Vô địch World Cup 2026</span>
+            <h3 class="text-3xl sm:text-4xl font-black mt-3 mb-1">${champ.f} ${escapeHtml(champ.n)}</h3>
+            <p class="text-sm text-slate-400">Chung kết · thắng ${escapeHtml(runner.n)}
+              <span class="font-mono font-bold text-slate-200">${r.home}-${r.away}</span></p>
+            ${aiOK ? `<div class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-emerald-300 bg-emerald-500/10 border border-emerald-500/30 rounded-lg px-3 py-2">✓ AI đã dự đoán trúng nhà vô địch</div>` : ''}
+            <div class="mt-5 flex flex-wrap gap-3">
+              <a href="/bracket" class="btn-primary text-sm" style="padding: 10px 18px; min-height: 44px;">Xem toàn bộ bracket</a>
+              <a href="/match/${fin.match}" class="btn-secondary text-sm" style="padding: 10px 18px; min-height: 44px;">Phân tích trận chung kết</a>
+            </div>
+          </div>
+          <div class="hidden md:flex items-center justify-center gap-5">
+            <div class="text-center"><div class="text-8xl">${champ.f}</div>
+              <div class="mt-2 font-black text-lg text-emerald-300">${escapeHtml(champ.n)}</div>
+              <div class="text-xs text-amber-300 uppercase tracking-wider mt-1">★ Vô địch</div></div>
+          </div>
+        </div>`;
+    } else {
+      $('#nextMatch').innerHTML = '<div class="text-center text-slate-400 py-10">World Cup 2026 đã khép lại. Hẹn gặp ở kỳ sau! 🏆</div>';
+    }
     $('#upcomingGrid').innerHTML = '';
   } else {
     const nm = up[0].m; nextKick = up[0].k;
