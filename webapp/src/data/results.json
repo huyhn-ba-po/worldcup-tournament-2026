@@ -1,5 +1,5 @@
 {
-  "note": "Tỉ số THỰC TẾ tự lấy từ football-data.org (cập nhật 2026-08-05T05:10:33.649Z). Chạy lại: node scripts/fetch_results.js",
+  "note": "Tỉ số THỰC TẾ tự lấy từ football-data.org (cập nhật 2026-08-05T08:26:00.847Z). Chạy lại: node scripts/fetch_results.js",
   "results": {
     "1": {
       "home": 2,
